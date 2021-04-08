@@ -13,14 +13,14 @@
 >
 >       Example: Button JS modal window 
 >       
->                F01-Button JS modal window
+>                F01-ButtonJSModal
 >                
 
 > Design: D01, D02 ...         
 >
 >       Example: CSS Style modal window 
 >       
->                D01-CSS Style modal window
+>                D01-CssStyleModal
 >  
 
 
