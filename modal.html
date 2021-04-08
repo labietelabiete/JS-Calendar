@@ -10,7 +10,7 @@
 
 <body>
     <button id="newEventBtn">New Event</button>
-    <!-- The Modal -->
+    <!-- New Event Modal -->
     <div id="newEventModal" class="modal">
         <!-- Modal content -->
         <div class="modalContent">
@@ -50,6 +50,29 @@
             </form>
         </div>
     </div>
+
+    <button id="checkEventBtn">Check Event</button>
+    <!-- Modify Event Modal -->
+    <div id="checkEventModal" class="modal">
+        <!-- Modal content -->
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <form id="checkEventForm">
+                <h1>Title</h1>
+
+                <p>Initial Date</p>
+
+                <p>End Date</p>
+
+                <p id="descriptionCheckEvent">Description of the Event</p>
+
+                <p>Type of Event</p>
+
+                <input type="button" value="OK" id="okCheckEventButton"><input type="submit" value="Remove" id="RemoveEventButton">
+            </form>
+        </div>
+    </div>
+
     <script src="js/modal.js"></script>
 </body>
 
