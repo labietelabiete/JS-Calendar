@@ -6,6 +6,40 @@
 
 # JS Calendar <!-- omit in toc -->
 
+## Best practices
+### Trello Task and Branch naming
+
+> Functionalities: F-01, F-02 ...
+>
+>       Example: Button JS modal window 
+>       
+>                F-01 Button JS modal window
+>                
+
+> Design: D-01, D-02 ...         
+>
+>       Example: CSS Style modal window 
+>       
+>                D-01 CSS Style modal window
+>  
+
+
+### Id, Class, Variables Definition
+>
+> In order to unify all declaration, follow camelCase
+> 
+>
+```
+HTML
+
+<div id="myDivId"></div>
+<div class="myDivClass"></div>
+
+
+Javascript
+
+let myArray = [];
+```
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
 </p>
