@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Modal</title>
+</head>
+
+<body>
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <form id="myForm">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" maxlength="60" required><br>
+                <label for="initialDate">Initial Date</label>
+                <input type="date" id="start" name="trip-start" required><br>
+                <input type="checkbox" name="check-end" id="endDate">
+                <label for="endCheck">End Date</label><br>
+                <label for="endDate">End Date</label>
+                <input type="date" id="end" name="trip-end" required><br>
+                <input type="checkbox" name="check-end" id="reminder">
+                <label for="reminder">Remind me when event expires</label><br>
+                <label for="timeReminder">Time: </label>
+                <select name="cars" id="timeReminder">
+                    <option value="5">5 min</option>
+                    <option value="10">10 min</option>
+                    <option value="15">15 min</option>
+                    <option value="30">30 min</option>
+                    <option value="60">1 hour</option>
+                </select><br>
+                <textarea name="eventDesc" id="eventDesc" cols="30" rows="10" maxlength="500"></textarea><br>
+                <label for="eventType">Event type: </label>
+                <select name="cars" id="eventType">
+                    <option value="meeting">Meeting</option>
+                    <option value="personal">Personal</option>
+                    <option value="study">Study</option>
+                </select>
+
+            </form>
+        </div>
+
+    </div>
+    <script src="js/modal.js"></script>
+</body>
+
+</html>
