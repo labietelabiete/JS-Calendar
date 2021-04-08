@@ -9,18 +9,18 @@
 ## Best practices
 ### Trello Task and Branch naming
 
-> Functionalities: F-01, F-02 ...
+> Functionalities: F01, F02 ...
 >
 >       Example: Button JS modal window 
 >       
->                F-01 Button JS modal window
+>                F01-Button JS modal window
 >                
 
-> Design: D-01, D-02 ...         
+> Design: D01, D02 ...         
 >
 >       Example: CSS Style modal window 
 >       
->                D-01 CSS Style modal window
+>                D01-CSS Style modal window
 >  
 
 
