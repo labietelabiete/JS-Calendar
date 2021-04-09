@@ -30,13 +30,13 @@
                 <label class="eventDateLabel" for="startNewEvent">Initial date</label><br>
                 <input class="eventDate" type="datetime-local" id="startNewEvent" name="trip-start" required><br>
 
-                <input type="checkbox" name="check-end" id="checkBoxEndDate">
+                <input class="eventCheckBox" type="checkbox" name="check-end" id="checkBoxEndDate">
                 <label class="eventDateLabel" for="checkBoxEndDate">End date</label><br>
-                <input class="eventDate" type="date" id="endNewEvent" name="trip-end"><br>
+                <input class="eventDate" type="datetime-local" id="endNewEvent" name="trip-end"><br>
 
-                <input type="checkbox" name="check-end" id="reminderNewEvent">
+                <input class="eventCheckBox" type="checkbox" name="check-end" id="reminderNewEvent">
                 <label for="reminderNewEvent">Remind me when event expires</label><br>
-                <label for="timeReminderNewEvent">Time: </label>
+                <!-- <label for="timeReminderNewEvent">Time: </label> -->
                 <select name="" id="timeReminderNewEvent">
                     <option value="5" selected>5 min</option>
                     <option value="10">10 min</option>
