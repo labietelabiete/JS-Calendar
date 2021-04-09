@@ -16,22 +16,42 @@
         <div class="modalContent">
             <span class="close">&times;</span>
             <form id="newEventForm">
-                <label for="titleNewEvent">Title</label>
-                <input type="text" name="title" id="titleNewEvent" required><br>
+                <!-- <label for="titleNewEvent">Title</label> -->
+                <input type="text" class="eventTitle" name="title" id="titleNewEvent" placeholder="Title" maxlength="60" required><br>
 
-                <label for="startNewEvent">Initial Date</label>
-                <input type="date" id="startNewEvent" name="trip-start" required><br>
+                <!-- <label class="eventType" for="typeNewEvent">Type</label><br> -->
+                <select name="" class="eventType" id="typeNewEvent">
+                    <option class="eventTypeOption" value="none" selected disabled hidden>Type</option>
+                    <option class="eventTypeOption" value="meeting">Meeting</option>
+                    <option class="eventTypeOption" value="personal">Personal</option>
+                    <option class="eventTypeOption" value="study">Study</option>
+                </select> <br>
 
-                <input type="checkbox" name="check-end" id="checkBoxEndDate">
-                <label for="checkBoxEndDate">End Date</label><br>
-                <input type="date" id="endNewEvent" name="trip-end" style="display: none"><br>
+                <label class="eventLabel eventDateLabel" for="startNewEvent">Initial date</label><br>
+                <input class="eventDate" type="datetime-local" id="startNewEvent" name="trip-start" required><br>
 
-                <input type="checkbox" name="check-end" id="reminderNewEvent">
-                <label for="reminderNewEvent">Remind me when event expires</label><br>
-                <div id="reminderNewEventDiv" style="display: none">
+                <input class="eventCheckBox" type="checkbox" name="check-end" id="checkBoxEndDate">
+                <label class="eventLabel eventDateLabel" for="checkBoxEndDate">End date</label><br>
+                <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent" name="trip-end"><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <input class="eventCheckBox" type="checkbox" name="check-end" id="reminderNewEvent">
+            <label class="eventLabel" for="reminderNewEvent">Reminder</label><br>
+            <div id="reminderNewEventDiv" style="display: none">
                 <label for="timeReminderNewEvent">Time: </label>
-                <select name="" id="timeReminderNewEvent">
-                    <option value="5">5 min</option>
+                <select class="eventDate" name="" id="timeReminderNewEvent">
+                    <option value="5" selected>5 min</option>
                     <option value="10">10 min</option>
                     <option value="15">15 min</option>
                     <option value="30">30 min</option>
@@ -39,7 +59,9 @@
                 </select>
             </div><br>
 
-                <textarea name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
+
+                <label class="eventLabel eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
+                <textarea class="eveentDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
 
                 <label for="typeNewEvent">Event type: </label>
                 <select name="" id="typeNewEvent">
@@ -49,9 +71,8 @@
                     <option value="study">Study</option>
                 </select> <br>
 
-                <input type="submit" value="Create" id="saveNewEvent">
-                <input type="button" value="Cancel" id="cancelNewEvent">
-
+                <input class="modalBtn" type="submit" value="Create" id="saveNewEvent">
+                <input class="modalBtn" type="button" value="Cancel" id="cancelNewEvent">
             </form>
         </div>
     </div>

@@ -45,14 +45,14 @@ STYLING
     /* Other styling */
     font-family: 'Clash';
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
 }
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 30px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -66,18 +66,21 @@ STYLING
 .modalContent {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
+  padding: 20px 40px;
   border: 1px solid #888;
-  width: 30%;
-  height: 70%;
+  min-width: 420px;
+  height: 700px;
+  width: 20%;
+  /* height: 80%; */
+  border: var(--darkColor) solid var(--borderWidth);
 }
 
 /* The Close Button */
 .close {
-  color: #aaaaaa;
+  color: #000000;
   float: right;
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 35px;
+  font-weight: normal;
 }
 
 .close:hover,
@@ -85,4 +88,71 @@ STYLING
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.eventTitle{
+    width: 80%;
+    height: 60px;
+    font-size: 60px;
+    font-weight: var(--semiBold);
+    margin: 10px 0px;
+}
+
+.eventType{
+    font-size: 26px;
+    font-weight: var(--light);
+    margin-bottom: 80px;
+}
+.eventTypeOption{
+    font-size: 26px;
+    font-weight: var(--light);
+}
+.eventTypeOption:hover{
+    background: red;
+}
+.eventLabel{
+    width: 100%;
+    font-size: 26px;
+    font-weight: var(--semiBold);
+    border-bottom: var(--darkColor) solid var(--borderWidth);
+    margin-bottom: 20px;
+}
+.eventDate{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.eventCheckBox{
+    margin-left: -25px;
+    margin-right: 10px;
+    color: red;
+}
+
+.eventDescriptionLabel{
+    margin-bottom: 10px;
+}
+
+.eveentDescription{
+    width: 100%;
+    height: 100px;
+    background-color: rgba(0,0,0,0.05);
+    font-size: 26px;
+    font-weight: var(--light);
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.modalBtn{
+    width: 49%;
+    height: 40px;
+    margin-left: 2px;
+    font-size: 20px;
+    font-weight: var(--semiBold);
+    background-color: white;
+    border: var(--darkColor) solid var(--borderWidth);
+}
+
+#cancelNewEvent{
+    color: var(--redColor);
+    border: var(--redColor) solid var(--borderWidth);
 }
