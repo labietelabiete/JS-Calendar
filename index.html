@@ -8,22 +8,20 @@
     <title>JS Calendar</title>
 </head>
 <body>
-    <header>
 
+    <!-- Top part -->
+    <header>
         <h4 id= "title">JS Calendar</h4>
         <div>
             <h1 id ="month">MONTH</h1>
             <h1 id ="year">2021</h1>
         </div>
-        
         <button id = addEventButton>Add Event</button>
-
     </header>
 
+    <!-- Main part -->
     <main>
-
         <sidebar id ="">
-
             <div id = "eventTypes">
                 <input type="checkbox" class = "eventTypeCheckbox" id="type1" name="type1" value="Type1">
                 <label for="vehicle1"> Type1</label><br>
@@ -35,18 +33,16 @@
                 <label for="vehicle1"> Type4</label><br>
                 <input type="checkbox" class = "eventTypeCheckbox" id="type5" name="type5" value="Type5">
                 <label for="vehicle1"> Type5</label>
-
             </div>
-
         </sidebar>
 
+        <!-- Navigation buttons -->
         <div id = "monthButtons">
-
             <button id = "previousMonthButton"><</button>
             <button id = "nextMonthButton">></button>
-
         </div>
 
+        <!-- Weekdays -->
         <div id = "weekDaysContainer">
             <ul id = "week">
                 <li><div id = "">Monday</div></li>
@@ -57,12 +53,13 @@
                 <li><div id = "">Saturday</div></li>
                 <li><div id = "">Sunday</div></li>
             </ul>
-
         </div>
 
+        <!-- Calendar grid -->
         <div id = "calendarGrid"></div>
-
     </main>
+
+    <!-- Footer -->
     <footer></footer>
 </body>
 </html>
