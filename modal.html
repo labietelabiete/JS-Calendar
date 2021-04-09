@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Modal</title>
+</head>
+
+<body>
+    <button id="newEventBtn">New Event</button>
+    <!-- New Event Modal -->
+    <div id="newEventModal" class="modal">
+        <!-- Modal content -->
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <form id="newEventForm">
+                <label for="titleNewEvent">Title</label>
+                <input type="text" name="title" id="titleNewEvent" maxlength="60" required><br>
+
+                <label for="startNewEvent">Initial Date</label>
+                <input type="date" id="startNewEvent" name="trip-start" required><br>
+
+                <input type="checkbox" name="check-end" id="checkBoxEndDate">
+                <label for="checkBoxEndDate">End Date</label><br>
+                <input type="date" id="endNewEvent" name="trip-end"><br>
+
+                <input type="checkbox" name="check-end" id="reminderNewEvent">
+                <label for="reminderNewEvent">Remind me when event expires</label><br>
+                <label for="timeReminderNewEvent">Time: </label>
+                <select name="" id="timeReminderNewEvent">
+                    <option value="5">5 min</option>
+                    <option value="10">10 min</option>
+                    <option value="15">15 min</option>
+                    <option value="30">30 min</option>
+                    <option value="60">1 hour</option>
+                </select><br>
+
+                <textarea name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
+
+                <label for="typeNewEvent">Event type: </label>
+                <select name="" id="typeNewEvent">
+                    <option value="meeting">Meeting</option>
+                    <option value="personal">Personal</option>
+                    <option value="study">Study</option>
+                </select> <br>
+
+                <input type="button" value="cancel" id="cancelNewEvent"><input type="submit" value="save" id="saveNewEvent">
+            </form>
+        </div>
+    </div>
+
+    <button id="checkEventBtn">Check Event</button>
+    <!-- Modify Event Modal -->
+    <div id="checkEventModal" class="modal">
+        <!-- Modal content -->
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <form id="checkEventForm">
+                <h1>Title</h1>
+
+                <p>Initial Date</p>
+
+                <p>End Date</p>
+
+                <p id="descriptionCheckEvent">Description of the Event</p>
+
+                <p>Type of Event</p>
+
+                <input type="button" value="OK" id="okCheckEventButton"><input type="submit" value="Remove" id="RemoveEventButton">
+            </form>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+</body>
+
+</html>
