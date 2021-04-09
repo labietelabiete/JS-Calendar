@@ -30,6 +30,10 @@ GENERAL VARIABLES
     --medium: 500;
     --semiBold: 600;
     --bold: 700;
+
+    /* Measurements */
+    --sidebarWidth: 200px;
+    --margin: 30px;
 }
 
 /* --------------
@@ -44,6 +48,123 @@ STYLING
     border: 0;
     /* Other styling */
     font-family: 'Clash';
+    box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
+}
+
+body {
+    padding: 40px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+header {
+    height: 150px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#title {
+    width: var(--sidebarWidth);
+    margin-right: var(--margin);
+    font-size: 30px;
+}
+
+#monthAndYear{
+    flex: 1 1 1000px;
+    display: flex;
+    margin-right: var(--margin);
+}
+
+#month, #year {
+    font-size: 140px;
+    /* display: inline; */
+    height: fit-content;
+    transform: translateY(-30px);
+}
+
+#month {
+    margin-right: 10px;
+}
+
+#year{
+    font-weight: var(--extraLight);
+}
+
+#newEventBtn{
+    font-size: 24px;
+    width: 200px;
+    padding: 10px 20px 10px 20px;
+    background-color: transparent;
+    border: var(--borderWidth) solid var(--darkColor);
+}
+
+
+/* Main part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+
+main{
+    display: flex;
+    flex-grow: 1;
+}
+
+/* Left */
+#sidebar {
+    width: var(--sidebarWidth);
+    margin-right: var(--margin);
+    display: flex;
+    align-items: flex-end;
+}
+
+#eventTypes{
+    width: 100%;
+}
+
+.eventTypeCheckbox{
+    margin-top: 10px;
+    font-weight: var(--semiBold);
+}
+
+/* Right */
+#mainRight{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+#monthButtons{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--margin);
+}
+
+.navBtn{
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: var(--borderWidth) var(--darkColor) solid;
+    font-weight: var(--regular);
+    background-color: transparent;
+    outline: none;
+}
+
+#weekdaysContainer{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: var(--semiBold);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#calendarCont{
+    flex-grow: 1;
+    background-color: yellow;
+}
+
+/* Footer >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+footer{
+    height: 80px;
 }
