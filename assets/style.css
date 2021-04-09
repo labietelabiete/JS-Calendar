@@ -1,0 +1,49 @@
+/* --------------
+FONT
+--------------  */
+@font-face{
+    font-family: 'Clash';
+    src:url('./_Design/_Fonts/ClashDisplay-Variable.ttf') format('truetype');
+        font-weight: 200 700;
+        font-style: normal;
+}
+
+/* --------------
+GENERAL VARIABLES
+--------------  */
+:root{
+    /* Colors */
+    --darkColor: black;
+    --yellowColor: yellow;
+    --redColor: rgb(210, 43, 65);
+    --magentaColor: rgb(220, 0, 235);
+    --greenColor: rgb(0, 213, 194);
+    --blueColor: rgb(0, 89, 194);
+
+    /* Stroke width */
+    --borderWidth: 2px;
+
+    /* Font weights */
+    --extraLight: 200;
+    --light: 300;
+    --regular: 400;
+    --medium: 500;
+    --semiBold: 600;
+    --bold: 700;
+}
+
+/* --------------
+STYLING
+-------------- */
+
+/* General styling */
+* {
+    /* Remove default features */
+    padding: 0;
+    margin: 0;
+    border: 0;
+    /* Other styling */
+    font-family: 'Clash';
+    /* Comment/Uncomment this to see/hide all boxes */
+    outline: 2px red solid;
+}
