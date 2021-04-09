@@ -100,6 +100,7 @@ header {
     padding: 10px 20px 10px 20px;
     background-color: transparent;
     border: var(--borderWidth) solid var(--darkColor);
+    border-radius: 6px;
 }
 
 
@@ -166,5 +167,5 @@ main{
 
 /* Footer >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
 footer{
-    height: 80px;
+    height: 50px;
 }
