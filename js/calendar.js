@@ -1,8 +1,9 @@
 // Global variables
+var monthTitle = document.getElementById("month");
+var yearTitle = document.getElementById("year");
 var calendarGrid = document.getElementById("calendarCont");
 var prevMonthBtn = document.getElementById("previousMonthButton");
 var nextMonthBtn = document.getElementById("nextMonthButton");
-
 var calendarFontSize =  "40px";
 var date = new Date();
 // Time numbers
@@ -13,7 +14,25 @@ var firstDay;
 //Time lengths
 var currentMonthLength = new Date(currentYearNum, currentMonthNum, 0).getDate();
 var prevMonthLength;
+// Month names
+var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+
+// Default HTML values
+monthTitle.innerText = monthNames[currentMonthNum-1];
+yearTitle.innerText = currentYearNum;
+
+
+// Set previous month length by default
+function onLoadPrevMonthLength(currentMonth){
+    if (currentMonthNum == 1){
+        prevMonthLength = new Date(currentYearNum-1, 12, 0).getDate();
+    } else {
+        prevMonthLength = new Date(currentYearNum, currentMonthNum-1, 0).getDate();
+    }
+}
+
+onLoadPrevMonthLength(currentMonthNum);
 
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
@@ -32,7 +51,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         newDay.style.paddingTop = "5px";
         newDay.style.borderTop = "2px black solid";
         newDay.innerText = p;
-
     }
 
     // Inserting and styling days of current month
@@ -52,7 +70,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         newDay.style.paddingTop = "5px";
         newDay.style.borderTop = "2px black solid";
         newDay.innerText = c;
-
     }
 
     // Inserting and styling days of next month
@@ -70,7 +87,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         newDay.style.paddingTop = "5px";
         newDay.style.borderTop = "2px black solid";
         newDay.innerText = n;
-
     }
 };
 
@@ -87,20 +103,9 @@ function calculateMonthLength(year, month){
     console.log(currentMonth);
 };
 
-// Set previous month length by default
-function onLoadPrevMonthLength(currentMonth){
-    if (currentMonthNum == 1){
-        prevMonthLength = new Date(currentYearNum-1, 12, 0).getDate();
-   } else {
-        prevMonthLength = new Date(currentYearNum, currentMonthNum-1, 0).getDate();
-   }
-}
 
 
-
-
-
-// Time calculations
+// Time calculations >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Previous month button
 prevMonthBtn.onclick = function(){
     // January
@@ -108,12 +113,17 @@ prevMonthBtn.onclick = function(){
         currentYearNum--;
         currentMonthNum = 12;
         console.log("December!")
+        // Updating HTML elements
+        monthTitle.innerText = monthNames[currentMonthNum-1];
+        yearTitle.innerText = currentYearNum;
     } else if (currentMonthNum == 2){
         currentMonthNum--;
-        currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
-        prevMonthLength = calculateMonthLength(currentYearNum-1, 12);
+        // Updating HTML elements
+        monthTitle.innerText = monthNames[currentMonthNum-1];
     } else {
         currentMonthNum--;
+        // Updating HTML elements
+        monthTitle.innerText = monthNames[currentMonthNum-1];
     }
     console.log("Current length:",);
 
@@ -127,14 +137,19 @@ nextMonthBtn.onclick = function(){
         currentYearNum++;
         currentMonthNum = 1;
         console.log("Happy new year " + currentYearNum + "!");
+        // Updating HTML elements
+        monthTitle.innerText = monthNames[currentMonthNum-1];
+        yearTitle.innerText = currentYearNum;
     } else {
         currentMonthNum++;
+        // Updating HTML elements
+        monthTitle.innerText = monthNames[currentMonthNum-1];
     }
     console.log(calculateMonthLength(currentYearNum, currentMonthNum));
 }
 
 
-// Calling all functions
+// Calling all functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 appendDays(31,4,30);
 highlighToday(currentDayNum, 10);
 
