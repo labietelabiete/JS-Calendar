@@ -34,42 +34,21 @@
                 <label class="eventLabel eventDateLabel" for="checkBoxEndDate">End date</label><br>
                 <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent" name="trip-end"><br>
 
-
-
-
-
-
-
-
-
-
-
-
-
-            <input class="eventCheckBox" type="checkbox" name="check-end" id="reminderNewEvent">
-            <label class="eventLabel" for="reminderNewEvent">Reminder</label><br>
-            <div id="reminderNewEventDiv" style="display: none">
-                <label for="timeReminderNewEvent">Time: </label>
-                <select class="eventDate" name="" id="timeReminderNewEvent">
-                    <option value="5" selected>5 min</option>
-                    <option value="10">10 min</option>
-                    <option value="15">15 min</option>
-                    <option value="30">30 min</option>
-                    <option value="60">1 hour</option>
-                </select>
-            </div><br>
-
+                <input class="eventCheckBox" type="checkbox" name="check-end" id="reminderNewEvent">
+                <label class="eventLabel" for="reminderNewEvent">Reminder</label><br>
+                <div id="reminderNewEventDiv" style="display: none">
+                    <label for="timeReminderNewEvent">Time: </label>
+                    <select class="eventDate" name="" id="timeReminderNewEvent">
+                        <option value="5" selected>5 min</option>
+                        <option value="10">10 min</option>
+                        <option value="15">15 min</option>
+                        <option value="30">30 min</option>
+                        <option value="60">1 hour</option>
+                    </select>
+                </div><br>
 
                 <label class="eventLabel eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
                 <textarea class="eveentDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
-
-                <label for="typeNewEvent">Event type: </label>
-                <select name="" id="typeNewEvent">
-                    <option value="none" selected disabled hidden>choose one</option>
-                    <option value="meeting">Meeting</option>
-                    <option value="personal">Personal</option>
-                    <option value="study">Study</option>
-                </select> <br>
 
                 <input class="modalBtn" type="submit" value="Create" id="saveNewEvent">
                 <input class="modalBtn" type="button" value="Cancel" id="cancelNewEvent">

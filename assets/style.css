@@ -111,15 +111,17 @@ STYLING
     background: red;
 }
 .eventLabel{
-    width: 100%;
+    display: inline-block;
+    width: 99%;
     font-size: 26px;
     font-weight: var(--semiBold);
     border-bottom: var(--darkColor) solid var(--borderWidth);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .eventDate{
-    margin-top: 10px;
-    margin-bottom: 20px;
+    /* margin-top: 10px; */
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .eventCheckBox{
