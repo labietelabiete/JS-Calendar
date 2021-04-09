@@ -5,35 +5,14 @@ var nextMonthBtn = document.getElementById("nextMonthButton");
 
 var calendarFontSize =  "40px";
 var date = new Date();
+// Time numbers
 var currentDayNum = date.getDate();
 var currentMonthNum = date.getMonth()+1;
 var currentYearNum = date.getFullYear();
-console.log(currentDayNum, currentMonthNum, currentYearNum);
-
-// Event listeners
-prevMonthBtn.onclick = function(){
-    // January
-    if (currentMonthNum == 1){
-        currentYearNum--;
-        currentMonthNum = 12;
-        console.log("December!")
-    } else {
-        currentMonthNum--;
-    }
-    console.log(currentDayNum, currentMonthNum, currentYearNum);
-}
-
-nextMonthBtn.onclick = function(){
-    //December
-    if (currentMonthNum == 12){
-        currentYearNum++;
-        currentMonthNum = 1;
-        console.log("Happy new year " + currentYearNum + "!");
-    } else {
-        currentMonthNum++;
-    }
-    console.log(currentDayNum, currentMonthNum, currentYearNum);
-}
+var firstDay;
+//Time lengths
+var currentMonthLength = new Date(currentYearNum, currentMonthNum, 0).getDate();
+var prevMonthLength;
 
 
 // Appending items to calendar's grid
@@ -93,14 +72,66 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         newDay.innerText = n;
 
     }
-}
+};
+
 
 // Highlight today
 function highlighToday(currentDayNum, border){
     let todayDiv = document.getElementById("day" + currentDayNum);
     todayDiv.style.borderTop = `${border}px black solid`;
+};
+
+
+function calculateMonthLength(year, month){
+    let currentMonth = new Date(year, month, 0).getDate();
+    console.log(currentMonth);
+};
+
+// Set previous month length by default
+function onLoadPrevMonthLength(currentMonth){
+    if (currentMonthNum == 1){
+        prevMonthLength = new Date(currentYearNum-1, 12, 0).getDate();
+   } else {
+        prevMonthLength = new Date(currentYearNum, currentMonthNum-1, 0).getDate();
+   }
 }
 
+
+
+
+
+// Time calculations
+// Previous month button
+prevMonthBtn.onclick = function(){
+    // January
+    if (currentMonthNum == 1){
+        currentYearNum--;
+        currentMonthNum = 12;
+        console.log("December!")
+    } else if (currentMonthNum == 2){
+        currentMonthNum--;
+        currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
+        prevMonthLength = calculateMonthLength(currentYearNum-1, 12);
+    } else {
+        currentMonthNum--;
+    }
+    console.log("Current length:",);
+
+
+}
+
+// Next month button
+nextMonthBtn.onclick = function(){
+    //December
+    if (currentMonthNum == 12){
+        currentYearNum++;
+        currentMonthNum = 1;
+        console.log("Happy new year " + currentYearNum + "!");
+    } else {
+        currentMonthNum++;
+    }
+    console.log(calculateMonthLength(currentYearNum, currentMonthNum));
+}
 
 
 // Calling all functions
