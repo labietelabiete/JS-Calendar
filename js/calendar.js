@@ -1,10 +1,13 @@
 // Global calendar
 var calendarGrid = document.getElementById("calendarCont");
+var currentDayNum = new Date().getDate();
+var currentMonthNum;
+var currentYearNum;
+
 var calendarFontSize =  "40px";
-var todayMonthNumber = new Date().getDate();
 
 function appendDays(lastMonthLength, startingDay, monthLength){
-    
+
     // Inserting and styling days of previous month
     let prevDays = startingDay - 1;
 
@@ -62,14 +65,14 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     }
 }
 
-function highlighToday(todayMonthNumber, border){
+function highlighToday(currentDayNum, border){
 
-    let todayDiv = document.getElementById("day" + todayMonthNumber);
+    let todayDiv = document.getElementById("day" + currentDayNum);
 
     todayDiv.style.borderTop = `${border}px black solid`;
 
 }
 
 appendDays(31,4,30);
-highlighToday(todayMonthNumber, 10);
+highlighToday(currentDayNum, 10);
 
