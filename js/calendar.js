@@ -22,7 +22,6 @@ var monthNames = ["January", "February", "March", "April", "May", "June", "July"
 monthTitle.innerText = monthNames[currentMonthNum-1];
 yearTitle.innerText = currentYearNum;
 
-
 // Set previous month length by default
 function onLoadPrevMonthLength(currentMonth){
     if (currentMonthNum == 1){
@@ -36,10 +35,11 @@ onLoadPrevMonthLength(currentMonthNum);
 
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
-    // Inserting and styling days of previous month
-    let prevDays = startingDay - 1;
 
-    for(let p=lastMonthLength - prevDays + 1; p<=lastMonthLength; p++){
+    // Inserting and styling days of previous month
+    let prevDays = startingDay-1;
+
+    for(let p=lastMonthLength-prevDays+1; p<=lastMonthLength; p++){
 
         let newDay = document.createElement("div");
         calendarGrid.appendChild(newDay);
@@ -90,20 +90,16 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     }
 };
 
-
 // Highlight today
 function highlighToday(currentDayNum, border){
     let todayDiv = document.getElementById("day" + currentDayNum);
     todayDiv.style.borderTop = `${border}px black solid`;
 };
 
-
 function calculateMonthLength(year, month){
     let currentMonth = new Date(year, month, 0).getDate();
     console.log(currentMonth);
 };
-
-
 
 // Time calculations >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Previous month button
@@ -125,9 +121,6 @@ prevMonthBtn.onclick = function(){
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
     }
-    console.log("Current length:",);
-
-
 }
 
 // Next month button
@@ -145,9 +138,8 @@ nextMonthBtn.onclick = function(){
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
     }
-    console.log(calculateMonthLength(currentYearNum, currentMonthNum));
+    calculateMonthLength(currentYearNum, currentMonthNum);
 }
-
 
 // Calling all functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 appendDays(31,4,30);

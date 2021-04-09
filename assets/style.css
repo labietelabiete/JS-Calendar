@@ -97,7 +97,7 @@ header {
 
 #newEventBtn{
     font-size: 24px;
-    width: 200px;
+    width: 180px;
     padding: 10px 20px 10px 20px;
     background-color: transparent;
     border: var(--borderWidth) solid var(--darkColor);
@@ -106,7 +106,6 @@ header {
 
 
 /* Main part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-
 main{
     display: flex;
     flex-grow: 1;
