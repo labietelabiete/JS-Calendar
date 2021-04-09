@@ -8,5 +8,63 @@
     <title>JS Calendar</title>
 </head>
 <body>
+
+    <!-- Top part -->
+    <header>
+        <h4 id="title">JS Calendar</h4>
+        <div id="monthAndYear">
+            <h1 id="month">April</h1>
+            <h1 id="year">2021</h1>
+        </div>
+        <button id="newEventBtn">Add Event</button>
+    </header>
+
+    <!-- Main part -->
+    <main>
+
+        <!-- Sidebar -->
+        <sidebar id="sidebar">
+            <div id = "eventTypes">
+                <input type="checkbox" class ="eventTypeCheckbox" id="type1" name="type1" value="Type1">
+                <label for="vehicle1">Work</label>
+                <br>
+                <input type="checkbox" class = "eventTypeCheckbox" id="type2" name="type2" value="Type2">
+                <label for="vehicle1">Sport</label>
+                <br>
+                <input type="checkbox" class = "eventTypeCheckbox" id="type3" name="type3" value="Type3">
+                <label for="vehicle1">Music</label>
+                <br>
+                <input type="checkbox" class = "eventTypeCheckbox" id="type4" name="type4" value="Type4">
+                <label for="vehicle1">Other</label>
+                <br>
+            </div>
+        </sidebar>
+
+        <!-- Main right -->
+        <div id="mainRight">
+            <!-- Navigation buttons -->
+            <div id = "monthButtons">
+                <button class="navBtn" id="previousMonthButton"><</button>
+                <button class="navBtn" id="nextMonthButton">></button>
+            </div>
+
+            <!-- Weekdays -->
+            <div id="weekdaysContainer">
+                <div class="weekday">Monday</div>
+                <div class="weekday">Tuesday</div>
+                <div class="weekday">Wednesday</div>
+                <div class="weekday">Thursday</div>
+                <div class="weekday">Friday</div>
+                <div class="weekday">Saturday</div>
+                <div class="weekday">Sunday</div>
+            </div>
+
+            <!-- Calendar grid -->
+            <div id = "calendarCont"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer></footer>
 </body>
 </html>
