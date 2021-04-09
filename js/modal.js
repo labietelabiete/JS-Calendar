@@ -13,6 +13,18 @@ let cancelNewEvent = document.getElementById("cancelNewEvent");
 let removeEvent = document.getElementById("RemoveEventButton");
 let okEvent = document.getElementById("okCheckEventButton"); 
 
+// Get checkboxes and optional elements  
+let endCheckbox = document.getElementById("checkBoxEndDate");
+let showEndDate = document.getElementById("endNewEvent");
+
+let reminderCheckbox = document.getElementById("reminderNewEvent");
+let showReminder = document.getElementById("reminderNewEventDiv");
+
+// Get save button to submit event and save it to calendar and localStorage
+let saveEventButton = document.getElementById("saveNewEvent");
+
+// Get new event form 
+let newEventForm = document.getElementById("newEventForm");
 
 
 // When the user clicks the button, open the modal 
@@ -64,3 +76,44 @@ document.onkeydown = function(event) {
     modalCheckEvent.style.display = "none";
   }
 };
+
+
+// Display options when the checkbox is checked
+endCheckbox.onclick = function() {
+  if(endCheckbox.checked == true) {
+    showEndDate.style.display = "inline-block";
+  } else {
+    showEndDate.style.display = "none"
+  }
+}
+
+reminderCheckbox.onclick = function() {
+  if(reminderCheckbox.checked == true) {
+    showReminder.style.display = "inline-block";
+  } else {
+    showReminder.style.display = "none"
+  }
+}
+
+
+// Save events to localStorage when create button is clicked
+// 1. Check validity 
+// 2. if it is true, set the event localStorage
+//    else show pop up message 
+newEventForm.onchange = function() {
+//title value 
+if(newEventForm.checkValidity()) {
+
+}
+
+var titleCheck = /^.{1,60}$/
+var title = newEventForm["titleNewEvent"].value
+
+var OK = titleCheck.exec(newEventForm["titleNewEvent"].value)
+console.log(OK ? true : false)
+
+
+console.log(endCheckbox.checked ? true : false)
+console.log(reminderCheckbox.checked ? true : false)
+console.log(document.getElementById("typeNewEvent").value === "none")
+}
