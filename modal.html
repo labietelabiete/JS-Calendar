@@ -27,17 +27,17 @@
                     <option class="eventTypeOption" value="study">Study</option>
                 </select> <br>
 
-                <label class="eventDateLabel" for="startNewEvent">Initial date</label><br>
+                <label class="eventLabel eventDateLabel" for="startNewEvent">Initial date</label><br>
                 <input class="eventDate" type="datetime-local" id="startNewEvent" name="trip-start" required><br>
 
                 <input class="eventCheckBox" type="checkbox" name="check-end" id="checkBoxEndDate">
-                <label class="eventDateLabel" for="checkBoxEndDate">End date</label><br>
+                <label class="eventLabel eventDateLabel" for="checkBoxEndDate">End date</label><br>
                 <input class="eventDate" type="datetime-local" id="endNewEvent" name="trip-end"><br>
 
                 <input class="eventCheckBox" type="checkbox" name="check-end" id="reminderNewEvent">
-                <label for="reminderNewEvent">Remind me when event expires</label><br>
+                <label class="eventLabel" for="reminderNewEvent">Reminder</label><br>
                 <!-- <label for="timeReminderNewEvent">Time: </label> -->
-                <select name="" id="timeReminderNewEvent">
+                <select class="eventDate" name="" id="timeReminderNewEvent">
                     <option value="5" selected>5 min</option>
                     <option value="10">10 min</option>
                     <option value="15">15 min</option>
@@ -45,11 +45,12 @@
                     <option value="60">1 hour</option>
                 </select><br>
 
-                <label for="descriptionNewEvent">Description</label><br>
-                <textarea name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
+                <label class="eventLabel eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
+                <textarea class="eveentDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
 
 
-                <input type="submit" value="Create" id="saveNewEvent"><input type="button" value="Cancel" id="cancelNewEvent">
+                <input class="modalBtn" type="submit" value="Create" id="saveNewEvent">
+                <input class="modalBtn" type="button" value="Cancel" id="cancelNewEvent">
             </form>
         </div>
     </div>
