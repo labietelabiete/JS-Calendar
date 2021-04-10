@@ -16,9 +16,11 @@ let okEvent = document.getElementById("okCheckEventButton");
 // Get checkboxes and optional elements  
 let endCheckbox = document.getElementById("checkBoxEndDate");
 let showEndDate = document.getElementById("endNewEvent");
+let endDateLabel = document.getElementById("endDateLabel");
 
 let reminderCheckbox = document.getElementById("reminderNewEvent");
 let showReminder = document.getElementById("reminderNewEventDiv");
+let reminderLabel = document.getElementById("reminderLabel");
 
 // Get save button to submit event and save it to calendar and localStorage
 let saveEventButton = document.getElementById("saveNewEvent");
@@ -82,16 +84,24 @@ document.onkeydown = function(event) {
 endCheckbox.onclick = function() {
   if(endCheckbox.checked == true) {
     showEndDate.style.display = "inline-block";
+    endDateLabel.style.color = "var(--blackColor)";
+    endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
   } else {
-    showEndDate.style.display = "none"
+    showEndDate.style.display = "none";
+    endDateLabel.style.color = "var(--greyColor)";
+    endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
 }
 
 reminderCheckbox.onclick = function() {
   if(reminderCheckbox.checked == true) {
     showReminder.style.display = "inline-block";
+    reminderLabel.style.color = "var(--blackColor)";
+    reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
   } else {
-    showReminder.style.display = "none"
+    showReminder.style.display = "none";
+    reminderLabel.style.color = "var(--greyColor)";
+    reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
 }
 
