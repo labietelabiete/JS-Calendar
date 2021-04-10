@@ -100,12 +100,19 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
     }
 };
 
+// Calculate month length
 function calculateMonthLength(year, month){
     let currentMonth = new Date(year, month, 0).getDate();
     return currentMonth;
 };
 
-// Time calculations >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// Get weekday of the first day
+function getFirstDay(year, month){
+    let firstDay = new Date(year, month-1, 1).getDay();
+    return firstDay;
+}
+
+
 // Previous month button
 prevMonthBtn.onclick = function(){
     // Emptying grid container before assigning previous month
@@ -130,9 +137,9 @@ prevMonthBtn.onclick = function(){
     }
 
     let monthLength = calculateMonthLength(currentYearNum, currentMonthNum);
-    appendDays(31,4,monthLength);
+    firstDay = getFirstDay(currentYearNum, currentMonthNum);
+    appendDays(31,firstDay,monthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
-
 
 }
 
@@ -156,13 +163,14 @@ nextMonthBtn.onclick = function(){
     }
 
     let monthLength = calculateMonthLength(currentYearNum, currentMonthNum);
-    appendDays(31,4,monthLength);
+    firstDay = getFirstDay(currentYearNum, currentMonthNum);
+    appendDays(31,firstDay,monthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
-
 
 }
 
-// Calling all functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-appendDays(31,4,currentMonthLength);
+
+// Calling default functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+appendDays(31,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
