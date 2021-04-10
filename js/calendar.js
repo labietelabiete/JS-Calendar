@@ -126,7 +126,8 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
         let todayDiv = document.getElementById("day" + currentDayNum);
         todayDiv.classList.add("today");
         todayDiv.style.borderTop = `${border}px black solid`;
-        today = document.querySelector(".today")
+        // Capturing today div
+        today = document.querySelector(".today");
     }
 };
 
