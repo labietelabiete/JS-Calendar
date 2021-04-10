@@ -37,10 +37,11 @@ onLoadPrevMonthLength(currentMonthNum);
 
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
-    //Substitute 0 by 7
+    //Substitute 0 by 7 when current month starts on Sunday
     if (startingDay == 0){
         startingDay = 7;
     }
+
     // Inserting and styling days of previous month
     let prevDays = startingDay-1;
 
