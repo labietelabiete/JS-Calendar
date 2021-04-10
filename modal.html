@@ -16,10 +16,8 @@
         <div class="modalContent">
             <span class="close">&times;</span>
             <form id="newEventForm">
-                <!-- <label for="titleNewEvent">Title</label> -->
                 <input type="text" class="eventTitle" name="title" id="titleNewEvent" placeholder="Title" maxlength="60" required><br>
 
-                <!-- <label class="eventType" for="typeNewEvent">Type</label><br> -->
                 <select name="" class="eventType" id="typeNewEvent">
                     <option class="eventTypeOption" value="none" selected disabled hidden>Type</option>
                     <option class="eventTypeOption" value="meeting">Meeting</option>
@@ -30,13 +28,6 @@
                 <label class="eventLabel" for="startNewEvent">Initial date</label><br>
                 <input class="eventDate" type="datetime-local" id="startNewEvent" name="trip-start" required><br>
 
-
-                <!-- https://es.stackoverflow.com/questions/153250/c%C3%B3mo-pongo-color-de-fondo-en-un-checkbox -->
-                <!-- <input class="eventCheckBox" type="checkbox" name="check-end" id="checkBoxEndDate"> -->
-                <!-- <label class="eventLabel eventDateLabel" for="checkBoxEndDate">End date</label><br> -->
-                <!-- <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent" name="trip-end"><br> -->
-
-                <!-- https://stackoverflow.com/questions/4148499/how-to-style-a-checkbox-using-css -->
                 <label class="checkboxLabel">
                     <input type="checkbox" name="checkBoxEndDate" id="checkBoxEndDate" />
                     <span></span>
@@ -60,19 +51,6 @@
                         <option value="60">1 hour</option>
                     </select>
                 </div><br>
-
-                <!-- <input class="eventCheckBox" type="checkbox" name="check-end" id="reminderNewEvent">
-                <label class="eventLabel" for="reminderNewEvent">Reminder</label><br>
-                <div id="reminderNewEventDiv" style="display: none">
-                    <label for="timeReminderNewEvent">Time: </label>
-                    <select class="eventDate" name="" id="timeReminderNewEvent">
-                        <option value="5" selected>5 min</option>
-                        <option value="10">10 min</option>
-                        <option value="15">15 min</option>
-                        <option value="30">30 min</option>
-                        <option value="60">1 hour</option>
-                    </select>
-                </div><br> -->
 
                 <label class="eventLabel eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
                 <textarea class="eveentDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
