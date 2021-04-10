@@ -7,6 +7,7 @@ var nextMonthBtn = document.getElementById("nextMonthButton");
 var currentMonthDays = document.getElementsByClassName("currentMonthDay");
 var calendarFontSize =  "40px";
 var date = new Date();
+var clickedDay = null;
 // Time numbers
 var currentDayNum = date.getDate();
 var currentMonthNum = date.getMonth()+1;
@@ -66,11 +67,17 @@ function appendDays(lastMonthLength, startingDay, monthLength){
 
         // Be able to highlight selected day
         newDay.addEventListener("click", function(event){
+            clickedDay = event.target;
             // Don't highlight today
-            if (c !== currentDayNum){
-            event.target.style.color = "gray";
+            if(clickedDay !== event.target){
+                clickedDay.style.color = "black";
             }
+            if(event.target !== event.target.getElementById("day"+currentDayNum)){
+                event.target.style.color = "gray";
+            }
+            clickedDay = event.target;
         });
+
 
         if(c === 1){
             newDay.style.gridColumnStart = startingDay;
@@ -104,8 +111,8 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
 
 // Calculate month length
 function calculateMonthLength(year, month){
-    let currentMonth = new Date(year, month, 0).getDate();
-    return currentMonth;
+    let monLength = new Date(year, month, 0).getDate();
+    return monLength;
 };
 
 // Get weekday of the first day
@@ -118,7 +125,7 @@ function getFirstDay(year, month){
 prevMonthBtn.onclick = function(){
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
-
+    console.log(currentMonthNum);
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -128,26 +135,26 @@ prevMonthBtn.onclick = function(){
         monthTitle.innerText = monthNames[currentMonthNum-1];
         yearTitle.innerText = currentYearNum;
         // Getting previous month length
-        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+        //previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     } else if (currentMonthNum == 2){
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
-        previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
+        //previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
     } else {
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
-        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+        //previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
 
 
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
-    appendDays(previousMonthLength,firstDay,currentMonthLength);
+    appendDays(31,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 }
 
@@ -165,19 +172,19 @@ nextMonthBtn.onclick = function(){
         monthTitle.innerText = monthNames[currentMonthNum-1];
         yearTitle.innerText = currentYearNum;
         // Getting previous month length
-        previousMonthLength = calculateMonthLength(currentYearNum--, 12);
+        //previousMonthLength = calculateMonthLength(currentYearNum--, 12);
     } else {
         currentMonthNum++;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
-        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+        //previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
 
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
-    appendDays(previousMonthLength,firstDay,currentMonthLength);
+    appendDays(31,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
 }
@@ -187,5 +194,3 @@ nextMonthBtn.onclick = function(){
 appendDays(31,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
-// Adding onclick property to current month's days
-console.log(currentMonthDays);
