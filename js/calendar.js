@@ -4,6 +4,7 @@ var yearTitle = document.getElementById("year");
 var calendarGrid = document.getElementById("calendarCont");
 var prevMonthBtn = document.getElementById("previousMonthButton");
 var nextMonthBtn = document.getElementById("nextMonthButton");
+var currentMonthDays = document.getElementsByClassName("currentMonthDay");
 var calendarFontSize =  "40px";
 var date = new Date();
 // Time numbers
@@ -51,11 +52,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         calendarGrid.appendChild(newDay);
         newDay.setAttribute("class", "prevMonthDay");
 
-        newDay.style.fontSize = calendarFontSize;
-        newDay.style.fontWeight = "200";
-        newDay.style.textAlign ="left";
-        newDay.style.paddingTop = "5px";
-        newDay.style.borderTop = "2px black solid";
+        // Assigning day number
         newDay.innerText = p;
     }
 
@@ -65,16 +62,21 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         let newDay = document.createElement("div");
         calendarGrid.appendChild(newDay);
         newDay.setAttribute("id", "day" + c);
+        newDay.setAttribute("class", "currentMonthDay");
+
+        // Be able to highlight selected day
+        newDay.addEventListener("click", function(event){
+            // Don't highlight today
+            if (c !== currentDayNum){
+            event.target.style.color = "gray";
+            }
+        });
 
         if(c === 1){
             newDay.style.gridColumnStart = startingDay;
-        }
+        };
 
-        newDay.style.fontSize = calendarFontSize;
-        newDay.style.fontWeight = "700";
-        newDay.style.textAlign ="left";
-        newDay.style.paddingTop = "5px";
-        newDay.style.borderTop = "2px black solid";
+        // Assigning day number
         newDay.innerText = c;
     }
 
@@ -87,11 +89,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         calendarGrid.appendChild(newDay);
         newDay.setAttribute("class", "nextMonthday");
 
-        newDay.style.fontSize = calendarFontSize;
-        newDay.style.fontWeight = "200";
-        newDay.style.textAlign ="left";
-        newDay.style.paddingTop = "5px";
-        newDay.style.borderTop = "2px black solid";
+        // Assigning day number
         newDay.innerText = n;
     }
 };
@@ -103,6 +101,11 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
         todayDiv.style.borderTop = `${border}px black solid`;
     }
 };
+
+//Highlight selection
+function selectedDay(day){
+    day.style.color = "gray";
+}
 
 // Calculate month length
 function calculateMonthLength(year, month){
@@ -130,21 +133,29 @@ prevMonthBtn.onclick = function(){
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         yearTitle.innerText = currentYearNum;
+        // Getting previous month length
+        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     } else if (currentMonthNum == 2){
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
+
+        // Getting previous month length
+        previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
     } else {
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
+        // Getting previous month length
+        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
 
-    let monthLength = calculateMonthLength(currentYearNum, currentMonthNum);
-    firstDay = getFirstDay(currentYearNum, currentMonthNum);
-    appendDays(31,firstDay,monthLength);
-    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
+    currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
+    firstDay = getFirstDay(currentYearNum, currentMonthNum);
+    // Setting new calendar grid
+    appendDays(previousMonthLength,firstDay,currentMonthLength);
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 }
 
 // Next month button
@@ -160,15 +171,20 @@ nextMonthBtn.onclick = function(){
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         yearTitle.innerText = currentYearNum;
+        // Getting previous month length
+        previousMonthLength = calculateMonthLength(currentYearNum--, 12);
     } else {
         currentMonthNum++;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
+        // Getting previous month length
+        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
 
-    let monthLength = calculateMonthLength(currentYearNum, currentMonthNum);
+    currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
-    appendDays(31,firstDay,monthLength);
+    // Setting new calendar grid
+    appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
 }
@@ -178,3 +194,5 @@ nextMonthBtn.onclick = function(){
 appendDays(31,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
+// Adding onclick property to current month's days
+console.log(currentMonthDays);
