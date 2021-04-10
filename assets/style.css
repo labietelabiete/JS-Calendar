@@ -162,7 +162,8 @@ main{
 }
 
 .navBtn:hover{
-    background-color: var(--yellowColor);
+    color: whitesmoke;
+    background-color: var(--darkColor);
 }
 
 #weekdaysContainer{
