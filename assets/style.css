@@ -78,6 +78,7 @@ header {
     flex: 1 1 1000px;
     display: flex;
     margin-right: var(--margin);
+    height: inherit;
 }
 
 #month, #year {
@@ -102,6 +103,13 @@ header {
     background-color: transparent;
     border: var(--borderWidth) solid var(--darkColor);
     border-radius: 6px;
+    transition: .3s;
+    outline: none;
+}
+
+#newEventBtn:hover{
+    color: whitesmoke;
+    background-color: var(--darkColor);
 }
 
 
@@ -150,6 +158,11 @@ main{
     font-weight: var(--regular);
     background-color: transparent;
     outline: none;
+    transition: .3s;
+}
+
+.navBtn:hover{
+    background-color: var(--yellowColor);
 }
 
 #weekdaysContainer{
