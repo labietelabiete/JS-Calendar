@@ -16,7 +16,7 @@
         <div class="modalContent">
             <span class="close">&times;</span>
             <form id="newEventForm">
-                <input type="text" class="eventTitle" name="title" id="titleNewEvent" placeholder="Title" maxlength="60" required><br>
+                <input type="text" class="eventTitle" name="title" id="titleNewEvent" placeholder="Title" maxlength="60"><br>
 
                 <select name="" class="eventType" id="typeNewEvent">
                     <option class="eventTypeOption" value="none" selected disabled hidden>Type</option>
@@ -26,7 +26,7 @@
                 </select> <br>
 
                 <label class="eventLabel" for="startNewEvent">Initial date</label><br>
-                <input class="eventDate" type="datetime-local" id="startNewEvent" name="trip-start" required><br>
+                <input class="eventDate" type="datetime-local" id="startNewEvent" name=""><br>
 
                 <label class="checkboxLabel">
                     <input type="checkbox" name="checkBoxEndDate" id="checkBoxEndDate" />
@@ -42,7 +42,7 @@
                     <label class="eventLabel" for="reminderNewEvent" id="reminderLabel">Reminder</label><br>
                 </label>
                 <div id="reminderNewEventDiv" style="display: none">
-                    <label for="timeReminderNewEvent">Time: </label>
+                    <label class="eventDate" for="timeReminderNewEvent">Time: </label>
                     <select class="eventDate" name="" id="timeReminderNewEvent">
                         <option value="5" selected>5 min</option>
                         <option value="10">10 min</option>
@@ -65,20 +65,27 @@
     <!-- Modify Event Modal -->
     <div id="checkEventModal" class="modal">
         <!-- Modal content -->
-        <div class="modalContent">
-            <span class="close">&times;</span>
+        <div class="modalContent modalContentCheck">
+            <span class="close closeCheck">&times;</span>
             <form id="checkEventForm">
-                <h1>Title</h1>
+                <h2 class="eventTitle" id="titleEvent"></h1>
 
-                <p>Initial Date</p>
+                <h5 class="eventType" id="typeEvent"></h5>
 
-                <p>End Date</p>
+                <label class="eventLabel eventLabelCheck" for="startNewEvent">Initial date</label><br>
+                <p class="eventDate" id="startDateEvent"></p>
 
-                <p id="descriptionCheckEvent">Description of the Event</p>
+                <label class="eventLabel eventLabelCheck" for="checkBoxEndDate">End date</label><br>
+                <p class="eventDate" id="endDateEvent"></p>
 
-                <p>Type of Event</p>
+                <label class="eventLabel eventLabelCheck" for="reminderNewEvent">Reminder</label><br>
+                <p class="eventDate" id="reminderEvent"></p>
 
-                <input type="button" value="OK" id="okCheckEventButton"><input type="submit" value="Remove" id="RemoveEventButton">
+                <label class="eventLabel eventLabelCheck eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
+                <p class="eventDate" id="descriptionEvent"></p>
+
+                <input class="modalBtn" type="button" value="OK" id="okCheckEventButton">
+                <input class="modalBtn" type="submit" value="Remove" id="RemoveEventButton">
             </form>
         </div>
     </div>

@@ -127,3 +127,23 @@ console.log(endCheckbox.checked ? true : false)
 console.log(reminderCheckbox.checked ? true : false)
 console.log(document.getElementById("typeNewEvent").value === "none")
 }
+
+
+//Test for fill event
+var r = document.querySelector(':root');
+r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
+
+titleEvent = document.getElementById('titleEvent');
+typeEvent = document.getElementById('typeEvent');
+startDateEvent = document.getElementById('startDateEvent');
+endDateEvent = document.getElementById('endDateEvent');
+reminderEvent = document.getElementById('reminderEvent');
+descriptionEvent = document.getElementById('descriptionEvent');
+
+titleEvent.innerHTML = "My match";
+typeEvent.innerHTML = "Sport";
+startDateEvent.innerHTML = "12/04/2021 09:00";
+endDateEvent.innerHTML = "12/04/2021 10:00";
+reminderEvent.innerHTML = "10 min";
+descriptionEvent.innerHTML = "Let's play together!";
+

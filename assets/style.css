@@ -21,6 +21,9 @@ GENERAL VARIABLES
     --blueColor: rgb(0, 89, 194);
     --greyColor: #cccccc;
 
+    /*Color for event*/
+    --eventColor: rgb(0, 213, 194);
+
     /* Stroke width */
     --borderWidth: 2px;
 
@@ -48,6 +51,8 @@ STYLING
     /* Comment/Uncomment this to see/hide all boxes */
     /* outline: 2px red solid; */
 }
+
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -69,7 +74,7 @@ STYLING
   margin: auto;
   padding: 20px 40px;
   border: 1px solid #888;
-  min-width: 420px;
+  min-width: 450px;
   height: 700px;
   width: 20%;
   /* height: 80%; */
@@ -91,6 +96,7 @@ STYLING
   cursor: pointer;
 }
 
+/*Generic style for modal content*/
 .eventTitle{
     width: 80%;
     height: 60px;
@@ -111,10 +117,6 @@ STYLING
     font-size: 26px;
     font-weight: var(--light);
     margin-bottom: 80px;
-}
-
-select:focus > option:checked{
-    background: white !important;
 }
 
 .eventTypeOption{
@@ -198,12 +200,50 @@ select:focus > option:checked{
     background-color: var(--darkColor);
 }
 
-
 #cancelNewEvent{
     color: var(--redColor);
     border: var(--redColor) solid var(--borderWidth);
 }
 #cancelNewEvent:hover{
+    color: white;
+    background-color: var(--redColor);
+}
+
+
+/* Created Event modal styles*/
+#checkEventModal{
+    color: var(--eventColor);
+}
+.modalContentCheck{
+    border: var(--eventColor) solid var(--borderWidth);
+}
+.closeCheck{
+    color: var(--eventColor);
+}
+.closeCheck:hover{
+    color: var(--eventColor);
+}
+.eventLabelCheck{
+    border-bottom: var(--eventColor) solid var(--borderWidth);
+}
+
+#descriptionEvent{
+    height: 120px;
+}
+
+#okCheckEventButton{
+    color: var(--eventColor);
+    border: var(--eventColor) solid var(--borderWidth);
+}
+#okCheckEventButton:hover{
+    color: white;
+    background-color: var(--eventColor);
+}
+#RemoveEventButton{
+    color: var(--redColor);
+    border: var(--redColor) solid var(--borderWidth);
+}
+#RemoveEventButton:hover{
     color: white;
     background-color: var(--redColor);
 }
