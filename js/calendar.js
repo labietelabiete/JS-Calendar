@@ -73,13 +73,13 @@ function appendDays(lastMonthLength, startingDay, monthLength){
                 
                 if (clickedDay === undefined){
                     clickedDay = event.target;
-                    clickedDay.style.color = "gray";
+                    clickedDay.style.color = "lightgray";
                 } else{
                     clickedDay.style.color = "black";
                     clickedDay = undefined;
                     // Highlight selection
                     clickedDay = event.target;
-                    clickedDay.style.color = "gray";
+                    clickedDay.style.color = "lightgray";
                 } 
 
             }
@@ -125,7 +125,7 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
     if (originalYear === currentYear && originalMonth === currentMonth){
         let todayDiv = document.getElementById("day" + currentDayNum);
         todayDiv.classList.add("today");
-        todayDiv.style.borderTop = `${border}px black solid`;
+        todayDiv.style.backgroundColor = "yellow";
         // Capturing today div
         today = document.querySelector(".today");
     }

@@ -174,7 +174,7 @@ main{
     text-align: left;
     padding-top: 5px;
     border-top: 2px black solid;
-
+    transition: .2s;
 }
 
 /* Previous & next month days */
