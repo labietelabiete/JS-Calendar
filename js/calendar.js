@@ -133,7 +133,6 @@ prevMonthBtn.onclick = function(){
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
-
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
     } else {
