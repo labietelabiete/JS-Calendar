@@ -102,11 +102,6 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
     }
 };
 
-//Highlight selection
-function selectedDay(day){
-    day.style.color = "gray";
-}
-
 // Calculate month length
 function calculateMonthLength(year, month){
     let currentMonth = new Date(year, month, 0).getDate();
@@ -118,7 +113,6 @@ function getFirstDay(year, month){
     let firstDay = new Date(year, month-1, 1).getDay();
     return firstDay;
 }
-
 
 // Previous month button
 prevMonthBtn.onclick = function(){
