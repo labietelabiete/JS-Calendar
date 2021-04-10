@@ -9,8 +9,10 @@ var date = new Date();
 // Time numbers
 var currentDayNum = date.getDate();
 var currentMonthNum = date.getMonth()+1;
+var onloadMonth = currentMonthNum;
 var currentYearNum = date.getFullYear();
-var firstDay;
+var onloadYear = currentYearNum
+var firstDay = new Date(currentYearNum, currentMonthNum-1, 1).getDay();
 //Time lengths
 var currentMonthLength = new Date(currentYearNum, currentMonthNum, 0).getDate();
 var prevMonthLength;
@@ -91,19 +93,24 @@ function appendDays(lastMonthLength, startingDay, monthLength){
 };
 
 // Highlight today
-function highlighToday(currentDayNum, border){
-    let todayDiv = document.getElementById("day" + currentDayNum);
-    todayDiv.style.borderTop = `${border}px black solid`;
+function highlighToday(originalYear, currentYear, originalMonth, currentMonth, currentDayNum, border){
+    if (originalYear === currentYear && originalMonth === currentMonth){
+        let todayDiv = document.getElementById("day" + currentDayNum);
+        todayDiv.style.borderTop = `${border}px black solid`;
+    }
 };
 
 function calculateMonthLength(year, month){
     let currentMonth = new Date(year, month, 0).getDate();
-    console.log(currentMonth);
+    return currentMonth;
 };
 
 // Time calculations >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // Previous month button
 prevMonthBtn.onclick = function(){
+    // Emptying grid container before assigning previous month
+    calendarGrid.innerHTML = "";
+
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -121,10 +128,19 @@ prevMonthBtn.onclick = function(){
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
     }
+
+    let monthLength = calculateMonthLength(currentYearNum, currentMonthNum);
+    appendDays(31,4,monthLength);
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+
+
 }
 
 // Next month button
 nextMonthBtn.onclick = function(){
+    // Emptying grid container before assigning next month
+    calendarGrid.innerHTML = "";
+
     //December
     if (currentMonthNum == 12){
         currentYearNum++;
@@ -138,10 +154,15 @@ nextMonthBtn.onclick = function(){
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
     }
-    calculateMonthLength(currentYearNum, currentMonthNum);
+
+    let monthLength = calculateMonthLength(currentYearNum, currentMonthNum);
+    appendDays(31,4,monthLength);
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+
+
 }
 
 // Calling all functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-appendDays(31,4,30);
-highlighToday(currentDayNum, 10);
+appendDays(31,4,currentMonthLength);
+highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
