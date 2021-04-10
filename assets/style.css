@@ -186,9 +186,19 @@ select:focus > option:checked{
     border: var(--darkColor) solid var(--borderWidth);
 }
 
+#saveNewEvent:hover{
+    color: white;
+    background-color: var(--darkColor);
+}
+
+
 #cancelNewEvent{
     color: var(--redColor);
     border: var(--redColor) solid var(--borderWidth);
+}
+#cancelNewEvent:hover{
+    color: white;
+    background-color: var(--redColor);
 }
 
 
