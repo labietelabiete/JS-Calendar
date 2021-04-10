@@ -8,6 +8,7 @@ var currentMonthDays = document.getElementsByClassName("currentMonthDay");
 var calendarFontSize =  "40px";
 var date = new Date();
 var clickedDay = null;
+let gridCells = 35; // Seven days by 5 weeks by default
 // Time numbers
 var currentDayNum = date.getDate();
 var currentMonthNum = date.getMonth()+1;
@@ -87,18 +88,30 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         newDay.innerText = c;
     }
 
+    
+    // Changing the number of rows depending on current month's length
+    if ( startingDay === 7 && monthLength >= 30 ){
+        calendarGrid.style.gridTemplateRows = "repeat(6, 1fr)";
+        gridCells = 42;
+    } else if ( startingDay === 6 && monthLength === 31 ){
+        calendarGrid.style.gridTemplateRows = "repeat(6, 1fr)";
+        gridCells = 42;
+    } else  {
+        calendarGrid.style.gridTemplateRows = "repeat(5, 1fr)";
+        gridCells = 35;
+    }
+
     // Inserting and styling days of next month
-    let nextDays = 42 - (prevDays + monthLength);
+    let nextDays = gridCells - (prevDays + monthLength);
 
     for(let n=1; n<=nextDays; n++){
-
         let newDay = document.createElement("div");
         calendarGrid.appendChild(newDay);
         newDay.setAttribute("class", "nextMonthday");
-
         // Assigning day number
         newDay.innerText = n;
     }
+
 };
 
 // Highlight today
