@@ -80,7 +80,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
                     // Highlight selection
                     clickedDay = event.target;
                     clickedDay.style.color = "lightgray";
-                } 
+                }
 
             }
 
@@ -157,26 +157,26 @@ prevMonthBtn.onclick = function(){
         monthTitle.innerText = monthNames[currentMonthNum-1];
         yearTitle.innerText = currentYearNum;
         // Getting previous month length
-        //previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     } else if (currentMonthNum == 2){
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
-        //previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
+        previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
     } else {
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
-        //previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
 
 
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
-    appendDays(31,firstDay,currentMonthLength);
+    appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 }
 
@@ -194,19 +194,19 @@ nextMonthBtn.onclick = function(){
         monthTitle.innerText = monthNames[currentMonthNum-1];
         yearTitle.innerText = currentYearNum;
         // Getting previous month length
-        //previousMonthLength = calculateMonthLength(currentYearNum--, 12);
+        previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
     } else {
         currentMonthNum++;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
-        //previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+        previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
 
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
-    appendDays(31,firstDay,currentMonthLength);
+    appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
 }
