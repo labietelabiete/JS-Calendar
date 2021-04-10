@@ -100,6 +100,11 @@ STYLING
 }
 .eventTitle::placeholder{
     color: rgba(0,0,0,0.2);
+    border: none;
+
+}
+.eventTitle:focus{
+    border: none;
 }
 
 .eventType{
@@ -124,6 +129,7 @@ select:focus > option:checked{
     font-weight: var(--semiBold);
     border-bottom: var(--darkColor) solid var(--borderWidth);
     margin-bottom: 10px;
+    transition: .1s;
 }
 .eventDate{
     margin-bottom: 10px;
@@ -184,6 +190,7 @@ select:focus > option:checked{
     font-weight: var(--semiBold);
     background-color: white;
     border: var(--darkColor) solid var(--borderWidth);
+    transition: .3s;
 }
 
 #saveNewEvent:hover{
