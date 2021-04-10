@@ -7,7 +7,8 @@ var nextMonthBtn = document.getElementById("nextMonthButton");
 var currentMonthDays = document.getElementsByClassName("currentMonthDay");
 var calendarFontSize =  "40px";
 var date = new Date();
-var clickedDay = null;
+var clickedDay;
+var today;
 let gridCells = 35; // Seven days by 5 weeks by default
 // Time numbers
 var currentDayNum = date.getDate();
@@ -68,15 +69,21 @@ function appendDays(lastMonthLength, startingDay, monthLength){
 
         // Be able to highlight selected day
         newDay.addEventListener("click", function(event){
-            clickedDay = event.target;
-            // Don't highlight today
-            if(clickedDay !== event.target){
-                clickedDay.style.color = "black";
+            if(event.target !== today){
+                
+                if (clickedDay === undefined){
+                    clickedDay = event.target;
+                    clickedDay.style.color = "gray";
+                } else{
+                    clickedDay.style.color = "black";
+                    clickedDay = undefined;
+                    // Highlight selection
+                    clickedDay = event.target;
+                    clickedDay.style.color = "gray";
+                } 
+
             }
-            if(event.target !== event.target.getElementById("day"+currentDayNum)){
-                event.target.style.color = "gray";
-            }
-            clickedDay = event.target;
+
         });
 
 
@@ -117,7 +124,9 @@ function appendDays(lastMonthLength, startingDay, monthLength){
 function highlighToday(originalYear, currentYear, originalMonth, currentMonth, currentDayNum, border){
     if (originalYear === currentYear && originalMonth === currentMonth){
         let todayDiv = document.getElementById("day" + currentDayNum);
+        todayDiv.classList.add("today");
         todayDiv.style.borderTop = `${border}px black solid`;
+        today = document.querySelector(".today")
     }
 };
 
@@ -205,4 +214,3 @@ nextMonthBtn.onclick = function(){
 // Calling default functions >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 appendDays(31,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
-
