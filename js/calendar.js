@@ -88,7 +88,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         newDay.innerText = c;
     }
 
-    
     // Changing the number of rows depending on current month's length
     if ( startingDay === 7 && monthLength >= 30 ){
         calendarGrid.style.gridTemplateRows = "repeat(6, 1fr)";
