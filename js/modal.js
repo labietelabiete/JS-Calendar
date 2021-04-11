@@ -133,6 +133,16 @@ console.log(document.getElementById("typeNewEvent").value === "none")
 var r = document.querySelector(':root');
 r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
 
+titleNewEvent = document.getElementById('titleNewEvent');
+typeNewEvent = document.getElementById('typeNewEvent');
+startNewEvent = document.getElementById('startNewEvent');
+endNewEvent = document.getElementById('endNewEvent');
+timeReminderNewEvent = document.getElementById('timeReminderNewEvent');
+descriptionNewEvent = document.getElementById('descriptionNewEvent');
+
+
+
+
 titleEvent = document.getElementById('titleEvent');
 typeEvent = document.getElementById('typeEvent');
 startDateEvent = document.getElementById('startDateEvent');
@@ -140,10 +150,59 @@ endDateEvent = document.getElementById('endDateEvent');
 reminderEvent = document.getElementById('reminderEvent');
 descriptionEvent = document.getElementById('descriptionEvent');
 
-titleEvent.innerHTML = "My match";
-typeEvent.innerHTML = "Sport";
-startDateEvent.innerHTML = "12/04/2021 09:00";
-endDateEvent.innerHTML = "12/04/2021 10:00";
-reminderEvent.innerHTML = "10 min";
-descriptionEvent.innerHTML = "Let's play together!";
+// titleEvent.innerHTML = "My match";
+// typeEvent.innerHTML = "Sport";
+// startDateEvent.innerHTML = "12/04/2021 09:00";
+// endDateEvent.innerHTML = "12/04/2021 10:00";
+// reminderEvent.innerHTML = "10 min";
+// descriptionEvent.innerHTML = "Let's play together!";
 
+let eventInfo = [
+  {
+    title: "",
+    type: "",
+    startDate: "",
+    endDate: "",
+    reminder: "",
+    description: "",
+  },
+];
+
+// localStorage.setItem("localEventInfo", JSON.stringify(eventInfo));
+
+// let eventInfoJS = JSON.parse(localStorage.getItem("localEventInfo"));
+
+
+// titleEvent.innerHTML = eventInfoJS[0].title;
+// typeEvent.innerHTML = eventInfoJS[0].type;
+// startDateEvent.innerHTML = eventInfoJS[0].startDate;
+// endDateEvent.innerHTML = eventInfoJS[0].endDate;
+// reminderEvent.innerHTML = eventInfoJS[0].reminder;
+// descriptionEvent.innerHTML = eventInfoJS[0].description;
+
+saveEventButton.addEventListener('click', function(){
+  console.log("Entro aqui");
+  eventInfo[0].title = titleNewEvent.value;
+  console.log(eventInfo[0].title);
+  eventInfo[0].type = typeNewEvent.value;
+  console.log(eventInfo[0].type);
+  eventInfo[0].startDate = startNewEvent.value;
+  console.log(eventInfo[0].startDate);
+  eventInfo[0].endDate = endNewEvent.value;
+  console.log(eventInfo[0].endDate);
+  eventInfo[0].reminder = timeReminderNewEvent.value;
+  console.log(eventInfo[0].reminder);
+  eventInfo[0].description = descriptionNewEvent.value;
+  console.log(eventInfo[0].description);
+
+  localStorage.setItem("localEventInfo", JSON.stringify(eventInfo));
+
+  let eventInfoJS = JSON.parse(localStorage.getItem("localEventInfo"));
+
+  titleEvent.innerHTML = eventInfoJS[0].title;
+  typeEvent.innerHTML = eventInfoJS[0].type;
+  startDateEvent.innerHTML = eventInfoJS[0].startDate;
+  endDateEvent.innerHTML = eventInfoJS[0].endDate;
+  reminderEvent.innerHTML = eventInfoJS[0].reminder;
+  descriptionEvent.innerHTML = eventInfoJS[0].description;
+  })
