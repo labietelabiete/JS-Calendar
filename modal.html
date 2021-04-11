@@ -20,9 +20,10 @@
 
                 <select name="" class="eventType" id="typeNewEvent">
                     <option class="eventTypeOption" value="none" selected disabled hidden>Type</option>
-                    <option class="eventTypeOption" value="meeting">Meeting</option>
-                    <option class="eventTypeOption" value="personal">Personal</option>
-                    <option class="eventTypeOption" value="study">Study</option>
+                    <option class="eventTypeOption" value="Work">Work</option>
+                    <option class="eventTypeOption" value="Sport">Sport</option>
+                    <option class="eventTypeOption" value="Music">Music</option>
+                    <option class="eventTypeOption" value="Other">Other</option>
                 </select> <br>
 
                 <label class="eventLabel" for="startNewEvent">Initial date</label><br>
@@ -44,7 +45,8 @@
                 <div id="reminderNewEventDiv" style="display: none">
                     <label class="eventDate" for="timeReminderNewEvent">Time: </label>
                     <select class="eventDate" name="" id="timeReminderNewEvent">
-                        <option value="5" selected>5 min</option>
+                        <option value="" selected></option>
+                        <option value="5">5 min</option>
                         <option value="10">10 min</option>
                         <option value="15">15 min</option>
                         <option value="30">30 min</option>
@@ -75,10 +77,10 @@
                 <label class="eventLabel eventLabelCheck" for="startNewEvent">Initial date</label><br>
                 <p class="eventDate" id="startDateEvent"></p>
 
-                <label class="eventLabel eventLabelCheck" for="checkBoxEndDate">End date</label><br>
+                <label class="eventLabel eventLabelCheck" id="eventEndDateLabel" for="checkBoxEndDate">End date</label><br>
                 <p class="eventDate" id="endDateEvent"></p>
 
-                <label class="eventLabel eventLabelCheck" for="reminderNewEvent">Reminder</label><br>
+                <label class="eventLabel eventLabelCheck" id="eventReminderLabel" for="reminderNewEvent">Reminder</label><br>
                 <p class="eventDate" id="reminderEvent"></p>
 
                 <label class="eventLabel eventLabelCheck eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
