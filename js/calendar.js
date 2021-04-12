@@ -47,6 +47,30 @@ function onLoadPrevMonthLength(currentMonth){
 // Load default previous month's length
 onLoadPrevMonthLength(currentMonthNum);
 
+// Setting up current month day DIV (numberDiv & eventsDiv)
+function setUpDay(dayDiv, dayNumber){
+    calendarGrid.appendChild(dayDiv);
+    dayDiv.setAttribute("id", "day" + dayNumber);
+    dayDiv.setAttribute("class", "currentMonthDay");
+
+
+    // Creating sub divs
+    numberDiv = document.createElement("div");
+    dayDiv.appendChild(numberDiv);
+    console.log(numberDiv);
+    console.log("Test");
+    numberDiv.setAttribute("class", "numberDiv");
+    numberDiv.innerText = dayNumber;
+
+    eventsDiv = document.createElement("div");
+    eventsDiv.setAttribute("class", "eventsDiv")
+    dayDiv.appendChild(eventsDiv);
+    console.log(eventsDiv);
+    eventsDiv.innerText="Hello";
+}
+
+
+
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
 
@@ -70,9 +94,8 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     for(let c=1; c<=monthLength; c++){
 
         let newDay = document.createElement("div");
-        calendarGrid.appendChild(newDay);
-        newDay.setAttribute("id", "day" + c);
-        newDay.setAttribute("class", "currentMonthDay");
+        setUpDay(newDay, c);
+
 
         // Highlight selected day (by user)
         newDay.addEventListener("click", function(event){
@@ -96,8 +119,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         if(c === 1){
             newDay.style.gridColumnStart = startingDay;
         };
-        // Assigning day number
-        newDay.innerText = c;
     }
 
     // Changing the number of rows depending on current month's length

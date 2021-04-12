@@ -50,7 +50,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    /*outline: 2px red solid;*/
+    outline: 2px red solid;
 }
 
 
@@ -182,7 +182,7 @@ main{
     grid-template-rows: repeat(5, 1fr);
 }
 
-.prevMonthDay, .currentMonthDay, .nextMonthDay{
+.prevMonthDay, .nextMonthDay{
     color: var(--darkColor);
     font-size: 40px;
     text-align: left;
@@ -191,15 +191,34 @@ main{
     transition: .2s;
 }
 
+.currentMonthDay{
+    padding-top: 5px;
+    border-top: 2px black solid;
+    transition: .2s;
+    display: flex;
+}
+
 /* Previous & next month days */
 .prevMonthDay, .nextMonthday{
     font-weight: var(--extraLight);
 }
 
-/* Current month days */
-.currentMonthDay{
+/* Number */
+.numberDiv{
+    color: var(--darkColor);
+    font-size: 40px;
+    text-align: left;
     font-weight: var(--bold);
+    width: fit-content;
+    margin-right: 10px;
 }
+
+.eventsDiv{
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+
 
 
 /* Footer >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
