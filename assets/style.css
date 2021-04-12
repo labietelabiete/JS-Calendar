@@ -182,37 +182,34 @@ main{
     grid-template-rows: repeat(5, 1fr);
 }
 
-.prevMonthDay, .nextMonthDay{
+/* .prevMonthDay, .nextMonthDay{
     color: var(--darkColor);
     font-size: 40px;
     text-align: left;
     /* padding-top: 15px; */
-    border-top: 2px black solid;
+    /* border-top: 2px black solid;
     transition: .2s;
     line-height: 30px;
-}
+}  */
 
-
-.currentMonthDay{
-    /* padding-top: 15px; */
-    /* padding-bottom: 15px; */
+.dayDiv{
+    padding: 15px 10px 15px 0;
     border-top: 2px black solid;
     transition: .2s;
     display: flex;
-    line-height: 30px;
-}
-
-.dayDiv{
-    padding: 15px 15px 15px 10px;
 }
 
 /* Previous & next month days */
-.prevMonthDay, .nextMonthday{
+.otherNumberDiv{
+    line-height: 30px;
     font-weight: var(--extraLight);
+    font-size: 40px;
+    text-align: left;
 }
 
 /* Number */
 .numberDiv{
+    line-height: 30px;
     color: var(--darkColor);
     font-size: 40px;
     text-align: left;

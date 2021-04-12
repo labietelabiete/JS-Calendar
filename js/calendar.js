@@ -11,6 +11,7 @@ var date = new Date();
 var clickedDay;
 var today;
 let gridCells = 35; // Seven days by 5 weeks by default
+let currentMonth;
 
 // Time numbers
 var currentDayNum = date.getDate();
@@ -48,19 +49,29 @@ function onLoadPrevMonthLength(currentMonth){
 onLoadPrevMonthLength(currentMonthNum);
 
 // Setting up current month day DIV (numberDiv & eventsDiv)
-function setUpDay(dayDiv, dayNumber){
+function setUpDay(dayDiv, dayNumber, className, isCurrentMonth){
     calendarGrid.appendChild(dayDiv);
-    dayDiv.setAttribute("id", "day" + dayNumber);
-    dayDiv.setAttribute("class", "currentMonthDay");
-    dayDiv.classList.add("dayDiv");
 
+    if (isCurrentMonth === true){
+        dayDiv.setAttribute("id", "day" + dayNumber);
+    }
+
+    dayDiv.setAttribute("class", className);
+    dayDiv.classList.add("dayDiv");
 
     // Creating sub divs
     numberDiv = document.createElement("div");
     dayDiv.appendChild(numberDiv);
     console.log(numberDiv);
     console.log("Test");
-    numberDiv.setAttribute("class", "numberDiv");
+
+    // Setting numberDiv class if its current month
+    if (isCurrentMonth === true){
+        numberDiv.setAttribute("class", "numberDiv");
+    } else {
+        numberDiv.setAttribute("class", "otherNumberDiv");
+    }
+
     numberDiv.innerText = dayNumber;
 
     eventsDiv = document.createElement("div");
@@ -82,20 +93,15 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     for(let p=lastMonthLength-prevDays+1; p<=lastMonthLength; p++){
 
         let prevDay = document.createElement("div");
-        calendarGrid.appendChild(prevDay);
-        prevDay.setAttribute("class", "prevMonthDay");
-        prevDay.classList.add("dayDiv");
+        setUpDay(prevDay, p, "prevMonthDay", false);
 
-        // Assigning day number
-        prevDay.innerText = p;
     }
 
     // Current month (adding div)
     for(let c=1; c<=monthLength; c++){
 
         let newDay = document.createElement("div");
-        setUpDay(newDay, c);
-
+        setUpDay(newDay, c, "currentMonthDay", true);
 
         // Highlight selected day (by user)
         newDay.addEventListener("click", function(event){
@@ -137,13 +143,8 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     let nextDays = gridCells - (prevDays + monthLength);
     for(let n=1; n<=nextDays; n++){
         let nextDay = document.createElement("div");
-        calendarGrid.appendChild(nextDay);
-        nextDay.setAttribute("class", "nextMonthday");
-        nextDay.classList.add("dayDiv");
-        // Assigning day number
-        nextDay.innerText = n;
+        setUpDay(nextDay, n, "nextMonthday", false);
     }
-
 };
 
 // Highlight today
