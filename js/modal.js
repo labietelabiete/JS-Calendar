@@ -246,16 +246,16 @@ function getEvent(){
   titleEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].title;
   //Depending of type event, the colour of the event is differente
   switch (eventInfoJS[localStorage.getItem("eventIndex")].type) {
-    case "0":
+    case 0:
       r.style.setProperty('--eventColor', 'rgb(210, 43, 65)');
       break;
-    case "1":
+    case 1:
       r.style.setProperty('--eventColor', 'rgb(220, 0, 235)');
       break;
-    case "2":
+    case 2:
       r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
       break;
-    case "3":
+    case 3:
       r.style.setProperty('--eventColor', 'rgb(0, 89, 194)');
       break;
     default:
