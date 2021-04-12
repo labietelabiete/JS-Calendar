@@ -67,8 +67,6 @@ function setDailyEvents(){
     let newEventDiv = document.createElement("div");
     dayEventsDiv.appendChild(newEventDiv);
     newEventDiv.innerText = lastEvent.title;
-
-
 }
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
