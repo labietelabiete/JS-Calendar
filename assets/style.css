@@ -197,6 +197,7 @@ main{
     border-top: 2px black solid;
     transition: .2s;
     display: flex;
+    align-items: flex-start;
 }
 
 /* Previous & next month days */

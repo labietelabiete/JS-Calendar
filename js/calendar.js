@@ -152,7 +152,10 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
     if (originalYear === currentYear && originalMonth === currentMonth){
         let todayDiv = document.getElementById("day" + currentDayNum);
         todayDiv.classList.add("today");
-        todayDiv.style.backgroundColor = "yellow";
+
+        todayNumber = document.querySelector(".today .numberDiv");
+        todayNumber.style.backgroundColor = "yellow";
+        todayNumber.style.boxShadow = "0 0 10px 10px yellow";
         // Capturing today div
         today = document.querySelector(".today");
     }
