@@ -62,8 +62,6 @@ function setUpDay(dayDiv, dayNumber, className, isCurrentMonth){
     // Creating sub divs
     numberDiv = document.createElement("div");
     dayDiv.appendChild(numberDiv);
-    console.log(numberDiv);
-    console.log("Test");
 
     // Setting numberDiv class if its current month
     if (isCurrentMonth === true){
@@ -77,7 +75,6 @@ function setUpDay(dayDiv, dayNumber, className, isCurrentMonth){
     eventsDiv = document.createElement("div");
     eventsDiv.setAttribute("class", "eventsDiv")
     dayDiv.appendChild(eventsDiv);
-    console.log(eventsDiv);
 }
 
 // Appending items to calendar's grid
@@ -155,7 +152,8 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
 
         todayNumber = document.querySelector(".today .numberDiv");
         todayNumber.style.backgroundColor = "yellow";
-        todayNumber.style.boxShadow = "0 0 10px 10px yellow";
+        todayNumber.style.boxShadow = "0 0 20px 20px yellow";
+        todayNumber.style.borderRadius = "50%";
         // Capturing today div
         today = document.querySelector(".today");
     }
@@ -180,7 +178,6 @@ function getFirstDay(year, month){
 prevMonthBtn.onclick = function(){
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
-    console.log(currentMonthNum);
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
