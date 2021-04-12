@@ -52,6 +52,10 @@ eventDescription = document.getElementById("descriptionNewEvent");
 
 checkboxNewEvent = document.querySelectorAll(".spanEvent")
 
+
+
+
+
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
   modalNewEvent.style.display = "block";
@@ -204,10 +208,10 @@ saveEventButton.addEventListener('click', function(){
   getEvent();
   modalNewEvent.style.display = "none";
   }
-  // clearNewEventForm();
+  clearNewEventForm();
 })
 
-// Functino for setting new event information to local storage
+// Function for setting new event information to local storage
 function setNewEvent(){
   newEventObj = {
     title: titleNewEvent.value,
