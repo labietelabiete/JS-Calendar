@@ -151,6 +151,8 @@ function newEventValidation () {
 
   if(!descriptionNewEvent.value) {
     eventDescriptionLabel.style.color = "var(--redColor)"
+    eventLabel[3].style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+
     return false;
   }
 
