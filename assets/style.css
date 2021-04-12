@@ -125,8 +125,7 @@ STYLING
 }
 
 select option:hover {
-    background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%);
-    color: #fff;
+    background-color: var(--greyColor);
   }
 
 .eventLabel{
