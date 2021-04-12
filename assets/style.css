@@ -53,12 +53,59 @@ STYLING
     /*outline: 2px red solid;*/
 }
 
-
+/* Body and body season classes*/
 body {
     padding: 40px;
     height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.january {
+
+}
+
+.february{
+
+}
+
+.march{
+
+}
+
+.april{
+
+}
+
+.may{
+
+}
+
+.june{
+
+}
+
+.july{
+
+}
+
+.august{
+
+}
+.september {
+
+}
+
+.october{
+
+}
+
+.november{
+
+}
+
+.december{
+
 }
 
 /* Top part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */

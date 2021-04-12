@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
 // Html elements
+var calendarBody = document.querySelector("body");
 var monthTitle = document.getElementById("month");
 var yearTitle = document.getElementById("year");
 var calendarGrid = document.getElementById("calendarCont");
@@ -20,13 +21,15 @@ var currentYearNum = date.getFullYear();
 var onloadYear = currentYearNum
 var firstDay = new Date(currentYearNum, currentMonthNum-1, 1).getDay();
 
-//Time lengths
+// Time lengths
 var currentMonthLength = new Date(currentYearNum, currentMonthNum, 0).getDate();
 var prevMonthLength;
 
 // Month names
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+// Season names
+var seasons = ["winter", "winter", "spring", "spring", "spring", "summer", "summer", "summer", "fall", "fall", "fall", "winter"];
 
 // DEFAULT HTML
 //------------------------------------------------------------------------
@@ -185,6 +188,7 @@ prevMonthBtn.onclick = function(){
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    seasonChange(currentMonthNum);
 }
 
 // Next month button
@@ -216,10 +220,58 @@ nextMonthBtn.onclick = function(){
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    seasonChange(currentMonthNum);
 }
 
+// Season change 
+function seasonChange(currentMonthNum){
+    
+    // Capturing current month 
+    let month = monthNames[currentMonthNum - 1];
+
+    // Deciding body color depending on month
+    switch (month){
+        case "January":
+            calendarBody.className = "january";
+            break;
+        case "February":
+            calendarBody.className = "february";
+            break;
+        case "March":
+            calendarBody.className = "march";
+            break;
+        case "April":
+            calendarBody.className = "april";
+            break;
+        case "May":
+            calendarBody.className = "may";
+            break;
+        case "June":
+            calendarBody.className = "june";
+            break;
+        case "July":
+            calendarBody.className = "july";
+            break;
+        case "August":
+            calendarBody.className = "august";
+            break;  
+        case "September":
+            calendarBody.className = "september";
+            break;
+        case "October":
+            calendarBody.className = "october";
+            break; 
+        case "November":
+            calendarBody.className = "november";
+            break; 
+        case "December":
+            calendarBody.className = "december";
+            break;  
+    }
+}
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 appendDays(31,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+seasonChange(currentMonthNum);
