@@ -97,26 +97,34 @@ reminderCheckbox.onclick = function () {
 // 2. if it is true, set the event localStorage
 //    else show pop up message
 newEventForm.onsubmit = function () {
-  var titleCheck = /^.{1,60}$/;
+  var titleCheck = /^.{1,60}$/; // we need to discuss 
   var title = newEventForm["titleNewEvent"].value;
-  var myArray = [];
+  var myArray = []; // using array to all the data to localStorage 
+
   if (title.search(titleCheck) === -1) return false;
   myArray.push({title : title});
+
   if (eventType.value === "none") return false;
   myArray[0]["eventType"] = eventType.value;
+
   if (endCheckbox.checked) {
     newEventForm["endNewEvent"].required = true;
     if (!newEventForm["endNewEvent"].value) return false;
     myArray[0]["endDate"] = newEventForm["endNewEvent"].value
   }
+
   if (reminderCheckbox.checked) {
     newEventForm["timeReminderNewEvent"].required = true;
     if (!newEventForm["timeReminderNewEvent"].value) return false;
      myArray[0]["reminder"] = newEventForm["timeReminderNewEvent"].value
   }
+
   if(eventDescription.value) {
     myArray[0]["description"] = eventDescription.value;
   }
-  localStorage.setItem(startEvent.value, JSON.stringify(myArray))
+  // we have to decide which format has to be used here. 
+  // following format is matched with string format like new Date()
+  var startEventValue = new Date(startEvent.value).toString()
+  localStorage.setItem(JSON.stringify(startEventValue), JSON.stringify(myArray))
   return true;
 };
