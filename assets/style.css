@@ -191,6 +191,7 @@ main{
     transition: .2s;
     display: flex;
     align-items: flex-start;
+
 }
 
 /* Previous & next month days */
@@ -199,6 +200,7 @@ main{
     font-weight: var(--extraLight);
     font-size: 40px;
     text-align: left;
+    
 }
 
 /* Number */
@@ -210,6 +212,7 @@ main{
     font-weight: var(--bold);
     width: fit-content;
     margin-right: 15px;
+    transition: .2s;
 }
 
 .eventsDiv{
