@@ -244,5 +244,5 @@ nextMonthBtn.onclick = function(){
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
-appendDays(31,firstDay,currentMonthLength);
+appendDays(prevMonthLength,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
