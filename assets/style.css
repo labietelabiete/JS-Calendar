@@ -50,7 +50,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
 }
 
 
@@ -186,7 +186,7 @@ main{
     color: var(--darkColor);
     font-size: 40px;
     text-align: left;
-    padding-top: 15px;
+    /* padding-top: 15px; */
     border-top: 2px black solid;
     transition: .2s;
     line-height: 30px;
@@ -194,11 +194,16 @@ main{
 
 
 .currentMonthDay{
-    padding-top: 15px;
+    /* padding-top: 15px; */
+    /* padding-bottom: 15px; */
     border-top: 2px black solid;
     transition: .2s;
     display: flex;
     line-height: 30px;
+}
+
+.dayDiv{
+    padding: 15px 15px 15px 10px;
 }
 
 /* Previous & next month days */
@@ -219,7 +224,7 @@ main{
 .eventsDiv{
     flex-grow: 1;
     margin-right: 10px;
-    transform: translateY(-8px);
+    /* transform: translateY(-8px); */
 }
 
 

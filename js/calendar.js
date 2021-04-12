@@ -52,6 +52,7 @@ function setUpDay(dayDiv, dayNumber){
     calendarGrid.appendChild(dayDiv);
     dayDiv.setAttribute("id", "day" + dayNumber);
     dayDiv.setAttribute("class", "currentMonthDay");
+    dayDiv.classList.add("dayDiv");
 
 
     // Creating sub divs
@@ -80,11 +81,13 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     let prevDays = startingDay-1;
     for(let p=lastMonthLength-prevDays+1; p<=lastMonthLength; p++){
 
-        let newDay = document.createElement("div");
-        calendarGrid.appendChild(newDay);
-        newDay.setAttribute("class", "prevMonthDay");
+        let prevDay = document.createElement("div");
+        calendarGrid.appendChild(prevDay);
+        prevDay.setAttribute("class", "prevMonthDay");
+        prevDay.classList.add("dayDiv");
+
         // Assigning day number
-        newDay.innerText = p;
+        prevDay.innerText = p;
     }
 
     // Current month (adding div)
@@ -133,11 +136,12 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     // Next month (adding div)
     let nextDays = gridCells - (prevDays + monthLength);
     for(let n=1; n<=nextDays; n++){
-        let newDay = document.createElement("div");
-        calendarGrid.appendChild(newDay);
-        newDay.setAttribute("class", "nextMonthday");
+        let nextDay = document.createElement("div");
+        calendarGrid.appendChild(nextDay);
+        nextDay.setAttribute("class", "nextMonthday");
+        nextDay.classList.add("dayDiv");
         // Assigning day number
-        newDay.innerText = n;
+        nextDay.innerText = n;
     }
 
 };
