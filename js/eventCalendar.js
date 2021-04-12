@@ -1,16 +1,33 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
-const date1 = new Date('April 23, 2021 14:00:30 GMT+11:00');
-console.log("Day", date1.getUTCDate());
+var date1 = new Date('April 23, 2021 14:00:30 GMT+11:00');
+/*console.log("Day", date1.getUTCDate());
 console.log("Year", date1.getUTCFullYear());
 console.log("Month", date1.getUTCMonth()+1);
-console.log("Hour", date1.getUTCHours()+2);
+console.log("Hour", date1.getUTCHours()+2); */
+var Test = document.getElementById("newEventBtn");
+var eventObj = {
+    title: new String,
+    type: 0,
+    description: new String,
+    reminder: 0,
+    hour: 0,
+    day: 0,
+    month: 0,
+    year: 0,
+    endDate: 'Invalid Date'
+}
 
+var events = [];
+
+// LISTENERS
+//------------------------------------------------------------------------
+Test.addEventListener("click", addEvent);
 
 // FUNCTIONS
 //------------------------------------------------------------------------
-function addEvent(day, addedEvent){
-    console.log("Text");
+function addEvent(){
+    console.log("date1", date1);
 }
 
 
@@ -27,5 +44,5 @@ function showingEvents(dayId, numEvents){
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
-addEvent(13, "Test");
-showingEvents(3);
+//addEvent(13, "Test");
+//showingEvents(3);
