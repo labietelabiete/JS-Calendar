@@ -66,7 +66,6 @@ function setUpDay(dayDiv, dayNumber){
     eventsDiv.setAttribute("class", "eventsDiv")
     dayDiv.appendChild(eventsDiv);
     console.log(eventsDiv);
-    eventsDiv.innerText="Hello";
 }
 
 
