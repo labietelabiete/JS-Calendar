@@ -1,38 +1,60 @@
-let modalNewEvent = document.getElementById("newEventModal");
-let modalCheckEvent = document.getElementById("checkEventModal");
+let r = document.querySelector(':root');
+
+titleNewEvent = document.getElementById('titleNewEvent');
+typeNewEvent = document.getElementById('typeNewEvent');
+startNewEvent = document.getElementById('startNewEvent');
+endNewEvent = document.getElementById('endNewEvent');
+timeReminderNewEvent = document.getElementById('timeReminderNewEvent');
+descriptionNewEvent = document.getElementById('descriptionNewEvent');
+
+titleEvent = document.getElementById('titleEvent');
+typeEvent = document.getElementById('typeEvent');
+startDateEvent = document.getElementById('startDateEvent');
+endDateEvent = document.getElementById('endDateEvent');
+reminderEvent = document.getElementById('reminderEvent');
+descriptionEvent = document.getElementById('descriptionEvent');
+
+eventEndDateLabel = document.getElementById('eventEndDateLabel');
+eventReminderLabel = document.getElementById('eventReminderLabel');
+eventDescriptionLabel = document.querySelector(".eventDescriptionLabel")
+
+
+modalNewEvent = document.getElementById("newEventModal");
+modalCheckEvent = document.getElementById("checkEventModal");
 
 // Get the button that opens the modal
-let btnNewEvent = document.getElementById("newEventBtn");
-let btnCheckEvent = document.getElementById("checkEventBtn");
+btnNewEvent = document.getElementById("newEventBtn");
+btnCheckEvent = document.getElementById("checkEventBtn");
 
 // Get the <span> element that closes the modal
-let closeModal = document.getElementsByClassName("close");
+closeModal = document.getElementsByClassName("close");
 
-let cancelNewEvent = document.getElementById("cancelNewEvent");
-let removeEvent = document.getElementById("RemoveEventButton");
-let okEvent = document.getElementById("okCheckEventButton");
+cancelNewEvent = document.getElementById("cancelNewEvent");
+removeEvent = document.getElementById("RemoveEventButton");
+okEvent = document.getElementById("okCheckEventButton");
 
 // Get checkboxes and optional elements
-let eventLabel = document.querySelectorAll(".eventLabel")
+eventLabel = document.querySelectorAll(".eventLabel")
 
-let endCheckbox = document.getElementById("checkBoxEndDate");
-let showEndDate = document.getElementById("endNewEvent");
-let endDateLabel = document.getElementById("endDateLabel");
+endCheckbox = document.getElementById("checkBoxEndDate");
+endDateLabel = document.getElementById("endDateLabel");
 
-let reminderCheckbox = document.getElementById("reminderNewEvent");
-let showReminder = document.getElementById("reminderNewEventDiv");
-let reminderLabel = document.getElementById("reminderLabel");
+reminderCheckbox = document.getElementById("reminderNewEvent");
+showReminder = document.getElementById("reminderNewEventDiv");
+reminderLabel = document.getElementById("reminderLabel");
 
 // Get save button to submit event and save it to calendar and localStorage
-let saveEventButton = document.getElementById("saveNewEvent");
+saveEventButton = document.getElementById("saveNewEvent");
 
 // Get form and type
-let newEventForm = document.getElementById("newEventForm");
-let typeNewEvent = document.getElementById("typeNewEvent");
-let startEvent = document.getElementById("startNewEvent");
-let eventDescription = document.getElementById("descriptionNewEvent");
+newEventForm = document.getElementById("newEventForm");
+eventDescription = document.getElementById("descriptionNewEvent");
 
-let checkboxNewEvent = document.querySelectorAll(".spanEvent")
+checkboxNewEvent = document.querySelectorAll(".spanEvent")
+
+
+
+
 
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
@@ -41,10 +63,10 @@ btnNewEvent.onclick = function () {
 btnCheckEvent.onclick = function () {
   modalCheckEvent.style.display = "block";
 };
-
 // When the user clicks on <span> (x), close the modal
 closeModal[0].onclick = function () {
   modalNewEvent.style.display = "none";
+  clearNewEventForm();
 };
 closeModal[1].onclick = function () {
   modalCheckEvent.style.display = "none";
@@ -53,6 +75,7 @@ closeModal[1].onclick = function () {
 // When the user clicks on cancel, close the modal
 cancelNewEvent.onclick = function () {
   modalNewEvent.style.display = "none";
+  clearNewEventForm();
 };
 
 // When the user clicks on OK, close the modal
@@ -78,17 +101,18 @@ document.onkeydown = function (event) {
   if (event.keyCode == 27) {
     modalNewEvent.style.display = "none";
     modalCheckEvent.style.display = "none";
+    clearNewEventForm();
   }
 };
 
 // Display options when the checkbox is checked
 endCheckbox.onclick = function () {
   if (endCheckbox.checked == true) {
-    showEndDate.style.display = "inline-block";
+    endNewEvent.style.display = "inline-block";
     endDateLabel.style.color = "var(--blackColor)";
     endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
   } else {
-    showEndDate.style.display = "none";
+    endNewEvent.style.display = "none";
     endDateLabel.style.color = "var(--greyColor)";
     endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
@@ -166,30 +190,12 @@ function newEventValidation () {
 //Event information handling
 
 //Variables definition
-let r = document.querySelector(':root');
 
-titleNewEvent = document.getElementById('titleNewEvent');
-typeNewEvent = document.getElementById('typeNewEvent');
-startNewEvent = document.getElementById('startNewEvent');
-endNewEvent = document.getElementById('endNewEvent');
-timeReminderNewEvent = document.getElementById('timeReminderNewEvent');
-descriptionNewEvent = document.getElementById('descriptionNewEvent');
-
-titleEvent = document.getElementById('titleEvent');
-typeEvent = document.getElementById('typeEvent');
-startDateEvent = document.getElementById('startDateEvent');
-endDateEvent = document.getElementById('endDateEvent');
-reminderEvent = document.getElementById('reminderEvent');
-descriptionEvent = document.getElementById('descriptionEvent');
-
-eventEndDateLabel = document.getElementById('eventEndDateLabel');
-eventReminderLabel = document.getElementById('eventReminderLabel');
-eventDescriptionLabel = document.querySelector(".eventDescriptionLabel")
-
+let dateEventUTC;
 let i = 0;
 let eventInfoArray = [];
 let newEventObj = {};
-
+// localStorage.clear();
 let eventIndex = i;
 
 localStorage.setItem("eventIndex", eventIndex );
@@ -200,20 +206,22 @@ saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
   setNewEvent();
   getEvent();
+  //clearNewEventForm();
   modalNewEvent.style.display = "none";
   }
-  // clearNewEventForm();
+ 
 })
 
-// Functino for setting new event information to local storage
+// Function for setting new event information to local storage
 function setNewEvent(){
   dateStartEventUTC = new Date(startNewEvent.value)
   dateEndEventUTC = new Date(startNewEvent.value)
-  
+
   newEventObj = {
     title: titleNewEvent.value,
     type: typeNewEvent.value,
     startDate: {
+      milliseconds : dateStartEventUTC.getUTCMilliseconds(),
       minutes : dateStartEventUTC.getUTCMinutes(),
       hour :  dateStartEventUTC.getUTCHours()+2,
       day : dateStartEventUTC.getUTCDate(),
@@ -221,6 +229,7 @@ function setNewEvent(){
       year : dateStartEventUTC.getUTCFullYear(),
     },
     endDate: {
+      milliseconds : dateEndEventUTC.getUTCMilliseconds(),
       minutes : dateEndEventUTC.getUTCMinutes(),
       hour :  dateEndEventUTC.getUTCHours()+2,
       day : dateEndEventUTC.getUTCDate(),
@@ -230,7 +239,9 @@ function setNewEvent(){
     reminder: timeReminderNewEvent.value,
     description: descriptionNewEvent.value,
   };
-
+  if(newEventObj.endDate == "Invalid Date") {
+    newEventObj.endDate = ""
+  }
   eventInfoArray.push(newEventObj);
 
   //Stringiying our object generated by event form
@@ -291,10 +302,33 @@ function getEvent(){
 }
 
 function clearNewEventForm(){
-  titleNewEvent.value = "";
-  typeNewEvent.value = "";
-  startNewEvent.value = "";
-  endNewEvent.value = "";
-  timeReminderNewEvent.value = "";
-  descriptionNewEvent.value = "";
+  newEventForm.reset();
+
+  //Setting empty the formulary
+  // titleNewEvent.value = "";
+  // typeNewEvent.value = "";
+  // typeNewEvent.innerHTML = "Type"
+  // startNewEvent.value = "";
+  // endNewEvent.value = "";
+  // timeReminderNewEvent.value = "";
+  // timeReminderNewEvent.innerHTML = "Select one"
+  // descriptionNewEvent.value = "";
+  
+
+  //Setting black back all colors
+  // titleNewEvent.style.background = "white";
+  // typeNewEvent.style.color = "var(--darkColor)";
+  // eventLabel[0].style.color = "var(--darkColor)";
+  // eventLabel[0].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+
+  // endDateLabel.style.color = "var(--blackColor)";
+  // endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  // checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
+
+  // reminderLabel.style.color = "var(--darkColor)";
+  // reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  // checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
+
+  // eventDescriptionLabel.style.color = "var(--darkColor)";
+  // eventLabel[3].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
 }
