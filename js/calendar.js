@@ -68,8 +68,6 @@ function setUpDay(dayDiv, dayNumber){
     console.log(eventsDiv);
 }
 
-
-
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
 
