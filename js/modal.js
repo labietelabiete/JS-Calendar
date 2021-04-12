@@ -93,6 +93,7 @@ window.onclick = function (event) {
   if (event.target == modalCheckEvent || event.target == modalNewEvent) {
     modalNewEvent.style.display = "none";
     modalCheckEvent.style.display = "none";
+    clearNewEventForm();
   }
 };
 
@@ -159,6 +160,9 @@ function newEventValidation () {
       endDateLabel.style.color = "var(--redColor)";
       endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_red.png')"
+      if (window.innerWidth < 768) {
+        checkboxNewEvent[0].style.backgroundSize = "10px 10px";
+      }
       return false;
     }
   }
@@ -169,6 +173,9 @@ function newEventValidation () {
       reminderLabel.style.color = "var(--redColor)";
       reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_red.png')"
+      if (window.innerWidth < 768) {
+        checkboxNewEvent[1].style.backgroundSize = "10px 10px";
+      }
       return false;
     }
   }
@@ -206,7 +213,7 @@ saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
   setNewEvent();
   getEvent();
-  //clearNewEventForm();
+  clearNewEventForm();
   modalNewEvent.style.display = "none";
   }
  
@@ -316,19 +323,19 @@ function clearNewEventForm(){
   
 
   //Setting black back all colors
-  // titleNewEvent.style.background = "white";
-  // typeNewEvent.style.color = "var(--darkColor)";
-  // eventLabel[0].style.color = "var(--darkColor)";
-  // eventLabel[0].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  titleNewEvent.style.background = "white";
+  typeNewEvent.style.color = "var(--darkColor)";
+  eventLabel[0].style.color = "var(--darkColor)";
+  eventLabel[0].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
 
-  // endDateLabel.style.color = "var(--blackColor)";
-  // endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  // checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
+  endDateLabel.style.color = "var(--blackColor)";
+  endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
 
-  // reminderLabel.style.color = "var(--darkColor)";
-  // reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  // checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
+  reminderLabel.style.color = "var(--darkColor)";
+  reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
 
-  // eventDescriptionLabel.style.color = "var(--darkColor)";
-  // eventLabel[3].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  eventDescriptionLabel.style.color = "var(--darkColor)";
+  eventLabel[3].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
 }
