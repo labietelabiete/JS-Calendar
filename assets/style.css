@@ -19,6 +19,10 @@ GENERAL VARIABLES
     --magentaColor: rgb(220, 0, 235);
     --greenColor: rgb(0, 213, 194);
     --blueColor: rgb(0, 89, 194);
+    --greyColor: #cccccc;
+
+    /*Color for event*/
+    --eventColor: rgb(0, 213, 194);
 
     /* Stroke width */
     --borderWidth: 2px;
@@ -47,6 +51,8 @@ STYLING
     /* Comment/Uncomment this to see/hide all boxes */
     /* outline: 2px red solid; */
 }
+
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -68,7 +74,7 @@ STYLING
   margin: auto;
   padding: 20px 40px;
   border: 1px solid #888;
-  min-width: 420px;
+  min-width: 450px;
   height: 700px;
   width: 20%;
   /* height: 80%; */
@@ -90,6 +96,7 @@ STYLING
   cursor: pointer;
 }
 
+/*Generic style for modal content*/
 .eventTitle{
     width: 80%;
     height: 60px;
@@ -97,35 +104,75 @@ STYLING
     font-weight: var(--semiBold);
     margin: 10px 0px;
 }
+.eventTitle::placeholder{
+    color: rgba(0,0,0,0.2);
+    border: none;
+
+}
+.eventTitle:focus{
+    border: none;
+}
 
 .eventType{
     font-size: 26px;
     font-weight: var(--light);
     margin-bottom: 80px;
 }
+
 .eventTypeOption{
     font-size: 26px;
     font-weight: var(--light);
 }
-.eventTypeOption:hover{
-    background: red;
-}
+
+select option:hover {
+    background: #ff9500 -webkit-linear-gradient(bottom, #ff9500 0%, #ff9500 100%);
+    color: #fff;
+  }
+
 .eventLabel{
-    width: 100%;
+    display: inline-block;
+    width: 99%;
     font-size: 26px;
     font-weight: var(--semiBold);
     border-bottom: var(--darkColor) solid var(--borderWidth);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    transition: .1s;
 }
 .eventDate{
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
-.eventCheckBox{
-    margin-left: -25px;
+.checkboxLabel{
+    display: inline;
+    margin-left: -40px;
+}
+.checkboxLabel input {
+    position: relative;
+    z-index: -9999;
+  }
+  .checkboxLabel span {
+    width: 15px;
+    height: 15px;
     margin-right: 10px;
-    color: red;
+    display: inline-block;
+    background: url("https://cdn.pixabay.com/photo/2020/07/02/01/10/profile-frame-5361387_960_720.png");
+    background: url("./img/uncheckedbox_grey.png");
+    background-size: 15px 15px;
+  }
+  .checkboxLabel input:checked + span {
+    background: url("https://i.pinimg.com/736x/f9/42/6c/f9426c98bf7d46aeb5b0d0664ad43ac0.jpg");
+    background: url("./img/checkedbox_black.png");
+    background-size: 15px 15px;
+  }
+
+  #endDateLabel{
+      color: var(--greyColor);
+      border-bottom: var(--greyColor) solid var(--borderWidth);
+    }
+  #reminderLabel{
+    color: var(--greyColor);
+    border-bottom: var(--greyColor) solid var(--borderWidth);
 }
 
 .eventDescriptionLabel{
@@ -136,23 +183,169 @@ STYLING
     width: 100%;
     height: 100px;
     background-color: rgba(0,0,0,0.05);
-    font-size: 26px;
+    font-size: 20px;
     font-weight: var(--light);
     margin-top: 10px;
     margin-bottom: 30px;
 }
 
+.btnDiv{
+    display: flex;
+    justify-content: space-between;
+}
+
 .modalBtn{
     width: 49%;
     height: 40px;
-    margin-left: 2px;
     font-size: 20px;
     font-weight: var(--semiBold);
     background-color: white;
     border: var(--darkColor) solid var(--borderWidth);
+    transition: .3s;
+}
+
+#saveNewEvent:hover{
+    color: white;
+    background-color: var(--darkColor);
 }
 
 #cancelNewEvent{
     color: var(--redColor);
     border: var(--redColor) solid var(--borderWidth);
+}
+#cancelNewEvent:hover{
+    color: white;
+    background-color: var(--redColor);
+}
+
+
+/* Created Event modal styles*/
+#checkEventModal{
+    color: var(--eventColor);
+}
+.modalContentCheck{
+    border: var(--eventColor) solid var(--borderWidth);
+}
+.closeCheck{
+    color: var(--eventColor);
+}
+.closeCheck:hover{
+    color: var(--eventColor);
+}
+.eventLabelCheck{
+    border-bottom: var(--eventColor) solid var(--borderWidth);
+}
+
+#descriptionEvent{
+    height: 120px;
+}
+
+#okCheckEventButton{
+    color: var(--eventColor);
+    border: var(--eventColor) solid var(--borderWidth);
+}
+#okCheckEventButton:hover{
+    color: white;
+    background-color: var(--eventColor);
+}
+#RemoveEventButton{
+    color: var(--redColor);
+    border: var(--redColor) solid var(--borderWidth);
+}
+#RemoveEventButton:hover{
+    color: white;
+    background-color: var(--redColor);
+}
+
+/*Media query for modals */
+@media (max-width: 768px){
+.modalContent {
+    padding: 20px 25px;
+    width: 10%;
+    min-width: 300px;
+    height: 580px;
+}
+  .eventTitle{
+    height: 40px;
+    font-size: 40px;
+    margin: 10px 0px;
+    margin-left: 15px;
+
+}
+.eventType{
+    font-size: 16px;
+    margin-bottom: 50px;
+    margin-left: 15px;
+
+}
+
+.eventTypeOption{
+    font-size: 16px;
+}
+
+.eventLabel{
+    display: inline-block;
+    width: 90%;
+    font-size: 16px;
+    margin-left: 15px;
+}
+.eventDate{
+    font-size: 16px;
+    margin-left: 15px;
+}
+.checkboxLabel{
+    display: inline;
+    margin-left: -20px;
+}
+.checkboxLabel span {
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    display: inline-block;
+    background-size: 10px 10px;
+}
+.checkboxLabel input:checked + span {
+    background-size: 10px 10px;
+}
+#endDateLabel{
+      margin-left: 0px
+}
+#reminderLabel{
+    margin-left: 0px
+}
+
+.eventDescriptionLabel{
+  margin-bottom: 10px;
+}
+
+.eveentDescription{
+  width: 90%;
+  height: 100px;
+  font-size: 16px;
+  font-weight: var(--light);
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 15px;
+
+}
+
+.btnDiv{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.modalBtn{
+  width: 48%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: var(--semiBold);
+  background-color: white;
+  border: var(--darkColor) solid var(--borderWidth);
+  transition: .3s;
+}
+
+
+
+
+
 }
