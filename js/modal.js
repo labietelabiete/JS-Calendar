@@ -5,15 +5,14 @@ let modalCheckEvent = document.getElementById("checkEventModal");
 let btnNewEvent = document.getElementById("newEventBtn");
 let btnCheckEvent = document.getElementById("checkEventBtn");
 
-
 // Get the <span> element that closes the modal
 let closeModal = document.getElementsByClassName("close");
 
 let cancelNewEvent = document.getElementById("cancelNewEvent");
 let removeEvent = document.getElementById("RemoveEventButton");
-let okEvent = document.getElementById("okCheckEventButton"); 
+let okEvent = document.getElementById("okCheckEventButton");
 
-// Get checkboxes and optional elements  
+// Get checkboxes and optional elements
 let endCheckbox = document.getElementById("checkBoxEndDate");
 let showEndDate = document.getElementById("endNewEvent");
 let endDateLabel = document.getElementById("endDateLabel");
@@ -25,53 +24,52 @@ let reminderLabel = document.getElementById("reminderLabel");
 // Get save button to submit event and save it to calendar and localStorage
 let saveEventButton = document.getElementById("saveNewEvent");
 
-// Get new event form 
+// Get form and type
 let newEventForm = document.getElementById("newEventForm");
+let eventType = document.getElementById("typeNewEvent");
+let startEvent = document.getElementById("startNewEvent");
+let eventDescription = document.getElementById("descriptionNewEvent");
 
-
-// When the user clicks the button, open the modal 
-btnNewEvent.onclick = function() {
+// When the user clicks the button, open the modal
+btnNewEvent.onclick = function () {
   modalNewEvent.style.display = "block";
-}
-btnCheckEvent.onclick = function() {
+};
+btnCheckEvent.onclick = function () {
   modalCheckEvent.style.display = "block";
-}
-
+};
 
 // When the user clicks on <span> (x), close the modal
-closeModal[0].onclick = function() {
+closeModal[0].onclick = function () {
   modalNewEvent.style.display = "none";
-}
-closeModal[1].onclick = function() {
+};
+closeModal[1].onclick = function () {
   modalCheckEvent.style.display = "none";
-}
+};
 
 // When the user clicks on cancel, close the modal
-cancelNewEvent.onclick = function() {
+cancelNewEvent.onclick = function () {
   modalNewEvent.style.display = "none";
-}
+};
 
 // When the user clicks on OK, close the modal
-okEvent.onclick = function() {
+okEvent.onclick = function () {
   modalCheckEvent.style.display = "none";
-}
+};
 
 //When the user click on remove event
-removeEvent.onclick = function() {
+removeEvent.onclick = function () {
   modalCheckEvent.style.display = "none";
-}
-
+};
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modalCheckEvent || event.target == modalNewEvent) {
     modalNewEvent.style.display = "none";
     modalCheckEvent.style.display = "none";
   }
-}
+};
 
-
-document.onkeydown = function(event) {
+document.onkeydown = function (event) {
   event = event || window.event;
   if (event.keyCode == 27) {
     modalNewEvent.style.display = "none";
@@ -79,10 +77,9 @@ document.onkeydown = function(event) {
   }
 };
 
-
 // Display options when the checkbox is checked
-endCheckbox.onclick = function() {
-  if(endCheckbox.checked == true) {
+endCheckbox.onclick = function () {
+  if (endCheckbox.checked == true) {
     showEndDate.style.display = "inline-block";
     endDateLabel.style.color = "var(--blackColor)";
     endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
@@ -91,10 +88,10 @@ endCheckbox.onclick = function() {
     endDateLabel.style.color = "var(--greyColor)";
     endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
-}
+};
 
-reminderCheckbox.onclick = function() {
-  if(reminderCheckbox.checked == true) {
+reminderCheckbox.onclick = function () {
+  if (reminderCheckbox.checked == true) {
     showReminder.style.display = "inline-block";
     reminderLabel.style.color = "var(--blackColor)";
     reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
@@ -103,30 +100,41 @@ reminderCheckbox.onclick = function() {
     reminderLabel.style.color = "var(--greyColor)";
     reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
-}
-
+};
 
 // Save events to localStorage when create button is clicked
-// 1. Check validity 
+// 1. Check validity
 // 2. if it is true, set the event localStorage
-//    else show pop up message 
-newEventForm.onchange = function() {
-//title value 
-if(newEventForm.checkValidity()) {
+//    else show pop up message
+newEventForm.onsubmit = function () {
+  var titleCheck = /^.{1,60}$/; // we need to discuss 
+  var title = newEventForm["titleNewEvent"].value;
+  var myArray = []; // using array to all the data to localStorage 
 
-}
+  if (title.search(titleCheck) === -1) return false;
+  myArray.push({title : title});
 
-var titleCheck = /^.{1,60}$/
-var title = newEventForm["titleNewEvent"].value
+  if (eventType.value === "none") return false;
+  myArray[0]["eventType"] = eventType.value;
 
-var OK = titleCheck.exec(newEventForm["titleNewEvent"].value)
-console.log(OK ? true : false)
+  if (endCheckbox.checked) {
+    newEventForm["endNewEvent"].required = true;
+    if (!newEventForm["endNewEvent"].value) return false;
+    myArray[0]["endDate"] = newEventForm["endNewEvent"].value
+  }
 
+  if (reminderCheckbox.checked) {
+    newEventForm["timeReminderNewEvent"].required = true;
+    if (!newEventForm["timeReminderNewEvent"].value) return false;
+     myArray[0]["reminder"] = newEventForm["timeReminderNewEvent"].value
+  }
+  return true;
+};
 
 console.log(endCheckbox.checked ? true : false)
 console.log(reminderCheckbox.checked ? true : false)
 console.log(document.getElementById("typeNewEvent").value === "none")
-}
+
 
 
 //Event information handling
