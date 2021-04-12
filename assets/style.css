@@ -61,7 +61,8 @@ body {
     flex-direction: column;
 }
 
-/* Top part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* TOP PART
+--------------------------------------------------------------- */
 header {
     height: 150px;
     display: flex;
@@ -113,7 +114,8 @@ header {
 }
 
 
-/* Main part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* MAIN PART
+--------------------------------------------------------------- */
 main{
     display: flex;
     flex-grow: 1;
@@ -174,6 +176,7 @@ main{
     margin-bottom: 10px;
 }
 
+/* Calendar container */
 #calendarCont{
     flex-grow: 1;
     /* background-color: yellow; */
@@ -182,16 +185,7 @@ main{
     grid-template-rows: repeat(5, 1fr);
 }
 
-/* .prevMonthDay, .nextMonthDay{
-    color: var(--darkColor);
-    font-size: 40px;
-    text-align: left;
-    /* padding-top: 15px; */
-    /* border-top: 2px black solid;
-    transition: .2s;
-    line-height: 30px;
-}  */
-
+/* General day div */
 .dayDiv{
     padding: 15px 10px 15px 0;
     border-top: 2px black solid;
@@ -225,16 +219,14 @@ main{
     /* transform: translateY(-8px); */
 }
 
-
-
-
-/* Footer >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* FOOTER
+--------------------------------------------------------------- */
 footer{
     height: 50px;
 }
 
-
-/* Modal styles >>>>>>>>>>>>>>>>>>>>>> */
+/* FOOTER
+--------------------------------------------------------------- */
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
