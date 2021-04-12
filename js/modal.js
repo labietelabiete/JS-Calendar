@@ -32,7 +32,7 @@ let typeNewEvent = document.getElementById("typeNewEvent");
 let startEvent = document.getElementById("startNewEvent");
 let eventDescription = document.getElementById("descriptionNewEvent");
 
-console.log(document.querySelectorAll(".spanEvent"))
+let checkboxNewEvent = document.querySelectorAll(".spanEvent")
 
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
@@ -134,7 +134,7 @@ function newEventValidation () {
     if (!endNewEvent.value) {
       endDateLabel.style.color = "var(--redColor)";
       endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-
+      checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_red.png')"
       return false;
     }
   }
@@ -144,6 +144,7 @@ function newEventValidation () {
     if (timeReminderNewEvent.value === "") {
       reminderLabel.style.color = "var(--redColor)";
       reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+      checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_red.png')"
       return false;
     }
   }
