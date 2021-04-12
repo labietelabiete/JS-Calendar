@@ -191,7 +191,7 @@ function newEventValidation () {
 
 //Variables definition
 
-
+let dateEventUTC;
 let i = 0;
 let eventInfoArray = [];
 let newEventObj = {};
@@ -213,11 +213,26 @@ saveEventButton.addEventListener('click', function(){
 
 // Function for setting new event information to local storage
 function setNewEvent(){
+  dateStartEventUTC = new Date(startNewEvent.value)
+  dateEndEventUTC = new Date(startNewEvent.value)
+
   newEventObj = {
     title: titleNewEvent.value,
     type: typeNewEvent.value,
-    startDate: new Date(startNewEvent.value).toString(),
-    endDate: new Date(endNewEvent.value).toString(),
+    startDate: {
+      minutes : dateStartEventUTC.getUTCMinutes(),
+      hour :  dateStartEventUTC.getUTCHours()+2,
+      day : dateStartEventUTC.getUTCDate(),
+      month : dateStartEventUTC.getUTCMonth()+1,
+      year : dateStartEventUTC.getUTCFullYear(),
+    },
+    endDate: {
+      minutes : dateEndEventUTC.getUTCMinutes(),
+      hour :  dateEndEventUTC.getUTCHours()+2,
+      day : dateEndEventUTC.getUTCDate(),
+      month : dateEndEventUTC.getUTCMonth()+1,
+      year : dateEndEventUTC.getUTCFullYear(),
+    },
     reminder: timeReminderNewEvent.value,
     description: descriptionNewEvent.value,
   };
@@ -239,16 +254,16 @@ function getEvent(){
   titleEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].title;
   //Depending of type event, the colour of the event is differente
   switch (eventInfoJS[localStorage.getItem("eventIndex")].type) {
-    case "Work":
+    case 0:
       r.style.setProperty('--eventColor', 'rgb(210, 43, 65)');
       break;
-    case "Sport":
+    case 1:
       r.style.setProperty('--eventColor', 'rgb(220, 0, 235)');
       break;
-    case "Music":
+    case 2:
       r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
       break;
-    case "Other":
+    case 3:
       r.style.setProperty('--eventColor', 'rgb(0, 89, 194)');
       break;
     default:
