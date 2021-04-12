@@ -13,6 +13,8 @@ let removeEvent = document.getElementById("RemoveEventButton");
 let okEvent = document.getElementById("okCheckEventButton");
 
 // Get checkboxes and optional elements
+let eventLabel = document.querySelectorAll(".eventLabel")
+
 let endCheckbox = document.getElementById("checkBoxEndDate");
 let showEndDate = document.getElementById("endNewEvent");
 let endDateLabel = document.getElementById("endDateLabel");
@@ -26,9 +28,11 @@ let saveEventButton = document.getElementById("saveNewEvent");
 
 // Get form and type
 let newEventForm = document.getElementById("newEventForm");
-let eventType = document.getElementById("typeNewEvent");
+let typeNewEvent = document.getElementById("typeNewEvent");
 let startEvent = document.getElementById("startNewEvent");
 let eventDescription = document.getElementById("descriptionNewEvent");
+
+console.log(document.querySelectorAll(".spanEvent"))
 
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
@@ -101,39 +105,58 @@ reminderCheckbox.onclick = function () {
     reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
 };
-
 // Save events to localStorage when create button is clicked
 // 1. Check validity
 // 2. if it is true, set the event localStorage
 //    else show pop up message
-newEventForm.onsubmit = function () {
+function newEventValidation () {
   var titleCheck = /^.{1,60}$/; // we need to discuss 
-  var title = newEventForm["titleNewEvent"].value;
-  var myArray = []; // using array to all the data to localStorage 
+  var title = titleNewEvent.value;
 
-  if (title.search(titleCheck) === -1) return false;
-  myArray.push({title : title});
+  if (title.search(titleCheck) === -1) {
+    titleNewEvent.style.background = "rgb(210, 43, 65, 0.4)"
+    return false;
+  }
 
-  if (eventType.value === "none") return false;
-  myArray[0]["eventType"] = eventType.value;
+  if (typeNewEvent.value === "none") {
+   typeNewEvent.style.color = "var(--redColor)"
+    return false;
+  }
 
+  if(!startNewEvent.value) {
+    eventLabel[0].style.color = "var(--redColor)"
+    eventLabel[0].style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+
+    return false;
+  }
   if (endCheckbox.checked) {
-    newEventForm["endNewEvent"].required = true;
-    if (!newEventForm["endNewEvent"].value) return false;
-    myArray[0]["endDate"] = newEventForm["endNewEvent"].value
+    endNewEvent.required = true;
+    if (!endNewEvent.value) {
+      endDateLabel.style.color = "var(--redColor)";
+      endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+
+      return false;
+    }
   }
 
   if (reminderCheckbox.checked) {
-    newEventForm["timeReminderNewEvent"].required = true;
-    if (!newEventForm["timeReminderNewEvent"].value) return false;
-     myArray[0]["reminder"] = newEventForm["timeReminderNewEvent"].value
+    timeReminderNewEvent.required = true;
+    if (timeReminderNewEvent.value === "") {
+      reminderLabel.style.color = "var(--redColor)";
+      reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+      return false;
+    }
   }
+
+  if(!descriptionNewEvent.value) {
+    eventDescriptionLabel.style.color = "var(--redColor)"
+    return false;
+  }
+
   return true;
 };
 
-console.log(endCheckbox.checked ? true : false)
-console.log(reminderCheckbox.checked ? true : false)
-console.log(document.getElementById("typeNewEvent").value === "none")
+
 
 
 
@@ -157,7 +180,8 @@ reminderEvent = document.getElementById('reminderEvent');
 descriptionEvent = document.getElementById('descriptionEvent');
 
 eventEndDateLabel = document.getElementById('eventEndDateLabel');
-eventReminderLabel = document.getElementById('eventReminderLabel')
+eventReminderLabel = document.getElementById('eventReminderLabel');
+eventDescriptionLabel = document.querySelector(".eventDescriptionLabel")
 
 let i = 0;
 let eventInfoArray = [];
@@ -170,9 +194,11 @@ localStorage.setItem("eventIndex", eventIndex );
 
 // Function to save a new event
 saveEventButton.addEventListener('click', function(){
+  if(newEventValidation()){
   setNewEvent();
   getEvent();
   modalNewEvent.style.display = "none";
+  }
   // clearNewEventForm();
 })
 
