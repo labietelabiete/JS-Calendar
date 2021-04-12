@@ -218,6 +218,7 @@ main{
     transition: .2s;
 }
 
+/* Event container */
 .eventsDiv{
     flex-grow: 1;
     margin-right: 10px;
@@ -226,6 +227,22 @@ main{
     /* transform: translateY(-8px); */
 }
 
+/* Event type formats */
+.work{
+
+}
+
+.sport{
+
+}
+
+.music{
+
+}
+
+.other{
+
+}
 /* FOOTER
 --------------------------------------------------------------- */
 footer{
