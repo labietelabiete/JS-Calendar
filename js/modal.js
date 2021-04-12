@@ -102,6 +102,7 @@ document.onkeydown = function (event) {
   if (event.keyCode == 27) {
     modalNewEvent.style.display = "none";
     modalCheckEvent.style.display = "none";
+    clearNewEventForm();
   }
 };
 
