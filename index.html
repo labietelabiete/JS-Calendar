@@ -100,19 +100,40 @@
                 <label class="eventLabel" for="startNewEvent">Initial date</label><br>
                 <input class="eventDate" type="datetime-local" id="startNewEvent" name=""><br>
 
-                <label class="checkboxLabel">
+                <!-- <label class="checkboxLabel">
                     <input type="checkbox" name="checkBoxEndDate" id="checkBoxEndDate" />
                     <span class="spanEvent"></span>
                     <label class="eventLabel" for="checkBoxEndDate" id="endDateLabel">End date</label><br>
+                </label> -->
+
+                <!-- End date -->
+                <label class="checkbox checkboxLabel">
+                    <span class="checkbox_input">
+                        <input id="endEventCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label eventLabel" id="endDateLabel">End date</h2>
                 </label>
+
                 <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent" name="trip-end"><br>
 
 
-                <label class="checkboxLabel">
+                <!-- <label class="checkbox checkboxLabel">
                     <input type="checkbox" id="reminderNewEvent" />
                     <span class="spanEvent"></span>
-                    <label class="eventLabel" for="reminderNewEvent" id="reminderLabel">Reminder</label><br>
+                    <label class="eventLabel" for="reminderNewEvent" id="reminderLabel">Reminder</label>
+                <br>
+                </label> -->
+
+                <!-- Reminder date -->
+                <label class="checkbox checkboxLabel">
+                    <span class="checkbox_input">
+                        <input id="reminderCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label eventLabel" id="reminderLabel">Reminder</h2>
                 </label>
+
                 <div id="reminderNewEventDiv" style="display: none">
                     <label class="eventDate" for="timeReminderNewEvent">Time: </label>
                     <select class="eventDate" name="" id="timeReminderNewEvent">

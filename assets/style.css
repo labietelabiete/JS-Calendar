@@ -54,7 +54,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
 }
 
 body {
@@ -361,7 +361,7 @@ select option:hover {
     position: relative;
     z-index: -9999;
   }
-  .checkboxLabel span {
+  /* .checkboxLabel span {
     width: 15px;
     height: 15px;
     margin-right: 10px;
@@ -369,17 +369,18 @@ select option:hover {
     background: url("https://cdn.pixabay.com/photo/2020/07/02/01/10/profile-frame-5361387_960_720.png");
     background: url("./img/uncheckedbox_grey.png");
     background-size: 15px 15px;
-  }
-  .checkboxLabel input:checked + span {
+  } */
+  /* .checkboxLabel input:checked + span {
     background: url("https://i.pinimg.com/736x/f9/42/6c/f9426c98bf7d46aeb5b0d0664ad43ac0.jpg");
     background: url("./img/checkedbox_black.png");
     background-size: 15px 15px;
-  }
+  } */
 
   #endDateLabel{
       color: var(--greyColor);
       border-bottom: var(--greyColor) solid var(--borderWidth);
     }
+
   #reminderLabel{
     color: var(--greyColor);
     border-bottom: var(--greyColor) solid var(--borderWidth);
