@@ -3,17 +3,18 @@ let r = document.querySelector(':root');
 //Variables definition
 let dateEventUTC;
 let i = 0;
-let eventInfoArray;
+// let eventInfoArray;
 let newEventObj = {};
 let testEventIndex = i;
-
+let eventToDisplay
 let eventIndex;
-let iniEvent = JSON.parse(localStorage.getItem("localEventInfo"));
-if (iniEvent == null){
+let eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+console.log(eventInfoArray)
+if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
 }else{
-  eventIndex = iniEvent.length;
+  eventIndex = eventInfoArray.length;
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
 }
 localStorage.setItem("eventIndex", eventIndex );
@@ -35,7 +36,8 @@ descriptionEvent = document.getElementById('descriptionEvent');
 
 eventEndDateLabel = document.getElementById('eventEndDateLabel');
 eventReminderLabel = document.getElementById('eventReminderLabel');
-eventDescriptionLabel = document.querySelector(".eventDescriptionLabel")
+eventDescriptionLabel = document.querySelector(".eventDescriptionLabel");
+eventDescriptionLabelId = document.getElementById('eventDescriptionLabelId');
 
 
 modalNewEvent = document.getElementById("newEventModal");
@@ -61,6 +63,9 @@ endDateLabel = document.getElementById("endDateLabel");
 reminderCheckbox = document.getElementById("reminderNewEvent");
 showReminder = document.getElementById("reminderNewEventDiv");
 reminderLabel = document.getElementById("reminderLabel");
+
+descriptionCheckbox = document.getElementById("descriptionCheckbox");
+descriptionLabel = document.getElementById("descriptionLabel");
 
 // Get save button to submit event and save it to calendar and localStorage
 saveEventButton = document.getElementById("saveNewEvent");
@@ -103,9 +108,7 @@ okEvent.onclick = function () {
 };
 
 //When the user click on remove event
-removeEvent.onclick = function () {
-  modalCheckEvent.style.display = "none";
-};
+removeEvent.addEventListener('click', removingEvent);
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -149,6 +152,20 @@ reminderCheckbox.onclick = function () {
     reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
 };
+
+
+descriptionCheckbox.onclick = function() {
+  if (descriptionCheckbox.checked == true) {
+    descriptionNewEvent.style.display = "inline-block";
+    descriptionLabel.style.color = "var(--blackColor)";
+    descriptionLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  } else {
+    descriptionNewEvent.style.display = "none";
+    descriptionLabel.style.color = "var(--greyColor)";
+    descriptionLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  }
+}
+
 // Save events to localStorage when create button is clicked
 // 1. Check validity
 // 2. if it is true, set the event localStorage
@@ -189,7 +206,7 @@ function newEventValidation () {
   if (reminderCheckbox.checked) {
     timeReminderNewEvent.required = true;
     if (timeReminderNewEvent.value === "") {
-      reminderLabel.style.color = "var(--redColor)";
+      reminderLabel.style.color = 
       reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_red.png')"
       if (window.innerWidth < 768) {
@@ -199,16 +216,19 @@ function newEventValidation () {
     }
   }
 
-  if(!descriptionNewEvent.value) {
-    eventDescriptionLabel.style.color = "var(--redColor)"
-    eventLabel[3].style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-
-    return true;
+  if(descriptionCheckbox.checked) {
+    descriptionNewEvent.required = true;
+    if(descriptionNewEvent.value == "") {
+      descriptionLabel.style.color = "var(--redColor)";
+      descriptionLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+      checkboxNewEvent[2].style.background = "url('../assets/img/checkedbox_red.png')"
+    }
+    
+    return false;
   }
 
   return true;
 };
-
 
 
 // Function to save a new event
@@ -223,8 +243,8 @@ saveEventButton.addEventListener('click', function(){
 
 // Function for setting new event information to local storage
 function setNewEvent(){
-  dateStartEventUTC = new Date(startNewEvent.value)
-  dateEndEventUTC = new Date(startNewEvent.value)
+  dateStartEventUTC = new Date(startNewEvent.value);
+  dateEndEventUTC = new Date(endNewEvent.value);
 
   newEventObj = {
     id: eventIndex,
@@ -252,6 +272,10 @@ function setNewEvent(){
   if(newEventObj.endDate == "Invalid Date") {
     newEventObj.endDate = ""
   }
+  eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+  if (eventInfoArray == null) {
+    eventInfoArray = [];
+  }
   eventInfoArray.push(newEventObj);
 
 
@@ -264,69 +288,96 @@ function setNewEvent(){
 
 //Function for getting event from local storage for visualization
 function getEvent(){
-  //Parseing event info from local storage
-  // let eventInfoJS = JSON.parse(localStorage.getItem("localEventInfo"));
+  // Resetting display optional info
+  endDateEvent.innerHTML = "";
+  reminderEvent.innerHTML = "";
 
-  // titleEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].title;
+  idEvent = this.id;
+  idEvent = idEvent.match(/\d/g);
+  idEvent = idEvent.join("");
+
+  eventListComparing = JSON.parse(localStorage.getItem("localEventInfo"));
+  eventListComparing.forEach(function(eventComparing){
+    if (eventComparing.id == idEvent){
+      eventToDisplay = eventComparing;
+    }
+    })
+
+    titleEvent.innerHTML = eventToDisplay.title;
   // //Depending of type event, the colour of the event is differente
-  // switch (eventInfoJS[localStorage.getItem("eventIndex")].type) {
-  //   case 0:
-  //     r.style.setProperty('--eventColor', 'rgb(210, 43, 65)');
-  //     break;
-  //   case 1:
-  //     r.style.setProperty('--eventColor', 'rgb(220, 0, 235)');
-  //     break;
-  //   case 2:
-  //     r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
-  //     break;
-  //   case 3:
-  //     r.style.setProperty('--eventColor', 'rgb(0, 89, 194)');
-  //     break;
-  //   default:
-  //     r.style.setProperty('--eventColor', 'black');
-  //     break;
-  // }
-  // typeEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].type;
-  // startDateEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].startDate;
+    switch (parseInt(eventToDisplay.type)) {
+      case 0:
+        r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
+        typeEvent.innerHTML = "Work";
+        break;
+      case 1:
+        r.style.setProperty('--eventColor', 'yellow');
+        typeEvent.innerHTML = "Music";
+        break;
+      case 2:
+        r.style.setProperty('--eventColor', 'rgb(220, 0, 235)');
+        typeEvent.innerHTML = "Sport";
+        break;
+      case 3:
+        r.style.setProperty('--eventColor', 'rgb(0, 89, 194)');
+        typeEvent.innerHTML = "Other";
+        break;
+      default:
+        r.style.setProperty('--eventColor', 'black');
+        break;
+    }
 
-  // //Enddate as optional argument
-  // if (eventInfoJS[localStorage.getItem("eventIndex")].endDate == "") {
-  //   eventEndDateLabel.style.display = "none";
-  // } else{
-  //   console.log("Entro a display eventEndDateLabel");
-  //   eventEndDateLabel.style.display = "inline-block";
-  //   endDateEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].endDate;
-  // }
-  // //Enddate as optional argument
-  // if (eventInfoJS[localStorage.getItem("eventIndex")].reminder == "") {
-  //   eventReminderLabel.style.display = "none";
-  // } 
-  //   else{
-  //   console.log("Entro a display eventReminderLabel");
-  //   eventReminderLabel.style.display = "inline-block";
-  //   reminderEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].reminder;
-  // }
-  
-  // descriptionEvent.innerHTML = eventInfoJS[localStorage.getItem("eventIndex")].description;
+    if (eventToDisplay.startDate.minutes < 10) {
+      eventToDisplay.startDate.minutes = "0" + eventToDisplay.startDate.minutes;
+    }
+    startDateEvent.innerHTML = eventToDisplay.startDate.day + "/" + eventToDisplay.startDate.month + "/" + eventToDisplay.startDate.year + " " + eventToDisplay.startDate.hour + ":" + eventToDisplay.startDate.minutes;
 
-  // // localStorage.setItem("testEventIndex", eventIndex);
+    if (eventToDisplay.endDate.year == null) {
+      eventEndDateLabel.style.display = "none";
+    } else{
+      eventEndDateLabel.style.display = "inline-block";
+      endDateEvent.innerHTML = eventToDisplay.endDate.day + "/" + eventToDisplay.endDate.month + "/" + eventToDisplay.endDate.year + " " + eventToDisplay.endDate.hour + ":" + eventToDisplay.endDate.minutes;
+    }
+
+    if (eventToDisplay.reminder == "") {
+      eventReminderLabel.style.display = "none";
+    } 
+      else{
+      eventReminderLabel.style.display = "inline-block";
+      reminderEvent.innerHTML = eventToDisplay.reminder + " min";
+    }
+
+    if (eventToDisplay.description == "") {
+      eventDescriptionLabelId.style.display = "none";
+    } 
+      else{
+        eventDescriptionLabelId.style.display = "inline-block";
+        eventDescriptionLabelId.innerHTML = eventToDisplay.description;
+    }
+
+    modalCheckEvent.style.display = "block";
+}
+
+function removingEvent(){
+  console.log('entro en la remove function');
+  console.log(eventToDisplay.id)
+  eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
+  console.log(eventListToRemove);
+  for (let i = 0; i < eventListToRemove.length; i++) {
+    if (eventListToRemove[i].id == eventToDisplay.id) {
+      eventListToRemove.splice(i, 1);
+    }
+  } 
+  console.log(eventListToRemove);
+  localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
+  modalCheckEvent.style.display = "none";
+  setDailyEvents();
 }
 
 function clearNewEventForm(){
   newEventForm.reset();
 
-  //Setting empty the formulary
-  // titleNewEvent.value = "";
-  // typeNewEvent.value = "";
-  // typeNewEvent.innerHTML = "Type"
-  // startNewEvent.value = "";
-  // endNewEvent.value = "";
-  // timeReminderNewEvent.value = "";
-  // timeReminderNewEvent.innerHTML = "Select one"
-  // descriptionNewEvent.value = "";
-  
-
-  //Setting black back all colors
+  //Setting back all colors
   titleNewEvent.style.background = "white";
   typeNewEvent.style.color = "var(--darkColor)";
   eventLabel[0].style.color = "var(--darkColor)";

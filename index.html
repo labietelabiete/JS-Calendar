@@ -131,9 +131,12 @@
                         <option value="60">1 hour</option>
                     </select>
                 </div><br>
-
-                <label class="eventLabel eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
-                <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
+                <label class="checkboxLabel">
+                    <input type="checkbox" id="descriptionCheckbox" />
+                    <span class="spanEvent"></span>
+                <label class="eventLabel eventDescriptionLabel" for="descriptionCheckbox" id="descriptionLabel">Description</label><br>
+                </label>
+                <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500" style="display:none"></textarea><br>
                 <div class="btnDiv">
                     <input class="modalBtn" type="button" value="Create" id="saveNewEvent">
                     <input class="modalBtn" type="button" value="Cancel" id="cancelNewEvent">
@@ -160,11 +163,11 @@
                 <label class="eventLabel eventLabelCheck" id="eventReminderLabel" for="reminderNewEvent">Reminder</label><br>
                 <p class="eventDate" id="reminderEvent"></p>
 
-                <label class="eventLabel eventLabelCheck eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
+                <label class="eventLabel eventLabelCheck eventDescriptionLabel" id="eventDescriptionLabelId" for="descriptionNewEvent">Description</label><br>
                 <p class="eventDate" id="descriptionEvent"></p>
                 <div class="btnDiv">
                     <input class="modalBtn" type="button" value="OK" id="okCheckEventButton">
-                    <input class="modalBtn" type="submit" value="Remove" id="RemoveEventButton">
+                    <input class="modalBtn" type="button" value="Remove" id="RemoveEventButton">
                 </div>
             </form>
         </div>

@@ -1,11 +1,11 @@
 /* --------------
 FONT
 --------------  */
-@font-face{
-    font-family: 'Clash';
-    src:url('./_Design/_Fonts/ClashDisplay-Variable.ttf') format('truetype');
-        font-weight: 200 700;
-        font-style: normal;
+@font-face {
+  font-family: "Clash";
+  src: url("./_Design/_Fonts/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-style: normal;
 }
 
 /* --------------
@@ -84,18 +84,18 @@ select:-webkit-autofill:focus {
 }
 
 body {
-    padding: 40px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* TOP PART
 --------------------------------------------------------------- */
 header {
-    height: 150px;
-    display: flex;
-    align-items: flex-start;
+  height: 150px;
+  display: flex;
+  align-items: flex-start;
 }
 
 #title {
@@ -105,50 +105,50 @@ header {
 
 }
 
-#monthAndYear{
-    flex: 1 1 1000px;
-    display: flex;
-    margin-right: var(--margin);
-    height: inherit;
+#monthAndYear {
+  flex: 1 1 1000px;
+  display: flex;
+  margin-right: var(--margin);
+  height: inherit;
 }
 
-#month, #year {
-    font-size: 140px;
-    /* display: inline; */
-    height: fit-content;
-    transform: translateY(-30px);
+#month,
+#year {
+  font-size: 140px;
+  /* display: inline; */
+  height: fit-content;
+  transform: translateY(-30px);
 }
 
 #month {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-#year{
-    font-weight: var(--extraLight);
+#year {
+  font-weight: var(--extraLight);
 }
 
-#newEventBtn{
-    font-size: 24px;
-    width: 180px;
-    padding: 10px 20px 10px 20px;
-    background-color: transparent;
-    border: var(--borderWidth) solid var(--darkColor);
-    border-radius: 6px;
-    transition: .3s;
-    outline: none;
+#newEventBtn {
+  font-size: 24px;
+  width: 180px;
+  padding: 10px 20px 10px 20px;
+  background-color: transparent;
+  border: var(--borderWidth) solid var(--darkColor);
+  border-radius: 6px;
+  transition: 0.3s;
+  outline: none;
 }
 
-#newEventBtn:hover{
-    color: whitesmoke;
-    background-color: var(--darkColor);
+#newEventBtn:hover {
+  color: whitesmoke;
+  background-color: var(--darkColor);
 }
-
 
 /* MAIN PART
 --------------------------------------------------------------- */
-main{
-    display: flex;
-    flex-grow: 1;
+main {
+  display: flex;
+  flex-grow: 1;
 }
 
 /* Left */
@@ -159,8 +159,8 @@ main{
     align-items: flex-end;
 }
 
-#eventTypes{
-    width: 100%;
+#eventTypes {
+  width: 100%;
 }
 
 .checkbox{
@@ -250,41 +250,41 @@ main{
 
 
 /* Right */
-#mainRight{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+#mainRight {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-#monthButtons{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--margin);
+#monthButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--margin);
 }
 
-.navBtn{
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: var(--borderWidth) var(--darkColor) solid;
-    font-weight: var(--regular);
-    background-color: transparent;
-    outline: none;
-    transition: .3s;
+.navBtn {
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: var(--borderWidth) var(--darkColor) solid;
+  font-weight: var(--regular);
+  background-color: transparent;
+  outline: none;
+  transition: 0.3s;
 }
 
-.navBtn:hover{
-    color: whitesmoke;
-    background-color: var(--darkColor);
+.navBtn:hover {
+  color: whitesmoke;
+  background-color: var(--darkColor);
 }
 
-#weekdaysContainer{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    font-weight: var(--semiBold);
-    font-size: 14px;
-    margin-bottom: 10px;
+#weekdaysContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: var(--semiBold);
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 /* Calendar container */
@@ -320,23 +320,23 @@ main{
 }
 
 /* Previous & next month days */
-.otherNumberDiv{
-    line-height: 30px;
-    font-weight: var(--extraLight);
-    font-size: 40px;
-    text-align: left;
+.otherNumberDiv {
+  line-height: 30px;
+  font-weight: var(--extraLight);
+  font-size: 40px;
+  text-align: left;
 }
 
 /* Number */
-.numberDiv{
-    line-height: 30px;
-    color: var(--darkColor);
-    font-size: 40px;
-    text-align: left;
-    font-weight: var(--bold);
-    width: fit-content;
-    margin-right: 15px;
-    transition: .2s;
+.numberDiv {
+  line-height: 30px;
+  color: var(--darkColor);
+  font-size: 40px;
+  text-align: left;
+  font-weight: var(--bold);
+  width: fit-content;
+  margin-right: 15px;
+  transition: 0.2s;
 }
 
 .eventsDiv{
@@ -379,11 +379,10 @@ main{
     box-shadow: 0 0 8px 8px var(--blueColor);
 }
 
-
 /* FOOTER
 --------------------------------------------------------------- */
-footer{
-    height: 50px;
+footer {
+  height: 50px;
 }
 
 /* The Modal (background) */
@@ -465,14 +464,14 @@ textarea{
     outline: none;
 }
 
-.eventTypeOption{
-    font-size: 26px;
-    font-weight: var(--light);
+.eventTypeOption {
+  font-size: 26px;
+  font-weight: var(--light);
 }
 
 select option:hover {
-    background-color: var(--greyColor);
-  }
+  background-color: var(--greyColor);
+}
 
 .eventLabel{
     display: inline-block;
@@ -523,8 +522,20 @@ select option:hover {
     border-bottom: var(--greyColor) solid var(--borderWidth);
 }
 
-.eventDescriptionLabel{
-    margin-bottom: 10px;
+#endDateLabel {
+  color: var(--greyColor);
+  border-bottom: var(--greyColor) solid var(--borderWidth);
+}
+#reminderLabel  {
+  color: var(--greyColor);
+  border-bottom: var(--greyColor) solid var(--borderWidth);
+}
+#descriptionLabel {
+  color: var(--greyColor);
+  border-bottom: var(--greyColor) solid var(--borderWidth);
+}
+.eventDescriptionLabel {
+  margin-bottom: 10px;
 }
 
 .eventDescription{
@@ -537,9 +548,9 @@ select option:hover {
     margin-bottom: 30px;
 }
 
-.btnDiv{
-    display: flex;
-    justify-content: space-between;
+.btnDiv {
+  display: flex;
+  justify-content: space-between;
 }
 
 .modalBtn{
@@ -553,57 +564,56 @@ select option:hover {
     border-radius: 6px;
 }
 
-#saveNewEvent:hover{
-    color: white;
-    background-color: var(--darkColor);
+#saveNewEvent:hover {
+  color: white;
+  background-color: var(--darkColor);
 }
 
-#cancelNewEvent{
-    color: var(--redColor);
-    border: var(--redColor) solid var(--borderWidth);
+#cancelNewEvent {
+  color: var(--redColor);
+  border: var(--redColor) solid var(--borderWidth);
 }
-#cancelNewEvent:hover{
-    color: white;
-    background-color: var(--redColor);
+#cancelNewEvent:hover {
+  color: white;
+  background-color: var(--redColor);
 }
-
 
 /* Created Event modal styles*/
-#checkEventModal{
-    color: var(--eventColor);
+#checkEventModal {
+  color: var(--eventColor);
 }
-.modalContentCheck{
-    border: var(--eventColor) solid var(--borderWidth);
+.modalContentCheck {
+  border: var(--eventColor) solid var(--borderWidth);
 }
-.closeCheck{
-    color: var(--eventColor);
+.closeCheck {
+  color: var(--eventColor);
 }
-.closeCheck:hover{
-    color: var(--eventColor);
+.closeCheck:hover {
+  color: var(--eventColor);
 }
-.eventLabelCheck{
-    border-bottom: var(--eventColor) solid var(--borderWidth);
-}
-
-#descriptionEvent{
-    height: 120px;
+.eventLabelCheck {
+  border-bottom: var(--eventColor) solid var(--borderWidth);
 }
 
-#okCheckEventButton{
-    color: var(--eventColor);
-    border: var(--eventColor) solid var(--borderWidth);
+#descriptionEvent {
+  height: 120px;
 }
-#okCheckEventButton:hover{
-    color: white;
-    background-color: var(--eventColor);
+
+#okCheckEventButton {
+  color: var(--eventColor);
+  border: var(--eventColor) solid var(--borderWidth);
 }
-#RemoveEventButton{
-    color: var(--redColor);
-    border: var(--redColor) solid var(--borderWidth);
+#okCheckEventButton:hover {
+  color: white;
+  background-color: var(--eventColor);
 }
-#RemoveEventButton:hover{
-    color: white;
-    background-color: var(--redColor);
+#RemoveEventButton {
+  color: var(--redColor);
+  border: var(--redColor) solid var(--borderWidth);
+}
+#RemoveEventButton:hover {
+  color: white;
+  background-color: var(--redColor);
 }
 
 /*Media query for modals */
@@ -626,14 +636,13 @@ select option:hover {
     font-size: 16px;
     margin-bottom: 50px;
     margin-left: 15px;
+  }
 
-}
-
-.eventTypeOption{
+  .eventTypeOption {
     font-size: 16px;
-}
+  }
 
-.eventLabel{
+  .eventLabel {
     display: inline-block;
     width: 90%;
     font-size: 16px;

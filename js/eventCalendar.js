@@ -100,6 +100,7 @@ function setMonthEvents(){
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
             newEventDiv.innerText = monthEvent.title;
+            newEventDiv.addEventListener('click', getEvent);
         })
     }
 }
