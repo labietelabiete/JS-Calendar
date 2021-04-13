@@ -12,34 +12,27 @@ var eventObj = {
     year: 0,
     endDate: 'Invalid Date'
 }
+
 var eventsArray = [];
 var eventsDivs = document.querySelectorAll(".eventsDiv");
 console.log(currentMonthDays);
+
 // LISTENERS
 //------------------------------------------------------------------------
-
-// Showing already created events (month overview)
-function showingEvents(dayId, numEvents){
-    let selDay = document.querySelector("#day12 .eventsDiv");
-    for ( let d = 1; d<=numEvents; d++){
-        let newEvent = document.createElement("div");
-        selDay.appendChild(newEvent);
-        newEvent.innerText = "Event" + d;
-    }
-}
-
 // Creating a filtered array (month events)
-saveEventButton.addEventListener('click', setDailyEvents)
-prevMonthBtn.addEventListener('click', setDailyEvents);
-nextMonthBtn.addEventListener('click', setDailyEvents);
+saveEventButton.addEventListener('click', setDailyEvents);
+setMonthEvents();
+prevMonthBtn.addEventListener('click', setMonthEvents);
+nextMonthBtn.addEventListener('click', setMonthEvents);
+
 
 function resetDaysContent(array){
-    for ( const day in array){
-        day.innerHTML = "";
+    for ( const d of array ){
+        d.innerHTML = "";
     }
 }
 
-// Current month's events
+// Sort current month's events
 function getMonthEvents(obj){
     if(obj.startDate.year === currentYearNum && obj.startDate.month === currentMonthNum){
         return obj;
@@ -48,25 +41,51 @@ function getMonthEvents(obj){
     }
 }
 
-function setDailyEvents(){
-    // Restoring all previous HTML content
-    resetDaysContent(eventsDivs);
-
-    let monthEvents = JSON.parse(localStorage.getItem("localEventInfo")).filter(getMonthEvents);
-
+// Display current month's events
+function setMonthEvents(){
+    
+    let allStorage = JSON.parse(localStorage.getItem("localEventInfo"))
+    let monthEvents = allStorage.filter(getMonthEvents);
     // Sorting all events by time
     monthEvents.sort(function(a, b){
         return a.startDate.milliseconds - b.startDate.milliseconds;
     });
 
-    console.log("Month events", monthEvents);
+    monthEvents.forEach(function(monthEvent){
+        let dayID = monthEvent.startDate.day;
+        let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
+        let newEventDiv = document.createElement("div");
+        dayEventsDiv.appendChild(newEventDiv);
+        newEventDiv.innerText = monthEvent.title;
+    })
+}
 
-    let lastEvent = monthEvents[monthEvents.length-1];
-    let dayID = lastEvent.startDate.day;
-    let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
-    let newEventDiv = document.createElement("div");
-    dayEventsDiv.appendChild(newEventDiv);
-    newEventDiv.innerText = lastEvent.title;
+function setDailyEvents(){
+    // Restoring all previous HTML content
+    resetDaysContent(eventsDivs);
+
+    let allStorage = JSON.parse(localStorage.getItem("localEventInfo"))
+    let monthEvents = allStorage.filter(getMonthEvents);
+
+    // Sorting all events by time
+    let sortedMonthEvents = monthEvents.sort(function(a, b){
+        return a.startDate.milliseconds - b.startDate.milliseconds;
+    });
+
+    console.log("Month events", sortedMonthEvents);
+
+    // Appending the div
+    let lastEvent = allStorage[allStorage.length-1];
+
+    if (lastEvent.startDate.month === currentMonthNum){
+        let dayID = lastEvent.startDate.day;
+        let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
+        let newEventDiv = document.createElement("div");
+        newEventDiv.setAttribute("id", lastEvent.id);
+        dayEventsDiv.appendChild(newEventDiv);
+        newEventDiv.innerText = lastEvent.title;
+    }
+
 }
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------

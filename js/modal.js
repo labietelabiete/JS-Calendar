@@ -1,4 +1,11 @@
 let r = document.querySelector(':root');
+//Event information handling
+//Variables definition
+let dateEventUTC;
+let i = 0;
+let eventInfoArray = [];
+let newEventObj = {};
+let eventIndex = i;
 
 titleNewEvent = document.getElementById('titleNewEvent');
 typeNewEvent = document.getElementById('typeNewEvent');
@@ -194,17 +201,6 @@ function newEventValidation () {
 
 
 
-//Event information handling
-
-//Variables definition
-
-let dateEventUTC;
-let i = 0;
-let eventInfoArray = [];
-let newEventObj = {};
-// localStorage.clear();
-let eventIndex = i;
-
 localStorage.setItem("eventIndex", eventIndex );
 
 
@@ -228,7 +224,7 @@ function setNewEvent(){
     title: titleNewEvent.value,
     type: typeNewEvent.value,
     startDate: {
-      milliseconds : dateStartEventUTC.getUTCMilliseconds(),
+      milliseconds : dateStartEventUTC.getTime(),
       minutes : dateStartEventUTC.getUTCMinutes(),
       hour :  dateStartEventUTC.getUTCHours()+2,
       day : dateStartEventUTC.getUTCDate(),
@@ -236,7 +232,7 @@ function setNewEvent(){
       year : dateStartEventUTC.getUTCFullYear(),
     },
     endDate: {
-      milliseconds : dateEndEventUTC.getUTCMilliseconds(),
+      milliseconds : dateEndEventUTC.getTime(),
       minutes : dateEndEventUTC.getUTCMinutes(),
       hour :  dateEndEventUTC.getUTCHours()+2,
       day : dateEndEventUTC.getUTCDate(),
