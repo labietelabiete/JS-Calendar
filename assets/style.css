@@ -348,6 +348,16 @@ select option:hover {
     margin-bottom: 10px;
     transition: .1s;
 }
+
+.checkboxEndReminder{
+    width: 99%;
+    font-size: 26px;
+    font-weight: var(--semiBold);
+    border-bottom: var(--darkColor) solid var(--borderWidth);
+    margin-bottom: 10px;
+    transition: .1s;
+}
+
 .eventDate{
     margin-bottom: 10px;
     font-size: 20px;
