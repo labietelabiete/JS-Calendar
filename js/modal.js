@@ -6,7 +6,7 @@ let i = 0;
 let eventInfoArray;
 let newEventObj = {};
 let testEventIndex = i;
-
+let eventToDisplay
 let eventIndex;
 let iniEvent = JSON.parse(localStorage.getItem("localEventInfo"));
 if (iniEvent == null){
@@ -103,9 +103,7 @@ okEvent.onclick = function () {
 };
 
 //When the user click on remove event
-removeEvent.onclick = function () {
-  modalCheckEvent.style.display = "none";
-};
+removeEvent.addEventListener('click', removingEvent);
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -215,6 +213,9 @@ function newEventValidation () {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
   setNewEvent();
+  if (timeReminderNewEvent.value != "") {
+    createReminder();
+  }
   // getEvent();
   clearNewEventForm();
   modalNewEvent.style.display = "none";
@@ -272,7 +273,6 @@ function getEvent(){
   idEvent = this.id;
   idEvent = idEvent.match(/\d/g);
   idEvent = idEvent.join("");
-  console.log(idEvent);
 
   eventListComparing = JSON.parse(localStorage.getItem("localEventInfo"));
   eventListComparing.forEach(function(eventComparing){
@@ -329,6 +329,22 @@ function getEvent(){
     descriptionEvent.innerHTML = eventToDisplay.description;
 
     modalCheckEvent.style.display = "block";
+}
+
+function removingEvent(){
+  console.log('entro en la remove function');
+  console.log(eventToDisplay.id)
+  eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
+  console.log(eventListToRemove);
+  for (let i = 0; i < eventListToRemove.length; i++) {
+    if (eventListToRemove[i].id == eventToDisplay.id) {
+      eventListToRemove.splice(i, 1);
+    }
+  } 
+  console.log(eventListToRemove);
+  localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
+  modalCheckEvent.style.display = "none";
+  setMonthEvents();
 }
 
 function clearNewEventForm(){
