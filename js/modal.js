@@ -263,8 +263,75 @@ function setNewEvent(){
   eventIndex = JSON.parse(localStorage.getItem("localEventInfo")).length;
 }
 
+let day40 = document.querySelector('#eventId0');
+day40.addEventListener('click', getEvent);
 //Function for getting event from local storage for visualization
 function getEvent(){
+  idEvent = this.id;
+  idEvent = idEvent.match(/\d/g);
+  idEvent = idEvent.join("");
+  console.log(idEvent);
+
+  eventListComparing = JSON.parse(localStorage.getItem("localEventInfo"));
+  eventListComparing.forEach(function(eventComparing){
+    if (eventComparing.id == idEvent){
+      console.log("la tengo");
+      console.log(eventComparing.id);
+      eventToDisplay = eventComparing;
+      console.log(eventToDisplay);
+    }
+    } )
+
+    titleEvent.innerHTML = eventToDisplay.title;
+  // //Depending of type event, the colour of the event is differente
+    switch (parseInt(eventToDisplay.type)) {
+      case 0:
+        r.style.setProperty('--eventColor', 'rgb(210, 43, 65)');
+        typeEvent.innerHTML = "Work";
+        break;
+      case 1:
+        r.style.setProperty('--eventColor', 'rgb(220, 0, 235)');
+        typeEvent.innerHTML = "Music";
+        break;
+      case 2:
+        r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
+        typeEvent.innerHTML = "Sport";
+        break;
+      case 3:
+        r.style.setProperty('--eventColor', 'rgb(0, 89, 194)');
+        typeEvent.innerHTML = "Other";
+        break;
+      default:
+        r.style.setProperty('--eventColor', 'black');
+        break;
+    }
+
+    startDateEvent.innerHTML = eventToDisplay.startDate.day + "/" + eventToDisplay.startDate.month + "/" + eventToDisplay.startDate.year + " " + eventToDisplay.startDate.hour + ":" + eventToDisplay.startDate.minutes;
+
+    if (eventToDisplay.endDate == "") {
+      eventEndDateLabel.style.display = "none";
+    } else{
+      eventEndDateLabel.style.display = "inline-block";
+      endDateEvent.innerHTML = eventToDisplay.endDate.day + "/" + eventToDisplay.endDate.month + "/" + eventToDisplay.endDate.year + " " + eventToDisplay.endDate.hour + ":" + eventToDisplay.endDate.minutes;
+    }
+
+    if (eventToDisplay.reminder == "") {
+      eventReminderLabel.style.display = "none";
+    } 
+      else{
+      console.log("Entro a display eventReminderLabel");
+      eventReminderLabel.style.display = "inline-block";
+      reminderEvent.innerHTML = eventToDisplay.reminder;
+    }
+
+    descriptionEvent.innerHTML = eventToDisplay.description;
+
+    modalCheckEvent.style.display = "block";
+
+
+
+
+
   //Parseing event info from local storage
   // let eventInfoJS = JSON.parse(localStorage.getItem("localEventInfo"));
 
