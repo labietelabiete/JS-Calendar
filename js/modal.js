@@ -3,17 +3,18 @@ let r = document.querySelector(':root');
 //Variables definition
 let dateEventUTC;
 let i = 0;
-let eventInfoArray;
+// let eventInfoArray;
 let newEventObj = {};
 let testEventIndex = i;
 let eventToDisplay
 let eventIndex;
-let iniEvent = JSON.parse(localStorage.getItem("localEventInfo"));
-if (iniEvent == null){
+let eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+console.log(eventInfoArray)
+if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
 }else{
-  eventIndex = iniEvent.length;
+  eventIndex = eventInfoArray.length;
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
 }
 localStorage.setItem("eventIndex", eventIndex );
@@ -213,10 +214,6 @@ function newEventValidation () {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
   setNewEvent();
-  if (timeReminderNewEvent.value != "") {
-    createReminder();
-  }
-  // getEvent();
   clearNewEventForm();
   modalNewEvent.style.display = "none";
   }
@@ -253,6 +250,10 @@ function setNewEvent(){
   };
   if(newEventObj.endDate == "Invalid Date") {
     newEventObj.endDate = ""
+  }
+  eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+  if (eventInfoArray == null) {
+    eventInfoArray = [];
   }
   eventInfoArray.push(newEventObj);
 
@@ -344,7 +345,7 @@ function removingEvent(){
   console.log(eventListToRemove);
   localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
   modalCheckEvent.style.display = "none";
-  setMonthEvents();
+  setDailyEvents();
 }
 
 function clearNewEventForm(){
