@@ -1,6 +1,13 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
 var eventsDivs = document.querySelectorAll(".eventsDiv");
+// Accessing all checkboxes
+let workCheckbox = document.getElementById("workCheckbox");
+let sportCheckbox = document.getElementById("sportCheckbox");
+let musicCheckbox = document.getElementById("musicCheckbox");
+let otherCheckbox = document.getElementById("otherCheckbox");
+
+
 
 // LISTENERS
 //------------------------------------------------------------------------
@@ -9,6 +16,10 @@ saveEventButton.addEventListener('click', setDailyEvents);
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
 
+// workCheckbox.addEventListener("change", setMonthEvents);
+// sportCheckbox.addEventListener("change", setMonthEvents);
+// musicCheckbox.addEventListener("change", setMonthEvents);
+// otherCheckbox.addEventListener("change", setMonthEvents);
 
 function resetDaysContent(array){
     for ( const d of array ){
@@ -25,6 +36,14 @@ function getMonthEvents(obj){
     }
 }
 
+// Filter type of events
+function filterType(array){
+    let filteredArray = new Array;
+
+
+    return filteredArray;
+}
+
 // Display current month's events
 function setMonthEvents(){
 
@@ -33,11 +52,14 @@ function setMonthEvents(){
 
     // Only declaring month events if at least there's one event
     if (allStorage !== null){
+        // Sorting by month & year
         let monthEvents = allStorage.filter(getMonthEvents);
-        // Sorting all events by time
+        // Sorting by time
         monthEvents.sort(function(a, b){
             return a.startDate.milliseconds - b.startDate.milliseconds;
         });
+
+
 
         monthEvents.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
@@ -59,8 +81,6 @@ function setDailyEvents(){
     setMonthEvents();
 }
 
-// function filterTypeEvents(array){
-    
-// }
+
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
