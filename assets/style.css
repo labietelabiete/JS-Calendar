@@ -14,7 +14,7 @@ GENERAL VARIABLES
 :root{
     /* Colors */
     --darkColor: black;
-    --yellowColor: yellow;
+    --yellowColor: rgb(255, 183, 0);
     --redColor: rgb(210, 43, 65);
     --magentaColor: rgb(220, 0, 235);
     --greenColor: rgb(0, 213, 194);
@@ -55,6 +55,9 @@ STYLING
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
     /* outline: 2px red solid; */
+
+
+
 }
 
 body {
@@ -273,10 +276,23 @@ main{
 .dayDiv{
     padding: 15px 10px 15px 0;
     border-top: 2px black solid;
-    transition: .2s;
+    transition: .4s;
     display: flex;
     align-items: flex-start;
 
+}
+
+.currentMonthDay:hover{
+    box-shadow: 0 0 20px 20px rgb(230, 230, 230);
+    background-color: rgb(230, 230, 230);
+    border-top: 2px rgb(230, 230, 230) solid;
+    
+}
+
+.currentMonthDay:hover *{
+    box-shadow: none;
+    background-color: transparent;
+    color: black;
 }
 
 /* Previous & next month days */
@@ -305,14 +321,19 @@ main{
     display: flex;
     flex-direction: column;
     /* transform: translateY(-8px); */
+    padding: 5px;
+
+
 }
 
 /* Types of events */
 .event{
     font-size: 14px;
-    color: var(--darkColor);
+    color: white;
+    font-weight: var(--light);
     border-radius: 10px;
     margin-bottom: 10px;
+    transition: .2s;
 }
 
 .workEvent{
@@ -348,6 +369,14 @@ footer{
 
 
 /* The Modal (background) */
+
+textarea{
+    resize: none;
+    outline: none;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -360,18 +389,20 @@ footer{
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  align-items: center;
 }
 
 /* Modal Content */
 .modalContent {
   background-color: #fefefe;
+  border-radius: 15px;
   margin: auto;
-  padding: 20px 40px;
+  padding: 20px 40px 60px 40px;
   border: 1px solid #888;
   min-width: 450px;
   height: 700px;
   width: 20%;
-  /* height: 80%; */
+  height: fit-content;
   border: var(--darkColor) solid var(--borderWidth);
 }
 
@@ -486,7 +517,7 @@ select option:hover {
 
 .eventDescription{
     width: 100%;
-    height: 100px;
+    height: 140px;
     background-color: rgba(0,0,0,0.05);
     font-size: 20px;
     font-weight: var(--light);
@@ -507,6 +538,7 @@ select option:hover {
     background-color: white;
     border: var(--darkColor) solid var(--borderWidth);
     transition: .3s;
+    border-radius: 6px;
 }
 
 #saveNewEvent:hover{
@@ -570,6 +602,7 @@ select option:hover {
     min-width: 300px;
     height: 580px;
 }
+
   .eventTitle{
     height: 40px;
     font-size: 40px;
@@ -631,8 +664,9 @@ select option:hover {
   margin-top: 10px;
   margin-bottom: 30px;
   margin-left: 15px;
-
 }
+
+
 
 .btnDiv{
     margin-left: 15px;
