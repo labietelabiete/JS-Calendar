@@ -334,7 +334,7 @@ select option:hover {
   .checkboxLabel span {
     width: 15px;
     height: 15px;
-    margin-right: 10px;
+    margin-right: 5px;
     display: inline-block;
     background: url("https://cdn.pixabay.com/photo/2020/07/02/01/10/profile-frame-5361387_960_720.png");
     background: url("./img/uncheckedbox_grey.png");
