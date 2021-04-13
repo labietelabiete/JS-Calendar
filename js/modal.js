@@ -203,7 +203,7 @@ function newEventValidation () {
     eventDescriptionLabel.style.color = "var(--redColor)"
     eventLabel[3].style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
 
-    return false;
+    return true;
   }
 
   return true;
@@ -230,7 +230,7 @@ function setNewEvent(){
   newEventObj = {
     id: eventIndex,
     title: titleNewEvent.value,
-    type: typeNewEvent.value,
+    type: parseInt(typeNewEvent.value),
     startDate: {
       milliseconds : dateStartEventUTC.getTime(),
       minutes : dateStartEventUTC.getUTCMinutes(),

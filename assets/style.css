@@ -226,6 +226,28 @@ main{
     /* transform: translateY(-8px); */
 }
 
+/* Types of events */
+.event{
+    font-size: 14px;
+}
+
+.workEvent{
+    color: var(--greenColor);
+}
+
+.sportEvent{
+    color: var(--magentaColor);
+}
+
+.musicEvent{
+    color: var(--yellowColor);
+}
+
+.otherEvent{
+    color: var(--blueColor);
+}
+
+
 /* FOOTER
 --------------------------------------------------------------- */
 footer{

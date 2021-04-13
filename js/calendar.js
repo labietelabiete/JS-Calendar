@@ -13,6 +13,9 @@ var today;
 let gridCells = 35; // Seven days by 5 weeks by default
 let currentMonth;
 
+// Type of events
+var typeOfEvents = ["work", "sport", "music", "other"]
+
 // Time numbers
 var currentDayNum = date.getDate();
 var currentMonthNum = date.getMonth()+1;
@@ -107,6 +110,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
                 if (clickedDay === undefined){
                     // Highlight day
                     clickedDay = event.target;
+                    console.log("Clicked", clickedDay)
                     clickedDay.style.color = "lightgray";
                 // Next selections
                 } else{
@@ -118,6 +122,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
                 }
             }
         });
+
         // Setting initial day of the month (column)
         if(c === 1){
             newDay.style.gridColumnStart = startingDay;
