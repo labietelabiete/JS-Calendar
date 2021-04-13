@@ -235,7 +235,7 @@ function newEventValidation () {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
   setNewEvent();
-  // getEvent();
+  //getEvent();
   clearNewEventForm();
   modalNewEvent.style.display = "none";
   }
