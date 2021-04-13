@@ -24,17 +24,35 @@
         <!-- Sidebar -->
         <sidebar id="sidebar">
             <div id = "eventTypes">
-                <input type="checkbox" class ="eventTypeCheckbox" id="type1" name="type1" value="Type1">
-                <label for="vehicle1">Work</label>
+                <!-- Work checkbox -->
+                <label class="checkbox gift-radio">
+                    <span class="checkbox_input">
+                        <input id="workCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Work</h2>
+                </label>
                 <br>
-                <input type="checkbox" class = "eventTypeCheckbox" id="type2" name="type2" value="Type2">
-                <label for="vehicle1">Sport</label>
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="personalCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Personal</h2>
                 <br>
-                <input type="checkbox" class = "eventTypeCheckbox" id="type3" name="type3" value="Type3">
-                <label for="vehicle1">Music</label>
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="studyCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Study</h2>
                 <br>
-                <input type="checkbox" class = "eventTypeCheckbox" id="type4" name="type4" value="Type4">
-                <label for="vehicle1">Other</label>
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="otherCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Other</h2>
                 <br>
             </div>
         </sidebar>
@@ -141,7 +159,7 @@
                 </div>
             </form>
         </div>
-    </div>  
+    </div>
     <button style="display: none;" id="checkEventBtn">Check Event</button>  
     <!-- Footer -->
     <footer></footer>

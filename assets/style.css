@@ -136,10 +136,17 @@ main{
     width: 100%;
 }
 
-.eventTypeCheckbox{
+.checkbox{
     margin-top: 10px;
-    font-weight: var(--semiBold);
 }
+
+.checkbox_label{
+    font-weight: var(--semiBold);
+    font-size: ;
+}
+
+
+
 
 /* Right */
 #mainRight{
