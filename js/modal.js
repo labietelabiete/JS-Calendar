@@ -37,6 +37,7 @@ descriptionEvent = document.getElementById('descriptionEvent');
 eventEndDateLabel = document.getElementById('eventEndDateLabel');
 eventReminderLabel = document.getElementById('eventReminderLabel');
 eventDescriptionLabel = document.querySelector(".eventDescriptionLabel");
+eventDescriptionLabelId = document.getElementById('eventDescriptionLabelId');
 
 
 modalNewEvent = document.getElementById("newEventModal");
@@ -342,12 +343,17 @@ function getEvent(){
       eventReminderLabel.style.display = "none";
     } 
       else{
-      console.log("Entro a display eventReminderLabel");
       eventReminderLabel.style.display = "inline-block";
       reminderEvent.innerHTML = eventToDisplay.reminder + " min";
     }
 
-    descriptionEvent.innerHTML = eventToDisplay.description;
+    if (eventToDisplay.description == "") {
+      eventDescriptionLabelId.style.display = "none";
+    } 
+      else{
+        eventDescriptionLabelId.style.display = "inline-block";
+        eventDescriptionLabelId.innerHTML = eventToDisplay.description;
+    }
 
     modalCheckEvent.style.display = "block";
 }
