@@ -44,6 +44,9 @@ function setMonthEvents(){
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
             let newEventDiv = document.createElement("div");
             dayEventsDiv.appendChild(newEventDiv);
+
+            newEventDiv.setAttribute("class", "event");
+            newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
             newEventDiv.innerText = monthEvent.title;
         })
     }
