@@ -367,7 +367,7 @@ function removingEvent(){
     if (eventListToRemove[i].id == eventToDisplay.id) {
       eventListToRemove.splice(i, 1);
     }
-  } 
+  }
   console.log(eventListToRemove);
   localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
   modalCheckEvent.style.display = "none";
@@ -383,7 +383,7 @@ function clearNewEventForm(){
   eventLabel[0].style.color = "var(--darkColor)";
   eventLabel[0].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
 
-  endDateLabel.style.color = "var(--blackColor)";
+  endDateLabel.style.color = "var(--greyColor)";
   endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
   // checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
 
@@ -391,6 +391,6 @@ function clearNewEventForm(){
   reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
   // checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
 
-  eventDescriptionLabel.style.color = "var(--darkColor)";
-  eventLabel[3].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  eventDescriptionLabel.style.color = "var(--blackColor)";
+  eventLabel[2].style.borderBottom  = "var(--blackColor) solid var(--borderWidth)";
 }

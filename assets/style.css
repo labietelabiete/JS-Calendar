@@ -65,7 +65,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    /* outline: 2px red solid; */
+    outline: 2px red solid;
 }
 
 /* Remove blue background when autofilling forms */
@@ -379,14 +379,18 @@ main {
     box-shadow: 0 0 8px 8px var(--blueColor);
 }
 
+
+
 /* FOOTER
 --------------------------------------------------------------- */
 footer {
   height: 50px;
 }
 
-/* The Modal (background) */
 
+
+/* MODAL
+--------------------------------------------------------------- */
 textarea{
     resize: none;
     outline: none;
@@ -394,6 +398,7 @@ textarea{
     padding-left: 10px;
 }
 
+/* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -482,22 +487,22 @@ select option:hover {
     /* margin-bottom: 10px; */
     transition: .1s;
 }
-
+/*
 .checkboxEndReminder{
     width: 120%;
     font-size: 26px;
     font-weight: var(--semiBold);
     margin-bottom: 10px;
     transition: .1s;
-}
+} */
 
-.endCheckbox, .reminderCheckbox{
+.endCheckbox, .reminderCheckbox, .descriptionCheckbox{
     border: var(--borderWidth) solid var(--greyColor);
 }
 
-.checkboxInput input:checked + .reminderCheckbox, .checkboxInput input:checked + .endCheckbox {
-    background-color: var(--darkColor);
-    border: var(--borderWidth) solid var(--darkColor);
+.checkboxInput input:checked + .endCheckbox, .checkboxInput input:checked + .reminderCheckbox,  .checkboxInput input:checked + .descriptionCheckbox{
+  background-color: var(--darkColor);
+  border: var(--borderWidth) solid var(--darkColor);
 }
 
 .eventDate{
@@ -511,21 +516,15 @@ select option:hover {
     z-index: -9999;
   }
 
-  #endDateLabel{
-      color: var(--greyColor);
-      border-bottom: var(--greyColor) solid var(--borderWidth);
-    }
-
-  #reminderLabel{
-    color: var(--greyColor);
-    border-bottom: var(--greyColor) solid var(--borderWidth);
+.eventDescriptionLabel {
+  margin-bottom: 10px;
 }
 
 #endDateLabel {
   color: var(--greyColor);
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
-#reminderLabel  {
+#reminderLabel {
   color: var(--greyColor);
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
@@ -533,9 +532,7 @@ select option:hover {
   color: var(--greyColor);
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
-.eventDescriptionLabel {
-  margin-bottom: 10px;
-}
+
 
 .eventDescription{
     width: 100%;
@@ -663,18 +660,13 @@ select option:hover {
     background-size: 10px 10px;
 }
 
-#endDateLabel{
-    margin-left: 0px
-}
-
 #startNewEvent, #endNewEvent {
     width: 90%;
 }
 
-#reminderLabel{
-    margin-left: 0px;
+#endDateLabel, #reminderLabel, #descriptionLabel{
+  margin-left: 0px;
 }
-
 
 .eventDescriptionLabel{
   margin-bottom: 10px;
