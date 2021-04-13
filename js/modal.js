@@ -386,11 +386,16 @@ function clearNewEventForm(){
   endDateLabel.style.color = "var(--greyColor)";
   endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   checkboxNewEvent[0].style.background = "url('../assets/img/uncheckedbox_grey.png')"
+  endNewEvent.style.display = "none";
 
   reminderLabel.style.color = "var(--greyColor)";
   reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   checkboxNewEvent[1].style.background = "url('../assets/img/uncheckedbox_grey.png')";
+  showReminder.style.display = "none";
 
-  eventDescriptionLabel.style.color = "var(--darkColor)";
-  eventLabel[3].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+
+  descriptionLabel.style.color = "var(--greyColor)";
+  eventLabel[3].style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  descriptionNewEvent.style.display = "none";
+
 }
