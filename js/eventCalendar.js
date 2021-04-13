@@ -7,8 +7,6 @@ let sportCheckbox = document.getElementById("sportCheckbox");
 let musicCheckbox = document.getElementById("musicCheckbox");
 let otherCheckbox = document.getElementById("otherCheckbox");
 
-
-
 // LISTENERS
 //------------------------------------------------------------------------
 setMonthEvents();
