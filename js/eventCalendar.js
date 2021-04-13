@@ -12,7 +12,7 @@ let otherCheckbox = document.getElementById("otherCheckbox");
 // LISTENERS
 //------------------------------------------------------------------------
 setMonthEvents();
-saveEventButton.addEventListener('click', setDailyEvents);
+saveEventButton.addEventListener('click', setMonthEvents);
 
 // Cleaning the month we are heading to
 prevMonthBtn.addEventListener('click', function(){
@@ -26,10 +26,10 @@ nextMonthBtn.addEventListener('click', function(){
 });
 
 
-workCheckbox.addEventListener("change", setDailyEvents);
-sportCheckbox.addEventListener("change", setDailyEvents);
-musicCheckbox.addEventListener("change", setDailyEvents);
-otherCheckbox.addEventListener("change", setDailyEvents);
+workCheckbox.addEventListener("change", setMonthEvents);
+sportCheckbox.addEventListener("change", setMonthEvents);
+musicCheckbox.addEventListener("change", setMonthEvents);
+otherCheckbox.addEventListener("change", setMonthEvents);
 
 
 
@@ -40,6 +40,7 @@ document.getElementById("month").addEventListener("click", function(){
 function resetDaysContent(array){
     for ( const d of array ){
         d.innerHTML = "";
+        console.log(d);
     }
 }
 
@@ -54,7 +55,7 @@ function getMonthEvents(obj){
 
 // Filter type of events
 function filterType(array){
-    resetDaysContent(eventsDivs);
+    //resetDaysContent(eventsDivs);
 
     let filteredArray = new Array;
     array.forEach(function(ev){
@@ -72,13 +73,14 @@ function filterType(array){
         }
     })
 
-    console.log("Filtered array", filteredArray);
+    //console.log("Filtered array", filteredArray);
     return filteredArray;
 }
 
 
 // Display current month's events
 function setMonthEvents(){
+    resetDaysContent(eventsDivs);
     let allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
 
     // Only declaring month events if at least there's one event
@@ -91,30 +93,49 @@ function setMonthEvents(){
         });
 
         let testArr = filterType(monthEvents);
-
+        console.log("testArr: ", testArr);
         testArr.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
+            console.log("dayEventsDiv childNodes -->", dayEventsDiv.children);
             let newEventDiv = document.createElement("div");
-            dayEventsDiv.appendChild(newEventDiv);
+            let existingEvent = document.querySelector("#eventId"+ monthEvent.id);
+            console.log("existingEvent: ", existingEvent);
+            //dayEventsDiv.appendChild(newEventDiv);
 
             newEventDiv.setAttribute("class", "event");
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
             newEventDiv.innerText = monthEvent.title;
+            console.log("newEventDiv: ", newEventDiv);
+            if(existingEvent !== newEventDiv){
+                dayEventsDiv.appendChild(newEventDiv);
+            }
         })
     }
 }
 
-function setDailyEvents(){
+/*function setDailyEvents(){
     // Restoring all previous HTML content
-    resetDaysContent(eventsDivs)
+    resetDaysContent(eventsDivs);
+    for ( let d of eventsDivs ){
+        if(d.childNodes.length === 0){
+            console.log("cleaned eventDiv -->",d);
+            console.log("cleaned eventDiv childNodes-->",d.childNodes);
+            console.log("cleaned eventDiv childNodes length-->",d.childNodes.length);
+        }
+    }
     setMonthEvents();
-    for ( const d of eventsDivs ){
-        console.log(d);
+    console.log("start counting divs");
+    for ( let d of eventsDivs ){
+        if(d.childNodes.length > 0){
+            console.log("eventDiv -->",d);
+            console.log("eventDiv childNodes-->",d.childNodes);
+            console.log("eventDiv childNodes length-->",d.childNodes.length);
+        }
     }
 }
-
+*/
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
