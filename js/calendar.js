@@ -110,6 +110,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
                 if (clickedDay === undefined){
                     // Highlight day
                     clickedDay = event.target;
+                    console.log("Clicked", clickedDay)
                     clickedDay.style.color = "lightgray";
                 // Next selections
                 } else{
@@ -121,6 +122,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
                 }
             }
         });
+
         // Setting initial day of the month (column)
         if(c === 1){
             newDay.style.gridColumnStart = startingDay;
