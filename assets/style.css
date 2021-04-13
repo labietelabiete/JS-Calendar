@@ -50,11 +50,37 @@ STYLING
     padding: 0;
     margin: 0;
     border: 0;
+
+
+    /* Disable text selection */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome, Edge, Opera and Firefox */
+
     /* Other styling */
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
+}
+
+/* Remove blue background when autofilling forms */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--dark-green);
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 body {
@@ -167,6 +193,9 @@ main{
 }
 
 /*Types of events*/
+.workLabel, .sportLabel, .musicLabel, .otherLabel{
+    margin-left: 0;
+}
 /* Work */
 .workLabel{
     color: var(--greenColor);
@@ -279,10 +308,9 @@ main{
 }
 
 .currentMonthDay:hover{
-    box-shadow: 0 0 20px 20px rgb(230, 230, 230);
-    background-color: rgb(230, 230, 230);
-    border-top: 2px rgb(230, 230, 230) solid;
-    
+    /* box-shadow: 0 0 20px 20px white; */
+    background-color: white;
+    /* border-top: 2px white solid; */
 }
 
 .currentMonthDay:hover *{
@@ -418,20 +446,23 @@ textarea{
     font-size: 60px;
     font-weight: var(--semiBold);
     margin: 10px 0px;
+    outline: none;
 }
 .eventTitle::placeholder{
     color: rgba(0,0,0,0.2);
     border: none;
-
+    outline: none;
 }
 .eventTitle:focus{
     border: none;
+    outline: none;
 }
 
 .eventType{
     font-size: 26px;
     font-weight: var(--light);
     margin-bottom: 80px;
+    outline: none;
 }
 
 .eventTypeOption{
@@ -588,7 +619,7 @@ select option:hover {
     font-size: 40px;
     margin: 10px 0px;
     margin-left: 15px;
-
+    outline: none;
 }
 .eventType{
     font-size: 16px;
