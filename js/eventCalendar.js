@@ -1,7 +1,6 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
 var eventsDivs = document.querySelectorAll(".eventsDiv");
-// var typeOfEvents =
 
 // LISTENERS
 //------------------------------------------------------------------------

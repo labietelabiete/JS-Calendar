@@ -13,6 +13,9 @@ var today;
 let gridCells = 35; // Seven days by 5 weeks by default
 let currentMonth;
 
+// Type of events
+//var typeOfEvents = ["Work", "Sport", "Music", "Others"]
+
 // Time numbers
 var currentDayNum = date.getDate();
 var currentMonthNum = date.getMonth()+1;
