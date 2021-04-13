@@ -13,13 +13,29 @@ let otherCheckbox = document.getElementById("otherCheckbox");
 //------------------------------------------------------------------------
 setMonthEvents();
 saveEventButton.addEventListener('click', setDailyEvents);
+
+// Cleaning the month we are heading to
+prevMonthBtn.addEventListener('click', function(){
+    resetDaysContent(eventsDivs);
+});
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
+// Cleaning the month we are heading to
+nextMonthBtn.addEventListener('click', function(){
+    resetDaysContent(eventsDivs);
+});
 
-// workCheckbox.addEventListener("change", setMonthEvents);
-// sportCheckbox.addEventListener("change", setMonthEvents);
-// musicCheckbox.addEventListener("change", setMonthEvents);
-// otherCheckbox.addEventListener("change", setMonthEvents);
+
+workCheckbox.addEventListener("change", setDailyEvents);
+sportCheckbox.addEventListener("change", setDailyEvents);
+musicCheckbox.addEventListener("change", setDailyEvents);
+otherCheckbox.addEventListener("change", setDailyEvents);
+
+
+
+document.getElementById("month").addEventListener("click", function(){
+    resetDaysContent(eventsDivs);
+});
 
 function resetDaysContent(array){
     for ( const d of array ){
@@ -38,16 +54,31 @@ function getMonthEvents(obj){
 
 // Filter type of events
 function filterType(array){
+    resetDaysContent(eventsDivs);
+
     let filteredArray = new Array;
+    array.forEach(function(ev){
+        if (workCheckbox.checked === true && ev.type === 0) {
+            filteredArray.push(ev);
+        }
+        if (sportCheckbox.checked === true && ev.type === 1) {
+            filteredArray.push(ev);
+        }
+        if (musicCheckbox.checked === true && ev.type === 2) {
+            filteredArray.push(ev);
+        }
+        if (otherCheckbox.checked === true && ev.type === 3) {
+            filteredArray.push(ev);
+        }
+    })
 
-
+    console.log("Filtered array", filteredArray);
     return filteredArray;
 }
 
+
 // Display current month's events
 function setMonthEvents(){
-
-
     let allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
 
     // Only declaring month events if at least there's one event
@@ -59,9 +90,9 @@ function setMonthEvents(){
             return a.startDate.milliseconds - b.startDate.milliseconds;
         });
 
+        let testArr = filterType(monthEvents);
 
-
-        monthEvents.forEach(function(monthEvent){
+        testArr.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
             let newEventDiv = document.createElement("div");
@@ -77,8 +108,11 @@ function setMonthEvents(){
 
 function setDailyEvents(){
     // Restoring all previous HTML content
-    resetDaysContent(eventsDivs);
+    resetDaysContent(eventsDivs)
     setMonthEvents();
+    for ( const d of eventsDivs ){
+        console.log(d);
+    }
 }
 
 
