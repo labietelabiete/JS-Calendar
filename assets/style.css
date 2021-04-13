@@ -54,10 +54,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    /* outline: 2px red solid; */
-
-
-
+    outline: 2px red solid;
 }
 
 body {
@@ -149,6 +146,9 @@ main{
 .checkboxLabel{
     font-weight: var(--regular);
     font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-left: -20px;
 }
 
 /* Hide default radio/checkbox button */
@@ -164,10 +164,6 @@ main{
     width: 12px;
     height: 12px;
     border-radius: 50%;
-}
-
-.checkboxInput input:checked + .checkboxControl{
-    background-color: var(--darkColor);
 }
 
 /*Types of events*/
@@ -224,7 +220,6 @@ main{
 }
 
 
-
 /* Right */
 #mainRight{
     flex-grow: 1;
@@ -266,6 +261,7 @@ main{
 /* Calendar container */
 #calendarCont{
     flex-grow: 1;
+    max-height: 530px;
     /* background-color: yellow; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -322,8 +318,6 @@ main{
     flex-direction: column;
     /* transform: translateY(-8px); */
     padding: 5px;
-
-
 }
 
 /* Types of events */
@@ -332,7 +326,7 @@ main{
     color: white;
     font-weight: var(--light);
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     transition: .2s;
 }
 
@@ -350,13 +344,11 @@ main{
 .musicEvent{
     background-color: var(--yellowColor);
     box-shadow: 0 0 8px 8px var(--yellowColor);
-
 }
 
 .otherEvent{
     background-color: var(--blueColor);
     box-shadow: 0 0 8px 8px var(--blueColor);
-
 }
 
 
@@ -365,8 +357,6 @@ main{
 footer{
     height: 50px;
 }
-
-
 
 /* The Modal (background) */
 
@@ -455,21 +445,30 @@ select option:hover {
 
 .eventLabel{
     display: inline-block;
-    width: 99%;
+    width: 100%;
     font-size: 26px;
     font-weight: var(--semiBold);
     border-bottom: var(--darkColor) solid var(--borderWidth);
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     transition: .1s;
 }
 
 .checkboxEndReminder{
-    width: 99%;
+    width: 120%;
     font-size: 26px;
     font-weight: var(--semiBold);
-    border-bottom: var(--darkColor) solid var(--borderWidth);
     margin-bottom: 10px;
     transition: .1s;
+}
+
+.endCheckbox, .reminderCheckbox{
+    border: var(--borderWidth) solid var(--greyColor);
+}
+
+.checkboxInput input:checked + .reminderCheckbox, .checkboxInput input:checked + .endCheckbox {
+    background-color: var(--darkColor);
+    border: var(--borderWidth) solid var(--darkColor);
+
 }
 
 .eventDate{
@@ -477,29 +476,10 @@ select option:hover {
     font-size: 20px;
 }
 
-/* .checkboxLabel{
-    display: inline;
-    margin-left: -40px;
-} */
-
 .checkboxLabel input {
     position: relative;
     z-index: -9999;
   }
-  /* .checkboxLabel span {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
-    display: inline-block;
-    background: url("https://cdn.pixabay.com/photo/2020/07/02/01/10/profile-frame-5361387_960_720.png");
-    background: url("./img/uncheckedbox_grey.png");
-    background-size: 15px 15px;
-  } */
-  /* .checkboxLabel input:checked + span {
-    background: url("https://i.pinimg.com/736x/f9/42/6c/f9426c98bf7d46aeb5b0d0664ad43ac0.jpg");
-    background: url("./img/checkedbox_black.png");
-    background-size: 15px 15px;
-  } */
 
   #endDateLabel{
       color: var(--greyColor);
@@ -632,7 +612,6 @@ select option:hover {
     margin-left: 15px;
 }
 .checkboxLabel{
-    display: inline;
     margin-left: -20px;
 }
 .checkboxLabel span {
@@ -642,9 +621,7 @@ select option:hover {
     display: inline-block;
     background-size: 10px 10px;
 }
-.checkboxLabel input:checked + span {
-    background-size: 10px 10px;
-}
+
 #endDateLabel{
       margin-left: 0px
 }
