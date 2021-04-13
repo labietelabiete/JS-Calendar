@@ -62,7 +62,7 @@ function setMonthEvents(){
 
 function setDailyEvents(){
     // Restoring all previous HTML content
-    resetDaysContent(eventsDivs);
+    // resetDaysContent(eventsDivs);
 
     let allStorage = JSON.parse(localStorage.getItem("localEventInfo"))
     let monthEvents = allStorage.filter(getMonthEvents);
