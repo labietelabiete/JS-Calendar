@@ -498,7 +498,6 @@ select option:hover {
 .checkboxInput input:checked + .reminderCheckbox, .checkboxInput input:checked + .endCheckbox {
     background-color: var(--darkColor);
     border: var(--borderWidth) solid var(--darkColor);
-
 }
 
 .eventDate{
