@@ -104,24 +104,24 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         setUpDay(newDay, c, "currentMonthDay", true);
 
         // Highlight selected day (by user)
-        newDay.addEventListener("click", function(event){
-            if(event.target !== today){
-                // First selected day
-                if (clickedDay === undefined){
-                    // Highlight day
-                    clickedDay = event.target;
-                    console.log("Clicked", clickedDay)
-                    clickedDay.style.color = "lightgray";
-                // Next selections
-                } else{
-                    clickedDay.style.color = "black";
-                    clickedDay = undefined;
-                    // Highlight day
-                    clickedDay = event.target;
-                    clickedDay.style.color = "lightgray";
-                }
-            }
-        });
+        // newDay.addEventListener("click", function(event){
+        //     if(event.target !== today){
+        //         // First selected day
+        //         if (clickedDay === undefined){
+        //             // Highlight day
+        //             clickedDay = event.target;
+        //             console.log("Clicked", clickedDay)
+        //             clickedDay.style.color = "lightgray";
+        //         // Next selections
+        //         } else{
+        //             clickedDay.style.color = "black";
+        //             clickedDay = undefined;
+        //             // Highlight day
+        //             clickedDay = event.target;
+        //             clickedDay.style.color = "lightgray";
+        //         }
+        //     }
+        // });
 
         // Setting initial day of the month (column)
         if(c === 1){
