@@ -208,7 +208,7 @@ saveEventButton.addEventListener('click', function(){
 // Functino for setting new event information to local storage
 function setNewEvent(){
   dateStartEventUTC = new Date(startNewEvent.value)
-  dateEndEventUTC = new Date(startNewEvent.value)
+  dateEndEventUTC = new Date(endNewEvent.value)
   
   newEventObj = {
     title: titleNewEvent.value,
