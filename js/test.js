@@ -8,7 +8,7 @@ const test = () => {
     newUl.setAttribute("id", "warningBox");
     sideBar.prepend(newUl);
     var newList = document.createElement("li")  
- var reminderInterval = setInterval(() => {
+  setInterval(() => {
     myLocalStorage.forEach((eachEvent) => {
       if (eachEvent.reminder) {
         let eachEndDate = eachEvent.endDate;
@@ -42,14 +42,13 @@ const test = () => {
           }
         } else if (endDateTime <= currentTime) {
             
-          document.getElementById("warningBox").innerHTML += `<li>${eachEvent.title} has expired.</li>`;
-          clearInterval(reminderInterval);
+          document.getElementById("warningBox").innerHTML = `<li>${eachEvent.title} has expired.</li>`;
+            
             
         }
       }
     });
-  }, 10000); 
-   
+  }, 10000);
 };
 
 test();
