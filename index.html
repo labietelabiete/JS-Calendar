@@ -104,9 +104,12 @@
                         <option value="60">1 hour</option>
                     </select>
                 </div><br>
-
-                <label class="eventLabel eventDescriptionLabel" for="descriptionNewEvent">Description</label><br>
-                <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500"></textarea><br>
+                <label class="checkboxLabel">
+                    <input type="checkbox" id="descriptionCheckbox" />
+                    <span class="spanEvent"></span>
+                <label class="eventLabel eventDescriptionLabel" for="descriptionCheckbox" id="descriptionLabel">Description</label><br>
+                </label>
+                <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500" style="display:none"></textarea><br>
                 <div class="btnDiv">
                     <input class="modalBtn" type="button" value="Create" id="saveNewEvent">
                     <input class="modalBtn" type="button" value="Cancel" id="cancelNewEvent">
