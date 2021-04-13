@@ -214,13 +214,12 @@ function newEventValidation () {
 // Function to save a new event
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
-  setNewEvent();
-  // getEvent();
-  clearNewEventForm();
-  modalNewEvent.style.display = "none";
+    setNewEvent();
+    // getEvent();
+    clearNewEventForm();
+    modalNewEvent.style.display = "none";
   }
- 
-})
+});
 
 // Function for setting new event information to local storage
 function setNewEvent(){
@@ -335,11 +334,11 @@ function clearNewEventForm(){
 
   endDateLabel.style.color = "var(--blackColor)";
   endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
+  // checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
 
   reminderLabel.style.color = "var(--darkColor)";
   reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
+  // checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
 
   eventDescriptionLabel.style.color = "var(--darkColor)";
   eventLabel[3].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
