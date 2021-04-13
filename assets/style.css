@@ -73,9 +73,10 @@ header {
 }
 
 #title {
-    width: var(--sidebarWidth);
+    min-width: var(--sidebarWidth);
     margin-right: var(--margin);
     font-size: 30px;
+
 }
 
 #monthAndYear{
@@ -126,7 +127,7 @@ main{
 
 /* Left */
 #sidebar {
-    width: var(--sidebarWidth);
+    min-width: var(--sidebarWidth);
     margin-right: var(--margin);
     display: flex;
     align-items: flex-end;
@@ -142,30 +143,86 @@ main{
     align-items: center;
 }
 
-.checkbox_label{
+.checkboxLabel{
     font-weight: var(--regular);
     font-size: 20px;
 }
 
 /* Hide default radio/checkbox button */
-.checkbox_input input{
+.checkboxInput input{
     opacity: 0%;
     width: 0;
     height: 0;
 }
 
-.checkbox_control{
+.checkboxControl{
     display: block;
     margin-right: 10px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    border: var(--borderWidth) solid var(--darkColor);
 }
 
-.checkbox_input input:checked + .checkbox_control{
+.checkboxInput input:checked + .checkboxControl{
     background-color: var(--darkColor);
 }
+
+/*Types of events*/
+/* Work */
+.workLabel{
+    color: var(--greenColor);
+}
+
+.workCheckbox{
+    border: var(--borderWidth) solid var(--greenColor);
+}
+
+.checkboxInput input:checked + .workCheckbox{
+    background-color: var(--greenColor);
+}
+
+/* Sport */
+.sportLabel{
+    color: var(--magentaColor);
+}
+
+.sportCheckbox{
+    border: var(--borderWidth) solid var(--magentaColor);
+}
+
+.checkboxInput input:checked + .sportCheckbox{
+    background-color: var(--magentaColor);
+}
+
+/* Music */
+.musicLabel{
+    color: var(--yellowColor);
+}
+
+.musicCheckbox{
+    border: var(--borderWidth) solid var(--yellowColor);
+}
+
+.checkboxInput input:checked + .musicCheckbox{
+    background-color: var(--yellowColor);
+}
+
+/* Other */
+.otherLabel{
+    color: var(--blueColor);
+}
+
+.otherCheckbox{
+    border: var(--borderWidth) solid var(--blueColor);
+}
+
+.checkboxInput input:checked + .otherCheckbox{
+    background-color: var(--blueColor);
+}
+
+
+
+
 
 
 
@@ -385,10 +442,11 @@ select option:hover {
     font-size: 20px;
 }
 
-.checkboxLabel{
+/* .checkboxLabel{
     display: inline;
     margin-left: -40px;
-}
+} */
+
 .checkboxLabel input {
     position: relative;
     z-index: -9999;
