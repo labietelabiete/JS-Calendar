@@ -577,13 +577,13 @@ select option:hover {
 /*Media query for modals */
 @media (max-width: 768px){
 .modalContent {
-    padding: 20px 25px;
+    padding: 20px 25px 30px 25px;
     width: 10%;
     min-width: 300px;
     height: 580px;
 }
 
-  .eventTitle{
+.eventTitle{
     height: 40px;
     font-size: 40px;
     margin: 10px 0px;
@@ -606,13 +606,14 @@ select option:hover {
     width: 90%;
     font-size: 16px;
     margin-left: 15px;
+    
 }
 .eventDate{
     font-size: 16px;
     margin-left: 15px;
 }
 .checkboxLabel{
-    margin-left: -20px;
+    margin-left: 0;
 }
 .checkboxLabel span {
     width: 10px;
@@ -623,17 +624,23 @@ select option:hover {
 }
 
 #endDateLabel{
-      margin-left: 0px
-}
-#reminderLabel{
     margin-left: 0px
 }
+
+#startNewEvent, #endNewEvent {
+    width: 90%;
+}
+
+#reminderLabel{
+    margin-left: 0px;
+}
+
 
 .eventDescriptionLabel{
   margin-bottom: 10px;
 }
 
-.eveentDescription{
+.eventDescription{
   width: 90%;
   height: 100px;
   font-size: 16px;
@@ -641,6 +648,7 @@ select option:hover {
   margin-top: 10px;
   margin-bottom: 30px;
   margin-left: 15px;
+  backgr
 }
 
 
@@ -659,9 +667,4 @@ select option:hover {
   border: var(--darkColor) solid var(--borderWidth);
   transition: .3s;
 }
-
-
-
-
-
 }
