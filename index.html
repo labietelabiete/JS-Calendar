@@ -24,18 +24,38 @@
         <!-- Sidebar -->
         <sidebar id="sidebar">
             <div id = "eventTypes">
-                <input type="checkbox" class ="eventTypeCheckbox" id="type1" name="type1" value="Type1">
-                <label for="vehicle1">Work</label>
-                <br>
-                <input type="checkbox" class = "eventTypeCheckbox" id="type2" name="type2" value="Type2">
-                <label for="vehicle1">Sport</label>
-                <br>
-                <input type="checkbox" class = "eventTypeCheckbox" id="type3" name="type3" value="Type3">
-                <label for="vehicle1">Music</label>
-                <br>
-                <input type="checkbox" class = "eventTypeCheckbox" id="type4" name="type4" value="Type4">
-                <label for="vehicle1">Other</label>
-                <br>
+                <!-- Work checkbox -->
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="workCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Work</h2>
+                </label>
+                <!-- Personal checkbox -->
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="sportCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Sport</h2>
+                </label>
+                <!-- Study checkbox -->
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="musicCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Music</h2>
+                </label>
+                <!-- Other checkbox -->
+                <label class="checkbox">
+                    <span class="checkbox_input">
+                        <input id="otherCheckbox" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label">Other</h2>
+                </label>
             </div>
         </sidebar>
 
@@ -80,19 +100,40 @@
                 <label class="eventLabel" for="startNewEvent">Initial date</label><br>
                 <input class="eventDate" type="datetime-local" id="startNewEvent" name=""><br>
 
-                <label class="checkboxLabel">
+                <!-- <label class="checkboxLabel">
                     <input type="checkbox" name="checkBoxEndDate" id="checkBoxEndDate" />
                     <span class="spanEvent"></span>
                     <label class="eventLabel" for="checkBoxEndDate" id="endDateLabel">End date</label><br>
+                </label> -->
+
+                <!-- End date -->
+                <label class="checkbox checkboxEndReminder">
+                    <span class="checkbox_input">
+                        <input id="checkBoxEndDate" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label eventLabel" id="endDateLabel">End date</h2>
                 </label>
+
                 <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent" name="trip-end"><br>
 
 
-                <label class="checkboxLabel">
+                <!-- <label class="checkbox checkboxLabel">
                     <input type="checkbox" id="reminderNewEvent" />
                     <span class="spanEvent"></span>
-                    <label class="eventLabel" for="reminderNewEvent" id="reminderLabel">Reminder</label><br>
+                    <label class="eventLabel" for="reminderNewEvent" id="reminderLabel">Reminder</label>
+                <br>
+                </label> -->
+
+                <!-- Reminder date -->
+                <label class="checkbox checkboxLabel">
+                    <span class="checkbox_input">
+                        <input id="reminderNewEvent" type="checkbox" name="checkbox">
+                        <span class="checkbox_control"></span>
+                    </span>
+                    <h2 class="checkbox_label eventLabel" id="reminderLabel">Reminder</h2>
                 </label>
+
                 <div id="reminderNewEventDiv" style="display: none">
                     <label class="eventDate" for="timeReminderNewEvent">Time: </label>
                     <select class="eventDate" name="" id="timeReminderNewEvent">
