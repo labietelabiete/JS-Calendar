@@ -505,6 +505,7 @@ select option:hover {
 .eventDate{
     margin-bottom: 10px;
     font-size: 20px;
+    outline: none;
 }
 
 .checkboxLabel input {
