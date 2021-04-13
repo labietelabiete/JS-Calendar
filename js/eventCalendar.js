@@ -35,9 +35,16 @@ document.getElementById("month").addEventListener("click", function(){
     resetDaysContent(eventsDivs);
 });
 
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
 function resetDaysContent(array){
     for ( const d of array ){
-        d.innerHTML = "";
+        removeAllChildNodes(d);
     }
 }
 
@@ -70,7 +77,7 @@ function filterType(array){
         }
     })
 
-    console.log("Filtered array", filteredArray);
+    //console.log("Filtered array", filteredArray);
     return filteredArray;
 }
 
@@ -109,9 +116,6 @@ function setDailyEvents(){
     // Restoring all previous HTML content
     resetDaysContent(eventsDivs)
     setMonthEvents();
-    for ( const d of eventsDivs ){
-        console.log(d);
-    }
 }
 
 

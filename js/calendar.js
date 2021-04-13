@@ -91,19 +91,14 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     // Previous month (adding div)
     let prevDays = startingDay-1;
     for(let p=lastMonthLength-prevDays+1; p<=lastMonthLength; p++){
-
         let prevDay = document.createElement("div");
         setUpDay(prevDay, p, "prevMonthDay", false);
-
     }
 
     // Current month (adding div)
     for(let c=1; c<=monthLength; c++){
-
         let newDay = document.createElement("div");
         setUpDay(newDay, c, "currentMonthDay", true);
-
-
         // Setting initial day of the month (column)
         if(c === 1){
             newDay.style.gridColumnStart = startingDay;
@@ -117,7 +112,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
     } else if ( startingDay === 6 && monthLength === 31 ){
         calendarGrid.style.gridTemplateRows = "repeat(6, 1fr)";
         gridCells = 42;
-    } else  {
+    } else {
         calendarGrid.style.gridTemplateRows = "repeat(5, 1fr)";
         gridCells = 35;
     }
@@ -128,6 +123,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         let nextDay = document.createElement("div");
         setUpDay(nextDay, n, "nextMonthday", false);
     }
+    
 };
 
 // Highlight today
@@ -161,9 +157,22 @@ function getFirstDay(year, month){
 // EVENT LISTENERS
 //------------------------------------------------------------------------
 // Previous month button
-prevMonthBtn.onclick = function(){
+prevMonthBtn.addEventListener("click", resetPrevMonth);
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        console.log(parend.firstChild);
+        parent.removeChild(parent.firstChild);
+        console.log("Removed")
+
+    }
+}
+
+function resetPrevMonth(){
     // Emptying grid container before assigning previous month
-    calendarGrid.innerHTML = "";
+    removeAllChildNodes(calendarGrid);
+    // calendarGrid.innerHTML = "";
+
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -191,15 +200,20 @@ prevMonthBtn.onclick = function(){
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     // Get first day's weekday
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
-    // Setting new calendar grid
+    // Setting new calendar gridH
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+
+    console.log("Prev month!")
 }
 
 // Next month button
-nextMonthBtn.onclick = function(){
+nextMonthBtn.addEventListener("click", resetNextMonth);
+
+function resetNextMonth(){
     // Emptying grid container before assigning next month
-    calendarGrid.innerHTML = "";
+    removeAllChildNodes(calendarGrid);
+    // calendarGrid.innerHTML = "";
 
     //December
     if (currentMonthNum == 12){
@@ -225,6 +239,7 @@ nextMonthBtn.onclick = function(){
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    console.log("Next month!")
 }
 
 

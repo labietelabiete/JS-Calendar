@@ -9,7 +9,7 @@ let testEventIndex = i;
 let eventToDisplay
 let eventIndex;
 let eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
-console.log(eventInfoArray)
+//console.log(eventInfoArray)
 if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
