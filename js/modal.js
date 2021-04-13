@@ -35,7 +35,7 @@ descriptionEvent = document.getElementById('descriptionEvent');
 
 eventEndDateLabel = document.getElementById('eventEndDateLabel');
 eventReminderLabel = document.getElementById('eventReminderLabel');
-eventDescriptionLabel = document.querySelector(".eventDescriptionLabel")
+eventDescriptionLabel = document.querySelector(".eventDescriptionLabel");
 
 
 modalNewEvent = document.getElementById("newEventModal");
@@ -61,6 +61,9 @@ endDateLabel = document.getElementById("endDateLabel");
 reminderCheckbox = document.getElementById("reminderNewEvent");
 showReminder = document.getElementById("reminderNewEventDiv");
 reminderLabel = document.getElementById("reminderLabel");
+
+descriptionCheckbox = document.getElementById("descriptionCheckbox");
+descriptionLabel = document.getElementById("descriptionLabel");
 
 // Get save button to submit event and save it to calendar and localStorage
 saveEventButton = document.getElementById("saveNewEvent");
@@ -149,6 +152,20 @@ reminderCheckbox.onclick = function () {
     reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
   }
 };
+
+
+descriptionCheckbox.onclick = function() {
+  if (descriptionCheckbox.checked == true) {
+    descriptionNewEvent.style.display = "inline-block";
+    descriptionLabel.style.color = "var(--blackColor)";
+    descriptionLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+  } else {
+    descriptionNewEvent.style.display = "none";
+    descriptionLabel.style.color = "var(--greyColor)";
+    descriptionLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  }
+}
+
 // Save events to localStorage when create button is clicked
 // 1. Check validity
 // 2. if it is true, set the event localStorage
@@ -189,7 +206,7 @@ function newEventValidation () {
   if (reminderCheckbox.checked) {
     timeReminderNewEvent.required = true;
     if (timeReminderNewEvent.value === "") {
-      reminderLabel.style.color = "var(--redColor)";
+      reminderLabel.style.color = 
       reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_red.png')"
       if (window.innerWidth < 768) {
@@ -199,16 +216,19 @@ function newEventValidation () {
     }
   }
 
-  if(!descriptionNewEvent.value) {
-    eventDescriptionLabel.style.color = "var(--redColor)"
-    eventLabel[3].style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-
-    return true;
+  if(descriptionCheckbox.checked) {
+    descriptionNewEvent.required = true;
+    if(descriptionNewEvent.value == "") {
+      descriptionLabel.style.color = "var(--redColor)";
+      descriptionLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+      checkboxNewEvent[2].style.background = "url('../assets/img/checkedbox_red.png')"
+    }
+    
+    return false;
   }
 
   return true;
 };
-
 
 
 // Function to save a new event
