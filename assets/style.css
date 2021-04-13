@@ -65,7 +65,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
 }
 
 /* Remove blue background when autofilling forms */
@@ -290,7 +290,7 @@ main {
 /* Calendar container */
 #calendarCont{
     flex-grow: 1;
-    max-height: 530px;
+    max-height: 640px;
     /* background-color: yellow; */
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -345,38 +345,46 @@ main {
     display: flex;
     flex-direction: column;
     /* transform: translateY(-8px); */
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 /* Types of events */
 .event{
-    font-size: 14px;
-    color: white;
-    font-weight: var(--light);
-    border-radius: 10px;
-    margin-bottom: 8px;
-    transition: .2s;
+  font-size: 14px;
+  color: white;
+  font-weight: var(--semiBold);
+  /* border-radius: 10px; */
+  margin-bottom: 8px;
+  transition: .2s;
 }
 
 .workEvent{
-    background-color: var(--greenColor);
-    box-shadow: 0 0 8px 8px var(--greenColor);
+  color: var(--greenColor);
+  border-top: var(--borderWidth) var(--greenColor) solid;
+  /* background-color: var(--greenColor);
+  box-shadow: 0 0 8px 8px var(--greenColor); */
 }
 
 .sportEvent{
-    background-color: var(--magentaColor);
-    box-shadow: 0 0 8px 8px var(--magentaColor);
+  color: var(--magentaColor);
+  border-top: var(--borderWidth) var(--magentaColor) solid;
+  /* background-color: var(--magentaColor);
+  box-shadow: 0 0 8px 8px var(--magentaColor); */
 
 }
 
 .musicEvent{
-    background-color: var(--yellowColor);
-    box-shadow: 0 0 8px 8px var(--yellowColor);
+  color: var(--yellowColor);
+  border-top: var(--borderWidth) var(--yellowColor) solid;
+  /* background-color: var(--yellowColor);
+  box-shadow: 0 0 8px 8px var(--yellowColor);*/
 }
 
 .otherEvent{
-    background-color: var(--blueColor);
-    box-shadow: 0 0 8px 8px var(--blueColor);
+  color: var(--blueColor);
+  border-top: var(--borderWidth) var(--blueColor) solid;
+  /* background-color: var(--blueColor);
+  box-shadow: 0 0 8px 8px var(--blueColor); */
 }
 
 
