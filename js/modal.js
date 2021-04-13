@@ -77,10 +77,10 @@ checkboxNewEvent = document.querySelectorAll(".spanEvent")
 
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
-  modalNewEvent.style.display = "block";
+  modalNewEvent.style.display = "flex";
 };
 btnCheckEvent.onclick = function () {
-  modalCheckEvent.style.display = "block";
+  modalCheckEvent.style.display = "flex";
 };
 // When the user clicks on <span> (x), close the modal
 closeModal[0].onclick = function () {
