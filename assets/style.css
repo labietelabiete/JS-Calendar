@@ -222,12 +222,6 @@ main{
 
 
 
-
-
-
-
-
-
 /* Right */
 #mainRight{
     flex-grow: 1;
@@ -316,22 +310,32 @@ main{
 /* Types of events */
 .event{
     font-size: 14px;
+    color: var(--darkColor);
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .workEvent{
-    color: var(--greenColor);
+    background-color: var(--greenColor);
+    box-shadow: 0 0 8px 8px var(--greenColor);
 }
 
 .sportEvent{
-    color: var(--magentaColor);
+    background-color: var(--magentaColor);
+    box-shadow: 0 0 8px 8px var(--magentaColor);
+
 }
 
 .musicEvent{
-    color: var(--yellowColor);
+    background-color: var(--yellowColor);
+    box-shadow: 0 0 8px 8px var(--yellowColor);
+
 }
 
 .otherEvent{
-    color: var(--blueColor);
+    background-color: var(--blueColor);
+    box-shadow: 0 0 8px 8px var(--blueColor);
+
 }
 
 
