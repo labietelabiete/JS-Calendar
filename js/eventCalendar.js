@@ -46,6 +46,7 @@ function setMonthEvents(){
             dayEventsDiv.appendChild(newEventDiv);
 
             newEventDiv.setAttribute("class", "event");
+            newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
             newEventDiv.innerText = monthEvent.title;
         })
@@ -57,5 +58,9 @@ function setDailyEvents(){
     resetDaysContent(eventsDivs);
     setMonthEvents();
 }
+
+// function filterTypeEvents(array){
+    
+// }
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
