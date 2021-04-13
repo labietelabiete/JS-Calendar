@@ -3,17 +3,18 @@ let r = document.querySelector(':root');
 //Variables definition
 let dateEventUTC;
 let i = 0;
-let eventInfoArray;
+// let eventInfoArray;
 let newEventObj = {};
 let testEventIndex = i;
-
+let eventToDisplay
 let eventIndex;
-let iniEvent = JSON.parse(localStorage.getItem("localEventInfo"));
-if (iniEvent == null){
+let eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+console.log(eventInfoArray)
+if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
 }else{
-  eventIndex = iniEvent.length;
+  eventIndex = eventInfoArray.length;
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
 }
 localStorage.setItem("eventIndex", eventIndex );
@@ -36,6 +37,7 @@ descriptionEvent = document.getElementById('descriptionEvent');
 eventEndDateLabel = document.getElementById('eventEndDateLabel');
 eventReminderLabel = document.getElementById('eventReminderLabel');
 eventDescriptionLabel = document.querySelector(".eventDescriptionLabel");
+eventDescriptionLabelId = document.getElementById('eventDescriptionLabelId');
 
 
 modalNewEvent = document.getElementById("newEventModal");
@@ -106,9 +108,7 @@ okEvent.onclick = function () {
 };
 
 //When the user click on remove event
-removeEvent.onclick = function () {
-  modalCheckEvent.style.display = "none";
-};
+removeEvent.addEventListener('click', removingEvent);
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -235,7 +235,6 @@ function newEventValidation () {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
   setNewEvent();
-  //getEvent();
   clearNewEventForm();
   modalNewEvent.style.display = "none";
   }
@@ -273,6 +272,10 @@ function setNewEvent(){
   if(newEventObj.endDate == "Invalid Date") {
     newEventObj.endDate = ""
   }
+  eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+  if (eventInfoArray == null) {
+    eventInfoArray = [];
+  }
   eventInfoArray.push(newEventObj);
 
 
@@ -292,7 +295,6 @@ function getEvent(){
   idEvent = this.id;
   idEvent = idEvent.match(/\d/g);
   idEvent = idEvent.join("");
-  console.log(idEvent);
 
   eventListComparing = JSON.parse(localStorage.getItem("localEventInfo"));
   eventListComparing.forEach(function(eventComparing){
@@ -341,14 +343,35 @@ function getEvent(){
       eventReminderLabel.style.display = "none";
     } 
       else{
-      console.log("Entro a display eventReminderLabel");
       eventReminderLabel.style.display = "inline-block";
       reminderEvent.innerHTML = eventToDisplay.reminder + " min";
     }
 
-    descriptionEvent.innerHTML = eventToDisplay.description;
+    if (eventToDisplay.description == "") {
+      eventDescriptionLabelId.style.display = "none";
+    } 
+      else{
+        eventDescriptionLabelId.style.display = "inline-block";
+        eventDescriptionLabelId.innerHTML = eventToDisplay.description;
+    }
 
     modalCheckEvent.style.display = "block";
+}
+
+function removingEvent(){
+  console.log('entro en la remove function');
+  console.log(eventToDisplay.id)
+  eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
+  console.log(eventListToRemove);
+  for (let i = 0; i < eventListToRemove.length; i++) {
+    if (eventListToRemove[i].id == eventToDisplay.id) {
+      eventListToRemove.splice(i, 1);
+    }
+  } 
+  console.log(eventListToRemove);
+  localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
+  modalCheckEvent.style.display = "none";
+  setDailyEvents();
 }
 
 function clearNewEventForm(){
