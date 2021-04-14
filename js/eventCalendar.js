@@ -17,6 +17,7 @@ prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
 // Cleaning the month we are heading to
 
+
 workCheckbox.addEventListener("change", setDailyEvents);
 sportCheckbox.addEventListener("change", setDailyEvents);
 musicCheckbox.addEventListener("change", setDailyEvents);
@@ -45,12 +46,15 @@ function removeAllChildNodes(parent) {
 }
 
 
-function resetDaysContent(array){
+function resetDaysContent(){
     let monthEvents = allStorage.filter(getMonthEvents);
-    console.log(monthEvents);
+    //console.log("monthEvents -->", monthEvents);
     monthEvents.forEach(function(monthEvent){
         var previousEvent = document.getElementById("eventId"+monthEvent.id);
-        previousEvent.remove();
+        if(previousEvent !== null){
+            previousEvent.remove();
+        }
+        
     })
 }
 
@@ -81,7 +85,7 @@ function filterType(array){
 // Display current month's events
 function setMonthEvents(){
     allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
-    console.log("All storage", allStorage);
+    //console.log("All storage", allStorage);
 
     // Only declaring month events if at least there's one event
     if (allStorage !== null){
@@ -92,14 +96,14 @@ function setMonthEvents(){
             return a.startDate.milliseconds - b.startDate.milliseconds;
         });
 
-        let testArr = filterType(monthEvents);
+        let filteredArray = filterType(monthEvents);
 
-        testArr.forEach(function(monthEvent){
+        filteredArray.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
             let newEventDiv = document.createElement("div");
             dayEventsDiv.appendChild(newEventDiv);
-            console.log("Appended", monthEvent.id);
+            //console.log("Appended", monthEvent.id);
             newEventDiv.setAttribute("class", "event");
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
