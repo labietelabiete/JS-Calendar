@@ -291,6 +291,9 @@ function setNewEvent(){
   if(newEventObj.endDate == "Invalid Date") {
     newEventObj.endDate = ""
   }
+  if(newEventObj.reminder == "" && !newEventObj.endDate) {
+    newEventObj.reminder = 60
+  }
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
   if (eventInfoArray == null) {
     eventInfoArray = [];
