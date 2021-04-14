@@ -59,13 +59,16 @@ eventLabel = document.querySelectorAll(".eventLabel")
 
 endCheckbox = document.getElementById("checkBoxEndDate");
 endDateLabel = document.getElementById("endDateLabel");
+endCheckboxSpan = document.querySelector(".endCheckbox");
 
 reminderCheckbox = document.getElementById("reminderNewEvent");
 showReminder = document.getElementById("reminderNewEventDiv");
 reminderLabel = document.getElementById("reminderLabel");
+reminderCheckboxSpan = document.querySelector(".reminderCheckbox");
 
 descriptionCheckbox = document.getElementById("descriptionCheckbox");
 descriptionLabel = document.getElementById("descriptionLabel");
+descriptionCheckboxSpan = document.querySelector(".descriptionCheckbox");
 
 // Get save button to submit event and save it to calendar and localStorage
 saveEventButton = document.getElementById("saveNewEvent");
@@ -134,11 +137,16 @@ endCheckbox.onclick = function () {
     endNewEvent.style.display = "inline-block";
     endDateLabel.style.color = "var(--blackColor)";
     endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  } else {
+    endCheckboxSpan.style.backgroundColor = "var(--darkColor)";
+    endCheckboxSpan.style.border = "var(--darkColor) solid var(--borderWidth)";
+    } else {
     endNewEvent.style.display = "none";
     endDateLabel.style.color = "var(--greyColor)";
     endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
-  }
+    endCheckboxSpan.style.backgroundColor = "white";
+    endCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
+    endNewEvent.value = "";
+    }
 };
 
 reminderCheckbox.onclick = function () {
@@ -146,10 +154,15 @@ reminderCheckbox.onclick = function () {
     showReminder.style.display = "inline-block";
     reminderLabel.style.color = "var(--blackColor)";
     reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+    reminderCheckboxSpan.style.backgroundColor = "var(--darkColor)";
+    reminderCheckboxSpan.style.border = "var(--darkColor) solid var(--borderWidth)";
   } else {
     showReminder.style.display = "none";
     reminderLabel.style.color = "var(--greyColor)";
     reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+    reminderCheckboxSpan.style.backgroundColor = "white";
+    reminderCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
+    timeReminderNewEvent.value = "";
   }
 };
 
@@ -159,10 +172,15 @@ descriptionCheckbox.onclick = function() {
     descriptionNewEvent.style.display = "inline-block";
     descriptionLabel.style.color = "var(--blackColor)";
     descriptionLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
+    descriptionCheckboxSpan.style.backgroundColor = "var(--darkColor)";
+    descriptionCheckboxSpan.style.border = "var(--darkColor) solid var(--borderWidth)";
   } else {
     descriptionNewEvent.style.display = "none";
     descriptionLabel.style.color = "var(--greyColor)";
     descriptionLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+    descriptionCheckboxSpan.style.backgroundColor = "white";
+    descriptionCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
+    descriptionNewEvent.value = "";
   }
 }
 
@@ -195,7 +213,8 @@ function newEventValidation () {
     if (!endNewEvent.value) {
       endDateLabel.style.color = "var(--redColor)";
       endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-      checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_red.png')"
+      endCheckboxSpan.style.backgroundColor = "var(--redColor)";
+      endCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
       if (window.innerWidth < 768) {
         checkboxNewEvent[0].style.backgroundSize = "10px 10px";
       }
@@ -206,9 +225,10 @@ function newEventValidation () {
   if (reminderCheckbox.checked) {
     timeReminderNewEvent.required = true;
     if (timeReminderNewEvent.value === "") {
-      reminderLabel.style.color = 
+      reminderLabel.style.color = "var(--redColor)";
       reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-      checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_red.png')"
+      reminderCheckboxSpan.style.backgroundColor = "var(--redColor)";
+      reminderCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
       if (window.innerWidth < 768) {
         checkboxNewEvent[1].style.backgroundSize = "10px 10px";
       }
@@ -221,7 +241,8 @@ function newEventValidation () {
     if(descriptionNewEvent.value == "") {
       descriptionLabel.style.color = "var(--redColor)";
       descriptionLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-      checkboxNewEvent[2].style.background = "url('../assets/img/checkedbox_red.png')"
+      descriptionCheckboxSpan.style.backgroundColor = "var(--redColor)";
+      descriptionCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
     }
     
     return false;
@@ -235,7 +256,6 @@ function newEventValidation () {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
     setNewEvent();
-    // getEvent();
     clearNewEventForm();
     modalNewEvent.style.display = "none";
   }
@@ -311,12 +331,12 @@ function getEvent(){
         typeEvent.innerHTML = "Work";
         break;
       case 1:
-        r.style.setProperty('--eventColor', 'yellow');
-        typeEvent.innerHTML = "Music";
-        break;
-      case 2:
         r.style.setProperty('--eventColor', 'rgb(220, 0, 235)');
         typeEvent.innerHTML = "Sport";
+        break;
+      case 2:
+        r.style.setProperty('--eventColor', 'rgb(255, 183, 0)');
+        typeEvent.innerHTML = "Music";
         break;
       case 3:
         r.style.setProperty('--eventColor', 'rgb(0, 89, 194)');
@@ -385,17 +405,21 @@ function clearNewEventForm(){
 
   endDateLabel.style.color = "var(--greyColor)";
   endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
-  checkboxNewEvent[0].style.background = "url('../assets/img/uncheckedbox_grey.png')"
+  endCheckboxSpan.style.backgroundColor = "white";
+  endCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
   endNewEvent.style.display = "none";
 
   reminderLabel.style.color = "var(--greyColor)";
   reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
-  checkboxNewEvent[1].style.background = "url('../assets/img/uncheckedbox_grey.png')";
+  reminderCheckboxSpan.style.backgroundColor = "white";
+  reminderCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
   showReminder.style.display = "none";
 
 
   descriptionLabel.style.color = "var(--greyColor)";
   eventLabel[3].style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  descriptionCheckboxSpan.style.backgroundColor = "white";
+  descriptionCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
   descriptionNewEvent.style.display = "none";
 
 }
