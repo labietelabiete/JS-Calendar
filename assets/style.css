@@ -317,6 +317,7 @@ main {
     box-shadow: none;
     background-color: transparent;
     color: black;
+    border-color: black;
 }
 
 /* Previous & next month days */
