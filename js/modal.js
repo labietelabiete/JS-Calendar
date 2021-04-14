@@ -46,6 +46,8 @@ modalCheckEvent = document.getElementById("checkEventModal");
 // Get the button that opens the modal
 btnNewEvent = document.getElementById("newEventBtn");
 btnCheckEvent = document.getElementById("checkEventBtn");
+// Mobile add event button
+newEventMobile = document.getElementById("newEventBtnMobile");
 
 // Get the <span> element that closes the modal
 closeModal = document.getElementsByClassName("close");
@@ -87,6 +89,12 @@ btnNewEvent.onclick = function () {
 btnCheckEvent.onclick = function () {
   modalCheckEvent.style.display = "flex";
 };
+
+// Mobile add event button
+newEventMobile.onclick = function () {
+  modalNewEvent.style.display = "flex";
+};
+
 // When the user clicks on <span> (x), close the modal
 closeModal[0].onclick = function () {
   modalNewEvent.style.display = "none";
