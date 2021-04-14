@@ -74,7 +74,7 @@ saveEventButton = document.getElementById("saveNewEvent");
 newEventForm = document.getElementById("newEventForm");
 eventDescription = document.getElementById("descriptionNewEvent");
 
-checkboxNewEvent = document.querySelectorAll(".spanEvent")
+checkboxNewEvent = document.querySelectorAll(".checkboxInput")
 
 
 
