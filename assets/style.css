@@ -25,7 +25,7 @@ GENERAL VARIABLES
     --eventColor: rgb(0, 213, 194);
 
     /* Stroke width */
-    --borderWidth: 2px;
+    --borderWidth: 3px;
 
     /* Font weights */
     --extraLight: 200;
@@ -308,17 +308,19 @@ main {
 /* General day div */
 .dayDiv{
     padding: 15px 10px 15px 0;
-    border-top: 2px black solid;
+    border-top: var(--borderWidth) black solid;
     transition: .4s;
     display: flex;
     align-items: flex-start;
+    min-width: 14.2857142857%;
+
 }
 
-.currentMonthDay:hover .numberDiv{
+.currentMonthDay:hover *{
   /* background-color: lightgray;
   box-shadow: 0 0 20px 20px lightgray; */
   /* border-radius: 50%; */
-  color: lightgray;
+  font-weight: var(--extraLight);
 }
 
 .today:hover .numberDiv{
@@ -355,9 +357,10 @@ main {
 
 /* Types of events */
 .event{
+  min-width: 20px;
   font-size: 14px;
   color: white;
-  font-weight: var(--regular);
+  font-weight: var(--bold);
   /* border-radius: 10px; */
   margin-bottom: 8px;
   transition: .2s;
@@ -632,6 +635,11 @@ select option:hover {
 /* MEDIA QUERIES
 --------------------------------------------------------------- */
 @media screen and (max-width: 1140px) {
+  #title{
+    font-size: 25px;
+    min-width: 150px;
+  }
+
   #monthAndYear{
       /* flex-basis: 800px; */
       transform: translateY(-15px);
@@ -647,8 +655,40 @@ select option:hover {
     width: 180px;
   }
 
+  /* Left */
+  #sidebar {
+    min-width: 150px;
+    margin-right: var(--margin);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  #mainRight{
+    max-width: 100%;
+  }
+
   #weekdaysContainer{
       font-size: 20px;
+  }
+
+  .eventsDiv{
+    width: 10px;
+    flex-grow: 0;
+    margin-right: 5px;
+  }
+
+  .event{
+    width: 0px;
+    height: 20px;
+    font-size: 20px;
+    margin: 0;
+    line-height: 30px;
+    overflow: hidden;
+    transform: translateY(-8px);
+  }
+
+  .event:hover{
+    font-weight: inherit;
   }
 
   .weekday{
@@ -657,15 +697,6 @@ select option:hover {
 
   .weekdayAbr{
       display: block;
-  }
-
-  .dayDiv{
-      font-size: 30px;
-      flex-direction: row;
-  }
-
-  .event{
-    display: none;
   }
 
 }
@@ -683,9 +714,6 @@ select option:hover {
       margin-bottom: var(--margin);
   }
 
-  #title{
-      font-size: 25px;
-  }
 
   #monthAndYear{
       width: 100%;
@@ -718,19 +746,20 @@ select option:hover {
       height: 60px;
   }
 
+
   #calendarCont{
       margin-bottom: 10px;
-      max-width: 100%;
   }
 
   .numberDiv, .otherNumberDiv{
     font-size: 30px;
-    margin-right: 5px;
+    margin-right: 6px;
 }
 
   footer{
-      height: 60px;
+      height: 100px;
   }
+
 
   /* Display add event button (mobile version) */
   #newEventBtnMobile{
@@ -751,6 +780,7 @@ select option:hover {
       margin-left: 15px;
       outline: none;
   }
+
   .eventType{
       font-size: 16px;
       margin-bottom: 50px;
@@ -766,21 +796,29 @@ select option:hover {
       width: 90%;
       font-size: 16px;
       margin-left: 15px;
-      
   }
+
   .eventDate{
       font-size: 16px;
       margin-left: 15px;
   }
+
   .checkboxLabel{
       margin-left: 0;
   }
+
   .checkboxLabel span {
       width: 10px;
       height: 10px;
       margin-right: 5px;
       display: inline-block;
       background-size: 10px 10px;
+  }
+
+  .dayDiv{
+    min-width: 14.2857142857%;
+    max-height: 100px;
+    padding-right: 5px;
   }
 
   #startNewEvent, #endNewEvent {
