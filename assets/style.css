@@ -333,6 +333,8 @@ main {
   font-weight: var(--extraLight);
   font-size: 40px;
   text-align: left;
+  margin-right: 15px;
+
 }
 
 /* Number */
@@ -349,9 +351,10 @@ main {
 
 /* Fixed width */
 .otherNumberDiv, .numberDiv{
-  min-width: 40px;
+  min-width: 55px;
 }
 
+/* Events container */
 .eventsDiv{
     flex-grow: 1;
     margin-right: 10px;
