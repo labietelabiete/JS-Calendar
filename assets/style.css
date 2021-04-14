@@ -402,6 +402,10 @@ footer {
   height: 50px;
 }
 
+/* Hide add event button (mobile version) in desktop versions*/
+#newEventBtnMobile{
+  display: none;
+}
 
 
 /* MODAL
