@@ -289,8 +289,6 @@ function setNewEvent(){
   };
   if(endNewEvent.value == "") {
     //Setting one hour after as end date as default
-    // newEventObj.endDate = ""
-    console.log("entro sin enddate");
     newEventObj.endDate.milliseconds = dateStartEventUTC.getTime();
     newEventObj.endDate.minutes = dateStartEventUTC.getUTCMinutes();
     newEventObj.endDate.hour = dateStartEventUTC.getUTCHours()+3;
@@ -298,7 +296,6 @@ function setNewEvent(){
     newEventObj.endDate.month = dateStartEventUTC.getUTCMonth()+1;
     newEventObj.endDate.year = dateStartEventUTC.getUTCFullYear();
   }else{
-    console.log("entro con enddate");
     dateEndEventUTC = new Date(endNewEvent.value);
     newEventObj.endDate.milliseconds = dateEndEventUTC.getTime();
     newEventObj.endDate.minutes = dateEndEventUTC.getUTCMinutes();
@@ -363,11 +360,26 @@ function getEvent(){
     if (eventToDisplay.startDate.minutes < 10) {
       eventToDisplay.startDate.minutes = "0" + eventToDisplay.startDate.minutes;
     }
+    if (eventToDisplay.startDate.day < 10) {
+      eventToDisplay.startDate.day = "0" + eventToDisplay.startDate.day;
+    }
+    if (eventToDisplay.startDate.month < 10) {
+      eventToDisplay.startDate.month = "0" + eventToDisplay.startDate.month;
+    }
     startDateEvent.innerHTML = eventToDisplay.startDate.day + "/" + eventToDisplay.startDate.month + "/" + eventToDisplay.startDate.year + " " + eventToDisplay.startDate.hour + ":" + eventToDisplay.startDate.minutes;
 
     if (eventToDisplay.endDate.year == null) {
       eventEndDateLabel.style.display = "none";
     } else{
+      if (eventToDisplay.endDate.minutes < 10) {
+        eventToDisplay.endDate.minutes = "0" + eventToDisplay.endDate.minutes;
+      }
+      if (eventToDisplay.endDate.day < 10) {
+        eventToDisplay.endDate.day = "0" + eventToDisplay.endDate.day;
+      }
+      if (eventToDisplay.endDate.month < 10) {
+        eventToDisplay.endDate.month = "0" + eventToDisplay.endDate.month;
+      }
       eventEndDateLabel.style.display = "inline-block";
       endDateEvent.innerHTML = eventToDisplay.endDate.day + "/" + eventToDisplay.endDate.month + "/" + eventToDisplay.endDate.year + " " + eventToDisplay.endDate.hour + ":" + eventToDisplay.endDate.minutes;
     }
