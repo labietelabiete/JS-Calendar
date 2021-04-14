@@ -6,23 +6,16 @@ let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
 let musicCheckbox = document.getElementById("musicCheckbox");
 let otherCheckbox = document.getElementById("otherCheckbox");
+let allStorage;
 
 // LISTENERS
 //------------------------------------------------------------------------
-setMonthEvents();
 saveEventButton.addEventListener('click', setDailyEvents);
 
 // Cleaning the month we are heading to
-prevMonthBtn.addEventListener('click', function(){
-    resetDaysContent(eventsDivs);
-});
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
 // Cleaning the month we are heading to
-nextMonthBtn.addEventListener('click', function(){
-    resetDaysContent(eventsDivs);
-});
-
 
 workCheckbox.addEventListener("change", setDailyEvents);
 sportCheckbox.addEventListener("change", setDailyEvents);
@@ -35,19 +28,6 @@ document.getElementById("month").addEventListener("click", function(){
     resetDaysContent(eventsDivs);
 });
 
-
-function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-}
-
-function resetDaysContent(array){
-    for ( const d of array ){
-        removeAllChildNodes(d);
-    }
-}
-
 // Sort current month's events
 function getMonthEvents(obj){
     if(obj.startDate.year === currentYearNum && obj.startDate.month === currentMonthNum){
@@ -57,9 +37,26 @@ function getMonthEvents(obj){
     }
 }
 
+function removeAllChildNodes(parent) {
+    let parentChilds = parent.childNodes;
+    for (let i=0; i<parentChilds.length; i++) {
+        parent.removeChild(parentChilds[i]);
+    }
+}
+
+
+function resetDaysContent(array){
+    let monthEvents = allStorage.filter(getMonthEvents);
+    console.log(monthEvents);
+    monthEvents.forEach(function(monthEvent){
+        var previousEvent = document.getElementById("eventId"+monthEvent.id);
+        previousEvent.remove();
+    })
+}
+
 // Filter type of events
 function filterType(array){
-    resetDaysContent(eventsDivs);
+    //resetDaysContent(eventsDivs);
 
     let filteredArray = new Array;
     array.forEach(function(ev){
@@ -77,14 +74,14 @@ function filterType(array){
         }
     })
 
-    //console.log("Filtered array", filteredArray);
     return filteredArray;
 }
 
 
 // Display current month's events
 function setMonthEvents(){
-    let allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
+    allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
+    console.log("All storage", allStorage);
 
     // Only declaring month events if at least there's one event
     if (allStorage !== null){
@@ -102,7 +99,7 @@ function setMonthEvents(){
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
             let newEventDiv = document.createElement("div");
             dayEventsDiv.appendChild(newEventDiv);
-
+            console.log("Appended", monthEvent.id);
             newEventDiv.setAttribute("class", "event");
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
@@ -114,10 +111,11 @@ function setMonthEvents(){
 
 function setDailyEvents(){
     // Restoring all previous HTML content
-    resetDaysContent(eventsDivs)
+    resetDaysContent();
     setMonthEvents();
 }
 
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
+setMonthEvents();
