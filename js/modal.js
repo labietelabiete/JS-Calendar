@@ -237,15 +237,14 @@ function newEventValidation () {
   }
 
   if(descriptionCheckbox.checked) {
-    descriptionNewEvent.required = true;
+    // descriptionNewEvent.required = true;
     if(descriptionNewEvent.value == "") {
       descriptionLabel.style.color = "var(--redColor)";
       descriptionLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       descriptionCheckboxSpan.style.backgroundColor = "var(--redColor)";
       descriptionCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
+      return false;
     }
-    
-    return false;
   }
 
   return true;
