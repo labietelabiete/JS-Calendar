@@ -144,11 +144,23 @@ header {
   background-color: var(--darkColor);
 }
 
+
+@keyframes transitionMainPage {
+  from {
+    opacity: 0;
+    transform: rotateX(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
 /* MAIN PART
 --------------------------------------------------------------- */
 main {
   display: flex;
   flex-grow: 1;
+  /* animation: 7s transitionMainPage; */
 }
 
 /* Left */
@@ -471,12 +483,65 @@ textarea{
     outline: none;
 }
 
+.eventTitleFlow {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.eventTitleFlow:not(:hover){
+  text-overflow: ellipsis;
+}
+.eventTitleFlow:hover h2, .eventTitleFlow:focus h2 {
+  display: inline-block;
+  animation: scroll-text 6s linear 0s infinite normal;
+}
+
+.titleContainer {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 150px;
+  /* background: linear-gradient(to right, var(--eventColor) , rgba(245, 245, 245, 0.009));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.titleContainer:not(:hover){
+  text-overflow: ellipsis;
+}
+.titleContainer:hover div, .titleContainer:focus div {
+  display: inline-block;
+  /* background: linear-gradient(to left, rgba(245, 245, 245, 0.009));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  animation: scroll-text 6s linear 0s infinite normal;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+  90% {
+    transform: translate(-100%);
+  }
+  95% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+} 
+
 .eventType{
     font-size: 26px;
     font-weight: var(--light);
     margin-bottom: 80px;
     outline: none;
 }
+
+
 
 .eventTypeOption {
   font-size: 26px;
@@ -689,7 +754,6 @@ select option:hover {
   margin-top: 10px;
   margin-bottom: 30px;
   margin-left: 15px;
-  backgr
 }
 
 

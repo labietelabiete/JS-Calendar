@@ -104,9 +104,20 @@ function setMonthEvents(){
         filteredArray.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
+            let newContainerDiv = document.createElement("div");
             let newEventDiv = document.createElement("div");
-            dayEventsDiv.appendChild(newEventDiv);
-            //console.log("Appended", monthEvent.id);
+            dayEventsDiv.appendChild(newContainerDiv);
+            
+            if(monthEvent.title.length > 20) {
+                 newContainerDiv.setAttribute("class", "titleContainer");
+                //  newContainerDiv.style.background = "linear-gradient(to right, rgba(245, 245, 245, 0.009))";
+                //  newContainerDiv.style.webkitBackgroundClip = "text";
+                //  newContainerDiv.style.webkitTextFillColor = "transparent"
+            }
+            newContainerDiv.appendChild(newEventDiv);
+            console.log("Appended", monthEvent.id);
+           // dayEventsDiv.appendChild(newEventDiv)
+
             newEventDiv.setAttribute("class", "event");
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");

@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
 // Html elements
+var monthAndYear = document.getElementById("monthAndYear");
 var monthTitle = document.getElementById("month");
 var yearTitle = document.getElementById("year");
 var calendarGrid = document.getElementById("calendarCont");
@@ -158,6 +159,7 @@ function getFirstDay(year, month){
 //------------------------------------------------------------------------
 // Previous month button
 prevMonthBtn.addEventListener("click", resetPrevMonth);
+console.log(prevMonthBtn)
 
 function resetPrevMonth(){
     // Emptying grid container before assigning previous month
@@ -173,18 +175,21 @@ function resetPrevMonth(){
         yearTitle.innerText = currentYearNum;
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+
     } else if (currentMonthNum == 2){
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
+
     } else {
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
+
     }
     // Assigning current month's length
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
@@ -193,10 +198,8 @@ function resetPrevMonth(){
     // Setting new calendar gridH
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
-
     console.log("Prev month!")
 }
-
 // Next month button
 nextMonthBtn.addEventListener("click", resetNextMonth);
 
@@ -228,7 +231,9 @@ function resetNextMonth(){
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+
     console.log("Next month!")
+
 }
 
 

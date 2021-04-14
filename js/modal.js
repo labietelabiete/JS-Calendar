@@ -318,6 +318,7 @@ function getEvent(){
   eventListComparing = JSON.parse(localStorage.getItem("localEventInfo"));
   eventListComparing.forEach(function(eventComparing){
     if (eventComparing.id == idEvent){
+      
       eventToDisplay = eventComparing;
     }
     })

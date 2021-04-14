@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./assets/style.css">
     <title>JS Calendar</title>
 </head>
+
 <body>
 
     <!-- Top part -->
@@ -23,7 +25,7 @@
     <main>
         <!-- Sidebar -->
         <sidebar id="sidebar">
-            <div id = "eventTypes">
+            <div id="eventTypes">
                 <!-- Work checkbox -->
                 <label class="checkbox">
                     <span class="checkboxInput">
@@ -62,7 +64,7 @@
         <!-- Main right -->
         <div id="mainRight">
             <!-- Navigation buttons -->
-            <div id = "monthButtons">
+            <div id="monthButtons">
                 <button class="navBtn" id="previousMonthButton"><</button>
                 <button class="navBtn" id="nextMonthButton">></button>
             </div>
@@ -79,7 +81,7 @@
             </div>
 
             <!-- Calendar grid -->
-            <div id = "calendarCont"></div>
+            <div id="calendarCont"></div>
         </div>
     </main>
     <div id="newEventModal" class="modal">
@@ -87,7 +89,8 @@
         <div class="modalContent">
             <span class="close">&times;</span>
             <form id="newEventForm">
-                <input type="text" class="eventTitle" name="title" id="titleNewEvent" placeholder="Title" maxlength="60" autofocus><br>
+                <input type="text" class="eventTitle" name="title" id="titleNewEvent" placeholder="Title" maxlength="60"
+                    autofocus><br>
 
                 <select name="" class="eventType" id="typeNewEvent">
                     <option class="eventTypeOption" value="none" selected disabled hidden>Type</option>
@@ -109,7 +112,8 @@
                     <h2 class="eventLabel" id="endDateLabel">End date</h2>
                 </label>
 
-                <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent" name="trip-end"><br>
+                <input class="eventDate" style="display: none" type="datetime-local" id="endNewEvent"
+                    name="trip-end"><br>
 
                 <!-- Reminder date -->
                 <label class="checkbox checkboxLabel">
@@ -139,7 +143,8 @@
                     <h2 class="eventLabel" id="descriptionLabel">Description</h2>
                 </label>
                 <br>
-                <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10" maxlength="500" style="display:none"></textarea><br>
+                <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10"
+                    maxlength="500" style="display:none"></textarea><br>
                 <div class="btnDiv">
                     <input class="modalBtn" type="button" value="Create" id="saveNewEvent">
                     <input class="modalBtn" type="button" value="Cancel" id="cancelNewEvent">
@@ -153,20 +158,24 @@
         <div class="modalContent modalContentCheck">
             <span class="close closeCheck">&times;</span>
             <form id="checkEventForm">
-                <h2 class="eventTitle" id="titleEvent"></h1>
-
+                <div class="eventTitleFlow">
+                    <h2 class="eventTitle" id="titleEvent"></h2>
+                </div>
                 <h5 class="eventType" id="typeEvent"></h5>
 
                 <label class="eventLabel eventLabelCheck" for="startNewEvent">Initial date</label><br>
                 <p class="eventDate" id="startDateEvent"></p>
 
-                <label class="eventLabel eventLabelCheck" id="eventEndDateLabel" for="checkBoxEndDate">End date</label><br>
+                <label class="eventLabel eventLabelCheck" id="eventEndDateLabel" for="checkBoxEndDate">End
+                    date</label><br>
                 <p class="eventDate" id="endDateEvent"></p>
 
-                <label class="eventLabel eventLabelCheck" id="eventReminderLabel" for="reminderNewEvent">Reminder</label><br>
+                <label class="eventLabel eventLabelCheck" id="eventReminderLabel"
+                    for="reminderNewEvent">Reminder</label><br>
                 <p class="eventDate" id="reminderEvent"></p>
 
-                <label class="eventLabel eventLabelCheck eventDescriptionLabel" id="eventDescriptionLabelId" for="descriptionNewEvent">Description</label><br>
+                <label class="eventLabel eventLabelCheck eventDescriptionLabel" id="eventDescriptionLabelId"
+                    for="descriptionNewEvent">Description</label><br>
                 <p class="eventDate" id="descriptionEvent"></p>
                 <div class="btnDiv">
                     <input class="modalBtn" type="button" value="OK" id="okCheckEventButton">
@@ -181,6 +190,6 @@
     <script src="js/calendar.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/eventCalendar.js"></script>
-    <script src="js/reminder.js"></script>
 </body>
+
 </html>
