@@ -1,7 +1,11 @@
-
-let sideBar = document.querySelector("#sideBar");
-console.log(sideBar);
-let myLocalStorage = JSON.parse(localStorage.getItem("localEventInfo"));
+// Global variables
+// ----------------------------------------------------------------------
+var sideBar = document.querySelector("#sideBar");
+var myLocalStorage = JSON.parse(localStorage.getItem("localEventInfo"));
+var reminderObj = {
+  eventId:"",
+  reminder:""
+}
 
 const test = () => {
     var newDiv = document.createElement("div");
