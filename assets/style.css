@@ -305,6 +305,11 @@ main {
     grid-template-rows: repeat(5, 1fr);
 }
 
+.today .numberDiv{
+  background-color: yellow;
+  box-shadow: 0 0 20px 20px yellow;
+  border-radius: 50%;
+}
 /* General day div */
 .dayDiv{
     padding: 15px 10px 15px 0;
@@ -361,6 +366,7 @@ main {
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    height: 100px;
 }
 
 /* Types of events */
@@ -456,7 +462,6 @@ textarea{
   padding: 20px 40px 60px 40px;
   border: 1px solid #888;
   min-width: 450px;
-  height: 700px;
   width: 20%;
   height: fit-content;
   border: var(--darkColor) solid var(--borderWidth);
@@ -618,7 +623,7 @@ select option:hover {
 }
 
 #descriptionEvent {
-  height: 120px;
+  height: fit-content;
 }
 
 #okCheckEventButton {
@@ -638,6 +643,9 @@ select option:hover {
   background-color: var(--redColor);
 }
 
+#checkEventForm{
+  height: fit-content;
+}
 
 
 /* MEDIA QUERIES
@@ -684,6 +692,7 @@ select option:hover {
     width: 10px;
     flex-grow: 0;
     margin-right: 5px;
+
   }
 
   .event{
@@ -723,7 +732,6 @@ select option:hover {
       margin-bottom: var(--margin);
   }
 
-
   #monthAndYear{
       width: 100%;
       height: fit-content;
@@ -760,6 +768,10 @@ select option:hover {
       max-height: 100%;
   }
 
+  .today .numberDiv{
+    box-shadow: 0 0 15px 12px yellow;
+  }
+  
   .numberDiv, .otherNumberDiv{
     font-size: 30px;
     margin-right: 6px;
@@ -869,6 +881,14 @@ select option:hover {
     border: var(--darkColor) solid var(--borderWidth);
     transition: .3s;
   }
+
+  .event{
+    min-height: 20px;
+  }
+  
+  .eventsDiv{
+    height: 50px;
+  }
 }
 
 /* Mobile */
@@ -917,6 +937,10 @@ select option:hover {
     font-weight: var(--bold);
   }
 
+  .today .numberDiv{
+    box-shadow: 0 5px 10px 6px yellow;
+  }
+
   .dayDiv{
     padding: 0px 5px 5px 0;
     height: 100%;
@@ -937,13 +961,15 @@ select option:hover {
   .eventsDiv{
     width: 5px;
     height: 100%;
+    max-height: 40px;
   }
 
   .event{
     width: 10px;
-    height: 10px;
+    min-height: 10px;
     font-size: 12px;
     margin: 0;
+    margin-bottom: 3px;
     line-height: 12px;
     overflow: hidden;
     transform: translateY(5px);
