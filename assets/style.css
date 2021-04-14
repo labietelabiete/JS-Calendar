@@ -287,6 +287,12 @@ main {
   margin-bottom: 10px;
 }
 
+/* Hidding abbreviations for mobile verisions */
+.weekdayAbr{
+  color: var(--darkColor);
+  display: none;
+}
+
 /* Calendar container */
 #calendarCont{
     flex-grow: 1;
@@ -620,6 +626,13 @@ select option:hover {
   color: white;
   background-color: var(--redColor);
 }
+
+
+
+/* MEDIA QUERIES
+--------------------------------------------------------------- */
+
+
 
 /*Media query for modals */
 @media (max-width: 768px){
