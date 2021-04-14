@@ -382,7 +382,7 @@ function getEvent(){
         eventDescriptionLabelId.innerHTML = eventToDisplay.description;
     }
 
-    modalCheckEvent.style.display = "block";
+    modalCheckEvent.style.display = "flex";
 }
 
 function removingEvent(){
