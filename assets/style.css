@@ -110,6 +110,7 @@ header {
   display: flex;
   margin-right: var(--margin);
   height: inherit;
+  transition: .5s
 }
 
 #month,
@@ -118,6 +119,7 @@ header {
   /* display: inline; */
   height: fit-content;
   transform: translateY(-30px);
+  transition: .4s;
 }
 
 #month {
@@ -367,7 +369,7 @@ main {
 
 .workEvent{
   color: var(--greenColor);
-  border-top: var(--borderWidth) var(--greenColor) solid;
+  /* border-top: var(--borderWidth) var(--greenColor) solid; */
   /* background-color: var(--greenColor);
   box-shadow: 0 0 8px 8px var(--greenColor); */
 }
@@ -400,6 +402,8 @@ main {
 --------------------------------------------------------------- */
 footer {
   height: 50px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Hide add event button (mobile version) in desktop versions*/
@@ -506,14 +510,6 @@ select option:hover {
     /* margin-bottom: 10px; */
     transition: .1s;
 }
-/*
-.checkboxEndReminder{
-    width: 120%;
-    font-size: 26px;
-    font-weight: var(--semiBold);
-    margin-bottom: 10px;
-    transition: .1s;
-} */
 
 .endCheckbox, .reminderCheckbox, .descriptionCheckbox{
     border: var(--borderWidth) solid var(--greyColor);
@@ -543,6 +539,7 @@ select option:hover {
   color: var(--greyColor);
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
+
 #reminderLabel {
   color: var(--greyColor);
   border-bottom: var(--greyColor) solid var(--borderWidth);
@@ -551,7 +548,6 @@ select option:hover {
   color: var(--greyColor);
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
-
 
 .eventDescription{
     width: 100%;
@@ -635,94 +631,188 @@ select option:hover {
 
 /* MEDIA QUERIES
 --------------------------------------------------------------- */
+@media screen and (max-width: 1140px) {
+  #monthAndYear{
+      /* flex-basis: 800px; */
+      transform: translateY(-15px);
+  }
 
+  #month, #year {
+      font-size: 100px;
+      transform: translateY(0px);
+  }
+
+  #newEventBtn {
+    font-size: 15px;
+    width: 180px;
+  }
+
+  #weekdaysContainer{
+      font-size: 20px;
+  }
+
+  .weekday{
+      display: none;
+  }
+
+  .weekdayAbr{
+      display: block;
+  }
+
+  .prevMonthDay, .currentMonthDay, .nextMonthDay{
+      font-size: 30px;
+  }
+
+  .event{
+    display: none;
+  }
+}
 
 
 /*Media query for modals */
 @media (max-width: 768px){
-.modalContent {
-    padding: 20px 25px 30px 25px;
-    width: 10%;
-    min-width: 300px;
-    height: 580px;
-}
+  body{
+      padding-bottom: 80px;
+  }
 
-.eventTitle{
+  header{
+      flex-direction: column;
+      height: 200px;
+      margin-bottom: var(--margin);
+  }
+
+  #title{
+      font-size: 25px;
+  }
+
+  #monthAndYear{
+      width: 100%;
+      height: fit-content;
+      flex-direction: column;
+  }
+
+  #month, #year {
+      font-size: 70px;
+      width: 100%;
+  }
+
+  #year{
+      transform: translateY(-10px);
+  }
+
+  /* Hide add event button for desktop */
+  #newEventBtn{
+      display: none;
+  }
+
+  #sidebar{
+      display: none;
+  }
+
+  .navBtn{
+      font-size: 40px;
+      width: 60px;
+      height: 60px;
+  }
+
+  #calendarCont{
+      margin-bottom: 10px;
+  }
+
+  footer{
+      height: 60px;
+  }
+
+  /* Display add event button (mobile version) */
+  #newEventBtnMobile{
+      display: block;
+  }
+
+
+
+  .modalContent {
+      padding: 20px 25px 30px 25px;
+      width: 10%;
+      min-width: 300px;
+      height: 580px;
+  }
+
+  .eventTitle{
+      height: 40px;
+      font-size: 40px;
+      margin: 10px 0px;
+      margin-left: 15px;
+      outline: none;
+  }
+  .eventType{
+      font-size: 16px;
+      margin-bottom: 50px;
+      margin-left: 15px;
+    }
+
+    .eventTypeOption {
+      font-size: 16px;
+    }
+
+    .eventLabel {
+      display: inline-block;
+      width: 90%;
+      font-size: 16px;
+      margin-left: 15px;
+      
+  }
+  .eventDate{
+      font-size: 16px;
+      margin-left: 15px;
+  }
+  .checkboxLabel{
+      margin-left: 0;
+  }
+  .checkboxLabel span {
+      width: 10px;
+      height: 10px;
+      margin-right: 5px;
+      display: inline-block;
+      background-size: 10px 10px;
+  }
+
+  #startNewEvent, #endNewEvent {
+      width: 90%;
+  }
+
+  #endDateLabel, #reminderLabel, #descriptionLabel{
+    margin-left: 0px;
+  }
+
+  .eventDescriptionLabel{
+    margin-bottom: 10px;
+  }
+
+  .eventDescription{
+    width: 90%;
+    height: 100px;
+    font-size: 16px;
+    font-weight: var(--light);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    backgr
+  }
+
+
+
+  .btnDiv{
+      margin-left: 15px;
+      margin-right: 15px;
+  }
+
+  .modalBtn{
+    width: 48%;
     height: 40px;
-    font-size: 40px;
-    margin: 10px 0px;
-    margin-left: 15px;
-    outline: none;
-}
-.eventType{
     font-size: 16px;
-    margin-bottom: 50px;
-    margin-left: 15px;
+    font-weight: var(--semiBold);
+    background-color: white;
+    border: var(--darkColor) solid var(--borderWidth);
+    transition: .3s;
   }
-
-  .eventTypeOption {
-    font-size: 16px;
-  }
-
-  .eventLabel {
-    display: inline-block;
-    width: 90%;
-    font-size: 16px;
-    margin-left: 15px;
-    
-}
-.eventDate{
-    font-size: 16px;
-    margin-left: 15px;
-}
-.checkboxLabel{
-    margin-left: 0;
-}
-.checkboxLabel span {
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-    display: inline-block;
-    background-size: 10px 10px;
-}
-
-#startNewEvent, #endNewEvent {
-    width: 90%;
-}
-
-#endDateLabel, #reminderLabel, #descriptionLabel{
-  margin-left: 0px;
-}
-
-.eventDescriptionLabel{
-  margin-bottom: 10px;
-}
-
-.eventDescription{
-  width: 90%;
-  height: 100px;
-  font-size: 16px;
-  font-weight: var(--light);
-  margin-top: 10px;
-  margin-bottom: 30px;
-  margin-left: 15px;
-  backgr
-}
-
-
-
-.btnDiv{
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-.modalBtn{
-  width: 48%;
-  height: 40px;
-  font-size: 16px;
-  font-weight: var(--semiBold);
-  background-color: white;
-  border: var(--darkColor) solid var(--borderWidth);
-  transition: .3s;
-}
 }
