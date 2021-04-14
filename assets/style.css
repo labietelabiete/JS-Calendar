@@ -65,7 +65,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    outline: 2px red solid;
+    /* outline: 2px red solid; */
 }
 
 /* Remove blue background when autofilling forms */
@@ -642,6 +642,7 @@ select option:hover {
 
 /* MEDIA QUERIES
 --------------------------------------------------------------- */
+/* Smalle desktop */
 @media screen and (max-width: 1140px) {
   #title{
     font-size: 25px;
@@ -690,6 +691,7 @@ select option:hover {
     height: 20px;
     font-size: 20px;
     margin: 0;
+    margin-bottom: -5px;
     line-height: 30px;
     overflow: hidden;
     transform: translateY(-8px);
@@ -709,9 +711,8 @@ select option:hover {
 
 }
 
-
-/*Media query for modals */
-@media (max-width: 768px){
+/* Small devices */
+@media screen and (max-width: 768px){
   body{
       padding-bottom: 80px;
   }
@@ -754,14 +755,15 @@ select option:hover {
       height: 60px;
   }
 
-
   #calendarCont{
       margin-bottom: 10px;
+      max-height: 100%;
   }
 
   .numberDiv, .otherNumberDiv{
     font-size: 30px;
     margin-right: 6px;
+    min-width: 40px;
 }
 
   footer{
@@ -776,9 +778,9 @@ select option:hover {
 
   .modalContent {
       padding: 20px 25px 30px 25px;
-      width: 10%;
+      width: 70%;
       min-width: 300px;
-      height: 580px;
+      height: fit-content;
   }
 
   .eventTitle{
@@ -825,8 +827,9 @@ select option:hover {
 
   .dayDiv{
     min-width: 14.2857142857%;
-    max-height: 100px;
+    max-height: 80px;
     padding-right: 5px;
+    align-items: flex-start;
   }
 
   #startNewEvent, #endNewEvent {
@@ -852,8 +855,6 @@ select option:hover {
     backgr
   }
 
-
-
   .btnDiv{
       margin-left: 15px;
       margin-right: 15px;
@@ -870,9 +871,82 @@ select option:hover {
   }
 }
 
+/* Mobile */
+@media screen and (max-width: 500px){
 
-@media (max-width: 768px){
+  :root{
+    --borderWidth: 3px;
+  }
+
+  body{
+    padding: 30px;
+  }
+
+  header{
+    height: 140px;
+  }
+
+  #monthAndYear{
+    width: 100%;
+    height: fit-content;
+    flex-grow: 0;
+    flex-direction: column;
+    transform: translateY(0px);
+  }
+
+  #month, #year {
+    font-size: 50px;
+    width: 100%;
+  }
 
 
+  #monthButtons{
+    margin-bottom: 20px;
+  }
+
+  .navBtn{
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    font-weight: var(--regular);
+    border: 2px var(--darkColor) solid;
+  }
+
+  #weekdaysContainer{
+    font-size: 14px;
+    font-weight: var(--bold);
+  }
+
+  .dayDiv{
+    padding: 0px 5px 5px 0;
+    height: 100%;
+    border-top: 2px var(--darkColor) solid;
+  }
+
+  .numberDiv, .otherNumberDiv{
+    font-size: 16px;
+    margin-right: 6px;
+    min-width: 20px;
+    height: 20px;
+  }
+
+  #mainRight{
+    margin-bottom: -10px;
+  }
+
+  .eventsDiv{
+    width: 5px;
+    height: 100%;
+  }
+
+  .event{
+    width: 10px;
+    height: 10px;
+    font-size: 12px;
+    margin: 0;
+    line-height: 12px;
+    overflow: hidden;
+    transform: translateY(5px);
+  }
 
 }
