@@ -312,9 +312,7 @@ main {
     transition: .4s;
     display: flex;
     align-items: flex-start;
-
 }
-
 
 .currentMonthDay:hover .numberDiv{
   /* background-color: lightgray;
