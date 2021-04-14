@@ -159,19 +159,9 @@ function getFirstDay(year, month){
 // Previous month button
 prevMonthBtn.addEventListener("click", resetPrevMonth);
 
-function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        console.log(parend.firstChild);
-        parent.removeChild(parent.firstChild);
-        console.log("Removed")
-
-    }
-}
-
 function resetPrevMonth(){
     // Emptying grid container before assigning previous month
-    removeAllChildNodes(calendarGrid);
-    // calendarGrid.innerHTML = "";
+    calendarGrid.innerHTML = "";
 
     // January
     if (currentMonthNum == 1){
@@ -202,7 +192,7 @@ function resetPrevMonth(){
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar gridH
     appendDays(previousMonthLength,firstDay,currentMonthLength);
-    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
     console.log("Prev month!")
 }
@@ -212,8 +202,7 @@ nextMonthBtn.addEventListener("click", resetNextMonth);
 
 function resetNextMonth(){
     // Emptying grid container before assigning next month
-    removeAllChildNodes(calendarGrid);
-    // calendarGrid.innerHTML = "";
+    calendarGrid.innerHTML = "";
 
     //December
     if (currentMonthNum == 12){
@@ -238,7 +227,7 @@ function resetNextMonth(){
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
-    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
     console.log("Next month!")
 }
 
