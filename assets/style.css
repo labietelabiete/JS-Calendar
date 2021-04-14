@@ -65,7 +65,7 @@ STYLING
     font-family: 'Clash';
     box-sizing: border-box;
     /* Comment/Uncomment this to see/hide all boxes */
-    /* outline: 2px red solid; */
+    outline: 2px red solid;
 }
 
 /* Remove blue background when autofilling forms */
@@ -318,6 +318,7 @@ main {
     display: flex;
     align-items: flex-start;
     min-width: 14.2857142857%;
+    max-height: 100px;
 }
 
 .currentMonthDay:hover *{
@@ -365,7 +366,7 @@ main {
     display: flex;
     flex-direction: column;
     overflow: scroll;
-    height: 100px;
+    min-height: 100%;
     /* Fade out effect */
     -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
     mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
