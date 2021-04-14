@@ -318,7 +318,6 @@ main {
     display: flex;
     align-items: flex-start;
     min-width: 14.2857142857%;
-
 }
 
 .currentMonthDay:hover *{
