@@ -384,13 +384,18 @@ function clearNewEventForm(){
   eventLabel[0].style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
 
   endDateLabel.style.color = "var(--greyColor)";
-  endDateLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  // checkboxNewEvent[0].style.background = "url('../assets/img/checkedbox_black.png')"
+  endDateLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  checkboxNewEvent[0].style.background = "url('../assets/img/uncheckedbox_grey.png')"
+  endNewEvent.style.display = "none";
 
-  reminderLabel.style.color = "var(--darkColor)";
-  reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
-  // checkboxNewEvent[1].style.background = "url('../assets/img/checkedbox_black.png')";
+  reminderLabel.style.color = "var(--greyColor)";
+  reminderLabel.style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  checkboxNewEvent[1].style.background = "url('../assets/img/uncheckedbox_grey.png')";
+  showReminder.style.display = "none";
 
-  eventDescriptionLabel.style.color = "var(--blackColor)";
-  eventLabel[2].style.borderBottom  = "var(--blackColor) solid var(--borderWidth)";
+
+  descriptionLabel.style.color = "var(--greyColor)";
+  eventLabel[3].style.borderBottom  = "var(--greyColor) solid var(--borderWidth)";
+  descriptionNewEvent.style.display = "none";
+
 }
