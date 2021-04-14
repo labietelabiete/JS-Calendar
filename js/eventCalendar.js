@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
-var eventsDivs = document.querySelectorAll(".eventsDiv");
+let eventsDivs = document.querySelectorAll(".eventsDiv");
 // Accessing all checkboxes
 let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
