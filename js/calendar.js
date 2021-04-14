@@ -130,13 +130,6 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
     if (originalYear === currentYear && originalMonth === currentMonth){
         let todayDiv = document.getElementById("day" + currentDayNum);
         todayDiv.classList.add("today");
-
-        todayNumber = document.querySelector(".today .numberDiv");
-        todayNumber.style.backgroundColor = "yellow";
-        todayNumber.style.boxShadow = "0 0 20px 20px yellow";
-        todayNumber.style.borderRadius = "50%";
-        // Capturing today div
-        today = document.querySelector(".today");
     }
 };
 
