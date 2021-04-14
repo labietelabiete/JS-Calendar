@@ -14,8 +14,8 @@ if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
 }else{
-  eventIndex = eventInfoArray.length;
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+  eventIndex = eventInfoArray.length;
 }
 localStorage.setItem("eventIndex", eventIndex );
 
@@ -255,6 +255,9 @@ function newEventValidation () {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
     setNewEvent();
+    if (newEventObj.reminder != "") {
+      setNewReminder(newEventObj.id, newEventObj.reminder);
+    }  
     clearNewEventForm();
     modalNewEvent.style.display = "none";
   }
