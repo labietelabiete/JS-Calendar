@@ -6,7 +6,7 @@ let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
 let musicCheckbox = document.getElementById("musicCheckbox");
 let otherCheckbox = document.getElementById("otherCheckbox");
-let allStorage;
+let allStorage = [];
 
 // LISTENERS
 //------------------------------------------------------------------------
@@ -47,15 +47,18 @@ function removeAllChildNodes(parent) {
 
 
 function resetDaysContent(){
-    let monthEvents = allStorage.filter(getMonthEvents);
-    //console.log("monthEvents -->", monthEvents);
-    monthEvents.forEach(function(monthEvent){
-        var previousEvent = document.getElementById("eventId"+monthEvent.id);
-        if(previousEvent !== null){
-            previousEvent.remove();
-        }
-        
-    })
+    if(allStorage.length > 0){
+        let monthEvents = allStorage.filter(getMonthEvents);
+        //console.log("monthEvents -->", monthEvents);
+        monthEvents.forEach(function(monthEvent){
+            var previousEvent = document.getElementById("eventId"+monthEvent.id);
+            if(previousEvent !== null){
+                previousEvent.remove();
+            }
+            
+        })
+    }
+
 }
 
 // Filter type of events
@@ -86,7 +89,7 @@ function filterType(array){
 function setMonthEvents(){
     allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
     //console.log("All storage", allStorage);
-
+    
     // Only declaring month events if at least there's one event
     if (allStorage !== null){
         // Sorting by month & year
@@ -110,6 +113,8 @@ function setMonthEvents(){
             newEventDiv.innerText = monthEvent.title;
             newEventDiv.addEventListener('click', getEvent);
         })
+    }else{
+        allStorage = [];
     }
 }
 
