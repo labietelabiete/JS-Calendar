@@ -379,7 +379,7 @@ function getEvent(){
     } 
       else{
         eventDescriptionLabelId.style.display = "inline-block";
-        eventDescriptionLabelId.innerHTML = eventToDisplay.description;
+        descriptionEvent.innerHTML = eventToDisplay.description;
     }
 
     modalCheckEvent.style.display = "flex";
