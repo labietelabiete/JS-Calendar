@@ -96,10 +96,11 @@ function setMonthEvents(){
 
         testArr.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
+            // Accessing the day that corresponds with event's day
             let dayEventsDiv = document.querySelector("#day" + dayID + " .eventsDiv");
+            // Create and append the future event dic
             let newEventDiv = document.createElement("div");
             dayEventsDiv.appendChild(newEventDiv);
-            console.log("Appended", monthEvent.id);
             newEventDiv.setAttribute("class", "event");
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
