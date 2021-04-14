@@ -350,8 +350,7 @@ main {
     margin-right: 10px;
     display: flex;
     flex-direction: column;
-    /* transform: translateY(-8px); */
-    /* padding: 5px; */
+    overflow: scroll;
 }
 
 /* Types of events */
@@ -660,13 +659,15 @@ select option:hover {
       display: block;
   }
 
-  .prevMonthDay, .currentMonthDay, .nextMonthDay{
+  .dayDiv{
       font-size: 30px;
+      flex-direction: row;
   }
 
   .event{
     display: none;
   }
+
 }
 
 
@@ -690,10 +691,11 @@ select option:hover {
       width: 100%;
       height: fit-content;
       flex-direction: column;
-  }
+      transform: translateY(0px);
+    }
 
   #month, #year {
-      font-size: 70px;
+      font-size: 80px;
       width: 100%;
   }
 
@@ -718,7 +720,13 @@ select option:hover {
 
   #calendarCont{
       margin-bottom: 10px;
+      max-width: 100%;
   }
+
+  .numberDiv, .otherNumberDiv{
+    font-size: 30px;
+    margin-right: 5px;
+}
 
   footer{
       height: 60px;
@@ -728,8 +736,6 @@ select option:hover {
   #newEventBtnMobile{
       display: block;
   }
-
-
 
   .modalContent {
       padding: 20px 25px 30px 25px;
