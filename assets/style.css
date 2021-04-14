@@ -366,6 +366,9 @@ main {
     flex-direction: column;
     overflow: scroll;
     height: 100px;
+    /* Fade out effect */
+    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
 }
 
 /* Types of events */
