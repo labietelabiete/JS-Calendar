@@ -123,7 +123,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         let nextDay = document.createElement("div");
         setUpDay(nextDay, n, "nextMonthday", false);
     }
-    
 };
 
 // Highlight today
