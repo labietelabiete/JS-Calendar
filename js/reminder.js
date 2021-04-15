@@ -57,7 +57,7 @@ function setAllReminders(){
           let currentDate = new Date().getTime();
           let reminderEndDate = eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000);
           let differenceMilliseconds = (reminderEndDate - currentDate);
-          console.log("differenceMilliseconds -->", differenceMilliseconds);
+          console.log("differenceMilliseconds -->", differenceMilliseconds/60000);
           let reminderTitle = eventElement.title;
           if (differenceMilliseconds > 0) {
             ("time out for reminderElement -->", reminderElement);
@@ -105,7 +105,6 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
   }
   //expiredRemindersContainer.appendChild(expiredReminderDiv);
   expiredReminderDiv += reminderTitle + " expires in " + reminderValue + " minutes</div>";
-  console.log("type of expiredReminderDiv -->", typeof(expiredReminderDiv));
   expiredRemindersContainer.insertAdjacentHTML('beforeend', expiredReminderDiv);
 
   //setting a timeout to remove the reminder div after its appearance
@@ -113,7 +112,7 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
     expiredReminder = document.getElementById("reminder" + reminderId);
     console.log(expiredReminder)
     expiredRemindersContainer.removeChild(expiredReminder);
-  }, 5000);
+  }, 10000);
 
   // Removing the reminder from the reminderInfo array
   for (let e = 0; e < eventReminderInfo.length; e++) {
