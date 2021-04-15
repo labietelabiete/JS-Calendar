@@ -45,14 +45,13 @@ function removeAllChildNodes(parent) {
     }
 }
 
-
 function resetDaysContent(){
     if(allStorage.length > 0){
         let monthEvents = allStorage.filter(getMonthEvents);
         //console.log("monthEvents -->", monthEvents);
         monthEvents.forEach(function(monthEvent){
             var previousEvents = document.getElementsByClassName("eventId"+monthEvent.id);
-            console.log(previousEvents);
+            //console.log(previousEvents);
             if(previousEvents !== []){
                 for (var e = previousEvents.length - 1; e >= 0; e--) {
                     // Remove first element (at [0]) repeatedly
@@ -138,7 +137,7 @@ function setMonthEvents(){
             // Default behaviour
             let dayDiff = (endDay - startDay); // We'll need to add one event div at least
             // console.log(monthEvent.title, startDay, endDay, dayDiff);
-            // console.log(startMonth, endMonth);
+            //console.log(startMonth, endMonth);
 
             // Events that go through months
             if ( startMonth !== endMonth && endMonth !== null ){
@@ -161,6 +160,7 @@ function setMonthEvents(){
             // Temporary else if statement for null end dates
             }else if (endDay === null){
                 createEventDiv(dayID, monthEvent.id, monthEvent.type, monthEvent.title);
+
             // Events happenind in one day
             } else if (dayDiff === 0){
                 createEventDiv(dayID, monthEvent.id, monthEvent.type, monthEvent.title);
