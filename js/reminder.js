@@ -34,7 +34,7 @@ function setNewReminder(eventId, eventReminder){
 // establishes a setinterval to execute it again
 function triggerReminders(){
   setAllReminders()
-  setInterval(setAllReminders, 10000);
+  setInterval(setAllReminders, 1);
 }
 
 // Sets all reminders for the current events
@@ -50,27 +50,39 @@ function setAllReminders(){
     reminderInfoArray.forEach(reminderElement => {
       myEventsInfo.forEach(eventElement => {
         if (eventElement.id == reminderElement.eventId && reminderElement.flag === false) {
-          console.log("Seteo este reminder", reminderElement)
           
           // Calculating remaining time left before 
           // event expires and capturing event title
           let currentDate = new Date().getTime();
-          let reminderEndDate = eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000);
+          let reminderEndDate = parseInt(eventElement.endDate.milliseconds) - (parseInt(reminderElement.reminder)*60000);
+
+
+
+          //Just info for dates visualization
+          let currentDateFormat = new Date(currentDate);
+          let endDateFormat = new Date(eventElement.endDate.milliseconds);
+          let reminderDateFormat = new Date (eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000));
+          console.log("Current date",currentDateFormat);
+          console.log("End date",endDateFormat);
+          // console.log("Hay que restarle a enddate", parseInt(reminderElement.reminder));
+          console.log("End date - reminder", reminderDateFormat);
+
+
+
           let differenceMilliseconds = (reminderEndDate - currentDate);
-          console.log("differenceMilliseconds -->", differenceMilliseconds/60000);
+          console.log("differenceMilliseconds en minutos -->", differenceMilliseconds/60000);
           let reminderTitle = eventElement.title;
           if (differenceMilliseconds > 0) {
-            ("time out for reminderElement -->", reminderElement);
-            
+            reminderElement.flag = true;
             // Setting the timeout for the given event and setting flag to true
             setTimeout(reminderTimeOut(reminderElement.eventId, reminderTitle, 
             eventElement.eventType, reminderElement.reminder, reminderInfoArray ), 
             differenceMilliseconds);
-            reminderElement.flag = true;
           }
         }
       }) 
     });
+    // localStorage.setItem("localReminderInfo", JSON.stringify(reminderInfoArray));
   }else{
     reminderInfoArray = [];
   }
