@@ -184,7 +184,7 @@ function resetPrevMonth(){
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar gridH
     appendDays(previousMonthLength,firstDay,currentMonthLength);
-    // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
     console.log("Prev month!")
 }
@@ -219,7 +219,7 @@ function resetNextMonth(){
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
-    // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
     console.log("Next month!")
 }
 
