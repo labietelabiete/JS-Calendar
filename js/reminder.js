@@ -84,7 +84,7 @@ function setAllReminders(){
         }
       });
       // Storing the event reminder after flag change into local storage again
-      localStorage.setItem('localReminderInfo', JSON.stringify(reminderElement));
+      localStorage.setItem('localReminderInfo', JSON.stringify(reminderInfoArray));
     });
     // localStorage.setItem("localReminderInfo", JSON.stringify(reminderInfoArray));
   }else{
@@ -103,37 +103,37 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
   //expiredReminderDiv.className = "reminder";
   switch (eventType) {
     case 0:
-      reminderSpanClass = "reminderSpanClass";
+      reminderSpanClass = "reminderSpanClass workReminder";
       reminderClassType = "workReminder";
-      expiredReminderDiv += "<span class = " + reminderSpanClass + " " + reminderClassType + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       spanBackgroundColor = "var(--greenColor)";
       break;
     
     case 1:
-      reminderSpanClass = "reminderSpanClass"
+      reminderSpanClass = "reminderSpanClass sportReminder"
       reminderClassType = "sportReminder";
-      expiredReminderDiv += "<span class = " + reminderSpanClass + " " + reminderClassType + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       spanBackgroundColor = "var(--magentaColor)";
       break;
 
     case 2:
-      reminderSpanClass = "reminderSpanClass";
+      reminderSpanClass = "reminderSpanClass musicReminder";
       reminderClassType = "musicReminder";
-      expiredReminderDiv += "<span class = " + reminderSpanClass + " " + reminderClassType + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       spanBackgroundColor = "var(--yellowColor)";
       break;
 
     case 3:
-      reminderSpanClass = "reminderSpanClass";
+      reminderSpanClass = "reminderSpanClass otherReminder";
       reminderClassType = "otherReminder";
-      expiredReminderDiv += "<span class = " + reminderSpanClass + " " + reminderClassType + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       spanBackgroundColor = "var(--blueColor)"
       break;
 
     default:
-      reminderSpanClass = "reminderSpanClass"
+      reminderSpanClass = "reminderSpanClass defaultReminder"
       reminderClassType = "defaultReminder";
-      expiredReminderDiv += "<span class = " + reminderSpanClass + " " + reminderClassType + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       spanBackgroundColor = "black";
       break;
   }
@@ -146,8 +146,8 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
   console.log(" reminder span -->", document.querySelector(".reminderSpanClass"));
 
   //setting a timeout to remove the reminder div after its appearance
-  setTimeout(function(expiredReminderDiv){
-    // expiredReminder = document.getElementById("reminder" + reminderId + "wrapper");
+  setTimeout(function(){
+    expiredReminder = document.getElementById("reminder" + reminderId + "wrapper");
     // console.log(expiredReminder)
     expiredRemindersContainer.removeChild(expiredReminder);
     if(expiredRemindersContainer.children.length === 0){
