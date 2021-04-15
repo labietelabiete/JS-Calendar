@@ -179,18 +179,40 @@ main {
   flex-grow:1;
   outline: 2px solid black;
 }
+.reminderSpanClass{
+    display:inline;
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--greenColor);
+}
 
 .workReminder{
-
+    display:inline;
+    color: var(--greenColor);
 }
 
 .sportReminder{
-
+    display:inline;
+    color: var(--magentaColor);
 }
 
 .musicReminder{
-  
+    display:inline;
+    color: var(--yellowColor);
 }
+
+.otherReminder{
+    display:inline;
+    color: var(--blueColor);
+}
+
+.defaultReminder{
+    display:inline;
+    color:black;
+}
+
 #eventTypes {
   width: 100%;
 }
