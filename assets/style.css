@@ -162,7 +162,12 @@ main {
 }
 
 #reminderContainer{
-  
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow:0.7;
+  top:80px;
+  visibility:hidden;
 }
 
 #reminderTitle{
@@ -170,9 +175,22 @@ main {
 }
 
 #expiredReminders{
+  margin-top: 8px;
+  flex-grow:1;
+  outline: 2px solid black;
+}
+
+.workReminder{
 
 }
 
+.sportReminder{
+
+}
+
+.musicReminder{
+  
+}
 #eventTypes {
   width: 100%;
 }

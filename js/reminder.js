@@ -57,22 +57,24 @@ function setAllReminders(){
           let fullcurrentDate = new Date();
           let currentDate = fullcurrentDate.getTime();
 
-          console.log("fullcurrentDate -->", fullcurrentDate);
-          console.log("eventElement.endDate -->", new Date(eventElement.endDate.milliseconds));
+          // console.log("fullcurrentDate -->", fullcurrentDate);
+          // console.log("eventElement.endDate -->", new Date(eventElement.endDate.milliseconds));
           // console.log("eventElement.endDate.milliseconds type -->",typeof(eventElement.endDate.milliseconds));
           // console.log("parseInt(reminderElement.reminder)*60000 type -->",typeof(parseInt(reminderElement.reminder)*60000));
-          console.log("eventElement.endDate.milliseconds -->", eventElement.endDate.milliseconds);
-          console.log("(parseInt(reminderElement.reminder)*60000) -->", (parseInt(reminderElement.reminder)*60000));
-          console.log("currentDate -->", currentDate);
+          // console.log("eventElement.endDate.milliseconds -->", eventElement.endDate.milliseconds);
+          // console.log("(parseInt(reminderElement.reminder)*60000) -->", (parseInt(reminderElement.reminder)*60000));
+          // console.log("currentDate -->", currentDate);
           let reminderEndDate = eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000);
           let differenceMilliseconds = (reminderEndDate - currentDate);
-          console.log("differenceMilliseconds -->", differenceMilliseconds/60000);
+          // console.log("differenceMilliseconds -->", differenceMilliseconds/60000);
           let reminderTitle = eventElement.title;
           if (differenceMilliseconds > 0) {
-            ("time out for reminderElement -->", reminderElement);
+            // ("time out for reminderElement -->", reminderElement);
             
-            // Setting the timeout for the given event and setting flag to true
+            // Setting the timeout for the given event and setting 
+            // flag to true and displaying reminder container
             reminderElement.flag = true;
+            document.getElementById("reminderContainer").style.visibility = "visible";
             setTimeout(reminderTimeOut(reminderElement.eventId, reminderTitle, 
             eventElement.eventType, reminderElement.reminder, reminderInfoArray ), 
             differenceMilliseconds);
@@ -88,7 +90,6 @@ function setAllReminders(){
 }
 
 function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, eventReminderInfo){
-  
   // Creating and formating new reminder div to add it to the reminder conatiner
   let expiredReminderDiv = "<div id = reminder" +  reminderId + "wrapper>";
   let eventClassType;
@@ -125,9 +126,10 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
       expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       break;
   }
-  //expiredRemindersContainer.appendChild(expiredReminderDiv);
+
+  // Finishing html string and injecting it
   expiredReminderDiv += reminderTitle + " expires in " + reminderValue + " minutes</div> </div>";
-  console.log("type of expiredReminderDiv -->", typeof(expiredReminderDiv));
+  // console.log("type of expiredReminderDiv -->", typeof(expiredReminderDiv));
   expiredRemindersContainer.insertAdjacentHTML('beforeend', expiredReminderDiv);
 
   //setting a timeout to remove the reminder div after its appearance
@@ -135,6 +137,10 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
     expiredReminder = document.getElementById("reminder" + reminderId + "wrapper");
     console.log(expiredReminder)
     expiredRemindersContainer.removeChild(expiredReminder);
+    if(expiredRemindersContainer.children.length === 0){
+      console.log("Im gonna hide reminderContainer");
+      document.getElementById("reminderContainer").style.visibility = "hidden";
+    }
   }, 20000);
 
   // Removing the reminder from the reminderInfo array
