@@ -257,6 +257,7 @@ saveEventButton.addEventListener('click', function(){
     setNewEvent();
     if (newEventObj.reminder != "") {
       setNewReminder(newEventObj.id, newEventObj.reminder);
+      setAllReminders();
     }  
     clearNewEventForm();
     modalNewEvent.style.display = "none";
@@ -300,7 +301,6 @@ function setNewEvent(){
     newEventObj.endDate.year = dateStartEventUTC.getUTCFullYear();
   }else{
     dateEndEventUTC = new Date(endNewEvent.value);
-    console.log(endNewEvent.value);
     newEventObj.endDate.milliseconds = dateEndEventUTC.getTime();
     newEventObj.endDate.minutes = dateEndEventUTC.getUTCMinutes();
     newEventObj.endDate.hour = dateEndEventUTC.getUTCHours()+2;
