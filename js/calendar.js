@@ -83,7 +83,6 @@ function setUpDay(dayDiv, dayNumber, className, isCurrentMonth){
 
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
-
     //Substitute 0 by 7 when current month starts on Sunday
     if (startingDay == 0){
         startingDay = 7;
@@ -204,6 +203,12 @@ nextMonthBtn.addEventListener("click", resetNextMonth);
 function resetNextMonth(){
     // Emptying grid container before assigning next month
     calendarGrid.innerHTML = "";
+    //document.querySelector("main").style.animation = "none";
+    document.querySelector("main").style.animation = "monthAnimation 2s 1";
+    setTimeout(()=> {
+        document.querySelector("main").style.animation = "none";
+    }, 1000);
+    
     
     //December
     if (currentMonthNum == 12){
@@ -231,21 +236,33 @@ function resetNextMonth(){
     // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
     console.log("Next month!")
-
 }
 
 // arrow keyboard event to navigate to the previous and next months.
 document.addEventListener('keydown', handleArrowKeys);
 function handleArrowKeys(event) {
-switch (event.keyCode) {
-        case 37:
-            resetPrevMonth();
-            break;
-        case 39:
-            resetNextMonth();
-            break;
-} 
+    switch (event.keyCode) {
+            case 37:
+                resetPrevMonth();
+                break;
+            case 39:
+                resetNextMonth();
+                break;
+    } 
 }
+
+
+//Animation
+// nextMonthBtn.addEventListener("click", function(){
+//     document.querySelector("main").style.animation = "none";
+//     document.querySelector("main").style.animation = "monthAnimation 2s 1";
+// })
+// document.querySelector("main").style.animation = "none";
+// setTimeout(()=> {
+//     document.querySelector("main").style.animation = "none";
+// }, 2000);
+
+
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 appendDays(prevMonthLength,firstDay,currentMonthLength);

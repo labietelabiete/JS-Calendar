@@ -116,6 +116,7 @@ header {
   /* display: inline; */
   height: fit-content;
   transform: translateY(-30px);
+  animation: none;
 }
 
 #month {
@@ -371,7 +372,6 @@ main {
 
 .workEvent {
   color: var(--greenColor);
-  border-top: var(--borderWidth) var(--greenColor) solid;
 }
 
 .workEvent:hover {
@@ -381,24 +381,26 @@ main {
 
 .sportEvent {
   color: var(--magentaColor);
-  border-top: var(--borderWidth) var(--magentaColor) solid;
+}
+
+.sportEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--magentaColor);
 }
 
 .musicEvent {
   color: var(--yellowColor);
-  border-top: var(--borderWidth) var(--yellowColor) solid;
+}
+.musicEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--yellowColor);
 }
 
 .otherEvent {
   color: var(--blueColor);
-  border-top: var(--borderWidth) var(--blueColor) solid;
 }
+
 .otherEvent:hover {
-  background: linear-gradient(
-    to left,
-    var(--blueColor),
-    rgba(245, 245, 245, 0.009) 10%
-  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: var(--blueColor);
 }
@@ -787,4 +789,3 @@ select option:hover {
     transition: 0.3s;
   }
 }
-
