@@ -159,12 +159,11 @@ function getFirstDay(year, month){
 //------------------------------------------------------------------------
 // Previous month button
 prevMonthBtn.addEventListener("click", resetPrevMonth);
-console.log(prevMonthBtn)
 
 function resetPrevMonth(){
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
-
+    
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -199,14 +198,14 @@ function resetPrevMonth(){
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
     console.log("Prev month!")
-}
+ }
 // Next month button
 nextMonthBtn.addEventListener("click", resetNextMonth);
 
 function resetNextMonth(){
     // Emptying grid container before assigning next month
     calendarGrid.innerHTML = "";
-
+    
     //December
     if (currentMonthNum == 12){
         currentYearNum++;
@@ -235,6 +234,7 @@ function resetNextMonth(){
     console.log("Next month!")
 
 }
+
 // arrow keyboard event to navigate to the previous and next months.
 document.addEventListener('keydown', function(e) {
     switch (e.keyCode) {
