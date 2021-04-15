@@ -1,24 +1,21 @@
-if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-  console.info( "This page is reloaded" );
-} else {
-  console.info( "This page is not reloaded");
-}
-
 // Global variables
 // ----------------------------------------------------------------------
 var reminderInfoArray = [];
 var expiredRemindersContainer = document.getElementById("expiredReminders");
-
-// Calling functions
-setAllReminders();
-
 var sideBar = document.querySelector("#sideBar");
 var myLocalStorage = JSON.parse(localStorage.getItem("localEventInfo"));
 var newReminderObj = {
   eventId:"",
-  reminder:""
+  reminder:"",
+  flag:""
 }
 
+// Calling functions
+// ----------------------------------------------------------------------
+triggerReminders();
+
+// Functions
+// ----------------------------------------------------------------------
 
 // Sets the reminder properties for a given event
 function setNewReminder(eventId, eventReminder){
@@ -33,12 +30,14 @@ function setNewReminder(eventId, eventReminder){
   localStorage.setItem("localReminderInfo", JSON.stringify(reminderInfoArray));
 }
 
-
-// Triggers setAllreminders
+// Triggers setAllreminders once and then establishes a 
+// establishes a setinterval to execute it again
 function triggerReminders(){
-
-  setInterval(setAllReminders, interval);
+  setAllReminders()
+  setInterval(setAllReminders, 10000);
 }
+
+// Sets all reminders for the current events
 function setAllReminders(){
 
   // Getting localEventInfo and localReminderInfo
@@ -50,17 +49,23 @@ function setAllReminders(){
   if (reminderInfoArray !== null){
     reminderInfoArray.forEach(reminderElement => {
       myEventsInfo.forEach(eventElement => {
-        if (eventElement.id == reminderElement.eventId ) {
+        if (eventElement.id == reminderElement.eventId && reminderElement.flag === false) {
           console.log("Seteo este reminder", reminderElement)
+          
+          // Calculating remaining time left before 
+          // event expires and capturing event title
           let currentDate = new Date().getTime();
           let reminderEndDate = eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000);
           let differenceMilliseconds = (reminderEndDate - currentDate);
           let reminderTitle = eventElement.title;
           if (differenceMilliseconds > 0) {
             ("time out for reminderElement -->", reminderElement);
+            
+            // Setting the timeout for the given event and setting flag to true
             setTimeout(reminderTimeOut(reminderElement.eventId, reminderTitle, 
             eventElement.eventType, reminderElement.reminder, reminderInfoArray ), 
             differenceMilliseconds);
+            reminderElement.flag = true;
           }
         }
       }) 
@@ -118,66 +123,4 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
 }
 
 
-
-
-
-
-
-// const test = () => {
-//     var newDiv = document.createElement("div");
-//     var newUl = document.createElement("ul")
-   
-//     var newList = document.createElement("li")  
-    
-//     myLocalStorage.forEach(eachEvent => {
-        
-//       if (eachEvent.reminder) {
-//         let eachEndDate = eachEvent.endDate;
-//         let formattedEndDate = new Date(
-//           eachEndDate.year,
-//           eachEndDate.month - 1,
-//           eachEndDate.day,
-//           eachEndDate.hour,
-//           eachEndDate.minutes,
-//           eachEndDate.minutes
-//         );
-//         let reminderToMS = eachEvent.reminder * 60000;
-//         let reminderTime = new Date(formattedEndDate - reminderToMS)
-//           .toLocaleString()
-//           .replace(/(.*)\D\d+/, "$1");
-//         let currentTime = new Date()
-//           .toLocaleString()
-//           .replace(/(.*)\D\d+/, "$1");
-//         let endDateTime = formattedEndDate
-//           .toLocaleString()
-//           .replace(/(.*)\D\d+/, "$1");
-//          console.log(eachEvent.title)
-//          console.log(formattedEndDate < new Date())
-//          console.log(myLocalStorage)
-//         //  setInterval(() => {
-//  if (formattedEndDate > new Date()) {
-//           console.log("reminder time", reminderTime);
-//           console.log("current time", currentTime);
-//           console.log(endDateTime <= currentTime);
-//           if (reminderTime === currentTime) {
-//             newDiv.innerText = `${eachEvent.title} will expire at ${endDateTime}`;
-//             sideBar.prepend(newDiv);
-//           }
-//         } else if (formattedEndDate <= new Date()) {
-//             document.getElementById("warningBox").remove()
-//             newUl.setAttribute("id", "warningBox");
-//             sideBar.prepend(newUl);
-//           document.getElementById("warningBox").innerHTML += `<li>${eachEvent.title} has expired.</li>`;
-//          // clearInterval(reminderInterval);
-            
-//         }
-//         //  }, 10000)
-       
-//       }
-//     });
-  
-
-// };
-
-// test();
 
