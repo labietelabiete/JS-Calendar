@@ -11,33 +11,33 @@ FONT
 /* --------------
 GENERAL VARIABLES
 --------------  */
-:root{
-    /* Colors */
-    --darkColor: black;
-    --yellowColor: rgb(255, 183, 0);
-    --redColor: rgb(210, 43, 65);
-    --magentaColor: rgb(220, 0, 235);
-    --greenColor: rgb(0, 213, 194);
-    --blueColor: rgb(0, 89, 194);
-    --greyColor: #cccccc;
+:root {
+  /* Colors */
+  --darkColor: black;
+  --yellowColor: rgb(255, 183, 0);
+  --redColor: rgb(210, 43, 65);
+  --magentaColor: rgb(220, 0, 235);
+  --greenColor: rgb(0, 213, 194);
+  --blueColor: rgb(0, 89, 194);
+  --greyColor: #cccccc;
 
-    /*Color for event*/
-    --eventColor: rgb(0, 213, 194);
+  /*Color for event*/
+  --eventColor: rgb(0, 213, 194);
 
-    /* Stroke width */
-    --borderWidth: 2px;
+  /* Stroke width */
+  --borderWidth: 2px;
 
-    /* Font weights */
-    --extraLight: 200;
-    --light: 300;
-    --regular: 400;
-    --medium: 500;
-    --semiBold: 600;
-    --bold: 700;
+  /* Font weights */
+  --extraLight: 200;
+  --light: 300;
+  --regular: 400;
+  --medium: 500;
+  --semiBold: 600;
+  --bold: 700;
 
-    /* Measurements */
-    --sidebarWidth: 200px;
-    --margin: 30px;
+  /* Measurements */
+  --sidebarWidth: 200px;
+  --margin: 30px;
 }
 
 /* --------------
@@ -46,26 +46,25 @@ STYLING
 
 /* General styling */
 * {
-    /* Remove default features */
-    padding: 0;
-    margin: 0;
-    border: 0;
+  /* Remove default features */
+  padding: 0;
+  margin: 0;
+  border: 0;
 
-
-    /* Disable text selection */
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently
+  /* Disable text selection */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                           supported by Chrome, Edge, Opera and Firefox */
 
-    /* Other styling */
-    font-family: 'Clash';
-    box-sizing: border-box;
-    /* Comment/Uncomment this to see/hide all boxes */
-    /* outline: 2px red solid; */
+  /* Other styling */
+  font-family: "Clash";
+  box-sizing: border-box;
+  /* Comment/Uncomment this to see/hide all boxes */
+  /* outline: 2px red solid; */
 }
 
 /* Remove blue background when autofilling forms */
@@ -78,9 +77,9 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    -webkit-text-fill-color: var(--dark-green);
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset;
-    transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: var(--dark-green);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 body {
@@ -99,10 +98,9 @@ header {
 }
 
 #title {
-    min-width: var(--sidebarWidth);
-    margin-right: var(--margin);
-    font-size: 30px;
-
+  min-width: var(--sidebarWidth);
+  margin-right: var(--margin);
+  font-size: 30px;
 }
 
 #monthAndYear {
@@ -144,7 +142,6 @@ header {
   background-color: var(--darkColor);
 }
 
-
 @keyframes transitionMainPage {
   from {
     opacity: 0;
@@ -165,101 +162,103 @@ main {
 
 /* Left */
 #sidebar {
-    min-width: var(--sidebarWidth);
-    margin-right: var(--margin);
-    display: flex;
-    align-items: flex-end;
+  min-width: var(--sidebarWidth);
+  margin-right: var(--margin);
+  display: flex;
+  align-items: flex-end;
 }
 
 #eventTypes {
   width: 100%;
 }
 
-.checkbox{
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
+.checkbox {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
 }
 
-.checkboxLabel{
-    font-weight: var(--regular);
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    margin-left: -20px;
+.checkboxLabel {
+  font-weight: var(--regular);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: -20px;
 }
 
 /* Hide default radio/checkbox button */
-.checkboxInput input{
-    opacity: 0%;
-    width: 0;
-    height: 0;
+.checkboxInput input {
+  opacity: 0%;
+  width: 0;
+  height: 0;
 }
 
-.checkboxControl{
-    display: block;
-    margin-right: 10px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+.checkboxControl {
+  display: block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
 }
 
 /*Types of events*/
-.workLabel, .sportLabel, .musicLabel, .otherLabel{
-    margin-left: 0;
+.workLabel,
+.sportLabel,
+.musicLabel,
+.otherLabel {
+  margin-left: 0;
 }
 /* Work */
-.workLabel{
-    color: var(--greenColor);
+.workLabel {
+  color: var(--greenColor);
 }
 
-.workCheckbox{
-    border: var(--borderWidth) solid var(--greenColor);
+.workCheckbox {
+  border: var(--borderWidth) solid var(--greenColor);
 }
 
-.checkboxInput input:checked + .workCheckbox{
-    background-color: var(--greenColor);
+.checkboxInput input:checked + .workCheckbox {
+  background-color: var(--greenColor);
 }
 
 /* Sport */
-.sportLabel{
-    color: var(--magentaColor);
+.sportLabel {
+  color: var(--magentaColor);
 }
 
-.sportCheckbox{
-    border: var(--borderWidth) solid var(--magentaColor);
+.sportCheckbox {
+  border: var(--borderWidth) solid var(--magentaColor);
 }
 
-.checkboxInput input:checked + .sportCheckbox{
-    background-color: var(--magentaColor);
+.checkboxInput input:checked + .sportCheckbox {
+  background-color: var(--magentaColor);
 }
 
 /* Music */
-.musicLabel{
-    color: var(--yellowColor);
+.musicLabel {
+  color: var(--yellowColor);
 }
 
-.musicCheckbox{
-    border: var(--borderWidth) solid var(--yellowColor);
+.musicCheckbox {
+  border: var(--borderWidth) solid var(--yellowColor);
 }
 
-.checkboxInput input:checked + .musicCheckbox{
-    background-color: var(--yellowColor);
+.checkboxInput input:checked + .musicCheckbox {
+  background-color: var(--yellowColor);
 }
 
 /* Other */
-.otherLabel{
-    color: var(--blueColor);
+.otherLabel {
+  color: var(--blueColor);
 }
 
-.otherCheckbox{
-    border: var(--borderWidth) solid var(--blueColor);
+.otherCheckbox {
+  border: var(--borderWidth) solid var(--blueColor);
 }
 
-.checkboxInput input:checked + .otherCheckbox{
-    background-color: var(--blueColor);
+.checkboxInput input:checked + .otherCheckbox {
+  background-color: var(--blueColor);
 }
-
 
 /* Right */
 #mainRight {
@@ -300,36 +299,35 @@ main {
 }
 
 /* Calendar container */
-#calendarCont{
-    flex-grow: 1;
-    max-height: 640px;
-    /* background-color: yellow; */
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+#calendarCont {
+  flex-grow: 1;
+  max-height: 640px;
+  /* background-color: yellow; */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
 }
 
 /* General day div */
-.dayDiv{
-    padding: 15px 10px 15px 0;
-    border-top: 2px black solid;
-    transition: .4s;
-    display: flex;
-    align-items: flex-start;
-
+.dayDiv {
+  padding: 15px 10px 15px 0;
+  border-top: 2px black solid;
+  transition: 0.4s;
+  display: flex;
+  align-items: flex-start;
 }
 
-.currentMonthDay:hover{
-    /* box-shadow: 0 0 20px 20px white; */
-    background-color: white;
-    /* border-top: 2px white solid; */
+.currentMonthDay:hover {
+  /* box-shadow: 0 0 20px 20px white; */
+  background-color: white;
+  /* border-top: 2px white solid; */
 }
 
-.currentMonthDay:hover *{
-    box-shadow: none;
-    background-color: transparent;
-    color: black;
-    border-color: black;
+.currentMonthDay:hover * {
+  box-shadow: none;
+  background-color: transparent;
+  color: black;
+  border-color: black;
 }
 
 /* Previous & next month days */
@@ -352,55 +350,58 @@ main {
   transition: 0.2s;
 }
 
-.eventsDiv{
-    flex-grow: 1;
-    margin-right: 10px;
-    display: flex;
-    flex-direction: column;
-    /* transform: translateY(-8px); */
-    /* padding: 5px; */
+.eventsDiv {
+  flex-grow: 1;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  /* transform: translateY(-8px); */
+  /* padding: 5px; */
 }
 
 /* Types of events */
-.event{
+.event {
   font-size: 14px;
   color: white;
   font-weight: var(--semiBold);
   /* border-radius: 10px; */
   margin-bottom: 8px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
-.workEvent{
+.workEvent {
   color: var(--greenColor);
   border-top: var(--borderWidth) var(--greenColor) solid;
-  /* background-color: var(--greenColor);
-  box-shadow: 0 0 8px 8px var(--greenColor); */
 }
 
-.sportEvent{
+.workEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--greenColor);
+}
+
+.sportEvent {
   color: var(--magentaColor);
   border-top: var(--borderWidth) var(--magentaColor) solid;
-  /* background-color: var(--magentaColor);
-  box-shadow: 0 0 8px 8px var(--magentaColor); */
-
 }
 
-.musicEvent{
+.musicEvent {
   color: var(--yellowColor);
   border-top: var(--borderWidth) var(--yellowColor) solid;
-  /* background-color: var(--yellowColor);
-  box-shadow: 0 0 8px 8px var(--yellowColor);*/
 }
 
-.otherEvent{
+.otherEvent {
   color: var(--blueColor);
   border-top: var(--borderWidth) var(--blueColor) solid;
-  /* background-color: var(--blueColor);
-  box-shadow: 0 0 8px 8px var(--blueColor); */
 }
-
-
+.otherEvent:hover {
+  background: linear-gradient(
+    to left,
+    var(--blueColor),
+    rgba(245, 245, 245, 0.009) 10%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--blueColor);
+}
 
 /* FOOTER
 --------------------------------------------------------------- */
@@ -408,15 +409,13 @@ footer {
   height: 50px;
 }
 
-
-
 /* MODAL
 --------------------------------------------------------------- */
-textarea{
-    resize: none;
-    outline: none;
-    padding-top: 10px;
-    padding-left: 10px;
+textarea {
+  resize: none;
+  outline: none;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 /* The Modal (background) */
@@ -430,8 +429,8 @@ textarea{
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
   align-items: center;
 }
 
@@ -465,22 +464,22 @@ textarea{
 }
 
 /*Generic style for modal content*/
-.eventTitle{
-    width: 80%;
-    height: 60px;
-    font-size: 60px;
-    font-weight: var(--semiBold);
-    margin: 10px 0px;
-    outline: none;
+.eventTitle {
+  width: 80%;
+  height: 60px;
+  font-size: 60px;
+  font-weight: var(--semiBold);
+  margin: 10px 0px;
+  outline: none;
 }
-.eventTitle::placeholder{
-    color: rgba(0,0,0,0.2);
-    border: none;
-    outline: none;
+.eventTitle::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  border: none;
+  outline: none;
 }
-.eventTitle:focus{
-    border: none;
-    outline: none;
+.eventTitle:focus {
+  border: none;
+  outline: none;
 }
 
 .eventTitleFlow {
@@ -488,11 +487,14 @@ textarea{
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 90%);
+  mask-image: linear-gradient(to right, black 30%, transparent 90%);
 }
-.eventTitleFlow:not(:hover){
+.eventTitleFlow:not(:hover) {
   text-overflow: ellipsis;
 }
-.eventTitleFlow:hover h2, .eventTitleFlow:focus h2 {
+.eventTitleFlow:hover h2,
+.eventTitleFlow:focus h2 {
   display: inline-block;
   animation: scroll-text 6s linear 0s infinite normal;
 }
@@ -503,20 +505,30 @@ textarea{
   white-space: nowrap;
   overflow: hidden;
   max-width: 150px;
-  /* background: linear-gradient(to right, var(--eventColor) , rgba(245, 245, 245, 0.009));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
+  /* Fade out effect */
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 90%);
+  mask-image: linear-gradient(to right, black 30%, transparent 90%);
 }
 
-.titleContainer:not(:hover){
+.titleContainer:not(:hover) {
   text-overflow: ellipsis;
 }
-.titleContainer:hover div, .titleContainer:focus div {
+
+.titleContainer:hover div,
+.titleContainer:focus div {
   display: inline-block;
-  /* background: linear-gradient(to left, rgba(245, 245, 245, 0.009));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
   animation: scroll-text 6s linear 0s infinite normal;
+}
+
+.titleContainer:hover {
+  /* Fade out effect */
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 40%,
+    black 60%,
+    transparent 100%
+  );
 }
 
 @keyframes scroll-text {
@@ -532,16 +544,14 @@ textarea{
   100% {
     transform: translateX(0%);
   }
-} 
-
-.eventType{
-    font-size: 26px;
-    font-weight: var(--light);
-    margin-bottom: 80px;
-    outline: none;
 }
 
-
+.eventType {
+  font-size: 26px;
+  font-weight: var(--light);
+  margin-bottom: 80px;
+  outline: none;
+}
 
 .eventTypeOption {
   font-size: 26px;
@@ -552,14 +562,14 @@ select option:hover {
   background-color: var(--greyColor);
 }
 
-.eventLabel{
-    display: inline-block;
-    width: 100%;
-    font-size: 26px;
-    font-weight: var(--semiBold);
-    border-bottom: var(--darkColor) solid var(--borderWidth);
-    /* margin-bottom: 10px; */
-    transition: .1s;
+.eventLabel {
+  display: inline-block;
+  width: 100%;
+  font-size: 26px;
+  font-weight: var(--semiBold);
+  border-bottom: var(--darkColor) solid var(--borderWidth);
+  /* margin-bottom: 10px; */
+  transition: 0.1s;
 }
 /*
 .checkboxEndReminder{
@@ -570,25 +580,29 @@ select option:hover {
     transition: .1s;
 } */
 
-.endCheckbox, .reminderCheckbox, .descriptionCheckbox{
-    border: var(--borderWidth) solid var(--greyColor);
+.endCheckbox,
+.reminderCheckbox,
+.descriptionCheckbox {
+  border: var(--borderWidth) solid var(--greyColor);
 }
 
-.checkboxInput input:checked + .endCheckbox, .checkboxInput input:checked + .reminderCheckbox,  .checkboxInput input:checked + .descriptionCheckbox{
+.checkboxInput input:checked + .endCheckbox,
+.checkboxInput input:checked + .reminderCheckbox,
+.checkboxInput input:checked + .descriptionCheckbox {
   background-color: var(--darkColor);
   border: var(--borderWidth) solid var(--darkColor);
 }
 
-.eventDate{
-    margin-bottom: 10px;
-    font-size: 20px;
-    outline: none;
+.eventDate {
+  margin-bottom: 10px;
+  font-size: 20px;
+  outline: none;
 }
 
 .checkboxLabel input {
-    position: relative;
-    z-index: -9999;
-  }
+  position: relative;
+  z-index: -9999;
+}
 
 .eventDescriptionLabel {
   margin-bottom: 10px;
@@ -607,15 +621,14 @@ select option:hover {
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
 
-
-.eventDescription{
-    width: 100%;
-    height: 140px;
-    background-color: rgba(0,0,0,0.05);
-    font-size: 20px;
-    font-weight: var(--light);
-    margin-top: 10px;
-    margin-bottom: 30px;
+.eventDescription {
+  width: 100%;
+  height: 140px;
+  background-color: rgba(0, 0, 0, 0.05);
+  font-size: 20px;
+  font-weight: var(--light);
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .btnDiv {
@@ -623,15 +636,15 @@ select option:hover {
   justify-content: space-between;
 }
 
-.modalBtn{
-    width: 49%;
-    height: 40px;
-    font-size: 20px;
-    font-weight: var(--semiBold);
-    background-color: white;
-    border: var(--darkColor) solid var(--borderWidth);
-    transition: .3s;
-    border-radius: 6px;
+.modalBtn {
+  width: 49%;
+  height: 40px;
+  font-size: 20px;
+  font-weight: var(--semiBold);
+  background-color: white;
+  border: var(--darkColor) solid var(--borderWidth);
+  transition: 0.3s;
+  border-radius: 6px;
 }
 
 #saveNewEvent:hover {
@@ -687,22 +700,22 @@ select option:hover {
 }
 
 /*Media query for modals */
-@media (max-width: 768px){
-.modalContent {
+@media (max-width: 768px) {
+  .modalContent {
     padding: 20px 25px 30px 25px;
     width: 10%;
     min-width: 300px;
     height: 580px;
-}
+  }
 
-.eventTitle{
+  .eventTitle {
     height: 40px;
     font-size: 40px;
     margin: 10px 0px;
     margin-left: 15px;
     outline: none;
-}
-.eventType{
+  }
+  .eventType {
     font-size: 16px;
     margin-bottom: 50px;
     margin-left: 15px;
@@ -717,59 +730,59 @@ select option:hover {
     width: 90%;
     font-size: 16px;
     margin-left: 15px;
-    
-}
-.eventDate{
+  }
+  .eventDate {
     font-size: 16px;
     margin-left: 15px;
-}
-.checkboxLabel{
+  }
+  .checkboxLabel {
     margin-left: 0;
-}
-.checkboxLabel span {
+  }
+  .checkboxLabel span {
     width: 10px;
     height: 10px;
     margin-right: 5px;
     display: inline-block;
     background-size: 10px 10px;
-}
+  }
 
-#startNewEvent, #endNewEvent {
+  #startNewEvent,
+  #endNewEvent {
     width: 90%;
-}
+  }
 
-#endDateLabel, #reminderLabel, #descriptionLabel{
-  margin-left: 0px;
-}
+  #endDateLabel,
+  #reminderLabel,
+  #descriptionLabel {
+    margin-left: 0px;
+  }
 
-.eventDescriptionLabel{
-  margin-bottom: 10px;
-}
+  .eventDescriptionLabel {
+    margin-bottom: 10px;
+  }
 
-.eventDescription{
-  width: 90%;
-  height: 100px;
-  font-size: 16px;
-  font-weight: var(--light);
-  margin-top: 10px;
-  margin-bottom: 30px;
-  margin-left: 15px;
-}
+  .eventDescription {
+    width: 90%;
+    height: 100px;
+    font-size: 16px;
+    font-weight: var(--light);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 15px;
+  }
 
-
-
-.btnDiv{
+  .btnDiv {
     margin-left: 15px;
     margin-right: 15px;
-}
+  }
 
-.modalBtn{
-  width: 48%;
-  height: 40px;
-  font-size: 16px;
-  font-weight: var(--semiBold);
-  background-color: white;
-  border: var(--darkColor) solid var(--borderWidth);
-  transition: .3s;
-}
+  .modalBtn {
+    width: 48%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: var(--semiBold);
+    background-color: white;
+    border: var(--darkColor) solid var(--borderWidth);
+    transition: 0.3s;
+  }
 }

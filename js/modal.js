@@ -347,6 +347,11 @@ function getEvent(){
         break;
     }
 
+    if(eventToDisplay.title.length > 20) {
+      document.getElementById("titleEventContainer").setAttribute("class", "eventTitleFlow");
+    } else {
+      document.getElementById("titleEventContainer").removeAttribute("class", "eventTitleFlow");
+    }
     if (eventToDisplay.startDate.minutes < 10) {
       eventToDisplay.startDate.minutes = "0" + eventToDisplay.startDate.minutes;
     }

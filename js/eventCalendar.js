@@ -107,12 +107,10 @@ function setMonthEvents(){
             let newContainerDiv = document.createElement("div");
             let newEventDiv = document.createElement("div");
             dayEventsDiv.appendChild(newContainerDiv);
-            
             if(monthEvent.title.length > 20) {
-                 newContainerDiv.setAttribute("class", "titleContainer");
-                //  newContainerDiv.style.background = "linear-gradient(to right, rgba(245, 245, 245, 0.009))";
-                //  newContainerDiv.style.webkitBackgroundClip = "text";
-                //  newContainerDiv.style.webkitTextFillColor = "transparent"
+                newContainerDiv.setAttribute("class", "titleContainer");
+            } else {
+                newContainerDiv.removeAttribute("class", "titleContainer");
             }
             newContainerDiv.appendChild(newEventDiv);
             console.log("Appended", monthEvent.id);
