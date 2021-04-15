@@ -126,7 +126,7 @@ function setMonthEvents(){
 
         let filteredArray = filterType(monthEvents);
 
-        monthEvents.forEach(function(monthEvent){
+        filteredArray.forEach(function(monthEvent){
             let dayID = monthEvent.startDate.day;
             let startMil = monthEvent.startDate.milliseconds;
             let startDay = monthEvent.startDate.day;
@@ -138,7 +138,7 @@ function setMonthEvents(){
             // Default behaviour
             let dayDiff = (endDay - startDay); // We'll need to add one event div at least
             // console.log(monthEvent.title, startDay, endDay, dayDiff);
-            console.log(startMonth, endMonth);
+            // console.log(startMonth, endMonth);
 
             // Events that go through months
             if ( startMonth !== endMonth && endMonth !== null ){
@@ -155,38 +155,12 @@ function setMonthEvents(){
                     createEventDiv(dayID+i, monthEvent.id, monthEvent.type, monthEvent.title);
                 }
 
-                for (let i=0; i<=daysFromStartMonth; i++){
-                    allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
-                    var nextMonthDays = {
-                        id: monthEvent.id,
-                        title: monthEvent.title,
-                        type: monthEvent.type,
-                        startDate: {
-                            day: 1,
-                            // Solve this when there's an event on december
-                            month: monthEvent.startDate.month + 1,
-                            year: monthEvent.startDate.year
-                        },
-                        endDate: {
-                            day: daysFromStartMonth,
-                            // Solve this when there's an event on december
-                            month: monthEvent.startDate.month + 1,
-                            year: monthEvent.startDate.year
-                        },
-                    reminder: monthEvent.reminder,
-                    description: monthEvent.description,
-                  };
-
-                    allStorage.push(nextMonthDays);
-                }
-
                 // Test print
-                console.log("Start day and end day are in different months");
+                //console.log("Start day and end day are in different months");
 
             // Temporary else if statement for null end dates
             }else if (endDay === null){
                 createEventDiv(dayID, monthEvent.id, monthEvent.type, monthEvent.title);
-            
             // Events happenind in one day
             } else if (dayDiff === 0){
                 createEventDiv(dayID, monthEvent.id, monthEvent.type, monthEvent.title);
@@ -214,7 +188,7 @@ function setMonthEvents(){
     }
 }
 
-function setDailyEvents(){
+function setDailyEvents(eventCreated){
     // Restoring all previous HTML content
     resetDaysContent();
     setMonthEvents();
