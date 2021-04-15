@@ -1,13 +1,12 @@
 
 let sideBar = document.querySelector("#sideBar");
-console.log(sideBar);
 let myLocalStorage = JSON.parse(localStorage.getItem("localEventInfo"));
 
 const test = () => {
     var newDiv = document.createElement("div");
     var newUl = document.createElement("ul")
    
-    var newList = document.createElement("li")  
+    var newList = document.createElement("li");
     
     myLocalStorage.forEach(eachEvent => {
         
@@ -31,14 +30,14 @@ const test = () => {
         let endDateTime = formattedEndDate
           .toLocaleString()
           .replace(/(.*)\D\d+/, "$1");
-         console.log(eachEvent.title)
-         console.log(formattedEndDate < new Date())
-         console.log(myLocalStorage)
+        //  console.log(eachEvent.title)
+        //  console.log(formattedEndDate < new Date())
+        //  console.log(myLocalStorage)
         //  setInterval(() => {
  if (formattedEndDate > new Date()) {
-          console.log("reminder time", reminderTime);
-          console.log("current time", currentTime);
-          console.log(endDateTime <= currentTime);
+          // console.log("reminder time", reminderTime);
+          // console.log("current time", currentTime);
+          // console.log(endDateTime <= currentTime);
           if (reminderTime === currentTime) {
             newDiv.innerText = `${eachEvent.title} will expire at ${endDateTime}`;
             sideBar.prepend(newDiv);
