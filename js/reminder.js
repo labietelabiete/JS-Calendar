@@ -90,41 +90,58 @@ function setAllReminders(){
 }
 
 function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, eventReminderInfo){
-  
   // Creating and formating new reminder div to add it to the reminder conatiner
-  let expiredReminderDiv = "<div id = reminder" +  reminderId + " class = reminder";
+  let expiredReminderDiv = "<div id = reminder" +  reminderId + "wrapper>";
+  let eventClassType;
+  let reminderSpanClass;
   //expiredReminderDiv.className = "reminder";
   switch (eventType) {
     case 0:
-      expiredReminderDiv += " workReminder>"
+      reminderSpanClass = "workSpan";
+      reminderClassType = "workReminder>";
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       break;
     
     case 1:
-      expiredReminderDiv += " sportReminder>";
+      reminderSpanClass = "sportSpan"
+      reminderClassType = "sportReminder>";
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       break;
 
     case 2:
-      expiredReminderDiv += " musicReminder>";
+      reminderSpanClass = "musicSpan";
+      reminderClassType = "musicReminder>";
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       break;
 
     case 3:
-      expiredReminderDiv += " otherReminder>";
+      reminderSpanClass = "otherSpan";
+      reminderClassType = "otherReminder>";
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       break;
 
     default:
-      expiredReminderDiv += " defaultRemind>";
+      reminderSpanClass = "defaultSpan"
+      reminderClassType = "defaultRemind>";
+      expiredReminderDiv += "<span class = " + reminderSpanClass + "></span>" + "<div id = reminder" +  reminderId + " class = " + reminderClassType;
       break;
   }
-  //expiredRemindersContainer.appendChild(expiredReminderDiv);
-  expiredReminderDiv += reminderTitle + " expires in " + reminderValue + " minutes</div>";
+
+  // Finishing html string and injecting it
+  expiredReminderDiv += reminderTitle + " expires in " + reminderValue + " minutes</div> </div>";
+  // console.log("type of expiredReminderDiv -->", typeof(expiredReminderDiv));
   expiredRemindersContainer.insertAdjacentHTML('beforeend', expiredReminderDiv);
 
   //setting a timeout to remove the reminder div after its appearance
   setTimeout(function(expiredReminderDiv){
-    expiredReminder = document.getElementById("reminder" + reminderId);
+    expiredReminder = document.getElementById("reminder" + reminderId + "wrapper");
     console.log(expiredReminder)
     expiredRemindersContainer.removeChild(expiredReminder);
-  }, 10000);
+    if(expiredRemindersContainer.children.length === 0){
+      console.log("Im gonna hide reminderContainer");
+      document.getElementById("reminderContainer").style.visibility = "hidden";
+    }
+  }, 20000);
 
   // Removing the reminder from the reminderInfo array
   for (let e = 0; e < eventReminderInfo.length; e++) {
