@@ -407,16 +407,21 @@ function getEvent(){
 }
 
 function removingEvent(){
-  console.log('entro en la remove function');
-  console.log(eventToDisplay.id)
   eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
-  console.log(eventListToRemove);
+  reminderListToRemove = JSON.parse(localStorage.getItem("localReminderInfo"));
+  // Running into the array looking for the event to remove
   for (let i = 0; i < eventListToRemove.length; i++) {
     if (eventListToRemove[i].id == eventToDisplay.id) {
       eventListToRemove.splice(i, 1);
+      for (let j = 0; j < reminderListToRemove.length; j++) {
+        console.log(reminderListToRemove[j])
+        if (reminderListToRemove[j].eventId == i) {
+          reminderListToRemove.splice(j, 1);
+        }
+      }
     }
   }
-  console.log(eventListToRemove);
+  localStorage.setItem("localReminderInfo", JSON.stringify(reminderListToRemove));
   localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
   modalCheckEvent.style.display = "none";
   setDailyEvents();
