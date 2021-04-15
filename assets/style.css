@@ -376,7 +376,7 @@ main {
 .event{
   min-width: 20px;
   font-size: 14px;
-  color: white;
+  /* color: white; */
   font-weight: var(--bold);
   /* border-radius: 10px; */
   margin-bottom: 8px;
@@ -692,15 +692,14 @@ select option:hover {
   }
 
   .eventsDiv{
-    width: 10px;
+    min-width: 10px;
     flex-grow: 0;
     margin-right: 5px;
-
   }
 
   .event{
     width: 0px;
-    height: 10px;
+    height: 20px;
     font-size: 20px;
     margin: 0;
     margin-bottom: -5px;
@@ -719,6 +718,10 @@ select option:hover {
 
   .weekdayAbr{
       display: block;
+  }
+
+  .numberDiv{
+    margin-right: 5px;
   }
 
 }
@@ -774,7 +777,7 @@ select option:hover {
   .today .numberDiv{
     box-shadow: 0 0 15px 12px yellow;
   }
-  
+
   .numberDiv, .otherNumberDiv{
     font-size: 30px;
     margin-right: 6px;
@@ -887,11 +890,9 @@ select option:hover {
 
   .event{
     min-height: 20px;
+    min-width: 20px;
   }
-  
-  .eventsDiv{
-    height: 50px;
-  }
+
 }
 
 /* Mobile */
@@ -969,7 +970,8 @@ select option:hover {
 
   .event{
     width: 10px;
-    min-height: 10px;
+    height: 10px;
+    min-height: 5px;
     font-size: 12px;
     margin: 0;
     margin-bottom: 3px;
