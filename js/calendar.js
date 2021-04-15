@@ -163,7 +163,6 @@ prevMonthBtn.addEventListener("click", resetPrevMonth);
 function resetPrevMonth(){
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
-    
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -236,16 +235,17 @@ function resetNextMonth(){
 }
 
 // arrow keyboard event to navigate to the previous and next months.
-document.addEventListener('keydown', function(e) {
-    switch (e.keyCode) {
+document.addEventListener('keydown', handleArrowKeys);
+function handleArrowKeys(event) {
+switch (event.keyCode) {
         case 37:
             resetPrevMonth();
             break;
         case 39:
             resetNextMonth();
             break;
-    }
-});
+} 
+}
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 appendDays(prevMonthLength,firstDay,currentMonthLength);

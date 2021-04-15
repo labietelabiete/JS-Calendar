@@ -82,13 +82,16 @@ checkboxNewEvent = document.querySelectorAll(".checkboxInput")
 
 
 
-
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
   modalNewEvent.style.display = "flex";
+  // disable arrow keyboard event for the calendar when modal is opened. 
+  document.removeEventListener("keydown", handleArrowKeys);
 };
 btnCheckEvent.onclick = function () {
   modalCheckEvent.style.display = "flex";
+   // disable arrow keyboard event for the calendar when modal is opened. 
+  document.removeEventListener("keydown", handleArrowKeys);
 };
 // When the user clicks on <span> (x), close the modal
 closeModal[0].onclick = function () {
@@ -184,10 +187,8 @@ descriptionCheckbox.onclick = function() {
   }
 }
 
-// Save events to localStorage when create button is clicked
-// 1. Check validity
-// 2. if it is true, set the event localStorage
-//    else show pop up message
+//Check validity
+
 function newEventValidation () {
   var titleCheck = /^.{1,60}$/; // we need to discuss 
   var title = titleNewEvent.value;
@@ -250,6 +251,14 @@ function newEventValidation () {
   return true;
 };
 
+// If user enters new event title more than 10 characters, gradient style is apply to the left of input box dynamically. 
+titleNewEvent.oninput = (e) => {
+  if(e.target.value.length <= 10){
+    titleNewEvent.style.webkitMaskImage = null;
+  } else {
+    titleNewEvent.style.webkitMaskImage = "linear-gradient(to left, black 5%, transparent 100%)";
+  }
+}
 
 // Function to save a new event
 saveEventButton.addEventListener('click', function(){
