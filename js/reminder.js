@@ -57,6 +57,7 @@ function setAllReminders(){
           let currentDate = new Date().getTime();
           let reminderEndDate = eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000);
           let differenceMilliseconds = (reminderEndDate - currentDate);
+          console.log("differenceMilliseconds -->", differenceMilliseconds);
           let reminderTitle = eventElement.title;
           if (differenceMilliseconds > 0) {
             ("time out for reminderElement -->", reminderElement);
@@ -79,35 +80,39 @@ function setAllReminders(){
 function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, eventReminderInfo){
   
   // Creating and formating new reminder div to add it to the reminder conatiner
-  let expiredReminderDiv = document.createElement("div");
-  expiredReminderDiv.className = "reminder";
+  let expiredReminderDiv = "<div id = reminder" +  reminderId + " class = reminder";
+  //expiredReminderDiv.className = "reminder";
   switch (eventType) {
     case 0:
-      expiredReminderDiv.classList.add('workReminder');
+      expiredReminderDiv += " workReminder>"
       break;
     
     case 1:
-      expiredReminderDiv.classList.add('sportReminder');
+      expiredReminderDiv += " sportReminder>";
       break;
 
     case 2:
-      expiredReminderDiv.classList.add('musicReminder');
+      expiredReminderDiv += " musicReminder>";
       break;
 
     case 3:
-      expiredReminderDiv.classList.add('otherReminder');
+      expiredReminderDiv += " otherReminder>";
       break;
 
     default:
-      expiredReminderDiv.classList.add('defaultReminder');
+      expiredReminderDiv += " defaultRemind>";
       break;
   }
-  expiredRemindersContainer.appendChild(expiredReminderDiv);
-  expiredReminderDiv.textContent = reminderTitle + " expires in " + reminderValue + " minutes";
+  //expiredRemindersContainer.appendChild(expiredReminderDiv);
+  expiredReminderDiv += reminderTitle + " expires in " + reminderValue + " minutes</div>";
   console.log("type of expiredReminderDiv -->", typeof(expiredReminderDiv));
+  expiredRemindersContainer.insertAdjacentHTML('beforeend', expiredReminderDiv);
+
   //setting a timeout to remove the reminder div after its appearance
   setTimeout(function(expiredReminderDiv){
-    expiredRemindersContainer.removeChild(expiredReminderDiv);
+    expiredReminder = document.getElementById("reminder" + reminderId);
+    console.log(expiredReminder)
+    expiredRemindersContainer.removeChild(expiredReminder);
   }, 5000);
 
   // Removing the reminder from the reminderInfo array
