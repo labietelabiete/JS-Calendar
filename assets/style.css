@@ -592,6 +592,7 @@ select option:hover {
     border: var(--darkColor) solid var(--borderWidth);
     transition: .3s;
     border-radius: 6px;
+    outline: none;
 }
 
 #saveNewEvent:hover {
