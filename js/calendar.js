@@ -235,9 +235,20 @@ function resetNextMonth(){
     console.log("Next month!")
 
 }
-
-
+// arrow keyboard event to navigate to the previous and next months.
+document.addEventListener('keydown', function(e) {
+    switch (e.keyCode) {
+        case 37:
+            resetPrevMonth();
+            break;
+        case 39:
+            resetNextMonth();
+            break;
+    }
+});
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 appendDays(prevMonthLength,firstDay,currentMonthLength);
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+
+
