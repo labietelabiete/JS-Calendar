@@ -66,7 +66,7 @@ function setAllReminders(){
           console.log("currentDate -->", currentDate);
           let reminderEndDate = eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000);
           let differenceMilliseconds = (reminderEndDate - currentDate);
-          console.log("differenceMilliseconds -->", differenceMilliseconds);
+          console.log("differenceMilliseconds -->", differenceMilliseconds/60000);
           let reminderTitle = eventElement.title;
           if (differenceMilliseconds > 0) {
             ("time out for reminderElement -->", reminderElement);

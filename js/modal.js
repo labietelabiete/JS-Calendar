@@ -292,7 +292,7 @@ function setNewEvent(){
   };
   if(endNewEvent.value == "") {
     //Setting one hour after as end date as default
-    newEventObj.endDate.milliseconds = dateStartEventUTC.getTime();
+    newEventObj.endDate.milliseconds = dateStartEventUTC.getTime()+3600000;
     newEventObj.endDate.minutes = dateStartEventUTC.getUTCMinutes();
     newEventObj.endDate.hour = dateStartEventUTC.getUTCHours()+3;
     newEventObj.endDate.day = dateStartEventUTC.getUTCDate();
@@ -300,6 +300,7 @@ function setNewEvent(){
     newEventObj.endDate.year = dateStartEventUTC.getUTCFullYear();
   }else{
     dateEndEventUTC = new Date(endNewEvent.value);
+    console.log(endNewEvent.value);
     newEventObj.endDate.milliseconds = dateEndEventUTC.getTime();
     newEventObj.endDate.minutes = dateEndEventUTC.getUTCMinutes();
     newEventObj.endDate.hour = dateEndEventUTC.getUTCHours()+2;
