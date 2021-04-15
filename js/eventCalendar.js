@@ -89,7 +89,7 @@ function filterType(array){
 function setMonthEvents(){
     allStorage = JSON.parse(localStorage.getItem("localEventInfo"));
     //console.log("All storage", allStorage);
-    
+
     // Only declaring month events if at least there's one event
     if (allStorage !== null){
         // Sorting by month & year
@@ -110,7 +110,11 @@ function setMonthEvents(){
             dayEventsDiv.appendChild(newEventDiv);
             //console.log("Appended", monthEvent.id);
             newEventDiv.setAttribute("class", "event");
+            // Setting the id
             newEventDiv.setAttribute("id", "eventId"+monthEvent.id);
+            // Setting the id as class (to be able to have it in multiple day events)
+            newEventDiv.classList.add("eventId"+monthEvent.id);
+            // Setting the type of event as class
             newEventDiv.classList.add(typeOfEvents[monthEvent.type]+"Event");
             // Setting the title
             let capitalizedTitle = monthEvent.title.charAt(0).toUpperCase() + monthEvent.title.slice(1);
