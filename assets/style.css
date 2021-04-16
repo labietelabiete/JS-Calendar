@@ -172,6 +172,35 @@ main {
     justify-content: space-between;
 }
 
+/* Expired Events */
+#expiredEventsContainer{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow:0.2;
+  top:80px;
+  /*visibility:hidden;*/
+  
+}
+
+#expiredEventsTitle{
+  font-size: 20px;
+  color: rgb(210, 43, 65);
+}
+
+#expiredReminders{
+  margin-top: 5px;
+  flex-grow:1;
+  max-width: 200px;
+  outline: 2px solid rgb(210, 43, 65);
+  /*visibility:visible;*/
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 18px;
+
+}
+
+/* Reminder */
 #reminderContainer{
   position:relative;
   display: flex;
