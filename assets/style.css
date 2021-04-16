@@ -165,51 +165,45 @@ main {
   position:relative;
   display: flex;
   flex-direction: column;
-  flex-grow:0.7;
+  flex-grow:0.2;
   top:80px;
   visibility:hidden;
+  
 }
 
 #reminderTitle{
-
+  /*visibility:visible;*/
+  font-size: 20px;
+  color: rgb(210, 43, 65);
 }
-
 #expiredReminders{
-  margin-top: 8px;
+  margin-top: 5px;
   flex-grow:1;
-  outline: 2px solid black;
-}
-.reminderSpanClass{
-    display:inline;
-    margin-right: 10px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--greenColor);
+  max-width: 200px;
+  outline: 2px solid rgb(210, 43, 65);
+  /*visibility:visible;*/
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 18px;
 }
 
 .workReminder{
-    display:inline;
     color: var(--greenColor);
 }
 
 .sportReminder{
-    display:inline;
     color: var(--magentaColor);
 }
 
 .musicReminder{
-    display:inline;
     color: var(--yellowColor);
 }
 
 .otherReminder{
-    display:inline;
     color: var(--blueColor);
 }
 
 .defaultReminder{
-    display:inline;
     color:black;
 }
 
@@ -743,7 +737,7 @@ select option:hover {
   margin-top: 10px;
   margin-bottom: 30px;
   margin-left: 15px;
-  backgr
+  
 }
 
 
