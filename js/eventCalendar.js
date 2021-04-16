@@ -2,6 +2,8 @@
 //------------------------------------------------------------------------
 let eventsDivs = document.querySelectorAll(".eventsDiv");
 // Accessing all checkboxes
+let allCheckboxes = document.querySelectorAll(".checkboxType input");
+
 let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
 let musicCheckbox = document.getElementById("musicCheckbox");
@@ -17,16 +19,18 @@ let allStorage = [];
 //------------------------------------------------------------------------
 saveEventButton.addEventListener('click', setDailyEvents);
 
-// Cleaning the month we are heading to
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
-// Cleaning the month we are heading to
-
 
 workCheckbox.addEventListener("change", setDailyEvents);
 sportCheckbox.addEventListener("change", setDailyEvents);
 musicCheckbox.addEventListener("change", setDailyEvents);
 otherCheckbox.addEventListener("change", setDailyEvents);
+
+// Adding event listener to all checkboxes
+for (let cB of allCheckboxes){
+    cB.addEventListener("change", checkboxPairing)
+}
 
 
 // Deleting all events (test button)
@@ -148,7 +152,7 @@ function setMonthEvents(){
 
         filteredArray.forEach(function(monthEvent){
 
-    
+
             let dayID = monthEvent.startDate.day;
             let startMil = monthEvent.startDate.milliseconds;
             let startDay = monthEvent.startDate.day;
@@ -215,6 +219,10 @@ function setDailyEvents(eventCreated){
     // Restoring all previous HTML content
     resetDaysContent();
     setMonthEvents();
+}
+
+function checkboxPairing(event, eventCheckbox, targetCheckbox){
+    console.log(event.target)
 }
 
 
