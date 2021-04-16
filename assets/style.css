@@ -451,7 +451,13 @@ main {
 footer {
   height: 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hide add checkboxes (mobile version) in desktop versions*/
+#eventTypesMobile{
+  display: none;
 }
 
 /* Hide add event button (mobile version) in desktop versions*/
@@ -877,6 +883,20 @@ select option:hover {
   #sidebar{
       display: none;
   }
+
+  #eventTypesMobile{
+    display: flex;
+  }
+
+  /* Make checkboxes bigger */
+  .checkboxControl {
+    display: block;
+    margin-right: 25px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+
 
   .navBtn{
       font-size: 40px;
