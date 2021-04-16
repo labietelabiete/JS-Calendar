@@ -197,6 +197,26 @@ main {
   font-size: 18px;
 }
 
+.workExpiredEvent{
+  color: var(--greenColor);
+}
+
+.sportExpiredEvent{
+  color: var(--magentaColor);
+}
+
+.musicExpiredEvent{
+  color: var(--yellowColor);
+}
+
+.otherExpiredEvent{
+  color: var(--blueColor);
+}
+
+.defaultExpiredEvent{
+  color:black;
+}
+
 /* Reminder */
 #reminderContainer{
   position:relative;
