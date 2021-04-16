@@ -264,7 +264,7 @@ titleNewEvent.oninput = (e) => {
   if(e.target.value.length <= 10){
     titleNewEvent.style.webkitMaskImage = null;
   } else {
-    titleNewEvent.style.webkitMaskImage = "linear-gradient(to left, black 5%, transparent 100%)";
+    titleNewEvent.style.webkitMaskImage = "linear-gradient(to left, black 60%, transparent 100%)";
   }
 }
 

@@ -541,6 +541,7 @@ textarea {
   -webkit-mask-image: linear-gradient(to right, black 55%, transparent 90%);
   mask-image: linear-gradient(to right, black 30%, transparent 90%);
 }
+
 .eventTitleFlow:not(:hover) {
   text-overflow: ellipsis;
 }
@@ -548,6 +549,17 @@ textarea {
 .eventTitleFlow:focus h2 {
   display: inline-block;
   animation: scroll-text 6s linear 0s infinite normal;
+}
+
+.eventTitleFlow:hover{
+  /* Fade out effect */
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
 }
 
 .titleContainer {
