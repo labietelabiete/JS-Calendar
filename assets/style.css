@@ -427,7 +427,7 @@ main {
     overflow: scroll;
     min-height: 100%;
     /* Fade out effect */
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%);
     mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
 }
 
