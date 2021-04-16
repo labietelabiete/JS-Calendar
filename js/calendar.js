@@ -242,16 +242,6 @@ function handleArrowKeys(event) {
     }
 }
 
-//Animation
-// nextMonthBtn.addEventListener("click", function(){
-//     document.querySelector("main").style.animation = "none";
-//     document.querySelector("main").style.animation = "monthAnimation 2s 1";
-// })
-// document.querySelector("main").style.animation = "none";
-// setTimeout(()=> {
-//     document.querySelector("main").style.animation = "none";
-// }, 2000);
-
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
