@@ -45,14 +45,17 @@ function setAllReminders(){
   // Getting localEventInfo and localReminderInfo
   eventsReminderInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
   reminderInfoArray = JSON.parse(localStorage.getItem("localReminderInfo"));
-
   // If reminderInfoArray is not empty we check every event
   // and if it has a reminder we add an expiration timeout to it
   if (reminderInfoArray !== null){
     reminderInfoArray.forEach(reminderElement => {
+
+       
       eventsReminderInfoArray.forEach(eventElement => {
+         
         if (eventElement.id == reminderElement.eventId && reminderElement.flag === false) {
-          
+          console.log(eventElement.id, "event element id");
+          console.log(reminderElement.eventId, "reminder Id")
           // Calculating remaining time left before 
           // event expires and capturing event title
           let currentDate = new Date().getTime();
@@ -63,11 +66,11 @@ function setAllReminders(){
           console.log("Current date",new Date(currentDate));
           console.log("End date",new Date(eventElement.endDate.milliseconds));
           console.log("El reminder saltará a las", new Date(reminderEndDate));
-
+        
+           
           let reminderTitle = eventElement.title;
-
           if (differenceMilliseconds > 0) {
-            
+          
             // Setting the timeout for the given event and setting flag to true
             reminderElement.flag = true;
             setTimeout(function(){
@@ -76,6 +79,11 @@ function setAllReminders(){
               eventElement.type, reminderElement.reminder, reminderInfoArray);
 
             }, differenceMilliseconds);
+          } else if((differenceMilliseconds <= 0) ) {
+            //////// !!!============= We have to find a place to set this ===============!!! ///////
+      // change the color of expired events to red! 
+      var expiredEvents = document.querySelectorAll("#eventId"+reminderElement.eventId);
+      expiredEvents.forEach(ele => ele.style.color = "var(--redColor)")      
           }
         }
       });
