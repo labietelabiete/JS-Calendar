@@ -491,20 +491,29 @@ function getEvent(){
 function removingEvent(){
   eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
   reminderListToRemove = JSON.parse(localStorage.getItem("localReminderInfo"));
-  // Running into the array looking for the event to remove
+
+  // Running into the array looking for the reminder to remove
   for (let i = 0; i < eventListToRemove.length; i++) {
     if (eventListToRemove[i].id == eventToDisplay.id) {
-      eventListToRemove.splice(i, 1);
-      for (let j = 0; j < reminderListToRemove.length; j++) {
-        console.log(reminderListToRemove[j])
-        if (reminderListToRemove[j].eventId == i) {
-          reminderListToRemove.splice(j, 1);
+      if (reminderListToRemove !== null){
+        for (let j = 0; j < reminderListToRemove.length; j++) {
+          console.log(reminderListToRemove[j])
+          if (reminderListToRemove[j].eventId == i) {
+            reminderListToRemove.splice(j, 1);
+          }
         }
       }
     }
   }
+
+  // Make a new array removing events with the current ID
+  var filteredEvents = eventListToRemove.filter(function(obj, index, arr){ 
+    return obj.id !== eventToDisplay.id;
+  });
+
+  // Reseting localStorage
   localStorage.setItem("localReminderInfo", JSON.stringify(reminderListToRemove));
-  localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
+  localStorage.setItem("localEventInfo", JSON.stringify(filteredEvents));
   modalCheckEvent.style.display = "none";
   setDailyEvents();
 
