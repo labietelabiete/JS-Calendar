@@ -652,6 +652,7 @@ select option:hover {
   margin-bottom: 10px;
   font-size: 20px;
   outline: none;
+  width: 100%;
 }
 
 .checkboxLabel input {
