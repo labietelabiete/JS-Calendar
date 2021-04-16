@@ -494,7 +494,6 @@ function removingEvent(){
   // Running into the array looking for the event to remove
   for (let i = 0; i < eventListToRemove.length; i++) {
     if (eventListToRemove[i].id == eventToDisplay.id) {
-      eventListToRemove.splice(i, 1);
       if (reminderListToRemove !== null){
         for (let j = 0; j < reminderListToRemove.length; j++) {
           console.log(reminderListToRemove[j])
@@ -505,7 +504,8 @@ function removingEvent(){
       }
     }
   }
-
+  
+  
   localStorage.setItem("localReminderInfo", JSON.stringify(reminderListToRemove));
   localStorage.setItem("localEventInfo", JSON.stringify(eventListToRemove));
   modalCheckEvent.style.display = "none";
