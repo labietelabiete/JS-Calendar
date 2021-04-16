@@ -172,27 +172,72 @@ main {
     justify-content: space-between;
 }
 
+/* Expired Events */
+#expiredEventsContainer{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow:0.6;
+  top:80px;
+}
+
+#expiredEventsTitle{
+  font-size: 20px;
+  color: rgb(210, 43, 65);
+}
+
+#expiredEvents{
+  margin-top: 5px;
+  padding: 5px;
+  flex-grow:1;
+  max-width: 200px;
+  outline: 2px solid rgb(210, 43, 65);
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+.workExpiredEvent{
+  color: var(--greenColor);
+}
+
+.sportExpiredEvent{
+  color: var(--magentaColor);
+}
+
+.musicExpiredEvent{
+  color: var(--yellowColor);
+}
+
+.otherExpiredEvent{
+  color: var(--blueColor);
+}
+
+.defaultExpiredEvent{
+  color:black;
+}
+
+/* Reminder */
 #reminderContainer{
   position:relative;
   display: flex;
   flex-direction: column;
   flex-grow:0.2;
-  top:80px;
+  top:40px;
   visibility:hidden;
   
 }
 
 #reminderTitle{
-  /*visibility:visible;*/
   font-size: 20px;
   color: rgb(210, 43, 65);
 }
 #expiredReminders{
   margin-top: 5px;
+  padding: 5px;
   flex-grow:1;
   max-width: 200px;
   outline: 2px solid rgb(210, 43, 65);
-  /*visibility:visible;*/
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 18px;
@@ -424,7 +469,7 @@ main {
     margin-right: 10px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
     min-height: 100%;
     /* Fade out effect */
     -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
@@ -1045,7 +1090,7 @@ select option:hover {
     margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 15px;
-    backgr
+    
   }
 
   .btnDiv{

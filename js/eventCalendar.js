@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
 let eventsDivs = document.querySelectorAll(".eventsDiv");
+let expiredEventsContainer = document.getElementById("expiredEvents");
 // Accessing all checkboxes
 let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
@@ -206,13 +207,82 @@ function setMonthEvents(){
     }
 }
 
+// Displays all the expired events on the expired event container
+function showExpiredEvents(){
+
+    // Gathering every previous expired event inside the expired event div
+    let expiredEvents = expiredEventsContainer.childNodes;
+
+    // Cleaning the expired events div
+    while(expiredEvents.length > 0){
+        expiredEventsContainer.removeChild(expiredEventsContainer.firstChild);
+    }
+
+    // Gathering every event stored in local storage
+    let allLocalStorageEvents = JSON.parse(localStorage.getItem("localEventInfo"));
+
+    // Checking every event to see if they have expired and
+    // if that is the case then creating a new div node 
+    // to append to the expired events div container
+
+    allLocalStorageEvents.forEach(function (event){
+
+        // Getting current date to compare with endDate for the event
+        let currentDate = new Date().getTime();
+
+        if(event.endDate.milliseconds - currentDate <= 0){
+
+            // Creating new string div to inject to expired events div
+            let expiredEventDiv = "<div id = expiredEvent";
+            let expiredEventClassType;
+
+            switch (event.type) {
+                case 0:
+                  expiredEventClassType = "workExpiredEvent";
+                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                  break;
+                
+                case 1:
+                  expiredEventClassType = "sportExpiredEvent";
+                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                  break;
+            
+                case 2:
+                  expiredEventClassType = "musicExpiredEvent";
+                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                  break;
+            
+                case 3:
+                  expiredEventClassType = "otherExpiredEvent";
+                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                  break;
+            
+                default:
+                  expiredEventClassType = "defaultExpiredEvent";
+                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                  break;
+              }
+            
+              // Finishing html string and injecting it
+              expiredEventDiv += ">• " + event.title + "</div>";
+              expiredEventsContainer.insertAdjacentHTML('beforeend', expiredEventDiv);
+            
+        }
+    });
+}
+
 function setDailyEvents(eventCreated){
     // Restoring all previous HTML content
     resetDaysContent();
     setMonthEvents();
 }
 
-
+// trigger expired events
+function triggerExpiredEvents(){
+    showExpiredEvents()
+    setInterval(showExpiredEvents, 2000);
+}
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 setMonthEvents();
+triggerExpiredEvents();
