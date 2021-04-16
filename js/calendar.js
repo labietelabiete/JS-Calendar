@@ -229,7 +229,7 @@ function resetNextMonth(){
     console.log("Next month!")
 }
 
-// arrow keyboard event to navigate to the previous and next months.
+// Default call: arrow keyboard event to navigate to the previous and next months.
 document.addEventListener('keydown', handleArrowKeys);
 function handleArrowKeys(event) {
     switch (event.keyCode) {

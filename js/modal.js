@@ -104,21 +104,31 @@ newEventMobile.onclick = function () {
 // When the user clicks on <span> (x), close the modal
 closeModal[0].onclick = function () {
   modalNewEvent.style.display = "none";
+  // Enabling arrow navigation back
+  document.addEventListener('keydown', handleArrowKeys);
+
   clearNewEventForm();
 };
 closeModal[1].onclick = function () {
   modalCheckEvent.style.display = "none";
+  // Enabling arrow navigation back
+  document.addEventListener('keydown', handleArrowKeys);
 };
 
 // When the user clicks on cancel, close the modal
 cancelNewEvent.onclick = function () {
   modalNewEvent.style.display = "none";
+  // Enabling arrow navigation back
+  document.addEventListener('keydown', handleArrowKeys);
+
   clearNewEventForm();
 };
 
 // When the user clicks on OK, close the modal
 okEvent.onclick = function () {
   modalCheckEvent.style.display = "none";
+  // Enabling arrow navigation back
+  document.addEventListener('keydown', handleArrowKeys);
 };
 
 //When the user click on remove event
@@ -133,12 +143,15 @@ window.onclick = function (event) {
   }
 };
 
+// Closing modals when escape key is down
 document.onkeydown = function (event) {
   event = event || window.event;
   if (event.keyCode == 27) {
     modalNewEvent.style.display = "none";
     modalCheckEvent.style.display = "none";
     clearNewEventForm();
+    // Enabling arrow navigation back
+    document.addEventListener('keydown', handleArrowKeys);
   }
 };
 
