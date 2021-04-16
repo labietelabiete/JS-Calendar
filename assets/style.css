@@ -505,7 +505,7 @@ footer {
 
 /* Hide add checkboxes (mobile version) in desktop versions*/
 #eventTypesMobile{
-  display: block;
+  display: none;
 }
 
 /* Hide add event button (mobile version) in desktop versions*/
@@ -885,6 +885,10 @@ select option:hover {
       display: none;
   }
 
+  .titleContainer {
+    min-width: 8px;
+  }
+
   .weekdayAbr{
       display: block;
   }
@@ -960,6 +964,11 @@ select option:hover {
   /* Event div title container */
   .titleContainer{
     -webkit-mask-image: none;
+    max-width: 5px;
+  }
+
+  .titleContainer {
+    
   }
 
   /* Remove the scroll animation at small sizes */
@@ -1164,6 +1173,11 @@ select option:hover {
 
   #mainRight{
     margin-bottom: -10px;
+  }
+
+  /* Event div title container */
+  .titleContainer{
+    min-width: 2px;
   }
 
   .eventsDiv{
