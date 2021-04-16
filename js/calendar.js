@@ -202,7 +202,6 @@ function resetNextMonth(){
         document.querySelector("main").style.animation = "none";
     }, 1000);
     
-    
     //December
     if (currentMonthNum == 12){
         currentYearNum++;
