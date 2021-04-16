@@ -420,7 +420,7 @@ function getEvent(){
         break;
     }
 
-    if(eventToDisplay.title.length > 20) {
+    if(eventToDisplay.title.length > 10) {
       document.getElementById("titleEventContainer").setAttribute("class", "eventTitleFlow");
     } else {
       document.getElementById("titleEventContainer").removeAttribute("class", "eventTitleFlow");

@@ -1,9 +1,27 @@
-@keyframes monthAnimation {
-    0% {
-        opacity: 0; 
-    }
-    100% {
-        opacity: 1;
-    }
+
+
+.nextChange {
+    -webkit-animation: moveFromRightFade .7s ease both;
+	animation: moveFromRightFade .7s ease both;
 }
 
+
+.preChange {
+    -webkit-animation: moveFromLeftFade .7s ease both;
+	animation: moveFromLeftFade .7s ease both;
+}
+
+@-webkit-keyframes moveFromRightFade {
+	from { opacity: 0.3; -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRightFade {
+	from { opacity: 0.3; -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+
+
+@-webkit-keyframes moveFromLeftFade {
+	from { opacity: 0.3; -webkit-transform: translateX(-100%); }
+}
+@keyframes moveFromLeftFade {
+	from { opacity: 0.3; -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}

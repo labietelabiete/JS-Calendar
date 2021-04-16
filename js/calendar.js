@@ -154,6 +154,8 @@ prevMonthBtn.addEventListener("click", resetPrevMonth);
 function resetPrevMonth(){
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
+    // trigger animation on every click  
+    preMonthAnimation();
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -196,11 +198,9 @@ nextMonthBtn.addEventListener("click", resetNextMonth);
 function resetNextMonth(){
     // Emptying grid container before assigning next month
     calendarGrid.innerHTML = "";
-    //document.querySelector("main").style.animation = "none";
-    document.querySelector("main").style.animation = "monthAnimation 2s 1";
-    setTimeout(()=> {
-        document.querySelector("main").style.animation = "none";
-    }, 1000);
+
+    // trigger animation on every click  
+    nextMonthAnimation();
     
     //December
     if (currentMonthNum == 12){
@@ -242,17 +242,19 @@ function handleArrowKeys(event) {
     }
 }
 
-//Animation
-// nextMonthBtn.addEventListener("click", function(){
-//     document.querySelector("main").style.animation = "none";
-//     document.querySelector("main").style.animation = "monthAnimation 2s 1";
-// })
-// document.querySelector("main").style.animation = "none";
-// setTimeout(()=> {
-//     document.querySelector("main").style.animation = "none";
-// }, 2000);
-
-
+// Animation function 
+function preMonthAnimation() {
+calendarGrid.setAttribute("class", "preChange")
+setTimeout(()=> {
+  calendarGrid.removeAttribute("class", "preChange");
+}, 1000);
+}
+function nextMonthAnimation() {
+    calendarGrid.setAttribute("class", "nextChange")
+    setTimeout(()=> {
+      calendarGrid.removeAttribute("class", "nextChange");
+    }, 1000);
+    }
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 appendDays(prevMonthLength,firstDay,currentMonthLength);
