@@ -123,7 +123,6 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         let nextDay = document.createElement("div");
         setUpDay(nextDay, n, "nextMonthday", false);
     }
-    
 };
 
 // Highlight today
@@ -131,13 +130,6 @@ function highlighToday(originalYear, currentYear, originalMonth, currentMonth, c
     if (originalYear === currentYear && originalMonth === currentMonth){
         let todayDiv = document.getElementById("day" + currentDayNum);
         todayDiv.classList.add("today");
-
-        todayNumber = document.querySelector(".today .numberDiv");
-        todayNumber.style.backgroundColor = "yellow";
-        todayNumber.style.boxShadow = "0 0 20px 20px yellow";
-        todayNumber.style.borderRadius = "50%";
-        // Capturing today div
-        today = document.querySelector(".today");
     }
 };
 
@@ -194,7 +186,8 @@ function resetPrevMonth(){
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar gridH
     appendDays(previousMonthLength,firstDay,currentMonthLength);
-    // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
+
     console.log("Prev month!")
  }
 // Next month button
@@ -233,8 +226,7 @@ function resetNextMonth(){
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
-    // highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
-
+    highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
     console.log("Next month!")
 }
 
@@ -248,9 +240,8 @@ function handleArrowKeys(event) {
             case 39:
                 resetNextMonth();
                 break;
-    } 
+    }
 }
-
 
 //Animation
 // nextMonthBtn.addEventListener("click", function(){

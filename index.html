@@ -19,7 +19,7 @@
             <h1 id="month">April</h1>
             <h1 id="year">2021</h1>
         </div>
-        <button id="newEventBtn">Add Event</button>
+        <button class="newEventBtn" id="newEventBtn">Add Event</button>
     </header>
 
     <!-- Main part -->
@@ -73,12 +73,25 @@
             <!-- Weekdays -->
             <div id="weekdaysContainer">
                 <div class="weekday">Monday</div>
+                <div class="weekdayAbr">Mon</div>
+
                 <div class="weekday">Tuesday</div>
+                <div class="weekdayAbr">Tue</div>
+
                 <div class="weekday">Wednesday</div>
+                <div class="weekdayAbr">Wed</div>
+
                 <div class="weekday">Thursday</div>
+                <div class="weekdayAbr">Thu</div>
+
                 <div class="weekday">Friday</div>
+                <div class="weekdayAbr">Fri</div>
+
                 <div class="weekday">Saturday</div>
+                <div class="weekdayAbr">Sat</div>
+
                 <div class="weekday">Sunday</div>
+                <div class="weekdayAbr">Sun</div>
             </div>
 
             <!-- Calendar grid -->
@@ -187,7 +200,10 @@
     </div>
     <button style="display: none;" id="checkEventBtn">Check Event</button>
     <!-- Footer -->
-    <footer></footer>
+    <footer>
+        <!-- Add event button for mobile version -->
+        <button class="navBtn newEventBtn" id="newEventBtnMobile">+</button>
+    </footer>
     <script src="js/calendar.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/eventCalendar.js"></script>
