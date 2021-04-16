@@ -206,6 +206,10 @@ function setMonthEvents(){
     }
 }
 
+// Displays all the expired events on the expired event container
+function showExpiredEvents(){
+    
+}
 function setDailyEvents(eventCreated){
     // Restoring all previous HTML content
     resetDaysContent();
