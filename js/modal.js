@@ -177,7 +177,7 @@ endCheckbox.onclick = function () {
 
 reminderCheckbox.onclick = function () {
   if (reminderCheckbox.checked == true) {
-    showReminder.style.display = "inline-block";
+    showReminder.style.display = "flex";
     reminderLabel.style.color = "var(--blackColor)";
     reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
     reminderCheckboxSpan.style.backgroundColor = "var(--darkColor)";
