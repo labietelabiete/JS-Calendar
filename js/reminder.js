@@ -1,6 +1,7 @@
 // Global variables
 // ----------------------------------------------------------------------
 var reminderInfoArray = [];
+var eventsReminderInfoArray = [];
 var expiredRemindersContainer = document.getElementById("expiredReminders");
 var sideBar = document.querySelector("#sideBar");
 var myLocalStorage = JSON.parse(localStorage.getItem("localEventInfo"));
@@ -42,36 +43,27 @@ function triggerReminders(){
 function setAllReminders(){
 
   // Getting localEventInfo and localReminderInfo
-  let myEventsInfo = JSON.parse(localStorage.getItem("localEventInfo"));
+  eventsReminderInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
   reminderInfoArray = JSON.parse(localStorage.getItem("localReminderInfo"));
 
   // If reminderInfoArray is not empty we check every event
   // and if it has a reminder we add an expiration timeout to it
   if (reminderInfoArray !== null){
     reminderInfoArray.forEach(reminderElement => {
-      myEventsInfo.forEach(eventElement => {
+      eventsReminderInfoArray.forEach(eventElement => {
         if (eventElement.id == reminderElement.eventId && reminderElement.flag === false) {
           
           // Calculating remaining time left before 
           // event expires and capturing event title
           let currentDate = new Date().getTime();
           let reminderEndDate = parseInt(eventElement.endDate.milliseconds) - (parseInt(reminderElement.reminder)*60000);
-
-
+          let differenceMilliseconds = (reminderEndDate - currentDate);
 
           //Just info for dates visualization
-          let currentDateFormat = new Date(currentDate);
-          let endDateFormat = new Date(eventElement.endDate.milliseconds);
-          let reminderDateFormat = new Date (eventElement.endDate.milliseconds - (parseInt(reminderElement.reminder)*60000));
-          console.log("Current date",currentDateFormat);
-          console.log("End date",endDateFormat);
-          // console.log("Hay que restarle a enddate", parseInt(reminderElement.reminder));
-          console.log("End date - reminder", reminderDateFormat);
+          console.log("Current date",new Date(currentDate));
+          console.log("End date",new Date(eventElement.endDate.milliseconds));
+          console.log("El reminder saltará a las", new Date(reminderEndDate));
 
-
-
-          let differenceMilliseconds = (reminderEndDate - currentDate);
-          console.log("differenceMilliseconds en minutos -->", differenceMilliseconds/60000);
           let reminderTitle = eventElement.title;
 
           if (differenceMilliseconds > 0) {
@@ -146,7 +138,6 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
     expiredRemindersContainer.removeChild(expiredReminder);
 
     if(expiredRemindersContainer.children.length === 0){
-      console.log("Im gonna hide reminderContainer");
       document.getElementById("reminderContainer").style.visibility = "hidden";
     }
 
