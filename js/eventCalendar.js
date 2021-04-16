@@ -6,6 +6,11 @@ let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
 let musicCheckbox = document.getElementById("musicCheckbox");
 let otherCheckbox = document.getElementById("otherCheckbox");
+let workCheckboxMob = document.getElementById("workCheckboxMob"); // Mobile
+let sportCheckboxMob = document.getElementById("sportCheckboxMob"); // Mobile
+let musicCheckboxMob = document.getElementById("musicCheckboxMob"); // Mobile
+let otherCheckboxMob = document.getElementById("otherCheckboxMob"); // Mobile
+// Local storage by default
 let allStorage = [];
 
 // LISTENERS
