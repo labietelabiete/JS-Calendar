@@ -140,6 +140,8 @@ window.onclick = function (event) {
     modalNewEvent.style.display = "none";
     modalCheckEvent.style.display = "none";
     clearNewEventForm();
+    // Enabling arrow navigation back
+    document.addEventListener('keydown', handleArrowKeys);
   }
 };
 
@@ -288,6 +290,8 @@ saveEventButton.addEventListener('click', function(){
     clearNewEventForm();
     modalNewEvent.style.display = "none";
   }
+  // Enabling arrow navigation back
+  document.addEventListener('keydown', handleArrowKeys);
 });
 
 // Function for setting new event information to local storage

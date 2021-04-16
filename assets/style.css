@@ -884,8 +884,20 @@ select option:hover {
       max-height: 100%;
   }
 
-  .today .numberDiv{
-    box-shadow: 0 0 15px 12px yellow;
+  /* Event div title container */
+  .titleContainer{
+    -webkit-mask-image: none;
+  }
+
+  /* Remove the scroll animation at small sizes */
+  .titleContainer:hover div,
+  .titleContainer:focus div {
+    animation: none;
+  }
+
+  .titleContainer:hover {
+    /* Fade out effect */
+    -webkit-mask-image: none;
   }
 
   .numberDiv, .otherNumberDiv{
@@ -1002,7 +1014,6 @@ select option:hover {
     min-height: 20px;
     min-width: 20px;
   }
-
 }
 
 /* Mobile */
