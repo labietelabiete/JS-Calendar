@@ -32,7 +32,6 @@ for (let cB of allCheckboxes){
     cB.addEventListener("change", checkboxPairing)
 }
 
-
 // Deleting all events (test button)
 document.getElementById("month").addEventListener("click", function(){
     resetDaysContent(eventsDivs);
@@ -221,8 +220,26 @@ function setDailyEvents(eventCreated){
     setMonthEvents();
 }
 
-function checkboxPairing(event, eventCheckbox, targetCheckbox){
-    console.log(event.target)
+// Pairing checkboxes
+function checkboxPairing(){
+    // console.log(event.target.classList[0]);
+    let pairs = document.getElementsByClassName(event.target.classList[0]);
+    // Checked
+    if (event.target.checked === true){
+        for (let p of pairs){
+            p.checked = true;
+            console.log(p);
+            console.log("Checked!");
+        }
+    }
+    // Unchecked
+    else {
+        for (let p of pairs){
+            p.checked = false;
+            console.log(p);
+            console.log("Unchecked!");
+        }
+    }
 }
 
 
