@@ -22,12 +22,6 @@ saveEventButton.addEventListener('click', setDailyEvents);
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
 
-// workCheckbox.addEventListener("change", setDailyEvents);
-// sportCheckbox.addEventListener("change", setDailyEvents);
-// musicCheckbox.addEventListener("change", setDailyEvents);
-// otherCheckbox.addEventListener("change", setDailyEvents);
-
-
 // Adding event listener to all checkboxes
 for (let cB of allCheckboxes){
     cB.addEventListener("change", checkboxPairing)
