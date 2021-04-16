@@ -177,10 +177,8 @@ main {
   position:relative;
   display: flex;
   flex-direction: column;
-  flex-grow:0.2;
+  flex-grow:0.6;
   top:80px;
-  /*visibility:hidden;*/
-  
 }
 
 #expiredEventsTitle{
@@ -188,16 +186,15 @@ main {
   color: rgb(210, 43, 65);
 }
 
-#expiredReminders{
+#expiredEvents{
   margin-top: 5px;
+  padding: 5px;
   flex-grow:1;
   max-width: 200px;
   outline: 2px solid rgb(210, 43, 65);
-  /*visibility:visible;*/
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 18px;
-
 }
 
 /* Reminder */
@@ -206,22 +203,21 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow:0.2;
-  top:80px;
+  top:40px;
   visibility:hidden;
   
 }
 
 #reminderTitle{
-  /*visibility:visible;*/
   font-size: 20px;
   color: rgb(210, 43, 65);
 }
 #expiredReminders{
   margin-top: 5px;
+  padding: 5px;
   flex-grow:1;
   max-width: 200px;
   outline: 2px solid rgb(210, 43, 65);
-  /*visibility:visible;*/
   overflow-y: auto;
   overflow-x: hidden;
   font-size: 18px;
@@ -453,7 +449,7 @@ main {
     margin-right: 10px;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    overflow: auto;
     min-height: 100%;
     /* Fade out effect */
     -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
