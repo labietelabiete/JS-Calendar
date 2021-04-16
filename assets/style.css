@@ -457,7 +457,7 @@ footer {
 
 /* Hide add checkboxes (mobile version) in desktop versions*/
 #eventTypesMobile{
-  display: none;
+  display: block;
 }
 
 /* Hide add event button (mobile version) in desktop versions*/
