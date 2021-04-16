@@ -22,14 +22,16 @@ saveEventButton.addEventListener('click', setDailyEvents);
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
 
-workCheckbox.addEventListener("change", setDailyEvents);
-sportCheckbox.addEventListener("change", setDailyEvents);
-musicCheckbox.addEventListener("change", setDailyEvents);
-otherCheckbox.addEventListener("change", setDailyEvents);
+// workCheckbox.addEventListener("change", setDailyEvents);
+// sportCheckbox.addEventListener("change", setDailyEvents);
+// musicCheckbox.addEventListener("change", setDailyEvents);
+// otherCheckbox.addEventListener("change", setDailyEvents);
+
 
 // Adding event listener to all checkboxes
 for (let cB of allCheckboxes){
     cB.addEventListener("change", checkboxPairing)
+    cB.addEventListener("change", setDailyEvents);
 }
 
 // Deleting all events (test button)
@@ -228,16 +230,16 @@ function checkboxPairing(){
     if (event.target.checked === true){
         for (let p of pairs){
             p.checked = true;
-            console.log(p);
-            console.log("Checked!");
+            // console.log(p);
+            // console.log("Checked!");
         }
     }
     // Unchecked
     else {
         for (let p of pairs){
             p.checked = false;
-            console.log(p);
-            console.log("Unchecked!");
+            // console.log(p);
+            // console.log("Unchecked!");
         }
     }
 }
