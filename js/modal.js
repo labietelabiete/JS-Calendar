@@ -462,6 +462,7 @@ function removingEvent(){
   eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
   console.log("Events list to remove", eventListToRemove);
 
+
   // Make a new array removing events with the current ID
   var filteredEvents = eventListToRemove.filter(function(obj, index, arr){ 
       return obj.id !== eventToDisplay.id;
@@ -470,6 +471,13 @@ function removingEvent(){
   localStorage.setItem("localEventInfo", JSON.stringify(filteredEvents));
   modalCheckEvent.style.display = "none";
   setDailyEvents();
+
+  // Deleting title containers (wrapper) for long names
+  let titles = document.getElementsByClassName("titleContainerId"+eventToDisplay.id);
+  console.log(titles);
+  for (let t of titles){
+     t.remove();
+  }
 }
 
 function clearNewEventForm(){
