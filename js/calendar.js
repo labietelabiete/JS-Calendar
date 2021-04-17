@@ -230,17 +230,17 @@ function resetNextMonth(){
 }
 
 // Default call: arrow keyboard event to navigate to the previous and next months.
-document.addEventListener('keydown', handleArrowKeys);
-function handleArrowKeys(event) {
-    switch (event.keyCode) {
-            case 37:
-                resetPrevMonth();
-                break;
-            case 39:
-                resetNextMonth();
-                break;
-    }
-}
+// document.addEventListener('keydown', handleArrowKeys);
+// function handleArrowKeys(event) {
+//     switch (event.keyCode) {
+//             case 37:
+//                 resetPrevMonth();
+//                 break;
+//             case 39:
+//                 resetNextMonth();
+//                 break;
+//     }
+// }
 
 
 // CALLING FUNCTIONS
