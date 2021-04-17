@@ -177,7 +177,7 @@ main {
   position:relative;
   display: flex;
   flex-direction: column;
-  flex-grow:0.6;
+  flex-grow:0.3;
   top:80px;
 }
 
@@ -224,7 +224,7 @@ main {
   flex-direction: column;
   flex-grow:0.2;
   top:40px;
-  visibility:hidden;
+  visibility:h;
   
 }
 
