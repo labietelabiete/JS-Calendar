@@ -240,10 +240,8 @@ function showExpiredEvents() {
 
       // change the color of expired events to red!
 
-      var expiredEvents = document.querySelectorAll("#eventId" + event.id);
-      console.log(expiredEvents)
-      console.log(event.startDate.month)
-     expiredEvents.forEach((ele) => {
+      let expiredEvents = document.querySelectorAll("#eventId" + event.id);
+         expiredEvents.forEach((ele) => {
          if(ele.innerText.slice(2) === event.title.charAt(0).toUpperCase() + event.title.slice(1)){
               ele.style.color = "var(--redColor)"
          }
