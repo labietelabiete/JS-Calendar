@@ -229,11 +229,18 @@ function newEventValidation () {
   if(!startNewEvent.value) {
     eventLabel[0].style.color = "var(--redColor)"
     eventLabel[0].style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
-
+    startNewEvent.style.color = "var(--redColor)";
     return false;
   }
+
+  // End date checked
   if (endCheckbox.checked) {
     endNewEvent.required = true;
+
+    // Accessing the milliseconds
+    let startDateMilliseconds =  new Date(startNewEvent.value).getTime();
+    let endDateMilliseconds =  new Date(endNewEvent.value).getTime();
+    
     if (!endNewEvent.value) {
       endDateLabel.style.color = "var(--redColor)";
       endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
@@ -244,7 +251,21 @@ function newEventValidation () {
       }
       return false;
     }
+
+    // If the user sets an end dat before start date
+    if (startDateMilliseconds > endDateMilliseconds){
+      endDateLabel.style.color = "var(--redColor)";
+      endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
+      endCheckboxSpan.style.backgroundColor = "var(--redColor)";
+      endCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
+      endNewEvent.style.color = "var(--redColor)";
+      if (window.innerWidth < 768) {
+        checkboxNewEvent[0].style.backgroundSize = "10px 10px";
+      }
+      return false;
+    }
   }
+
 
   if (reminderCheckbox.checked) {
     timeReminderNewEvent.required = true;
@@ -253,6 +274,7 @@ function newEventValidation () {
       reminderLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       reminderCheckboxSpan.style.backgroundColor = "var(--redColor)";
       reminderCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
+      timeReminderNewEvent.style.color = "var(--redColor)";
       if (window.innerWidth < 768) {
         checkboxNewEvent[1].style.backgroundSize = "10px 10px";
       }

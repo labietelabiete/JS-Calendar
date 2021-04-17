@@ -782,7 +782,7 @@ select option:hover {
   color: var(--eventColor);
 }
 .modalContentCheck {
-  border: var(--eventColor) solid var(--borderWidth);
+  border: var(--eventColor) solid 4px;
 }
 .closeCheck {
   color: var(--eventColor);
