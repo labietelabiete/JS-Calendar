@@ -151,6 +151,17 @@ function setMonthEvents() {
       let startDayMonthLength = calculateMonthLength(monthEvent.startDate.year,monthEvent.startDate.month);
       // Default behaviour
       let dayDiff = endDay - startDay; // We'll need to add one event div at least
+        
+      // change the color of expired events to red!
+      if (endMil - new Date().getTime() <= 0) {
+        let expiredEvents = document.querySelectorAll("#eventId" + monthEvent.id);
+         expiredEvents.forEach((ele) => {
+         if (ele.innerText.slice(2) === monthEvent.title.charAt(0).toUpperCase() + monthEvent.title.slice(1)) {
+           ele.style.color = "var(--redColor)"
+         }
+        });
+      }
+
       // console.log(monthEvent.title, startDay, endDay, dayDiff);
       //console.log(startMonth, endMonth);
       // Events that go through months
