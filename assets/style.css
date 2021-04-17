@@ -1,11 +1,11 @@
 /* --------------
 FONT
 --------------  */
-@font-face{
-    font-family: 'Clash';
-    src:url('./_Design/_Fonts/ClashDisplay-Variable.ttf') format('truetype');
-        font-weight: 200 700;
-        font-style: normal;
+@font-face {
+  font-family: "Clash";
+  src: url("./_Design/_Fonts/ClashDisplay-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-style: normal;
 }
 
 /* --------------
@@ -14,14 +14,18 @@ GENERAL VARIABLES
 :root{
     /* Colors */
     --darkColor: black;
-    --yellowColor: yellow;
+    --yellowColor: rgb(255, 183, 0);
     --redColor: rgb(210, 43, 65);
     --magentaColor: rgb(220, 0, 235);
     --greenColor: rgb(0, 213, 194);
     --blueColor: rgb(0, 89, 194);
+    --greyColor: #cccccc;
+
+    /*Color for event*/
+    --eventColor: rgb(0, 213, 194);
 
     /* Stroke width */
-    --borderWidth: 2px;
+    --borderWidth: 3px;
 
     /* Font weights */
     --extraLight: 200;
@@ -42,257 +46,1219 @@ STYLING
 
 /* General styling */
 * {
-    /* Remove default features */
-    padding: 0;
-    margin: 0;
-    border: 0;
-    /* Other styling */
-    font-family: 'Clash';
-    box-sizing: border-box;
-    /* Comment/Uncomment this to see/hide all boxes */
-    /*outline: 2px red solid;*/
+  /* Remove default features */
+  padding: 0;
+  margin: 0;
+  border: 0;
+
+  /* Disable text selection */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome, Edge, Opera and Firefox */
+
+  /* Other styling */
+  font-family: "Clash";
+  box-sizing: border-box;
+  /* Comment/Uncomment this to see/hide all boxes */
+  /* outline: 2px red solid; */
 }
 
-/* Body and body season classes*/
+/* Remove blue background when autofilling forms */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--dark-green);
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 body {
-    padding: 40px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .january {
-
+  background:rgba(105, 75, 255, 0.2);
 }
 
 .february{
-
+  background:rgba(81, 110, 208, 0.2);
 }
 
 .march{
-
+  background:rgba(58, 146, 162, 0.2);
 }
 
 .april{
-
+  background:rgba(34, 181, 115, 0.2);
 }
 
 .may{
-
+  background:rgba(107, 200, 88, 0.2);
 }
 
 .june{
-
+  background:rgba(179, 219, 60, 0.2);
 }
 
 .july{
-
+  background:rgba(252, 238, 33, 0.2);
 }
 
 .august{
-
+  background:rgba(250, 208, 32, 0.2);
 }
 .september {
-
+  background:rgba(249, 177, 31, 0.2);
 }
 
 .october{
-
+  background:rgba(247, 147, 30, 0.2);
 }
 
 .november{
-
+  background:rgba(200, 123, 105, 0.2);
 }
 
 .december{
-
+  background:rgba(152, 99, 180, 0.2);
 }
 
 /* Top part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+/* TOP PART
+--------------------------------------------------------------- */
 header {
-    height: 150px;
-    display: flex;
-    align-items: flex-start;
+  height: 150px;
+  display: flex;
+  align-items: flex-start;
 }
 
 #title {
-    width: var(--sidebarWidth);
-    margin-right: var(--margin);
-    font-size: 30px;
+  min-width: var(--sidebarWidth);
+  margin-right: var(--margin);
+  font-size: 30px;
 }
 
-#monthAndYear{
-    flex: 1 1 1000px;
-    display: flex;
-    margin-right: var(--margin);
-    height: inherit;
+#monthAndYear {
+  flex: 1 1 1000px;
+  display: flex;
+  margin-right: var(--margin);
+  height: inherit;
+  transition: .5s
 }
 
-#month, #year {
-    font-size: 140px;
-    /* display: inline; */
-    height: fit-content;
-    transform: translateY(-30px);
+#month,
+#year {
+  font-size: 140px;
+  /* display: inline; */
+  height: fit-content;
+  transform: translateY(-30px);
+  transition: .4s;
 }
 
 #month {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
-#year{
-    font-weight: var(--extraLight);
+#year {
+  font-weight: var(--extraLight);
 }
 
-#newEventBtn{
-    font-size: 24px;
-    width: 180px;
-    padding: 10px 20px 10px 20px;
-    background-color: transparent;
-    border: var(--borderWidth) solid var(--darkColor);
-    border-radius: 6px;
-    transition: .3s;
-    outline: none;
+#newEventBtn {
+  font-size: 24px;
+  width: 180px;
+  padding: 10px 20px 10px 20px;
+  background-color: transparent;
+  border: var(--borderWidth) solid var(--darkColor);
+  border-radius: 6px;
+  transition: 0.3s;
+  outline: none;
 }
 
-#newEventBtn:hover{
-    color: whitesmoke;
-    background-color: var(--darkColor);
+#newEventBtn:hover {
+  color: whitesmoke;
+  background-color: var(--darkColor);
 }
 
-
-/* Main part >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-main{
-    display: flex;
-    flex-grow: 1;
+@keyframes transitionMainPage {
+  from {
+    opacity: 0;
+    transform: rotateX(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+/* MAIN PART
+--------------------------------------------------------------- */
+main {
+  display: flex;
+  flex-grow: 1;
+  /* animation: 7s transitionMainPage; */
 }
 
 /* Left */
 #sidebar {
-    width: var(--sidebarWidth);
+    min-width: var(--sidebarWidth);
     margin-right: var(--margin);
     display: flex;
-    align-items: flex-end;
+    /*align-items: flex-end;*/
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-#eventTypes{
-    width: 100%;
+/* Expired Events */
+#expiredEventsContainer{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow:0.5;
+  top:80px;
 }
 
-.eventTypeCheckbox{
-    margin-top: 10px;
-    font-weight: var(--semiBold);
+#expiredEventsTitle{
+  font-size: 20px;
+  color: rgb(210, 43, 65);
+}
+
+#expiredEvents{
+  margin-top: 5px;
+  padding: 5px;
+  flex-grow:1;
+  max-width: 200px;
+  outline: 2px solid rgb(210, 43, 65);
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+.workExpiredEvent{
+  color: var(--greenColor);
+}
+
+.sportExpiredEvent{
+  color: var(--magentaColor);
+}
+
+.musicExpiredEvent{
+  color: var(--yellowColor);
+}
+
+.otherExpiredEvent{
+  color: var(--blueColor);
+}
+
+.defaultExpiredEvent{
+  color:black;
+}
+
+/* Reminder */
+#reminderContainer{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow:0.2;
+  top:40px;
+  visibility:hidden;
+  
+}
+
+#reminderTitle{
+  font-size: 20px;
+  color: rgb(210, 43, 65);
+}
+#expiredReminders{
+  margin-top: 5px;
+  padding: 5px;
+  flex-grow:1;
+  max-width: 200px;
+  outline: 2px solid rgb(210, 43, 65);
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+.workReminder{
+    color: var(--greenColor);
+}
+
+.sportReminder{
+    color: var(--magentaColor);
+}
+
+.musicReminder{
+    color: var(--yellowColor);
+}
+
+.otherReminder{
+    color: var(--blueColor);
+}
+
+.defaultReminder{
+    color:black;
+}
+
+#eventTypes {
+  width: 100%;
+}
+
+.checkbox {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.checkboxLabel {
+  font-weight: var(--regular);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-left: -20px;
+}
+
+/* Hide default radio/checkbox button */
+.checkboxInput input {
+  opacity: 0%;
+  width: 0;
+  height: 0;
+}
+
+.checkboxControl {
+  display: block;
+  margin-right: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/*Types of events*/
+.workLabel,
+.sportLabel,
+.musicLabel,
+.otherLabel {
+  margin-left: 0;
+}
+/* Work */
+.workLabel {
+  color: var(--greenColor);
+}
+
+.workCheckbox {
+  border: var(--borderWidth) solid var(--greenColor);
+}
+
+.checkboxInput input:checked + .workCheckbox {
+  background-color: var(--greenColor);
+}
+
+/* Sport */
+.sportLabel {
+  color: var(--magentaColor);
+}
+
+.sportCheckbox {
+  border: var(--borderWidth) solid var(--magentaColor);
+}
+
+.checkboxInput input:checked + .sportCheckbox {
+  background-color: var(--magentaColor);
+}
+
+/* Music */
+.musicLabel {
+  color: var(--yellowColor);
+}
+
+.musicCheckbox {
+  border: var(--borderWidth) solid var(--yellowColor);
+}
+
+.checkboxInput input:checked + .musicCheckbox {
+  background-color: var(--yellowColor);
+}
+
+/* Other */
+.otherLabel {
+  color: var(--blueColor);
+}
+
+.otherCheckbox {
+  border: var(--borderWidth) solid var(--blueColor);
+}
+
+.checkboxInput input:checked + .otherCheckbox {
+  background-color: var(--blueColor);
 }
 
 /* Right */
-#mainRight{
-    flex-grow: 1;
+#mainRight {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#monthButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--margin);
+}
+
+.navBtn {
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: var(--borderWidth) var(--darkColor) solid;
+  font-weight: var(--regular);
+  background-color: transparent;
+  outline: none;
+  transition: 0.3s;
+}
+
+.navBtn:hover {
+  color: whitesmoke;
+  background-color: var(--darkColor);
+}
+
+#weekdaysContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: var(--semiBold);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Hidding abbreviations for mobile verisions */
+.weekdayAbr{
+  color: var(--darkColor);
+  display: none;
+}
+
+/* Calendar container */
+#calendarCont {
+  flex-grow: 1;
+  max-height: 640px;
+  /* background-color: yellow; */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.today .numberDiv{
+  background-color: yellow;
+  box-shadow: 0 0 20px 20px yellow;
+  border-radius: 50%;
+}
+/* General day div */
+.dayDiv{
+    padding: 15px 10px 15px 0;
+    border-top: var(--borderWidth) black solid;
+    transition: .4s;
     display: flex;
-    flex-direction: column;
+    align-items: flex-start;
+    min-width: 14.2857142857%;
+    max-height: 100px;
 }
 
-#monthButtons{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: var(--margin);
+.currentMonthDay:hover *{
+  /* background-color: lightgray;
+  box-shadow: 0 0 20px 20px lightgray; */
+  /* border-radius: 50%; */
+  font-weight: var(--extraLight);
 }
 
-.navBtn{
-    font-size: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: var(--borderWidth) var(--darkColor) solid;
-    font-weight: var(--regular);
-    background-color: transparent;
-    outline: none;
-    transition: .3s;
-}
-
-.navBtn:hover{
-    color: whitesmoke;
-    background-color: var(--darkColor);
-}
-
-#weekdaysContainer{
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    font-weight: var(--semiBold);
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-#calendarCont{
-    flex-grow: 1;
-    /* background-color: yellow; */
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-}
-
-.prevMonthDay, .currentMonthDay, .nextMonthDay{
-    color: var(--darkColor);
-    font-size: 40px;
-    text-align: left;
-    padding-top: 5px;
-    border-top: 2px black solid;
-    transition: .2s;
+.today:hover .numberDiv{
+  color: var(--darkColor);
 }
 
 /* Previous & next month days */
-.prevMonthDay, .nextMonthday{
-    font-weight: var(--extraLight);
+.otherNumberDiv {
+  line-height: 30px;
+  font-weight: var(--extraLight);
+  font-size: 40px;
+  text-align: left;
+  margin-right: 15px;
+
 }
 
-/* Current month days */
-.currentMonthDay{
-    font-weight: var(--bold);
+/* Number */
+.numberDiv {
+  line-height: 30px;
+  color: var(--darkColor);
+  font-size: 40px;
+  text-align: left;
+  font-weight: var(--bold);
+  width: fit-content;
+  margin-right: 15px;
+  transition: 0.2s;
+}
+
+/* Fixed width */
+.otherNumberDiv, .numberDiv{
+  min-width: 55px;
+}
+
+/* Events container */
+.eventsDiv{
+    flex-grow: 1;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    min-height: 100%;
+    /* Fade out effect */
+    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
+    mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
+}
+
+/* Types of events */
+.event{
+  min-width: 20px;
+  font-size: 14px;
+  /* color: white; */
+  font-weight: var(--bold);
+  /* border-radius: 10px; */
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+.event:hover{
+  font-weight: var(--bold);
+}
+
+.workEvent{
+  color: var(--greenColor);
+  /* border-top: var(--borderWidth) var(--greenColor) solid; */
+  /* background-color: var(--greenColor);
+  box-shadow: 0 0 8px 8px var(--greenColor); */
+}
+
+.workEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--greenColor);
+}
+
+.sportEvent {
+  color: var(--magentaColor);
+  /* border-top: var(--borderWidth) var(--magentaColor) solid; */
+  /* background-color: var(--magentaColor);
+  box-shadow: 0 0 8px 8px var(--magentaColor); */
+}
+
+.sportEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--magentaColor);
+}
+
+.musicEvent {
+  color: var(--yellowColor);
+}
+
+.musicEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--yellowColor);
+  /* border-top: var(--borderWidth) var(--yellowColor) solid; */
+  /* background-color: var(--yellowColor);
+  box-shadow: 0 0 8px 8px var(--yellowColor);*/
+}
+
+.otherEvent {
+  color: var(--blueColor);
+  /* border-top: var(--borderWidth) var(--blueColor) solid; */
+  /* background-color: var(--blueColor);
+  box-shadow: 0 0 8px 8px var(--blueColor); */
+}
+
+.otherEvent:hover {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--blueColor);
+}
+
+/* FOOTER
+--------------------------------------------------------------- */
+footer {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Hide add event button (mobile version) in desktop versions*/
+#newEventBtnMobile{
+  display: none;
 }
 
 
-/* Footer >>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-footer{
-    height: 50px;
+/* MODAL
+--------------------------------------------------------------- */
+textarea {
+  resize: none;
+  outline: none;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
-
-/* Modal styles >>>>>>>>>>>>>>>>>>>>>> */
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 30px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(255, 255, 255, 0.714); /* Black w/ opacity */
+  align-items: center;
 }
 
-  /* Modal Content */
+/* Modal Content */
+.modalContent {
+  background-color: #fefefe;
+  border-radius: 15px;
+  margin: auto;
+  padding: 20px 40px 60px 40px;
+  border: 1px solid #888;
+  min-width: 450px;
+  width: 20%;
+  height: fit-content;
+  border: var(--darkColor) solid 4px;
+}
+
+/* The Close Button */
+.close {
+  color: #000000;
+  float: right;
+  font-size: 35px;
+  font-weight: normal;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*Generic style for modal content*/
+.eventTitle {
+  width: 80%;
+  height: 60px;
+  font-size: 60px;
+  font-weight: var(--semiBold);
+  margin: 10px 0px;
+  outline: none;
+}
+.eventTitle::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  border: none;
+  outline: none;
+}
+.eventTitle:focus {
+  border: none;
+  outline: none;
+  /* -webkit-mask-image:linear-gradient(to left, black 5%, transparent 100%); */
+}
+
+.eventTitleFlow {
+  width: 90%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 90%);
+  mask-image: linear-gradient(to right, black 30%, transparent 90%);
+}
+
+.eventTitleFlow:not(:hover) {
+  text-overflow: ellipsis;
+}
+.eventTitleFlow:hover h2,
+.eventTitleFlow:focus h2 {
+  display: inline-block;
+  animation: scroll-text 6s linear 0s infinite normal;
+}
+
+.eventTitleFlow:hover{
+  /* Fade out effect */
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  );
+}
+
+.titleContainer {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 150px;
+  /* Fade out effect */
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 90%);
+  mask-image: linear-gradient(to right, black 30%, transparent 90%);
+}
+
+.titleContainer:not(:hover) {
+  text-overflow: ellipsis;
+}
+
+.titleContainer:hover div,
+.titleContainer:focus div {
+  display: inline-block;
+  animation: scroll-text 6s linear 0s infinite normal;
+}
+
+.titleContainer:hover {
+  /* Fade out effect */
+  -webkit-mask-image: linear-gradient(
+    to left,
+    transparent 0%,
+    black 40%,
+    black 60%,
+    transparent 100%
+  );
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0%);
+  }
+  90% {
+    transform: translate(-100%);
+  }
+  95% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.eventType {
+  font-size: 26px;
+  font-weight: var(--light);
+  margin-bottom: 80px;
+  outline: none;
+}
+
+.eventTypeOption {
+  font-size: 26px;
+  font-weight: var(--light);
+}
+
+select option:hover {
+  background-color: var(--greyColor);
+}
+
+.eventLabel {
+  display: inline-block;
+  width: 100%;
+  font-size: 26px;
+  font-weight: var(--semiBold);
+  border-bottom: var(--darkColor) solid var(--borderWidth);
+  /* margin-bottom: 10px; */
+  transition: 0.1s;
+}
+
+.endCheckbox,
+.reminderCheckbox,
+.descriptionCheckbox {
+  border: var(--borderWidth) solid var(--greyColor);
+}
+
+.checkboxInput input:checked + .endCheckbox,
+.checkboxInput input:checked + .reminderCheckbox,
+.checkboxInput input:checked + .descriptionCheckbox {
+  background-color: var(--darkColor);
+  border: var(--borderWidth) solid var(--darkColor);
+}
+
+.eventDate {
+  margin-bottom: 10px;
+  font-size: 20px;
+  outline: none;
+  width: 100%;
+}
+
+.checkboxLabel input {
+  position: relative;
+  z-index: -9999;
+}
+
+.eventDescriptionLabel {
+  margin-bottom: 10px;
+}
+
+.checkboxLabel, .eventLabel, .eventLabelCheck{
+  margin-bottom: 5px;
+}
+
+#endDateLabel {
+  color: var(--greyColor);
+  border-bottom: var(--greyColor) solid var(--borderWidth);
+}
+
+#reminderLabel {
+  color: var(--greyColor);
+  border-bottom: var(--greyColor) solid var(--borderWidth);
+}
+#descriptionLabel {
+  color: var(--greyColor);
+  border-bottom: var(--greyColor) solid var(--borderWidth);
+}
+
+
+.eventDescription{
+    width: 100%;
+    height: 140px;
+    background-color: rgba(0,0,0,0.05);
+    font-size: 20px;
+    font-weight: var(--light);
+    margin-bottom: 30px;
+}
+
+.btnDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modalBtn{
+    width: 49%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: var(--semiBold);
+    background-color: white;
+    border: var(--darkColor) solid var(--borderWidth);
+    transition: .3s;
+    border-radius: 6px;
+    outline: none;
+}
+
+#saveNewEvent:hover {
+  color: white;
+  background-color: var(--darkColor);
+}
+
+#cancelNewEvent {
+  color: var(--redColor);
+  border: var(--redColor) solid var(--borderWidth);
+}
+#cancelNewEvent:hover {
+  color: white;
+  background-color: var(--redColor);
+}
+
+/* Created Event modal styles*/
+#checkEventModal {
+  color: var(--eventColor);
+}
+.modalContentCheck {
+  border: var(--eventColor) solid var(--borderWidth);
+}
+.closeCheck {
+  color: var(--eventColor);
+}
+.closeCheck:hover {
+  color: var(--eventColor);
+}
+.eventLabelCheck {
+  border-bottom: var(--eventColor) solid var(--borderWidth);
+}
+
+#descriptionEvent {
+  height: fit-content;
+}
+
+#okCheckEventButton {
+  color: var(--eventColor);
+  border: var(--eventColor) solid var(--borderWidth);
+}
+#okCheckEventButton:hover {
+  color: white;
+  background-color: var(--eventColor);
+}
+#RemoveEventButton {
+  color: var(--redColor);
+  border: var(--redColor) solid var(--borderWidth);
+}
+#RemoveEventButton:hover {
+  color: white;
+  background-color: var(--redColor);
+}
+
+#checkEventForm{
+  height: fit-content;
+}
+
+
+/* MEDIA QUERIES
+--------------------------------------------------------------- */
+/* Smalle desktop */
+@media screen and (max-width: 1140px) {
+  #title{
+    font-size: 25px;
+    min-width: 150px;
+  }
+
+  #monthAndYear{
+      /* flex-basis: 800px; */
+      transform: translateY(-15px);
+  }
+
+  #month, #year {
+      font-size: 100px;
+      transform: translateY(0px);
+  }
+
+  #newEventBtn {
+    font-size: 15px;
+    width: 180px;
+  }
+
+  /* Left */
+  #sidebar {
+    min-width: 150px;
+    margin-right: var(--margin);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  #mainRight{
+    max-width: 100%;
+  }
+
+  #weekdaysContainer{
+      font-size: 20px;
+  }
+
+  .eventsDiv{
+    min-width: 10px;
+    flex-grow: 0;
+    margin-right: 5px;
+  }
+
+  .event{
+    width: 0px;
+    height: 20px;
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: -5px;
+    line-height: 30px;
+    overflow: hidden;
+    transform: translateY(-8px);
+  }
+
+  .event:hover{
+    font-weight: inherit;
+  }
+
+  .weekday{
+      display: none;
+  }
+
+  .weekdayAbr{
+      display: block;
+  }
+
+  .numberDiv{
+    margin-right: 5px;
+  }
+
+}
+
+/* Small devices */
+@media screen and (max-width: 768px){
+  body{
+      padding-bottom: 80px;
+  }
+
+  header{
+      flex-direction: column;
+      height: 200px;
+      margin-bottom: var(--margin);
+  }
+
+  #monthAndYear{
+      width: 100%;
+      height: fit-content;
+      flex-direction: column;
+      transform: translateY(0px);
+    }
+
+  #month, #year {
+      font-size: 80px;
+      width: 100%;
+  }
+
+  #year{
+      transform: translateY(-10px);
+  }
+
+  /* Hide add event button for desktop */
+  #newEventBtn{
+      display: none;
+  }
+
+  #sidebar{
+      display: none;
+  }
+
+  .navBtn{
+      font-size: 40px;
+      width: 60px;
+      height: 60px;
+  }
+
+  #calendarCont{
+      margin-bottom: 10px;
+      max-height: 100%;
+  }
+
+  /* Event div title container */
+  .titleContainer{
+    -webkit-mask-image: none;
+  }
+
+  /* Remove the scroll animation at small sizes */
+  .titleContainer:hover div,
+  .titleContainer:focus div {
+    animation: none;
+  }
+
+  .titleContainer:hover {
+    /* Fade out effect */
+    -webkit-mask-image: none;
+  }
+
+  .numberDiv, .otherNumberDiv{
+    font-size: 30px;
+    margin-right: 6px;
+    min-width: 40px;
+}
+
+  footer{
+      height: 100px;
+  }
+
+
+  /* Display add event button (mobile version) */
+  #newEventBtnMobile{
+      display: block;
+  }
+
   .modalContent {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
-    height: 70%;
+      padding: 20px 25px 30px 25px;
+      width: 70%;
+      min-width: 300px;
+      height: fit-content;
   }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+
+  .eventTitle{
+      height: 40px;
+      font-size: 40px;
+      margin: 10px 0px;
+      margin-left: 15px;
+      outline: none;
   }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+
+  .eventType{
+      font-size: 16px;
+      margin-bottom: 50px;
+      margin-left: 15px;
+    }
+
+    .eventTypeOption {
+      font-size: 16px;
+    }
+
+    .eventLabel {
+      display: inline-block;
+      width: 90%;
+      font-size: 16px;
+      margin-left: 15px;
   }
+
+  .eventDate{
+      font-size: 16px;
+      margin-left: 15px;
+  }
+
+  .checkboxLabel{
+      margin-left: 0;
+  }
+
+  .checkboxLabel span {
+      width: 10px;
+      height: 10px;
+      margin-right: 5px;
+      display: inline-block;
+      background-size: 10px 10px;
+  }
+
+  .dayDiv{
+    min-width: 14.2857142857%;
+    max-height: 80px;
+    padding-right: 5px;
+    align-items: flex-start;
+  }
+
+  #startNewEvent, #endNewEvent {
+      width: 90%;
+  }
+
+  #endDateLabel, #reminderLabel, #descriptionLabel{
+    margin-left: 0px;
+  }
+
+  .eventDescriptionLabel{
+    margin-bottom: 10px;
+  }
+
+  .eventDescription{
+    width: 90%;
+    height: 100px;
+    font-size: 16px;
+    font-weight: var(--light);
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    
+  }
+
+  .btnDiv{
+      margin-left: 15px;
+      margin-right: 15px;
+  }
+
+  .modalBtn{
+    width: 48%;
+    height: 40px;
+    font-size: 16px;
+    font-weight: var(--semiBold);
+    background-color: white;
+    border: var(--darkColor) solid var(--borderWidth);
+    transition: .3s;
+  }
+
+  .event{
+    min-height: 20px;
+    min-width: 20px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 500px){
+
+  :root{
+    --borderWidth: 3px;
+  }
+
+  body{
+    padding: 30px;
+  }
+.eventDescription{
+  width: 90%;
+  height: 100px;
+  font-size: 16px;
+  font-weight: var(--light);
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 15px;
   
+}
+
+  header{
+    height: 140px;
+  }
+
+  #monthAndYear{
+    width: 100%;
+    height: fit-content;
+    flex-grow: 0;
+    flex-direction: column;
+    transform: translateY(0px);
+  }
+
+  #month, #year {
+    font-size: 50px;
+    width: 100%;
+  }
+
+
+  #monthButtons{
+    margin-bottom: 20px;
+  }
+
+  .navBtn{
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    font-weight: var(--regular);
+    border: 2px var(--darkColor) solid;
+  }
+
+  #weekdaysContainer{
+    font-size: 14px;
+    font-weight: var(--bold);
+  }
+
+  .today .numberDiv{
+    box-shadow: 0 5px 10px 6px yellow;
+  }
+
+  .dayDiv{
+    padding: 0px 5px 5px 0;
+    height: 100%;
+    border-top: 2px var(--darkColor) solid;
+  }
+
+  .numberDiv, .otherNumberDiv{
+    font-size: 16px;
+    margin-right: 6px;
+    min-width: 20px;
+    height: 20px;
+  }
+
+  #mainRight{
+    margin-bottom: -10px;
+  }
+
+  .eventsDiv{
+    width: 5px;
+    height: 100%;
+    max-height: 40px;
+  }
+
+  .event{
+    width: 10px;
+    height: 10px;
+    min-height: 5px;
+    font-size: 12px;
+    margin: 0;
+    margin-bottom: 3px;
+    line-height: 12px;
+    overflow: hidden;
+    transform: translateY(5px);
+  }
+.btnDiv{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+}
