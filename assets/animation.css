@@ -1,6 +1,6 @@
 .nextChange {
-	animation: nextMonth 0.4s forwards;
-	float: right;
+	position: relative;
+	animation: nextMonth 0.4s backwards;
 }
 
 .preChange {
@@ -23,10 +23,14 @@
 	0%{
 		opacity: 0%;
 		width: 0%;
+		left: 100%;
 	}
 	100% {
 		opacity: 100%;
 		width: 100%;
-		/* transform: translateX(0%); */
+		left: 0%;
+
 	}
 }
+
+

@@ -64,7 +64,7 @@ STYLING
   font-family: "Clash";
   box-sizing: border-box;
   /* Comment/Uncomment this to see/hide all boxes */
-  /* outline: 2px red solid; */
+  outline: 2px red solid;
 }
 
 /* Remove blue background when autofilling forms */
