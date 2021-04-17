@@ -49,13 +49,9 @@ function setAllReminders(){
   // and if it has a reminder we add an expiration timeout to it
   if (reminderInfoArray !== null){
     reminderInfoArray.forEach(reminderElement => {
-
-       
       eventsReminderInfoArray.forEach(eventElement => {
          
         if (eventElement.id == reminderElement.eventId && reminderElement.flag === false) {
-          console.log(eventElement.id, "event element id");
-          console.log(reminderElement.eventId, "reminder Id")
           // Calculating remaining time left before 
           // event expires and capturing event title
           let currentDate = new Date().getTime();
@@ -79,12 +75,7 @@ function setAllReminders(){
               eventElement.type, reminderElement.reminder, reminderInfoArray);
 
             }, differenceMilliseconds);
-          } else if((differenceMilliseconds <= 0) ) {
-            //////// !!!============= We have to find a place to set this ===============!!! ///////
-      // change the color of expired events to red! 
-      var expiredEvents = document.querySelectorAll("#eventId"+reminderElement.eventId);
-      expiredEvents.forEach(ele => ele.style.color = "var(--redColor)")      
-          }
+          } 
         }
       });
       // Storing the event reminder after flag change into local storage again
