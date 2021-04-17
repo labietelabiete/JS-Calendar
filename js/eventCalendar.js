@@ -75,7 +75,8 @@ function createEventDiv(dayID, eventID, eventType, eventTitle){
         // Title container (wrapper)
         let newContainerDiv = document.createElement("div");
         if(eventTitle.length > 20) {
-            newContainerDiv.setAttribute("class", "titleContainer");
+            newContainerDiv.setAttribute("class", "titleContainerId"+eventID);
+            newContainerDiv.classList.add("titleContainer");
         } else {
             newContainerDiv.removeAttribute("class", "titleContainer");
         }

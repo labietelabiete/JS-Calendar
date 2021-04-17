@@ -14,8 +14,8 @@ if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
 }else{
-  eventIndex = eventInfoArray.length;
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
+  eventIndex = eventInfoArray.length;
 }
 localStorage.setItem("eventIndex", eventIndex );
 
@@ -177,7 +177,7 @@ endCheckbox.onclick = function () {
 
 reminderCheckbox.onclick = function () {
   if (reminderCheckbox.checked == true) {
-    showReminder.style.display = "inline-block";
+    showReminder.style.display = "flex";
     reminderLabel.style.color = "var(--blackColor)";
     reminderLabel.style.borderBottom  = "var(--darkColor) solid var(--borderWidth)";
     reminderCheckboxSpan.style.backgroundColor = "var(--darkColor)";
@@ -287,6 +287,10 @@ titleNewEvent.oninput = (e) => {
 saveEventButton.addEventListener('click', function(){
   if(newEventValidation()){
     setNewEvent();
+    if (newEventObj.reminder != "") {
+      setNewReminder(newEventObj.id, newEventObj.reminder);
+      setAllReminders();
+    }  
     clearNewEventForm();
     modalNewEvent.style.display = "none";
   }
@@ -297,7 +301,6 @@ saveEventButton.addEventListener('click', function(){
 // Function for setting new event information to local storage
 function setNewEvent(){
   dateStartEventUTC = new Date(startNewEvent.value);
-  dateEndEventUTC = new Date(endNewEvent.value);
 
   newEventObj = {
     id: eventIndex,
@@ -312,18 +315,32 @@ function setNewEvent(){
       year : dateStartEventUTC.getUTCFullYear(),
     },
     endDate: {
-      milliseconds : dateEndEventUTC.getTime(),
-      minutes : dateEndEventUTC.getUTCMinutes(),
-      hour :  dateEndEventUTC.getUTCHours()+2,
-      day : dateEndEventUTC.getUTCDate(),
-      month : dateEndEventUTC.getUTCMonth()+1,
-      year : dateEndEventUTC.getUTCFullYear(),
+      milliseconds : "",
+      minutes : "",
+      hour :  "",
+      day : "",
+      month : "",
+      year : "",
     },
     reminder: timeReminderNewEvent.value,
     description: descriptionNewEvent.value,
   };
-  if(newEventObj.endDate == "Invalid Date") {
-    newEventObj.endDate = ""
+  if(endNewEvent.value == "") {
+    //Setting one hour after as end date as default
+    newEventObj.endDate.milliseconds = dateStartEventUTC.getTime()+3600000;
+    newEventObj.endDate.minutes = dateStartEventUTC.getUTCMinutes();
+    newEventObj.endDate.hour = dateStartEventUTC.getUTCHours()+3;
+    newEventObj.endDate.day = dateStartEventUTC.getUTCDate();
+    newEventObj.endDate.month = dateStartEventUTC.getUTCMonth()+1;
+    newEventObj.endDate.year = dateStartEventUTC.getUTCFullYear();
+  }else{
+    dateEndEventUTC = new Date(endNewEvent.value);
+    newEventObj.endDate.milliseconds = dateEndEventUTC.getTime();
+    newEventObj.endDate.minutes = dateEndEventUTC.getUTCMinutes();
+    newEventObj.endDate.hour = dateEndEventUTC.getUTCHours()+2;
+    newEventObj.endDate.day = dateEndEventUTC.getUTCDate();
+    newEventObj.endDate.month = dateEndEventUTC.getUTCMonth()+1;
+    newEventObj.endDate.year = dateEndEventUTC.getUTCFullYear();
   }
   eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
   if (eventInfoArray == null) {
@@ -428,11 +445,26 @@ function getEvent(){
     if (eventToDisplay.startDate.minutes < 10) {
       eventToDisplay.startDate.minutes = "0" + eventToDisplay.startDate.minutes;
     }
+    if (eventToDisplay.startDate.day < 10) {
+      eventToDisplay.startDate.day = "0" + eventToDisplay.startDate.day;
+    }
+    if (eventToDisplay.startDate.month < 10) {
+      eventToDisplay.startDate.month = "0" + eventToDisplay.startDate.month;
+    }
     startDateEvent.innerHTML = eventToDisplay.startDate.day + "/" + eventToDisplay.startDate.month + "/" + eventToDisplay.startDate.year + " " + eventToDisplay.startDate.hour + ":" + eventToDisplay.startDate.minutes;
 
     if (eventToDisplay.endDate.year == null) {
       eventEndDateLabel.style.display = "none";
     } else{
+      if (eventToDisplay.endDate.minutes < 10) {
+        eventToDisplay.endDate.minutes = "0" + eventToDisplay.endDate.minutes;
+      }
+      if (eventToDisplay.endDate.day < 10) {
+        eventToDisplay.endDate.day = "0" + eventToDisplay.endDate.day;
+      }
+      if (eventToDisplay.endDate.month < 10) {
+        eventToDisplay.endDate.month = "0" + eventToDisplay.endDate.month;
+      }
       eventEndDateLabel.style.display = "inline-block";
       endDateEvent.innerHTML = eventToDisplay.endDate.day + "/" + eventToDisplay.endDate.month + "/" + eventToDisplay.endDate.year + " " + eventToDisplay.endDate.hour + ":" + eventToDisplay.endDate.minutes;
     }
@@ -457,19 +489,40 @@ function getEvent(){
 }
 
 function removingEvent(){
-  //console.log('entro en la remove function');
-  console.log("ID of the event to remove", eventToDisplay.id)
   eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
-  console.log("Events list to remove", eventListToRemove);
+  reminderListToRemove = JSON.parse(localStorage.getItem("localReminderInfo"));
+
+  // Running into the array looking for the reminder to remove
+  for (let i = 0; i < eventListToRemove.length; i++) {
+    if (eventListToRemove[i].id == eventToDisplay.id) {
+      if (reminderListToRemove !== null){
+        for (let j = 0; j < reminderListToRemove.length; j++) {
+          console.log(reminderListToRemove[j])
+          if (reminderListToRemove[j].eventId == i) {
+            reminderListToRemove.splice(j, 1);
+          }
+        }
+      }
+    }
+  }
 
   // Make a new array removing events with the current ID
   var filteredEvents = eventListToRemove.filter(function(obj, index, arr){ 
-      return obj.id !== eventToDisplay.id;
+    return obj.id !== eventToDisplay.id;
   });
 
+  // Reseting localStorage
+  localStorage.setItem("localReminderInfo", JSON.stringify(reminderListToRemove));
   localStorage.setItem("localEventInfo", JSON.stringify(filteredEvents));
   modalCheckEvent.style.display = "none";
   setDailyEvents();
+
+  // Deleting title containers (wrapper) for long names
+  let titles = document.getElementsByClassName("titleContainerId"+eventToDisplay.id);
+  console.log(titles);
+  for (let t of titles){
+     t.remove();
+  }
 }
 
 function clearNewEventForm(){

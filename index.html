@@ -26,7 +26,11 @@
     <main>
         <!-- Sidebar -->
         <sidebar id="sidebar">
-            <div id="eventTypes">
+            <div id="reminderContainer">
+                <h4 id="reminderTitle">Reminders</h4>
+                <div id="expiredReminders"></div>
+            </div>
+            <div id = "eventTypes">
                 <!-- Work checkbox -->
                 <label class="checkbox">
                     <span class="checkboxInput">
@@ -156,7 +160,7 @@
                     </span>
                     <h2 class="eventLabel" id="descriptionLabel">Description</h2>
                 </label>
-                <br>
+                
                 <textarea class="eventDescription" name="eventDesc" id="descriptionNewEvent" cols="30" rows="10"
                     maxlength="500" style="display:none"></textarea><br>
                 <div class="btnDiv">
@@ -207,6 +211,7 @@
     <script src="js/calendar.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/eventCalendar.js"></script>
+    <script src="js/reminder.js"></script>
 </body>
 
 </html>
