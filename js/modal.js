@@ -397,6 +397,9 @@ function setNewEvent(){
 
 //Function for getting event from local storage for visualization
 function getEvent(){
+  // disable arrow keyboard event for the calendar when modal is opened. 
+  document.removeEventListener("keydown", handleArrowKeys);
+
   // Resetting display optional info
   endDateEvent.innerHTML = "";
   reminderEvent.innerHTML = "";
