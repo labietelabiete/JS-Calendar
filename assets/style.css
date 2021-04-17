@@ -222,9 +222,9 @@ main {
   position:relative;
   display: flex;
   flex-direction: column;
-  flex-grow:0.2;
+  flex-grow:0.4;
   top:40px;
-  visibility:h;
+  visibility:hidden;
   
 }
 
