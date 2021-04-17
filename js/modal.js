@@ -266,7 +266,6 @@ function newEventValidation () {
     }
   }
 
-
   if (reminderCheckbox.checked) {
     timeReminderNewEvent.required = true;
     if (timeReminderNewEvent.value === "") {
@@ -370,7 +369,6 @@ function setNewEvent(){
   }
 
   eventInfoArray.push(newEventObj);
-
 
   if ( newEventObj.startDate.month !== newEventObj.endDate.month && newEventObj.endDate.month !== null ){
     let startDayMonthLength = calculateMonthLength(newEventObj.startDate.year, newEventObj.startDate.month);
