@@ -909,7 +909,7 @@ select option:hover {
     max-width: 100%;
   }
 
-  #weekdaysContainer{
+  #weekdaysContainer, #expiredEventsTitle, #reminderTitle{
       font-size: 20px;
   }
 
@@ -1200,7 +1200,7 @@ select option:hover {
     border: 2px var(--darkColor) solid;
   }
 
-  #weekdaysContainer{
+  #weekdaysContainer, #expiredEventsTitle, #reminderTitle{
     font-size: 14px;
     font-weight: var(--bold);
   }
