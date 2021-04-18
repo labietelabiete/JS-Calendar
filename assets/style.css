@@ -64,7 +64,7 @@ STYLING
   font-family: "Clash";
   box-sizing: border-box;
   /* Comment/Uncomment this to see/hide all boxes */
-  outline: 2px red solid;
+  /* outline: 2px red solid; */
 }
 
 /* Remove blue background when autofilling forms */
@@ -177,24 +177,26 @@ main {
   position:relative;
   display: flex;
   flex-direction: column;
-  flex-grow:0.4;
+  flex-grow:0.18;
   top:80px;
 }
 
-#expiredEventsTitle{
-  font-size: 20px;
+#expiredEventsTitle, #reminderTitle{
+  font-size: 14px;
   color: rgb(210, 43, 65);
+  margin-bottom: 6px;
 }
+
 
 #expiredEvents{
   margin-top: 5px;
-  padding: 5px;
+  padding: 10px 5px 5px 0;
   flex-grow:1;
   max-width: 200px;
-  outline: 2px solid rgb(210, 43, 65);
+  border-top: 3px solid rgb(210, 43, 65);
   overflow-y: auto;
   overflow-x: hidden;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .workExpiredEvent{
@@ -224,23 +226,22 @@ main {
   flex-direction: column;
   flex-grow:0.2;
   top:20px;
-  visibility:visible;
+  visibility: visible;
   width: 100%;
+  max-width: 200px;
 }
 
-#reminderTitle{
-  font-size: 20px;
-  color: rgb(210, 43, 65);
-}
+
 #expiredReminders{
   margin-top: 5px;
-  padding: 5px;
+  padding: 10px 5px 5px 0;
   flex-grow:1;
   max-width: 200px;
-  outline: 2px solid rgb(210, 43, 65);
+  max-height: 88px;
+  border-top: 3px solid rgb(210, 43, 65);
   overflow-y: auto;
   overflow-x: hidden;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .workReminder{
