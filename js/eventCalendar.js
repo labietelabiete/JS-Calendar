@@ -248,7 +248,12 @@ function showExpiredEvents(){
 
             // Mark expired events in red
             var expiredEvents = document.querySelectorAll("#eventId"+event.id);
-            expiredEvents.forEach(ele => ele.style.color = "var(--redColor)");
+            expiredEvents.forEach(function(ele){
+                // Add expired class to style it
+                ele.classList.add("expiredEvent");
+                // Removs previous class
+                ele.classList.remove(typeOfEvents[event.type]+"Event");
+            });
 
 
             // Creating new string div to inject to expired events div
