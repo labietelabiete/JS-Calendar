@@ -506,6 +506,10 @@ function getEvent(){
     }
 
     modalCheckEvent.style.display = "flex";
+
+    // Remove arrow navigation
+    document.removeEventListener("keydown", handleArrowKeys);
+
 }
 
 function removingEvent(){
