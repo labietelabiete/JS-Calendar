@@ -227,7 +227,7 @@ main {
   flex-direction: column;
   flex-grow:0.2;
   top:20px;
-  visibility: visible;
+  visibility: hidden;
   width: 100%;
   max-width: 200px;
 }
