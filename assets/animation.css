@@ -40,16 +40,16 @@ ANIMATIONS
 /* Title overflow animation */
 @keyframes scroll-text {
 	0% {
-	  transform: translateX(0%);
+		transform: translateX(0%);
 	}
 	90% {
-	  transform: translate(-100%);
+		transform: translate(-100%);
 	}
 	95% {
-	  transform: translateX(0%);
+		transform: translateX(0%);
 	}
 	100% {
-	  transform: translateX(0%);
+		transform: translateX(0%);
 	}
-  }
+}
 

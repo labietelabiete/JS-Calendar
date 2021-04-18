@@ -1,5 +1,6 @@
-// Global variables
-// ----------------------------------------------------------------------
+//------------------------------------------------------------------------
+// GLOBAL VARIABLES
+//------------------------------------------------------------------------
 var reminderInfoArray = [];
 var eventsReminderInfoArray = [];
 var expiredRemindersContainer = document.getElementById("expiredReminders");
@@ -9,35 +10,37 @@ var newReminderObj = {
   eventId:"",
   reminder:"",
   flag:""
-}
+};
 
-// Calling functions
-// ----------------------------------------------------------------------
-triggerReminders();
 
-// Functions
-// ----------------------------------------------------------------------
 
+//------------------------------------------------------------------------
+// FUNCTIONS
+//------------------------------------------------------------------------
 // Sets the reminder properties for a given event
 function setNewReminder(eventId, eventReminder){
+
   newReminderObj.eventId = eventId;
   newReminderObj.reminder = eventReminder;
   newReminderObj.flag = false;
   reminderInfoArray = JSON.parse(localStorage.getItem("localReminderInfo"));
+
   if (reminderInfoArray == null){
     reminderInfoArray = [];
-  }
+  };
+
   reminderInfoArray.push(newReminderObj);
   console.log("reminderInfoArray -->", reminderInfoArray);
   localStorage.setItem("localReminderInfo", JSON.stringify(reminderInfoArray));
-}
+
+};
 
 // Triggers setAllreminders once and then establishes a 
 // establishes a setinterval to execute it again
 function triggerReminders(){
-  setAllReminders()
+  setAllReminders();
   setInterval(setAllReminders, 3000);
-}
+};
 
 // Sets all reminders for the current events
 function setAllReminders(){
@@ -52,8 +55,8 @@ function setAllReminders(){
     reminderInfoArray.forEach(reminderElement => {
       eventsReminderInfoArray.forEach(eventElement => {
         if (eventElement.id == reminderElement.eventId && reminderElement.flag === false) {
-          
-          // Calculating remaining time left before 
+
+          // Calculating remaining time left before
           // event expires and capturing event title
           let currentDate = new Date().getTime();
           let reminderEndDate = parseInt(eventElement.endDate.milliseconds) - (parseInt(reminderElement.reminder)*60000);
@@ -67,7 +70,7 @@ function setAllReminders(){
           let reminderTitle = eventElement.title;
 
           if (differenceMilliseconds > 0) {
-            
+
             // Setting the timeout for the given event and setting flag to true
             reminderElement.flag = true;
             setTimeout(function(){
@@ -76,19 +79,27 @@ function setAllReminders(){
               eventElement.type, reminderElement.reminder, reminderInfoArray);
 
             }, differenceMilliseconds);
-          }
-        }
+
+          };
+
+        };
+
       });
+
       // Storing the event reminder after flag change into local storage again
       localStorage.setItem('localReminderInfo', JSON.stringify(reminderInfoArray));
+
     });
+
     // localStorage.setItem("localReminderInfo", JSON.stringify(reminderInfoArray));
+
   }else{
     reminderInfoArray = [];
-  }
-  
-}
+  };
 
+};
+
+// Reminder
 function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, eventReminderInfo){
 
   // Showing reminders container
@@ -98,13 +109,14 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
   let expiredReminderDiv = "<div id = reminder";
   let reminderClassType;
 
+  // Create the div to display on sidebar
   switch (eventType) {
     case 0:
       reminderClassType = "workReminder";
       expiredReminderDiv += reminderId + " class = " + reminderClassType;
       break;
-    
-    case 1:
+
+      case 1:
       reminderClassType = "sportReminder";
       expiredReminderDiv += reminderId + " class = " + reminderClassType;
       break;
@@ -123,16 +135,16 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
       reminderClassType = "defaultReminder";
       expiredReminderDiv += reminderId + " class = " + reminderClassType;
       break;
-  }
+  };
 
   // Finishing html string and injecting it
-  expiredReminderDiv += ">• " + reminderTitle + " expires in " + reminderValue + " minutes</div>";
+  expiredReminderDiv += ">" + reminderTitle + " expires in " + reminderValue + " minutes</div>";
   console.log("expiredReminderDiv -->", expiredReminderDiv);
   expiredRemindersContainer.insertAdjacentHTML('beforeend', expiredReminderDiv);
 
   //setting a timeout to remove the reminder div after its appearance
   setTimeout(function(){
-    
+
     // Capturing reminder div
     expiredReminder = document.getElementById("reminder" + reminderId);
     expiredRemindersContainer.removeChild(expiredReminder);
@@ -145,14 +157,22 @@ function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, ev
 
   // Removing the reminder from the reminderInfo array
   for (let e = 0; e < eventReminderInfo.length; e++) {
+
     if(eventReminderInfo[e].eventId === reminderId){
       eventReminderInfo.splice(e, 1);
-    }
-  }
+
+    };
+
+  };
 
   // Updating localReminderInfo in local storage
   localStorage.setItem("localReminderInfo",JSON.stringify(eventReminderInfo));
 
-}
+};
 
 
+
+//------------------------------------------------------------------------
+// CALLING FUNCTIONS
+//------------------------------------------------------------------------
+triggerReminders();

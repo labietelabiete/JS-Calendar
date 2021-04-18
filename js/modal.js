@@ -1,15 +1,86 @@
+//------------------------------------------------------------------------
+// GLOBAL VARIABLES
+//------------------------------------------------------------------------
 let r = document.querySelector(':root');
-//Event information handling
-//Variables definition
 let dateEventUTC;
 let i = 0;
-// let eventInfoArray;
 let newEventObj = {};
 let testEventIndex = i;
 let eventToDisplay
 let eventIndex;
 let eventInfoArray = JSON.parse(localStorage.getItem("localEventInfo"));
-//console.log(eventInfoArray)
+
+
+
+//------------------------------------------------------------------------
+// HTML ELEMENTS
+//------------------------------------------------------------------------
+let titleNewEvent = document.getElementById('titleNewEvent');
+let typeNewEvent = document.getElementById('typeNewEvent');
+let startNewEvent = document.getElementById('startNewEvent');
+let endNewEvent = document.getElementById('endNewEvent');
+let timeReminderNewEvent = document.getElementById('timeReminderNewEvent');
+let descriptionNewEvent = document.getElementById('descriptionNewEvent');
+
+let titleEvent = document.getElementById('titleEvent');
+let typeEvent = document.getElementById('typeEvent');
+let startDateEvent = document.getElementById('startDateEvent');
+let endDateEvent = document.getElementById('endDateEvent');
+let reminderEvent = document.getElementById('reminderEvent');
+let descriptionEvent = document.getElementById('descriptionEvent');
+
+let eventEndDateLabel = document.getElementById('eventEndDateLabel');
+let eventReminderLabel = document.getElementById('eventReminderLabel');
+let eventDescriptionLabel = document.querySelector(".eventDescriptionLabel");
+let eventDescriptionLabelId = document.getElementById('eventDescriptionLabelId');
+
+
+let modalNewEvent = document.getElementById("newEventModal");
+let modalCheckEvent = document.getElementById("checkEventModal");
+
+// Get the button that opens the modal
+let btnNewEvent = document.getElementById("newEventBtn");
+let btnCheckEvent = document.getElementById("checkEventBtn");
+// Mobile add event button
+let newEventMobile = document.getElementById("newEventBtnMobile");
+
+// Get the <span> element that closes the modal
+let closeModal = document.getElementsByClassName("close");
+
+let cancelNewEvent = document.getElementById("cancelNewEvent");
+let removeEvent = document.getElementById("RemoveEventButton");
+let okEvent = document.getElementById("okCheckEventButton");
+
+// Get checkboxes and optional elements
+let eventLabel = document.querySelectorAll(".eventLabel")
+
+let endCheckbox = document.getElementById("checkBoxEndDate");
+let endDateLabel = document.getElementById("endDateLabel");
+let endCheckboxSpan = document.querySelector(".endCheckbox");
+
+let reminderCheckbox = document.getElementById("reminderNewEvent");
+let showReminder = document.getElementById("reminderNewEventDiv");
+let reminderLabel = document.getElementById("reminderLabel");
+let reminderCheckboxSpan = document.querySelector(".reminderCheckbox");
+
+let descriptionCheckbox = document.getElementById("descriptionCheckbox");
+let descriptionLabel = document.getElementById("descriptionLabel");
+let descriptionCheckboxSpan = document.querySelector(".descriptionCheckbox");
+
+// Get save button to submit event and save it to calendar and localStorage
+let saveEventButton = document.getElementById("saveNewEvent");
+
+// Get form and type
+let newEventForm = document.getElementById("newEventForm");
+let eventDescription = document.getElementById("descriptionNewEvent");
+let checkboxNewEvent = document.querySelectorAll(".checkboxInput")
+
+
+
+//------------------------------------------------------------------------
+// FUNCTIONS
+//------------------------------------------------------------------------
+// Set local storage index
 if (eventInfoArray == null){
   eventIndex = 0;
   eventInfoArray = [];
@@ -20,76 +91,17 @@ if (eventInfoArray == null){
 localStorage.setItem("eventIndex", eventIndex );
 
 
-titleNewEvent = document.getElementById('titleNewEvent');
-typeNewEvent = document.getElementById('typeNewEvent');
-startNewEvent = document.getElementById('startNewEvent');
-endNewEvent = document.getElementById('endNewEvent');
-timeReminderNewEvent = document.getElementById('timeReminderNewEvent');
-descriptionNewEvent = document.getElementById('descriptionNewEvent');
 
-titleEvent = document.getElementById('titleEvent');
-typeEvent = document.getElementById('typeEvent');
-startDateEvent = document.getElementById('startDateEvent');
-endDateEvent = document.getElementById('endDateEvent');
-reminderEvent = document.getElementById('reminderEvent');
-descriptionEvent = document.getElementById('descriptionEvent');
-
-eventEndDateLabel = document.getElementById('eventEndDateLabel');
-eventReminderLabel = document.getElementById('eventReminderLabel');
-eventDescriptionLabel = document.querySelector(".eventDescriptionLabel");
-eventDescriptionLabelId = document.getElementById('eventDescriptionLabelId');
-
-
-modalNewEvent = document.getElementById("newEventModal");
-modalCheckEvent = document.getElementById("checkEventModal");
-
-// Get the button that opens the modal
-btnNewEvent = document.getElementById("newEventBtn");
-btnCheckEvent = document.getElementById("checkEventBtn");
-// Mobile add event button
-newEventMobile = document.getElementById("newEventBtnMobile");
-
-// Get the <span> element that closes the modal
-closeModal = document.getElementsByClassName("close");
-
-cancelNewEvent = document.getElementById("cancelNewEvent");
-removeEvent = document.getElementById("RemoveEventButton");
-okEvent = document.getElementById("okCheckEventButton");
-
-// Get checkboxes and optional elements
-eventLabel = document.querySelectorAll(".eventLabel")
-
-endCheckbox = document.getElementById("checkBoxEndDate");
-endDateLabel = document.getElementById("endDateLabel");
-endCheckboxSpan = document.querySelector(".endCheckbox");
-
-reminderCheckbox = document.getElementById("reminderNewEvent");
-showReminder = document.getElementById("reminderNewEventDiv");
-reminderLabel = document.getElementById("reminderLabel");
-reminderCheckboxSpan = document.querySelector(".reminderCheckbox");
-
-descriptionCheckbox = document.getElementById("descriptionCheckbox");
-descriptionLabel = document.getElementById("descriptionLabel");
-descriptionCheckboxSpan = document.querySelector(".descriptionCheckbox");
-
-// Get save button to submit event and save it to calendar and localStorage
-saveEventButton = document.getElementById("saveNewEvent");
-
-// Get form and type
-newEventForm = document.getElementById("newEventForm");
-eventDescription = document.getElementById("descriptionNewEvent");
-
-checkboxNewEvent = document.querySelectorAll(".checkboxInput")
-
-
-
-
+//------------------------------------------------------------------------
+// EVENT LISTENERS
+//------------------------------------------------------------------------
 // When the user clicks the button, open the modal
 btnNewEvent.onclick = function () {
   modalNewEvent.style.display = "flex";
   // disable arrow keyboard event for the calendar when modal is opened. 
   document.removeEventListener("keydown", handleArrowKeys);
 };
+
 btnCheckEvent.onclick = function () {
   modalCheckEvent.style.display = "flex";
    // disable arrow keyboard event for the calendar when modal is opened. 
@@ -106,9 +118,9 @@ closeModal[0].onclick = function () {
   modalNewEvent.style.display = "none";
   // Enabling arrow navigation back
   document.addEventListener('keydown', handleArrowKeys);
-
   clearNewEventForm();
 };
+
 closeModal[1].onclick = function () {
   modalCheckEvent.style.display = "none";
   // Enabling arrow navigation back
@@ -120,7 +132,6 @@ cancelNewEvent.onclick = function () {
   modalNewEvent.style.display = "none";
   // Enabling arrow navigation back
   document.addEventListener('keydown', handleArrowKeys);
-
   clearNewEventForm();
 };
 
@@ -157,7 +168,7 @@ document.onkeydown = function (event) {
   }
 };
 
-// Display options when the checkbox is checked
+// Displays end date checkbox
 endCheckbox.onclick = function () {
   if (endCheckbox.checked == true) {
     endNewEvent.style.display = "inline-block";
@@ -175,6 +186,7 @@ endCheckbox.onclick = function () {
     }
 };
 
+// Displays reminder checkbox
 reminderCheckbox.onclick = function () {
   if (reminderCheckbox.checked == true) {
     showReminder.style.display = "flex";
@@ -192,7 +204,7 @@ reminderCheckbox.onclick = function () {
   }
 };
 
-
+// Displays description checkbox
 descriptionCheckbox.onclick = function() {
   if (descriptionCheckbox.checked == true) {
     descriptionNewEvent.style.display = "inline-block";
@@ -210,9 +222,9 @@ descriptionCheckbox.onclick = function() {
   }
 }
 
-//Check validity
-
+// Check validity
 function newEventValidation () {
+
   var titleCheck = /^.{1,60}$/; // we need to discuss 
   var title = titleNewEvent.value;
 
@@ -240,17 +252,20 @@ function newEventValidation () {
     // Accessing the milliseconds
     let startDateMilliseconds =  new Date(startNewEvent.value).getTime();
     let endDateMilliseconds =  new Date(endNewEvent.value).getTime();
-    
+
     if (!endNewEvent.value) {
       endDateLabel.style.color = "var(--redColor)";
       endDateLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       endCheckboxSpan.style.backgroundColor = "var(--redColor)";
       endCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
+
       if (window.innerWidth < 768) {
         checkboxNewEvent[0].style.backgroundSize = "10px 10px";
-      }
+      };
+
       return false;
-    }
+
+    };
 
     // If the user sets an end dat before start date
     if (startDateMilliseconds > endDateMilliseconds){
@@ -259,13 +274,18 @@ function newEventValidation () {
       endCheckboxSpan.style.backgroundColor = "var(--redColor)";
       endCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
       endNewEvent.style.color = "var(--redColor)";
+
       if (window.innerWidth < 768) {
         checkboxNewEvent[0].style.backgroundSize = "10px 10px";
-      }
-      return false;
-    }
-  }
+      };
 
+      return false;
+
+    };
+
+  };
+
+  // Reminder checked
   if (reminderCheckbox.checked) {
     timeReminderNewEvent.required = true;
     if (timeReminderNewEvent.value === "") {
@@ -274,13 +294,18 @@ function newEventValidation () {
       reminderCheckboxSpan.style.backgroundColor = "var(--redColor)";
       reminderCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
       timeReminderNewEvent.style.color = "var(--redColor)";
+
       if (window.innerWidth < 768) {
         checkboxNewEvent[1].style.backgroundSize = "10px 10px";
-      }
-      return false;
-    }
-  }
+      };
 
+      return false;
+
+    };
+
+  };
+
+  // Description checked
   if(descriptionCheckbox.checked) {
     // descriptionNewEvent.required = true;
     if(descriptionNewEvent.value == "") {
@@ -288,11 +313,15 @@ function newEventValidation () {
       descriptionLabel.style.borderBottom  = "var(--redColor) solid var(--borderWidth)";
       descriptionCheckboxSpan.style.backgroundColor = "var(--redColor)";
       descriptionCheckboxSpan.style.border = "var(--redColor) solid var(--borderWidth)";
+
       return false;
-    }
-  }
+
+    };
+
+  };
 
   return true;
+
 };
 
 // If user enters new event title more than 10 characters, gradient style is apply to the left of input box dynamically. 
@@ -306,17 +335,22 @@ titleNewEvent.oninput = (e) => {
 
 // Function to save a new event
 saveEventButton.addEventListener('click', function(){
+
   if(newEventValidation()){
     setNewEvent();
     if (newEventObj.reminder != "") {
       setNewReminder(newEventObj.id, newEventObj.reminder);
       setAllReminders();
-    }  
+    };
+
     clearNewEventForm();
     modalNewEvent.style.display = "none";
-  }
+
+  };
+
   // Enabling arrow navigation back
   document.addEventListener('keydown', handleArrowKeys);
+
 });
 
 // Function for setting new event information to local storage
@@ -371,6 +405,7 @@ function setNewEvent(){
   eventInfoArray.push(newEventObj);
 
   if ( newEventObj.startDate.month !== newEventObj.endDate.month && newEventObj.endDate.month !== null ){
+
     let startDayMonthLength = calculateMonthLength(newEventObj.startDate.year, newEventObj.startDate.month);
     let millisecondsDiff = newEventObj.endDate.milliseconds - newEventObj.startDate.milliseconds;
     let dayDiff = Math.ceil(millisecondsDiff / (1000 * 60 * 60 * 24));
@@ -413,7 +448,7 @@ function setNewEvent(){
   //Updating eventIndex
   localStorage.setItem("eventIndex", JSON.parse(localStorage.getItem("localEventInfo")).length);
   eventIndex = JSON.parse(localStorage.getItem("localEventInfo")).length;
-}
+};
 
 //Function for getting event from local storage for visualization
 function getEvent(){
@@ -428,13 +463,16 @@ function getEvent(){
   eventListComparing = JSON.parse(localStorage.getItem("localEventInfo"));
   eventListComparing.forEach(function(eventComparing){
     if (eventComparing.id == idEvent){
-      
+
       eventToDisplay = eventComparing;
-    }
-    })
+
+    };
+
+  });
 
     titleEvent.innerHTML = eventToDisplay.title;
-  // //Depending of type event, the colour of the event is differente
+
+    //Depending of type event, the colour of the event is differente
     switch (parseInt(eventToDisplay.type)) {
       case 0:
         r.style.setProperty('--eventColor', 'rgb(0, 213, 194)');
@@ -457,11 +495,13 @@ function getEvent(){
         break;
     }
 
+    // Set scroll animation for long titles
     if(eventToDisplay.title.length > 10) {
       document.getElementById("titleEventContainer").setAttribute("class", "eventTitleFlow");
     } else {
       document.getElementById("titleEventContainer").removeAttribute("class", "eventTitleFlow");
     }
+
     if (eventToDisplay.startDate.minutes < 10) {
       eventToDisplay.startDate.minutes = "0" + eventToDisplay.startDate.minutes;
     }
@@ -491,28 +531,30 @@ function getEvent(){
 
     if (eventToDisplay.reminder == "") {
       eventReminderLabel.style.display = "none";
-    } 
+    }
       else{
       eventReminderLabel.style.display = "inline-block";
       reminderEvent.innerHTML = eventToDisplay.reminder + " min";
-    }
+    };
 
     if (eventToDisplay.description == "") {
       eventDescriptionLabelId.style.display = "none";
-    } 
+    }
       else{
         eventDescriptionLabelId.style.display = "inline-block";
         descriptionEvent.innerHTML = eventToDisplay.description;
-    }
+    };
 
     modalCheckEvent.style.display = "flex";
 
     // Remove arrow navigation
     document.removeEventListener("keydown", handleArrowKeys);
 
-}
+};
 
+// Removing events
 function removingEvent(){
+
   eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
   reminderListToRemove = JSON.parse(localStorage.getItem("localReminderInfo"));
 
@@ -531,13 +573,11 @@ function removingEvent(){
           console.log(reminderListToRemove[j])
           if (reminderListToRemove[j].eventId == i) {
             reminderListToRemove.splice(j, 1);
-          }
-        }
-      }
-    }
-  }
-
-
+          };
+        };
+      };
+    };
+  };
 
   // Make a new array removing events with the current ID
   var filteredEvents = eventListToRemove.filter(function(obj, index, arr){ 
@@ -554,11 +594,13 @@ function removingEvent(){
   // console.log(titles);
   for (let t of titles){
     t.remove();
-  }
+  };
 
   setDailyEvents();
-}
 
+};
+
+// Clear event form
 function clearNewEventForm(){
   newEventForm.reset();
 
@@ -587,4 +629,4 @@ function clearNewEventForm(){
   descriptionCheckboxSpan.style.border = "var(--greyColor) solid var(--borderWidth)";
   descriptionNewEvent.style.display = "none";
 
-}
+};

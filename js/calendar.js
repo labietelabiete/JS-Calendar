@@ -1,3 +1,4 @@
+//------------------------------------------------------------------------
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
 // Html elements
@@ -33,12 +34,28 @@ var prevMonthLength;
 var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
+
+//------------------------------------------------------------------------
 // DEFAULT HTML
 //------------------------------------------------------------------------
 monthTitle.innerText = monthNames[currentMonthNum-1];
 yearTitle.innerText = currentYearNum;
 
 
+
+//------------------------------------------------------------------------
+// EVENT LISTENERS
+//------------------------------------------------------------------------
+// Arrow keyboard navigation
+document.addEventListener('keydown', handleArrowKeys);
+// Previous month button
+prevMonthBtn.addEventListener("click", resetPrevMonth);
+// Next month button
+nextMonthBtn.addEventListener("click", resetNextMonth);
+
+
+
+//------------------------------------------------------------------------
 // FUNCTIONS
 //------------------------------------------------------------------------
 // Set previous month length by default
@@ -49,8 +66,7 @@ function onLoadPrevMonthLength(currentMonth){
         prevMonthLength = new Date(currentYearNum, currentMonthNum-1, 0).getDate();
     }
 }
-// Load default previous month's length
-onLoadPrevMonthLength(currentMonthNum);
+
 
 // Setting up current month day DIV (numberDiv & eventsDiv)
 function setUpDay(dayDiv, dayNumber, className, isCurrentMonth){
@@ -83,6 +99,7 @@ function setUpDay(dayDiv, dayNumber, className, isCurrentMonth){
 
 // Appending items to calendar's grid
 function appendDays(lastMonthLength, startingDay, monthLength){
+
     //Substitute 0 by 7 when current month starts on Sunday
     if (startingDay == 0){
         startingDay = 7;
@@ -123,6 +140,7 @@ function appendDays(lastMonthLength, startingDay, monthLength){
         let nextDay = document.createElement("div");
         setUpDay(nextDay, n, "nextMonthday", false);
     }
+
 };
 
 // Highlight today
@@ -143,15 +161,11 @@ function calculateMonthLength(year, month){
 function getFirstDay(year, month){
     let firstDay = new Date(year, month-1, 1).getDay();
     return firstDay;
-}
+};
 
-
-// EVENT LISTENERS
-//------------------------------------------------------------------------
-// Previous month button
-prevMonthBtn.addEventListener("click", resetPrevMonth);
-
+// Set-up previous month
 function resetPrevMonth(){
+
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
 
@@ -160,6 +174,7 @@ function resetPrevMonth(){
 
     // January
     if (currentMonthNum == 1){
+
         currentYearNum--;
         currentMonthNum = 12;
         console.log("December!")
@@ -169,14 +184,18 @@ function resetPrevMonth(){
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
 
+    // February
     } else if (currentMonthNum == 2){
+
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum-1, 12);
 
+    // Rest of the events
     } else {
+
         currentMonthNum--;
         // Updating HTML elements
         monthTitle.innerText = monthNames[currentMonthNum-1];
@@ -184,22 +203,23 @@ function resetPrevMonth(){
         previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
 
     }
+
     // Assigning current month's length
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
     // Get first day's weekday
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
+
     // Setting new calendar gridH
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
     console.log("Prev month!")
- }
 
+}
 
-// Next month button
-nextMonthBtn.addEventListener("click", resetNextMonth);
-
+// Set-up next month
 function resetNextMonth(){
+
     // Emptying grid container before assigning next month
     calendarGrid.innerHTML = "";
 
@@ -223,18 +243,23 @@ function resetNextMonth(){
         // Getting previous month length
         previousMonthLength = calculateMonthLength(currentYearNum, currentMonthNum-1);
     }
+
     // Assigning current month's length
     currentMonthLength = calculateMonthLength(currentYearNum, currentMonthNum);
+
     // Get first day's weekday
     firstDay = getFirstDay(currentYearNum, currentMonthNum);
+
     // Setting new calendar grid
     appendDays(previousMonthLength,firstDay,currentMonthLength);
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
-    console.log("Next month!")
+
+    // Test print
+    console.log("Next month!");
+
 }
 
-// Default call: arrow keyboard event to navigate to the previous and next months.
-document.addEventListener('keydown', handleArrowKeys);
+// Arrow keyboard navigation
 function handleArrowKeys(event) {
     switch (event.keyCode) {
             case 37:
@@ -248,7 +273,7 @@ function handleArrowKeys(event) {
     }
 }
 
-// Animation function
+// Previous month animation
 function preMonthAnimation() {
     calendarGrid.setAttribute("class", "preChange");
     setTimeout(()=> {
@@ -257,6 +282,7 @@ function preMonthAnimation() {
     }, 500);
 }
 
+// Next month animation
 function nextMonthAnimation() {
     calendarGrid.setAttribute("class", "nextChange");
     setTimeout(()=> {
@@ -266,15 +292,22 @@ function nextMonthAnimation() {
 }
 
 
+
+//------------------------------------------------------------------------
+// CALLING FUNCTIONS
+//------------------------------------------------------------------------
+// Load default previous month's length
+onLoadPrevMonthLength(currentMonthNum);
+
 // Check current date every minute
 setInterval(function(){
     highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10)
 } , 60000);
 
-
-// CALLING FUNCTIONS
-//------------------------------------------------------------------------
+// Default month
 appendDays(prevMonthLength,firstDay,currentMonthLength);
+
+// Default today
 highlighToday(onloadYear, currentYearNum, onloadMonth, currentMonthNum, currentDayNum, 10);
 
 
