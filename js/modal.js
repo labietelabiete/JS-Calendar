@@ -539,11 +539,13 @@ function getEvent(){
 
     if (eventToDisplay.description == "") {
       eventDescriptionLabelId.style.display = "none";
+      descriptionEvent.style.display = "none"
+    } 
+    else{
+      eventDescriptionLabelId.style.display = "inline-block";
+      descriptionEvent.style.display = "inline-block"
+      descriptionEvent.innerHTML = eventToDisplay.description;
     }
-      else{
-        eventDescriptionLabelId.style.display = "inline-block";
-        descriptionEvent.innerHTML = eventToDisplay.description;
-    };
 
     modalCheckEvent.style.display = "flex";
 

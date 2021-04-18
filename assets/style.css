@@ -772,6 +772,10 @@ select option:hover {
   border-bottom: var(--greyColor) solid var(--borderWidth);
 }
 
+#eventDescriptionLabelId{
+  margin-bottom: 5px;
+}
+
 .eventDescription{
     width: 100%;
     height: 140px;
