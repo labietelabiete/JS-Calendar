@@ -226,8 +226,8 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow:0.2;
-  top:0px;
-  visibility: visible;
+  /* top:0px; */
+  visibility: hidden;
   width: 100%;
   max-width: 200px;
 }
