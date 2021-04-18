@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <!-- Top part -->
     <header>
         <h4 id="title">JS Calendar</h4>
@@ -110,6 +109,10 @@
             <div id="calendarCont"></div>
         </div>
     </main>
+
+    <!-- MODALS -->
+
+    <!-- New event modal -->
     <div id="newEventModal" class="modal">
         <!-- Modal content -->
         <div class="modalContent">
@@ -160,7 +163,8 @@
                         <option value="30">30 min</option>
                         <option value="60">1 hour</option>
                     </select>
-                </div><br>
+                </div>
+                <br>
                 <label class="checkbox checkboxLabel">
                     <span class="checkboxInput">
                         <input id="descriptionCheckbox" type="checkbox" name="checkbox">
@@ -178,7 +182,8 @@
             </form>
         </div>
     </div>
-    <!-- Modify Event Modal -->
+
+    <!-- Check event modal -->
     <div id="checkEventModal" class="modal">
         <!-- Modal content -->
         <div class="modalContent modalContentCheck">
@@ -211,6 +216,8 @@
         </div>
     </div>
     <button style="display: none;" id="checkEventBtn">Check Event</button>
+
+
     <!-- Footer -->
     <footer>
         <!-- Event types for mobile version -->
@@ -247,6 +254,7 @@
         <!-- Add event button for mobile version -->
         <button class="navBtn newEventBtn" id="newEventBtnMobile">+</button>
     </footer>
+    <!-- Javascript -->
     <script src="js/calendar.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/eventCalendar.js"></script>
