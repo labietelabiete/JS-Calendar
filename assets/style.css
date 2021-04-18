@@ -497,7 +497,6 @@ main {
   color: lightgray;
 }
 
-
 .workEvent{
   color: var(--greenColor);
   /* border-top: var(--borderWidth) var(--greenColor) solid; */
