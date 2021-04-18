@@ -234,8 +234,8 @@ function showExpiredEvents(){
 
     // Gathering every event stored in local storage
     let allLocalStorageEvents = JSON.parse(localStorage.getItem("localEventInfo"));
-
-    // Checking every event to see if they have expired and
+    if(allLocalStorageEvents !== null){
+        // Checking every event to see if they have expired and
     // if that is the case then creating a new div node 
     // to append to the expired events div container
 
@@ -280,9 +280,15 @@ function showExpiredEvents(){
               // Finishing html string and injecting it
               expiredEventDiv += ">• " + event.title + "</div>";
               expiredEventsContainer.insertAdjacentHTML('beforeend', expiredEventDiv);
+              
+              // Adding listener to show expired event
+              document.getElementById("expiredEvent" + event.id).addEventListener('click', getEvent);
             
-        }
-    });
+            }
+        });
+    }else{
+        allLocalStorageEvents = [];
+    }
 }
 
 function setDailyEvents(eventCreated){
