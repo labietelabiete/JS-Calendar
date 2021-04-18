@@ -64,7 +64,7 @@ STYLING
   font-family: "Clash";
   box-sizing: border-box;
   /* Comment/Uncomment this to see/hide all boxes */
-  /* outline: 2px red solid; */
+  outline: 2px red solid;
 }
 
 /* Remove blue background when autofilling forms */
@@ -177,7 +177,7 @@ main {
   position:relative;
   display: flex;
   flex-direction: column;
-  flex-grow:0.6;
+  flex-grow:0.4;
   top:80px;
 }
 
@@ -223,9 +223,9 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow:0.2;
-  top:40px;
-  visibility:hidden;
-  
+  top:20px;
+  visibility:visible;
+  width: 100%;
 }
 
 #reminderTitle{
@@ -1119,7 +1119,6 @@ select option:hover {
     margin-top: 10px;
     margin-bottom: 30px;
     margin-left: 15px;
-    
   }
 
   .btnDiv{
