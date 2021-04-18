@@ -227,14 +227,13 @@ function showExpiredEvents(){
 
     // Cleaning the expired events div
     while(expiredEvents.length > 0){
-        expiredEventsBlock.style.display = "flex";
-        reminderBlock.style.top = "38px";
         expiredEventsContainer.removeChild(expiredEventsContainer.firstChild);
     }
 
     // Gathering every event stored in local storage
     let allLocalStorageEvents = JSON.parse(localStorage.getItem("localEventInfo"));
 
+    if(allLocalStorageEvents !== null){
     // Checking every event to see if they have expired and
     // if that is the case then creating a new div node
     // to append to the expired events div container
@@ -282,18 +281,31 @@ function showExpiredEvents(){
                     break;
 
                 default:
-                    expiredEventClassType = "defaultExpiredEvent";
-                    expiredEventDiv += event.id + " class = " + expiredEventClassType;
-                    break;
+                  expiredEventClassType = "defaultExpiredEvent";
+                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                  break;
+              }
+            
+              // Finishing html string and injecting it
+              expiredEventDiv += ">" + event.title + "</div>";
+              expiredEventsContainer.insertAdjacentHTML('beforeend', expiredEventDiv);
+              
+              // Adding listener to show expired event
+              document.getElementById("expiredEvent" + event.id).addEventListener('click', getEvent);
+            
+            }
+        });
 
-                }
-
-                // Finishing html string and injecting it
-                expiredEventDiv += ">" + event.title + "</div>";
-                expiredEventsContainer.insertAdjacentHTML('beforeend', expiredEventDiv);
-                console.log(expiredEventsContainer.innerHTML);
+        // Changing display for expired events container 
+        // and reminder container if there are expired events
+        if(expiredEvents.length > 0){
+            expiredEventsBlock.style.display = "flex";
+            reminderBlock.style.top = "38px";
         }
-    });
+    }else{
+        allLocalStorageEvents = [];
+    }
+    console.log("Im in");
 }
 
 // Creating a new event and refreshing current month
@@ -332,4 +344,6 @@ function checkboxPairing(){
 setMonthEvents();
 showExpiredEvents();
 triggerExpiredEvents();
+
+
 
