@@ -111,7 +111,6 @@ function createEventDiv(dayID, eventID, eventType, eventTitle){
 
 // Filter type of events
 function filterType(array){
-    //resetDaysContent(eventsDivs);
 
     let filteredArray = new Array;
     array.forEach(function(ev){
@@ -146,10 +145,9 @@ function setMonthEvents(){
             return a.startDate.milliseconds - b.startDate.milliseconds;
         });
 
+
         let filteredArray = filterType(monthEvents);
-
         filteredArray.forEach(function(monthEvent){
-
 
             let dayID = monthEvent.startDate.day;
             let startMil = monthEvent.startDate.milliseconds;

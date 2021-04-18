@@ -516,6 +516,13 @@ function removingEvent(){
   eventListToRemove = JSON.parse(localStorage.getItem("localEventInfo"));
   reminderListToRemove = JSON.parse(localStorage.getItem("localReminderInfo"));
 
+  let divsDeletedEvent = document.getElementsByClassName("eventId"+eventToDisplay.id);
+
+  // Remove empty div
+  for ( let div of divsDeletedEvent){
+    console.log(div.parentNode.remove());
+  }
+
   // Running into the array looking for the reminder to remove
   for (let i = 0; i < eventListToRemove.length; i++) {
     if (eventListToRemove[i].id == eventToDisplay.id) {
@@ -530,6 +537,8 @@ function removingEvent(){
     }
   }
 
+
+
   // Make a new array removing events with the current ID
   var filteredEvents = eventListToRemove.filter(function(obj, index, arr){ 
     return obj.id !== eventToDisplay.id;
@@ -539,14 +548,15 @@ function removingEvent(){
   localStorage.setItem("localReminderInfo", JSON.stringify(reminderListToRemove));
   localStorage.setItem("localEventInfo", JSON.stringify(filteredEvents));
   modalCheckEvent.style.display = "none";
-  setDailyEvents();
 
   // Deleting title containers (wrapper) for long names
   let titles = document.getElementsByClassName("titleContainerId"+eventToDisplay.id);
-  console.log(titles);
+  // console.log(titles);
   for (let t of titles){
-     t.remove();
+    t.remove();
   }
+
+  setDailyEvents();
 }
 
 function clearNewEventForm(){
