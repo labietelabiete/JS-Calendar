@@ -236,7 +236,7 @@ function showExpiredEvents(){
     let allLocalStorageEvents = JSON.parse(localStorage.getItem("localEventInfo"));
 
     // Checking every event to see if they have expired and
-    // if that is the case then creating a new div node 
+    // if that is the case then creating a new div node
     // to append to the expired events div container
 
     allLocalStorageEvents.forEach(function (event){
@@ -251,80 +251,77 @@ function showExpiredEvents(){
             expiredEvents.forEach(function(ele){
                 // Add expired class to style it
                 ele.classList.add("expiredEvent");
-                // Removs previous class
+                // Removes previous class
                 ele.classList.remove(typeOfEvents[event.type]+"Event");
             });
-
 
             // Creating new string div to inject to expired events div
             let expiredEventDiv = "<div id = expiredEvent";
             let expiredEventClassType;
 
             switch (event.type) {
+
                 case 0:
-                  expiredEventClassType = "workExpiredEvent";
-                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
-                  break;
-                
+                    expiredEventClassType = "workExpiredEvent";
+                    expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                    break;
+
                 case 1:
-                  expiredEventClassType = "sportExpiredEvent";
-                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
-                  break;
-            
+                    expiredEventClassType = "sportExpiredEvent";
+                    expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                    break;
+
                 case 2:
-                  expiredEventClassType = "musicExpiredEvent";
-                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
-                  break;
-            
+                    expiredEventClassType = "musicExpiredEvent";
+                    expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                    break;
+
                 case 3:
-                  expiredEventClassType = "otherExpiredEvent";
-                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
-                  break;
-            
+                    expiredEventClassType = "otherExpiredEvent";
+                    expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                    break;
+
                 default:
-                  expiredEventClassType = "defaultExpiredEvent";
-                  expiredEventDiv += event.id + " class = " + expiredEventClassType;
-                  break;
-              }
-            
-              // Finishing html string and injecting it
-              expiredEventDiv += ">• " + event.title + "</div>";
-              expiredEventsContainer.insertAdjacentHTML('beforeend', expiredEventDiv);
-            
+                    expiredEventClassType = "defaultExpiredEvent";
+                    expiredEventDiv += event.id + " class = " + expiredEventClassType;
+                    break;
+
+                }
+
+                // Finishing html string and injecting it
+                expiredEventDiv += ">" + event.title + "</div>";
+                expiredEventsContainer.insertAdjacentHTML('beforeend', expiredEventDiv);
+                console.log(expiredEventsContainer.innerHTML);
         }
     });
 }
 
+// Creating a new event and refreshing current month
 function setDailyEvents(eventCreated){
     // Restoring all previous HTML content
     resetDaysContent();
     setMonthEvents();
 }
 
-// trigger expired events
+// Trigger expired events
 function triggerExpiredEvents(){
-    setInterval(showExpiredEvents, 2000);
+    setInterval(showExpiredEvents, 1000);
 }
 
 
-// Pairing checkboxes
+// Pairing checkboxes (desktop & mobile)
 function checkboxPairing(){
-    // console.log(event.target.classList[0]);
     let pairs = document.getElementsByClassName(event.target.classList[0]);
     // Checked
     if (event.target.checked === true){
         for (let p of pairs){
             p.checked = true;
-            // console.log(p);
-            // console.log("Checked!");
         }
     }
     // Unchecked
     else {
         for (let p of pairs){
             p.checked = false;
-            // console.log(p);
-            // console.log("Unchecked!");
         }
     }
 }
