@@ -1,7 +1,6 @@
 //------------------------------------------------------------------------
 // GLOBAL VARIABLES
 //------------------------------------------------------------------------
-// Html elements
 var monthAndYear = document.getElementById("monthAndYear");
 var monthTitle = document.getElementById("month");
 var yearTitle = document.getElementById("year");
