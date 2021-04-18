@@ -2,27 +2,31 @@
 //------------------------------------------------------------------------
 let eventsDivs = document.querySelectorAll(".eventsDiv");
 // Accessing all checkboxes
+let allCheckboxes = document.querySelectorAll(".checkboxType input");
+
 let workCheckbox = document.getElementById("workCheckbox");
 let sportCheckbox = document.getElementById("sportCheckbox");
 let musicCheckbox = document.getElementById("musicCheckbox");
 let otherCheckbox = document.getElementById("otherCheckbox");
+let workCheckboxMob = document.getElementById("workCheckboxMob"); // Mobile
+let sportCheckboxMob = document.getElementById("sportCheckboxMob"); // Mobile
+let musicCheckboxMob = document.getElementById("musicCheckboxMob"); // Mobile
+let otherCheckboxMob = document.getElementById("otherCheckboxMob"); // Mobile
+// Local storage by default
 let allStorage = [];
 
 // LISTENERS
 //------------------------------------------------------------------------
 saveEventButton.addEventListener('click', setDailyEvents);
 
-// Cleaning the month we are heading to
 prevMonthBtn.addEventListener('click', setMonthEvents);
 nextMonthBtn.addEventListener('click', setMonthEvents);
-// Cleaning the month we are heading to
 
-
-workCheckbox.addEventListener("change", setDailyEvents);
-sportCheckbox.addEventListener("change", setDailyEvents);
-musicCheckbox.addEventListener("change", setDailyEvents);
-otherCheckbox.addEventListener("change", setDailyEvents);
-
+// Adding event listener to all checkboxes
+for (let cB of allCheckboxes){
+    cB.addEventListener("change", checkboxPairing)
+    cB.addEventListener("change", setDailyEvents);
+}
 
 // Deleting all events (test button)
 document.getElementById("month").addEventListener("click", function(){
@@ -74,7 +78,7 @@ function createEventDiv(dayID, eventID, eventType, eventTitle){
 
         // Title container (wrapper)
         let newContainerDiv = document.createElement("div");
-        if(eventTitle.length > 20) {
+        if(eventTitle.length > 10) {
             newContainerDiv.setAttribute("class", "titleContainerId"+eventID);
             newContainerDiv.classList.add("titleContainer");
         } else {
@@ -143,7 +147,7 @@ function setMonthEvents(){
 
         filteredArray.forEach(function(monthEvent){
 
-    
+
             let dayID = monthEvent.startDate.day;
             let startMil = monthEvent.startDate.milliseconds;
             let startDay = monthEvent.startDate.day;
@@ -210,6 +214,28 @@ function setDailyEvents(eventCreated){
     // Restoring all previous HTML content
     resetDaysContent();
     setMonthEvents();
+}
+
+// Pairing checkboxes
+function checkboxPairing(){
+    // console.log(event.target.classList[0]);
+    let pairs = document.getElementsByClassName(event.target.classList[0]);
+    // Checked
+    if (event.target.checked === true){
+        for (let p of pairs){
+            p.checked = true;
+            // console.log(p);
+            // console.log("Checked!");
+        }
+    }
+    // Unchecked
+    else {
+        for (let p of pairs){
+            p.checked = false;
+            // console.log(p);
+            // console.log("Unchecked!");
+        }
+    }
 }
 
 

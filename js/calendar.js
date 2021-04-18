@@ -239,9 +239,11 @@ function handleArrowKeys(event) {
     switch (event.keyCode) {
             case 37:
                 resetPrevMonth();
+                setMonthEvents();
                 break;
             case 39:
                 resetNextMonth();
+                setMonthEvents();
                 break;
     }
 }
