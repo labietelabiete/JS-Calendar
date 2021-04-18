@@ -227,15 +227,14 @@ function showExpiredEvents(){
 
     // Cleaning the expired events div
     while(expiredEvents.length > 0){
-        expiredEventsBlock.style.display = "flex";
-        reminderBlock.style.top = "38px";
         expiredEventsContainer.removeChild(expiredEventsContainer.firstChild);
     }
 
     // Gathering every event stored in local storage
     let allLocalStorageEvents = JSON.parse(localStorage.getItem("localEventInfo"));
+
     if(allLocalStorageEvents !== null){
-        // Checking every event to see if they have expired and
+    // Checking every event to see if they have expired and
     // if that is the case then creating a new div node 
     // to append to the expired events div container
 
@@ -286,9 +285,17 @@ function showExpiredEvents(){
             
             }
         });
+
+        // Changing display for expired events container 
+        // and reminder container if there are expired events
+        if(expiredEvents.length > 0){
+            expiredEventsBlock.style.display = "flex";
+            reminderBlock.style.top = "38px";
+        }
     }else{
         allLocalStorageEvents = [];
     }
+    console.log("Im in");
 }
 
 function setDailyEvents(eventCreated){
@@ -331,4 +338,6 @@ function checkboxPairing(){
 setMonthEvents();
 showExpiredEvents();
 triggerExpiredEvents();
+
+
 
