@@ -1,767 +1,679 @@
 /* MEDIA QUERIES
 --------------------------------------------------------------- */
-/* Smalle desktop */
+/* Desktop ---------------------------- */
 @media screen and (max-width: 1200px) {
-  #title {
-    font-size: 25px;
-    min-width: 150px;
-  }
-
-  #monthAndYear {
-    /* flex-basis: 800px; */
-    transform: translateY(-15px);
-  }
-
-  #month,
-  #year {
-    font-size: 100px;
-    transform: translateY(0px);
-  }
-
-  #newEventBtn {
-    font-size: 15px;
-    width: 180px;
-  }
-
-  /* Left */
-  #sidebar {
-    min-width: 150px;
-    margin-right: var(--margin);
-    display: flex;
-    align-items: flex-end;
-  }
-
-  #mainRight {
-    max-width: 100%;
-  }
-
-  #weekdaysContainer,
-  #expiredEventsTitle,
-  #reminderTitle {
-    font-size: 20px;
-  }
-
-  .eventsDiv {
-    min-width: 10px;
-    flex-grow: 0;
-    margin-right: 5px;
-  }
-
-  .event {
-    width: 0px;
-    height: 20px;
-    font-size: 20px;
-    margin: 0;
-    margin-bottom: -5px;
-    line-height: 30px;
-    overflow: hidden;
-    transform: translateY(-8px);
-  }
-
-  .event:hover {
-    font-weight: inherit;
-  }
-
-  .weekday {
-    display: none;
-  }
-
-  .titleContainer {
-    max-width: 12px;
-  }
-
-  .weekdayAbr {
-    display: block;
-  }
-
-  .numberDiv {
-    margin-right: 5px;
-  }
-}
-
-/* Small devices */
-@media screen and (max-width: 768px) {
-  body {
-    padding-bottom: 80px;
-  }
-
-  header {
-    flex-direction: column;
-    height: 200px;
-    margin-bottom: var(--margin);
-  }/* MEDIA QUERIES
---------------------------------------------------------------- */
-/* Smalle desktop */
-@media screen and (max-width: 1200px) {
-  #title{
-    font-size: 25px;
-    min-width: 150px;
-  }
-
-  #monthAndYear{
-      /* flex-basis: 800px; */
-      transform: translateY(-15px);
-  }
-
-  #month, #year {
-      font-size: 100px;
-      transform: translateY(0px);
-  }
-
-  #newEventBtn {
-    font-size: 15px;
-    width: 180px;
-  }
-
-  /* Left */
-  #sidebar {
-    min-width: 150px;
-    margin-right: var(--margin);
-    display: flex;
-    align-items: flex-end;
-  }
-
-  #mainRight{
-    max-width: 100%;
-  }
-
-  #weekdaysContainer, #expiredEventsTitle, #reminderTitle{
-      font-size: 20px;
-  }
-
-  .eventsDiv{
-    min-width: 10px;
-    flex-grow: 0;
-    margin-right: 5px;
-  }
-
-  .event{
-    width: 0px;
-    height: 20px;
-    font-size: 20px;
-    margin: 0;
-    margin-bottom: -5px;
-    line-height: 30px;
-    overflow: hidden;
-    transform: translateY(-8px);
-  }
-
-  .event:hover{
-    font-weight: inherit;
-  }
-
-  .weekday{
-      display: none;
-  }
-
-  .titleContainer {
-    max-width: 12px;
-  }
-
-  .weekdayAbr{
-      display: block;
-  }
-
-  .numberDiv{
-    margin-right: 5px;
-  }
-
-}
-
-/* Small devices */
-@media screen and (max-width: 768px){
-  body{
-      padding-bottom: 80px;
-  }
-
-  header{
-      flex-direction: column;
-      height: 200px;
-      margin-bottom: var(--margin);
-  }
-
-  #monthAndYear{
-      width: 100%;
-      height: fit-content;
-      flex-direction: column;
-      transform: translateY(0px);
+    #title {
+        font-size: 25px;
+        min-width: 150px;
     }
 
-  #month, #year {
-      font-size: 80px;
-      width: 100%;
-  }
+    #monthAndYear {
+        /* flex-basis: 800px; */
+        transform: translateY(-15px);
+    }
 
-  #year{
-      transform: translateY(-10px);
-  }
+    #month,
+    #year {
+        font-size: 100px;
+        transform: translateY(0px);
+    }
 
-  /* Hide add event button for desktop */
-  #newEventBtn{
-      display: none;
-  }
+    #newEventBtn {
+        font-size: 15px;
+        width: 180px;
+    }
 
-  #sidebar{
-      display: none;
-  }
+    /* Left */
+    #sidebar {
+        min-width: 150px;
+        margin-right: var(--margin);
+        display: flex;
+        align-items: flex-end;
+    }
 
-  #eventTypesMobile{
-    display: flex;
-  }
+    #mainRight {
+        max-width: 100%;
+    }
 
-  /* Make checkboxes bigger */
-  .checkboxControl {
-    display: block;
-    margin-right: 25px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-  }
+    #weekdaysContainer,
+    #expiredEventsTitle,
+    #reminderTitle {
+        font-size: 20px;
+    }
 
+    .eventsDiv {
+        min-width: 10px;
+        flex-grow: 0;
+        margin-right: 5px;
+    }
 
-  .navBtn{
-      font-size: 40px;
-      width: 60px;
-      height: 60px;
-  }
+    .event {
+        width: 0px;
+        height: 20px;
+        font-size: 20px;
+        margin: 0;
+        margin-bottom: -5px;
+        line-height: 30px;
+        overflow: hidden;
+        transform: translateY(-8px);
+    }
 
-  #calendarCont{
-      margin-bottom: 10px;
-      max-height: 100%;
-  }
+    .event:hover {
+        font-weight: inherit;
+    }
 
-  /* Event div title container */
-  .titleContainer{
-    -webkit-mask-image: none;
-    max-width: 8px;
-  }
+    .weekday {
+        display: none;
+    }
 
-  .titleContainer {
-    
-  }
+    .titleContainer {
+        max-width: 12px;
+    }
 
-  /* Remove the scroll animation at small sizes */
-  .titleContainer:hover div,
-  .titleContainer:focus div {
-    animation: none;
-  }
+    .weekdayAbr {
+        display: block;
+    }
 
-  .titleContainer:hover {
-    /* Fade out effect */
-    -webkit-mask-image: none;
-  }
-
-  .numberDiv, .otherNumberDiv{
-    font-size: 30px;
-    margin-right: 6px;
-    min-width: 40px;
+    .numberDiv {
+        margin-right: 5px;
+    }
 }
 
-  footer{
-      height: 100px;
-  }
 
 
-  /* Display add event button (mobile version) */
-  #newEventBtnMobile{
-      display: block;
-  }
+/* Small devices ---------------------------- */
+@media screen and (max-width: 768px) {
+    body {
+        padding-bottom: 80px;
+    }
 
-  .modalContent {
-      padding: 20px 25px 30px 25px;
-      width: 70%;
-      min-width: 300px;
-      height: fit-content;
-  }
+    header {
+        flex-direction: column;
+        height: 200px;
+        margin-bottom: var(--margin);
+    }
 
-  .eventTitle{
-      height: 40px;
-      font-size: 40px;
-      margin: 10px 0px;
-      margin-left: 15px;
-      outline: none;
-  }
+    #monthAndYear {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        transform: translateY(0px);
+    }
 
-  .eventType{
-      font-size: 16px;
-      margin-bottom: 50px;
-      margin-left: 15px;
+    #month,
+    #year {
+        font-size: 80px;
+        width: 100%;
+    }
+
+    #year {
+        transform: translateY(-10px);
+    }
+
+    /* Hide add event button for desktop */
+    #newEventBtn {
+        display: none;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    #eventTypesMobile {
+        display: flex;
+    }
+
+    /* Make checkboxes bigger */
+    .checkboxControl {
+        display: block;
+        margin-right: 25px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    .navBtn {
+        font-size: 40px;
+        width: 60px;
+        height: 60px;
+    }
+
+    #calendarCont {
+        margin-bottom: 10px;
+        max-height: 100%;
+    }
+
+    /* Event div title container */
+    .titleContainer {
+        -webkit-mask-image: none;
+        max-width: 8px;
+    }
+
+    /* Remove the scroll animation at small sizes */
+    .titleContainer:hover div,
+    .titleContainer:focus div {
+        animation: none;
+    }
+
+    .titleContainer:hover {
+        /* Fade out effect */
+        -webkit-mask-image: none;
+    }
+
+    .numberDiv,
+    .otherNumberDiv {
+        font-size: 30px;
+        margin-right: 6px;
+        min-width: 40px;
+    }
+
+    footer {
+        height: 100px;
+    }
+
+    /* Display add event button (mobile version) */
+    #newEventBtnMobile {
+        display: block;
+    }
+
+    .modalContent {
+        padding: 20px 25px 30px 25px;
+        width: 70%;
+        min-width: 300px;
+        height: fit-content;
+    }
+
+    .eventTitle {
+        height: 40px;
+        font-size: 40px;
+        margin: 10px 0px;
+        margin-left: 15px;
+        outline: none;
+    }
+
+    .eventType {
+        font-size: 16px;
+        margin-bottom: 50px;
+        margin-left: 15px;
     }
 
     .eventTypeOption {
-      font-size: 16px;
+        font-size: 16px;
     }
 
     .eventLabel {
-      display: inline-block;
-      width: 90%;
-      font-size: 16px;
-      margin-left: 15px;
-  }
+        display: inline-block;
+        width: 90%;
+        font-size: 16px;
+        margin-left: 15px;
+    }
 
-  .eventDate{
-      font-size: 16px;
-      margin-left: 15px;
-  }
+    .eventDate {
+        font-size: 16px;
+        margin-left: 15px;
+    }
 
-  .checkboxLabel{
-      margin-left: 0;
-  }
+    .checkboxLabel {
+        margin-left: 0;
+    }
 
-  .checkboxLabel span {
-      width: 10px;
-      height: 10px;
-      margin-right: 5px;
-      display: inline-block;
-      background-size: 10px 10px;
-  }
+    .checkboxLabel span {
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        display: inline-block;
+        background-size: 10px 10px;
+    }
 
-  .dayDiv{
-    min-width: 14.2857142857%;
-    max-height: 80px;
-    padding-right: 5px;
-    align-items: flex-start;
-  }
+    .dayDiv {
+        min-width: 14.2857142857%;
+        max-height: 80px;
+        padding-right: 5px;
+        align-items: flex-start;
+    }
 
-  #startNewEvent, #endNewEvent {
-      width: 90%;
-  }
+    #startNewEvent,
+    #endNewEvent {
+        width: 90%;
+    }
 
-  #endDateLabel, #reminderLabel, #descriptionLabel{
-    margin-left: 0px;
-  }
+    #endDateLabel,
+    #reminderLabel,
+    #descriptionLabel {
+        margin-left: 0px;
+    }
 
-  .eventDescriptionLabel{
-    margin-bottom: 10px;
-  }
+    .eventDescriptionLabel {
+        margin-bottom: 10px;
+    }
 
-  .eventDescription{
-    width: 90%;
-    height: 100px;
-    font-size: 16px;
-    font-weight: var(--light);
-    margin-top: 10px;
-    margin-bottom: 30px;
-    margin-left: 15px;
-  }
+    .eventDescription {
+        width: 90%;
+        height: 100px;
+        font-size: 16px;
+        font-weight: var(--light);
+        margin-top: 10px;
+        margin-bottom: 30px;
+        margin-left: 15px;
+    }
 
-  .btnDiv{
-      margin-left: 15px;
-      margin-right: 15px;
-  }
+    .btnDiv {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
-  .modalBtn{
-    width: 48%;
-    height: 40px;
-    font-size: 16px;
-    font-weight: var(--semiBold);
-    background-color: white;
-    border: var(--darkColor) solid var(--borderWidth);
-    transition: .3s;
-  }
+    .modalBtn {
+        width: 48%;
+        height: 40px;
+        font-size: 16px;
+        font-weight: var(--semiBold);
+        background-color: white;
+        border: var(--darkColor) solid var(--borderWidth);
+        transition: 0.3s;
+    }
 
-  .event{
-    min-height: 20px;
-    min-width: 20px;
-  }
-}
-
-/* Mobile */
-@media screen and (max-width: 500px){
-
-  :root{
-    --borderWidth: 3px;
-  }
-
-  body{
-    padding: 30px;
-  }
-.eventDescription{
-  width: 90%;
-  height: 100px;
-  font-size: 16px;
-  font-weight: var(--light);
-  margin-top: 10px;
-  margin-bottom: 30px;
-  margin-left: 15px;
-}
-
-  header{
-    height: 140px;
-  }
-
-  #monthAndYear{
-    width: 100%;
-    height: fit-content;
-    flex-grow: 0;
-    flex-direction: column;
-    transform: translateY(0px);
-  }
-
-  #month, #year {
-    font-size: 50px;
-    width: 100%;
-  }
-
-
-  #monthButtons{
-    margin-bottom: 20px;
-  }
-
-  .navBtn{
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
-    font-weight: var(--regular);
-    border: 2px var(--darkColor) solid;
-  }
-
-  #weekdaysContainer, #expiredEventsTitle, #reminderTitle{
-    font-size: 14px;
-    font-weight: var(--bold);
-  }
-
-  .today .numberDiv{
-    box-shadow: 0 5px 10px 6px yellow;
-  }
-
-  .dayDiv{
-    padding: 0px 5px 5px 0;
-    height: 100%;
-    border-top: 2px var(--darkColor) solid;
-  }
-
-  .numberDiv, .otherNumberDiv{
-    font-size: 16px;
-    margin-right: 6px;
-    min-width: 20px;
-    height: 20px;
-  }
-
-  #mainRight{
-    margin-bottom: -10px;
-  }
-
-  /* Event div title container */
-  .titleContainer{
-    max-width: 5px;
-  }
-
-  .eventsDiv{
-    width: 5px;
-    height: 100%;
-    max-height: 40px;
-  }
-
-  .event{
-    width: 10px;
-    height: 10px;
-    min-height: 5px;
-    font-size: 12px;
-    margin: 0;
-    margin-bottom: 3px;
-    line-height: 12px;
-    overflow: hidden;
-    transform: translateY(5px);
-  }
-.btnDiv{
-  margin-left: 15px;
-  margin-right: 15px;
-}
-
-}
-
-
-  #monthAndYear {
-    width: 100%;
-    height: fit-content;
-    flex-direction: column;
-    transform: translateY(0px);
-  }
-
-  #month,
-  #year {
-    font-size: 80px;
-    width: 100%;
-  }
-
-  #year {
-    transform: translateY(-10px);
-  }
-
-  /* Hide add event button for desktop */
-  #newEventBtn {
-    display: none;
-  }
-
-  #sidebar {
-    display: none;
-  }
-
-  #eventTypesMobile {
-    display: flex;
-  }
-
-  /* Make checkboxes bigger */
-  .checkboxControl {
-    display: block;
-    margin-right: 25px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-  }
-
-  .navBtn {
-    font-size: 40px;
-    width: 60px;
-    height: 60px;
-  }
-
-  #calendarCont {
-    margin-bottom: 10px;
-    max-height: 100%;
-  }
-
-  /* Event div title container */
-  .titleContainer {
-    -webkit-mask-image: none;
-    max-width: 8px;
-  }
-
-  .titleContainer {
-  }
-
-  /* Remove the scroll animation at small sizes */
-  .titleContainer:hover div,
-  .titleContainer:focus div {
-    animation: none;
-  }
-
-  .titleContainer:hover {
-    /* Fade out effect */
-    -webkit-mask-image: none;
-  }
-
-  .numberDiv,
-  .otherNumberDiv {
-    font-size: 30px;
-    margin-right: 6px;
-    min-width: 40px;
-  }
-
-  footer {
-    height: 100px;
-  }
-
-  /* Display add event button (mobile version) */
-  #newEventBtnMobile {
-    display: block;
-  }
-
-  .modalContent {
-    padding: 20px 25px 30px 25px;
-    width: 70%;
-    min-width: 300px;
-    height: fit-content;
-  }
-
-  .eventTitle {
-    height: 40px;
-    font-size: 40px;
-    margin: 10px 0px;
-    margin-left: 15px;
-    outline: none;
-  }
-
-  .eventType {
-    font-size: 16px;
-    margin-bottom: 50px;
-    margin-left: 15px;
-  }
-
-  .eventTypeOption {
-    font-size: 16px;
-  }
-
-  .eventLabel {
-    display: inline-block;
-    width: 90%;
-    font-size: 16px;
-    margin-left: 15px;
-  }
-
-  .eventDate {
-    font-size: 16px;
-    margin-left: 15px;
-  }
-
-  .checkboxLabel {
-    margin-left: 0;
-  }
-
-  .checkboxLabel span {
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-    display: inline-block;
-    background-size: 10px 10px;
-  }
-
-  .dayDiv {
-    min-width: 14.2857142857%;
-    max-height: 80px;
-    padding-right: 5px;
-    align-items: flex-start;
-  }
-
-  #startNewEvent,
-  #endNewEvent {
-    width: 90%;
-  }
-
-  #endDateLabel,
-  #reminderLabel,
-  #descriptionLabel {
-    margin-left: 0px;
-  }
-
-  .eventDescriptionLabel {
-    margin-bottom: 10px;
-  }
-
-  .eventDescription {
-    width: 90%;
-    height: 100px;
-    font-size: 16px;
-    font-weight: var(--light);
-    margin-top: 10px;
-    margin-bottom: 30px;
-    margin-left: 15px;
-  }
-
-  .btnDiv {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-
-  .modalBtn {
-    width: 48%;
-    height: 40px;
-    font-size: 16px;
-    font-weight: var(--semiBold);
-    background-color: white;
-    border: var(--darkColor) solid var(--borderWidth);
-    transition: 0.3s;
-  }
-
-  .event {
-    min-height: 20px;
-    min-width: 20px;
-  }
+    .event {
+        min-height: 20px;
+        min-width: 20px;
+    }
 }
 
 /* Mobile */
 @media screen and (max-width: 500px) {
-  :root {
-    --borderWidth: 3px;
-  }
+    :root {
+        --borderWidth: 3px;
+    }
 
-  body {
-    padding: 30px;
-  }
-  .eventDescription {
-    width: 90%;
-    height: 100px;
-    font-size: 16px;
-    font-weight: var(--light);
-    margin-top: 10px;
-    margin-bottom: 30px;
-    margin-left: 15px;
-  }
+    body {
+        padding: 30px;
+    }
+    .eventDescription {
+        width: 90%;
+        height: 100px;
+        font-size: 16px;
+        font-weight: var(--light);
+        margin-top: 10px;
+        margin-bottom: 30px;
+        margin-left: 15px;
+    }
 
-  header {
-    height: 140px;
-  }
+    header {
+        height: 140px;
+    }
 
-  #monthAndYear {
-    width: 100%;
-    height: fit-content;
-    flex-grow: 0;
-    flex-direction: column;
-    transform: translateY(0px);
-  }
+    #monthAndYear {
+        width: 100%;
+        height: fit-content;
+        flex-grow: 0;
+        flex-direction: column;
+        transform: translateY(0px);
+    }
 
-  #month,
-  #year {
-    font-size: 50px;
-    width: 100%;
-  }
+    #month,
+    #year {
+        font-size: 50px;
+        width: 100%;
+    }
 
-  #monthButtons {
-    margin-bottom: 20px;
-  }
+    #monthButtons {
+        margin-bottom: 20px;
+    }
 
-  .navBtn {
-    font-size: 25px;
-    width: 50px;
-    height: 50px;
-    font-weight: var(--regular);
-    border: 2px var(--darkColor) solid;
-  }
+    .navBtn {
+        font-size: 25px;
+        width: 50px;
+        height: 50px;
+        font-weight: var(--regular);
+        border: 2px var(--darkColor) solid;
+    }
 
-  #weekdaysContainer,
-  #expiredEventsTitle,
-  #reminderTitle {
-    font-size: 14px;
-    font-weight: var(--bold);
-  }
+    #weekdaysContainer,
+    #expiredEventsTitle,
+    #reminderTitle {
+        font-size: 14px;
+        font-weight: var(--bold);
+    }
 
-  .today .numberDiv {
-    box-shadow: 0 5px 10px 6px yellow;
-  }
+    .today .numberDiv {
+        box-shadow: 0 5px 10px 6px yellow;
+    }
 
-  .dayDiv {
-    padding: 0px 5px 5px 0;
-    height: 100%;
-    border-top: 2px var(--darkColor) solid;
-  }
+    .dayDiv {
+        padding: 0px 5px 5px 0;
+        height: 100%;
+        border-top: 2px var(--darkColor) solid;
+    }
 
-  .numberDiv,
-  .otherNumberDiv {
-    font-size: 16px;
-    margin-right: 6px;
-    min-width: 20px;
-    height: 20px;
-  }
+    .numberDiv,
+    .otherNumberDiv {
+        font-size: 16px;
+        margin-right: 6px;
+        min-width: 20px;
+        height: 20px;
+    }
 
-  #mainRight {
-    margin-bottom: -10px;
-  }
+    #mainRight {
+        margin-bottom: -10px;
+    }
 
-  /* Event div title container */
-  .titleContainer {
-    max-width: 5px;
-  }
+    /* Event div title container */
+    .titleContainer {
+        max-width: 5px;
+    }
 
-  .eventsDiv {
-    width: 5px;
-    height: 100%;
-    max-height: 40px;
-  }
+    .eventsDiv {
+        width: 5px;
+        height: 100%;
+        max-height: 40px;
+    }
 
-  .event {
-    width: 10px;
-    height: 10px;
-    min-height: 5px;
-    font-size: 12px;
-    margin: 0;
-    margin-bottom: 3px;
-    line-height: 12px;
-    overflow: hidden;
-    transform: translateY(5px);
-  }
-  .btnDiv {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
+    .event {
+        width: 10px;
+        height: 10px;
+        min-height: 5px;
+        font-size: 12px;
+        margin: 0;
+        margin-bottom: 3px;
+        line-height: 12px;
+        overflow: hidden;
+        transform: translateY(5px);
+    }
+    .btnDiv {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    #monthAndYear {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        transform: translateY(0px);
+    }
+
+    #month,
+    #year {
+        font-size: 80px;
+        width: 100%;
+    }
+
+    #year {
+        transform: translateY(-10px);
+    }
+
+    /* Hide add event button for desktop */
+    #newEventBtn {
+        display: none;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    #eventTypesMobile {
+        display: flex;
+    }
+
+    /* Make checkboxes bigger */
+    .checkboxControl {
+        display: block;
+        margin-right: 25px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+    }
+
+    .navBtn {
+        font-size: 40px;
+        width: 60px;
+        height: 60px;
+    }
+
+    #calendarCont {
+        margin-bottom: 10px;
+        max-height: 100%;
+    }
+
+    /* Event div title container */
+        .titleContainer {
+        -webkit-mask-image: none;
+        max-width: 8px;
+    }
+
+    /* Remove the scroll animation at small sizes */
+    .titleContainer:hover div,
+    .titleContainer:focus div {
+        animation: none;
+    }
+
+    .titleContainer:hover {
+        /* Fade out effect */
+        -webkit-mask-image: none;
+    }
+
+    .numberDiv,
+    .otherNumberDiv {
+        font-size: 30px;
+        margin-right: 6px;
+        min-width: 40px;
+    }
+
+    footer {
+        height: 100px;
+    }
+
+    /* Display add event button (mobile version) */
+    #newEventBtnMobile {
+        display: block;
+    }
+
+    .modalContent {
+        padding: 20px 25px 30px 25px;
+        width: 70%;
+        min-width: 300px;
+        height: fit-content;
+    }
+
+    .eventTitle {
+        height: 40px;
+        font-size: 40px;
+        margin: 10px 0px;
+        margin-left: 15px;
+        outline: none;
+    }
+
+    .eventType {
+        font-size: 16px;
+        margin-bottom: 50px;
+        margin-left: 15px;
+    }
+
+    .eventTypeOption {
+        font-size: 16px;
+    }
+
+    .eventLabel {
+        display: inline-block;
+        width: 90%;
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    .eventDate {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    .checkboxLabel {
+        margin-left: 0;
+    }
+
+    .checkboxLabel span {
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        display: inline-block;
+        background-size: 10px 10px;
+    }
+
+    .dayDiv {
+        min-width: 14.2857142857%;
+        max-height: 80px;
+        padding-right: 5px;
+        align-items: flex-start;
+    }
+
+    #startNewEvent,
+    #endNewEvent {
+        width: 90%;
+    }
+
+    #endDateLabel,
+    #reminderLabel,
+    #descriptionLabel {
+        margin-left: 0px;
+    }
+
+    .eventDescriptionLabel {
+        margin-bottom: 10px;
+    }
+
+    .eventDescription {
+        width: 90%;
+        height: 100px;
+        font-size: 16px;
+        font-weight: var(--light);
+        margin-top: 10px;
+        margin-bottom: 30px;
+        margin-left: 15px;
+    }
+
+    .btnDiv {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .modalBtn {
+        width: 48%;
+        height: 40px;
+        font-size: 16px;
+        font-weight: var(--semiBold);
+        background-color: white;
+        border: var(--darkColor) solid var(--borderWidth);
+        transition: 0.3s;
+    }
+
+    .event {
+        min-height: 20px;
+        min-width: 20px;
+    }
+
+}
+
+
+/* Mobile ---------------------------- */
+@media screen and (max-width: 500px) {
+    :root {
+        --borderWidth: 3px;
+    }
+
+    body {
+        padding: 30px;
+    }
+
+    .eventDescription {
+        width: 90%;
+        height: 100px;
+        font-size: 16px;
+        font-weight: var(--light);
+        margin-top: 10px;
+        margin-bottom: 30px;
+        margin-left: 15px;
+    }
+
+    header {
+        height: 140px;
+    }
+
+    #monthAndYear {
+        width: 100%;
+        height: fit-content;
+        flex-grow: 0;
+        flex-direction: column;
+        transform: translateY(0px);
+    }
+
+    #month,
+    #year {
+        font-size: 50px;
+        width: 100%;
+    }
+
+    #monthButtons {
+        margin-bottom: 20px;
+    }
+
+    .navBtn {
+        font-size: 25px;
+        width: 50px;
+        height: 50px;
+        font-weight: var(--regular);
+        border: 2px var(--darkColor) solid;
+    }
+
+    #weekdaysContainer,
+    #expiredEventsTitle,
+    #reminderTitle {
+        font-size: 14px;
+        font-weight: var(--bold);
+    }
+
+    .today .numberDiv {
+        box-shadow: 0 5px 10px 6px yellow;
+    }
+
+    .dayDiv {
+        padding: 0px 5px 5px 0;
+        height: 100%;
+        border-top: 2px var(--darkColor) solid;
+    }
+
+    .numberDiv,
+    .otherNumberDiv {
+        font-size: 16px;
+        margin-right: 6px;
+        min-width: 20px;
+        height: 20px;
+    }
+
+    #mainRight {
+        margin-bottom: -10px;
+    }
+
+    /* Event div title container */
+    .titleContainer {
+        max-width: 5px;
+    }
+
+    .eventsDiv {
+        width: 5px;
+        height: 100%;
+        max-height: 40px;
+    }
+
+    .event {
+        width: 10px;
+        height: 10px;
+        min-height: 5px;
+        font-size: 12px;
+        margin: 0;
+        margin-bottom: 3px;
+        line-height: 12px;
+        overflow: hidden;
+        transform: translateY(5px);
+    }
+
+    .btnDiv {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 }
