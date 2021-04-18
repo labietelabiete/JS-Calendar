@@ -246,6 +246,11 @@ function showExpiredEvents(){
 
         if(event.endDate.milliseconds - currentDate <= 0){
 
+            // Mark expired events in red
+            var expiredEvents = document.querySelectorAll("#eventId"+event.id);
+            expiredEvents.forEach(ele => ele.style.color = "var(--redColor)");
+
+
             // Creating new string div to inject to expired events div
             let expiredEventDiv = "<div id = expiredEvent";
             let expiredEventClassType;
