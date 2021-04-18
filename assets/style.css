@@ -179,6 +179,7 @@ main {
   flex-direction: column;
   flex-grow:0.18;
   top:80px;
+  width: 100%;
 }
 
 #expiredEventsTitle, #reminderTitle{
