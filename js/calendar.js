@@ -154,6 +154,10 @@ prevMonthBtn.addEventListener("click", resetPrevMonth);
 function resetPrevMonth(){
     // Emptying grid container before assigning previous month
     calendarGrid.innerHTML = "";
+
+    // Trigger animation on every click
+    preMonthAnimation();
+
     // January
     if (currentMonthNum == 1){
         currentYearNum--;
@@ -190,18 +194,18 @@ function resetPrevMonth(){
 
     console.log("Prev month!")
  }
+
+
 // Next month button
 nextMonthBtn.addEventListener("click", resetNextMonth);
 
 function resetNextMonth(){
     // Emptying grid container before assigning next month
     calendarGrid.innerHTML = "";
-    //document.querySelector("main").style.animation = "none";
-    document.querySelector("main").style.animation = "monthAnimation 2s 1";
-    setTimeout(()=> {
-        document.querySelector("main").style.animation = "none";
-    }, 1000);
-    
+
+    // Trigger animation on every click
+    nextMonthAnimation();
+
     //December
     if (currentMonthNum == 12){
         currentYearNum++;
@@ -235,12 +239,32 @@ function handleArrowKeys(event) {
     switch (event.keyCode) {
             case 37:
                 resetPrevMonth();
+                setMonthEvents();
                 break;
             case 39:
                 resetNextMonth();
+                setMonthEvents();
                 break;
     }
 }
+
+// Animation function
+function preMonthAnimation() {
+    calendarGrid.setAttribute("class", "preChange");
+    setTimeout(()=> {
+    calendarGrid.removeAttribute("class", "preChange");
+    console.log("Removed class");
+    }, 500);
+}
+
+function nextMonthAnimation() {
+    calendarGrid.setAttribute("class", "nextChange");
+    setTimeout(()=> {
+        calendarGrid.removeAttribute("class", "nextChange");
+        console.log("Removed class");
+    }, 500);
+}
+
 
 
 // CALLING FUNCTIONS

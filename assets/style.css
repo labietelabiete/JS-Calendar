@@ -472,7 +472,7 @@ main {
     overflow: auto;
     min-height: 100%;
     /* Fade out effect */
-    -webkit-mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 90%);
     mask-image: linear-gradient(to bottom, black 30%, transparent 90%);
 }
 
@@ -544,7 +544,13 @@ main {
 footer {
   height: 50px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Hide add checkboxes (mobile version) in desktop versions*/
+#eventTypesMobile{
+  display: none;
 }
 
 /* Hide add event button (mobile version) in desktop versions*/
@@ -821,7 +827,7 @@ select option:hover {
   color: var(--eventColor);
 }
 .modalContentCheck {
-  border: var(--eventColor) solid var(--borderWidth);
+  border: var(--eventColor) solid 4px;
 }
 .closeCheck {
   color: var(--eventColor);
@@ -862,7 +868,7 @@ select option:hover {
 /* MEDIA QUERIES
 --------------------------------------------------------------- */
 /* Smalle desktop */
-@media screen and (max-width: 1140px) {
+@media screen and (max-width: 1200px) {
   #title{
     font-size: 25px;
     min-width: 150px;
@@ -924,6 +930,10 @@ select option:hover {
       display: none;
   }
 
+  .titleContainer {
+    max-width: 12px;
+  }
+
   .weekdayAbr{
       display: block;
   }
@@ -971,6 +981,20 @@ select option:hover {
       display: none;
   }
 
+  #eventTypesMobile{
+    display: flex;
+  }
+
+  /* Make checkboxes bigger */
+  .checkboxControl {
+    display: block;
+    margin-right: 25px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+
+
   .navBtn{
       font-size: 40px;
       width: 60px;
@@ -985,6 +1009,11 @@ select option:hover {
   /* Event div title container */
   .titleContainer{
     -webkit-mask-image: none;
+    max-width: 8px;
+  }
+
+  .titleContainer {
+    
   }
 
   /* Remove the scroll animation at small sizes */
@@ -1132,7 +1161,6 @@ select option:hover {
   margin-top: 10px;
   margin-bottom: 30px;
   margin-left: 15px;
-  
 }
 
   header{
@@ -1189,6 +1217,11 @@ select option:hover {
 
   #mainRight{
     margin-bottom: -10px;
+  }
+
+  /* Event div title container */
+  .titleContainer{
+    max-width: 5px;
   }
 
   .eventsDiv{

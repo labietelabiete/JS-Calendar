@@ -1,9 +1,36 @@
-@keyframes monthAnimation {
-    0% {
-        opacity: 0; 
-    }
-    100% {
-        opacity: 1;
-    }
+.nextChange {
+	position: relative;
+	animation: nextMonth 0.4s backwards;
 }
+
+.preChange {
+	animation: prevMonth 0.4s forwards;
+}
+
+
+@keyframes prevMonth {
+	0% {
+		opacity: 0%;
+		width: 0%;
+	}
+	100% {
+		opacity: 100%;
+		width: 100%;
+	}
+}
+
+@keyframes nextMonth {
+	0%{
+		opacity: 0%;
+		width: 0%;
+		left: 100%;
+	}
+	100% {
+		opacity: 100%;
+		width: 100%;
+		left: 0%;
+
+	}
+}
+
 
