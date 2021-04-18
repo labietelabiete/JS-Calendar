@@ -266,6 +266,9 @@ function nextMonthAnimation() {
 }
 
 
+// Check current date every minute
+setInterval(highlighToday, 60000);
+
 
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
