@@ -90,7 +90,7 @@ function setAllReminders(){
 }
 
 function reminderTimeOut(reminderId, reminderTitle, eventType, reminderValue, eventReminderInfo){
-  
+
   // Showing reminders container
   document.getElementById("reminderContainer").style.visibility = "visible";
 

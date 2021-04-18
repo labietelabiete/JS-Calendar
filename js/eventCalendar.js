@@ -2,6 +2,8 @@
 //------------------------------------------------------------------------
 let eventsDivs = document.querySelectorAll(".eventsDiv");
 let expiredEventsContainer = document.getElementById("expiredEvents");
+let expiredEventsBlock = document.getElementById("expiredEventsContainer");
+let reminderBlock = document.getElementById("reminderContainer");
 // Accessing all checkboxes
 let allCheckboxes = document.querySelectorAll(".checkboxType input");
 
@@ -217,8 +219,16 @@ function showExpiredEvents(){
     // Gathering every previous expired event inside the expired event div
     let expiredEvents = expiredEventsContainer.childNodes;
 
+    // Hide expired events container if there are no expired events
+    if (expiredEvents.length === 0){
+        expiredEventsBlock.style.display = "none";
+        reminderBlock.style.top = "79px";
+    }
+
     // Cleaning the expired events div
     while(expiredEvents.length > 0){
+        expiredEventsBlock.style.display = "flex";
+        reminderBlock.style.top = "38px";
         expiredEventsContainer.removeChild(expiredEventsContainer.firstChild);
     }
 
@@ -283,9 +293,10 @@ function setDailyEvents(eventCreated){
 
 // trigger expired events
 function triggerExpiredEvents(){
-    showExpiredEvents()
     setInterval(showExpiredEvents, 2000);
 }
+
+
 // Pairing checkboxes
 function checkboxPairing(){
     // console.log(event.target.classList[0]);
@@ -312,4 +323,5 @@ function checkboxPairing(){
 // CALLING FUNCTIONS
 //------------------------------------------------------------------------
 setMonthEvents();
+showExpiredEvents();
 triggerExpiredEvents();
