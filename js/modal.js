@@ -517,7 +517,7 @@ function removingEvent(){
   reminderListToRemove = JSON.parse(localStorage.getItem("localReminderInfo"));
 
   let divsDeletedEvent = document.getElementsByClassName("eventId"+eventToDisplay.id);
-  
+
   // Remove empty div
   for ( let div of divsDeletedEvent){
     console.log(div.parentNode.remove());
